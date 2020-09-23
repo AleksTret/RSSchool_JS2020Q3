@@ -123,10 +123,12 @@ header{
 }
 
 .header__list{
-  width: 586px;
+  width: 580px;
   display: flex;
   margin: auto;
   justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 42px;
 }
 
 /*
