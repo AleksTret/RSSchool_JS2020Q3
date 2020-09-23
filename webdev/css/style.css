@@ -1,0 +1,635 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+        url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../fonts/roboto-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+        url('../fonts/roboto-v20-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../fonts/roboto-v20-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-500 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+        url('../fonts/roboto-v20-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../fonts/roboto-v20-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-900 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Roboto Black'), local('Roboto-Black'),
+        url('../fonts/roboto-v20-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('../fonts/roboto-v20-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+html{
+  box-sizing: border-box;
+}
+
+*, *::before, *::after{
+  box-sizing: inherit;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: normal;
+  color: #4e4e4e;
+}
+
+.wrapper{
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/*Header styles begin */
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.header__wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 95px;
+}
+
+.header__list{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header__item:last-child{
+  margin-right: 0;
+}
+
+.header__item:nth-child(-3n+7){
+    margin-right: 85px;
+}
+
+.header__item:nth-child(3){
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.header__item:first-child .header__link{
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.header__link{
+  font-size: 14px;
+  line-height: 300%;
+  font-weight: 500;
+  color: #FFFFFF;
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.header__link:hover, .header__link:focus, .header__link:active{
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Header styles end */
+
+/* Intro styles begin */
+
+.intro{
+  min-height: 100vh;
+  background: url(../img/intro-bg.jpg) no-repeat center;
+  background-size: cover;
+  padding-top: 230px;
+}
+
+.intro__title{
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 75px;
+  text-align: center;
+  letter-spacing: 4.5px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.intro__subtitle{
+  margin: 0 auto 30px;
+  width: 504px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 140%;
+  /* or 25px */
+  text-align: center;
+  color: #FFFFFF;
+}
+
+
+.intro__form{
+  text-align: center;
+}
+
+.intro__button__get__started{
+  padding: 15px 47px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFFFFF;
+  background: #00AFDB;
+  border: 0;
+  margin-bottom: 183px;
+}
+
+.intro__button__get__started:hover, 
+.intro__button__get__started:focus, 
+.intro__button__get__started:active{
+  background: #009CC2;
+}
+
+.intro__socials__list{
+  display: flex;
+  justify-content: space-between;
+  width: 170px;
+  height: 20px;
+  margin: 0 auto;
+}
+
+/* Intro styles end */
+
+/* Represent styles begin */
+
+.represent{
+  width: 1600px;
+  height: 842px;
+  margin: 0 auto;
+}
+
+.represent__wrapper{
+  display: flex;
+}
+
+.represent__content__block{
+  width: 407px;
+  height: 233px;
+  margin-top: 295px;
+  margin-left: 268px;
+  margin-right: 248px;
+}
+
+.represent__title{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 1px;
+
+  width: 367px;
+  height: 57px;
+  margin-bottom: 20px;
+
+  text-transform: uppercase;
+  color: #373737;
+}
+
+.represent__content{
+  font-size: 14px;
+  line-height: 140%;
+
+  width: 407px;
+  height: 80px;
+  margin-bottom: 30px;
+
+  color: #4E4E4E;
+}
+
+.represent__button__get__started{
+  padding: 15px 47px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFFFFF;
+  background: #00AFDB;
+  border: 0;
+  margin-bottom: 183px;
+}
+
+.represent__button__get__started:hover,
+.represent__button__get__started:focus,
+.represent__button__get__started:active{
+  background: #009CC2;
+}
+
+.represent__image__wrapper{
+  width: 407px;
+  height: 582px;
+  margin-top: 120px;
+  background: url(../img/represent-image-1.jpg);         
+}
+
+.represent__image__wrapper:hover{
+  background: url(../img/represent-image-2.jpg);  
+}
+
+/* Represent styles end */
+
+/* Our community styles begin */
+
+.community{
+  width: 1600px;
+  height: 504px;
+  margin: 0 auto;
+}
+
+.community__nav{
+  width: 1331px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.community__list{
+  display:flex;
+  justify-content: flex-end;
+}
+
+.community__item{
+  margin-right: 10px;
+}
+
+.community__item:nth-child(odd){
+  width: 8px;
+  height: 8px;
+}
+
+.community__item:nth-child(2){
+  width: 37px;
+  height: 25px;
+  font-size: 18px;
+  line-height: 100%;
+  text-align: center;
+  color: #373737;
+}
+
+.community__item:last-child{
+  margin-right: 0;
+}
+
+.community__wrapper{
+  display: flex;
+}
+
+.community__content__wrapper{
+  margin-right: 139px;
+  margin-left: 269px;
+  text-align: center;
+}
+
+.community__title{
+  width: 300px;
+  height: 20px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #373737;
+}
+
+.community__content{
+  width: 298px;
+  height: 80px;
+  font-size: 14px;
+  line-height: 140%;
+  color: #4E4E4E;
+}
+
+.community__image__wrapper{
+  display: flex;
+  height: 244px;
+}
+
+.community__image{
+  width: 407px;
+  height: 244px;
+  margin-right: 30px;
+  overflow: hidden;
+}
+
+.community__image:nth-child(1){
+  background: url(../img/community_1.jpg);
+}
+
+.community__image:nth-child(2){
+  background: url(../img/community_2.jpg);
+}
+
+.community__image:nth-child(3){
+  background: url(../img/community_3.jpg) no-repeat;
+
+}
+
+/* Our community styles end */
+
+/* Implement styles begin */
+
+.implement{
+  width: 1600px;
+  height: 842px;
+  margin: 0 auto;
+}
+
+.implement__wrapper{
+  display: flex;
+}
+
+.implement__image{
+  width: 407px;
+  height: 582px;
+  background: url(../img/implement.jpg);
+
+  margin-left: 269px;
+  margin-top: 120px;
+  margin-right: 139px;
+}
+
+.implement__content__wrapper{
+  width: 407px;
+  height: 184px;
+
+  margin-top:319px;
+}
+
+.implement__title{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 1px;
+
+  width: 330px;
+  height: 28px;
+
+  margin-bottom: 20px;
+
+  text-transform: uppercase;
+  color: #373737;
+}
+
+.implement__content{
+  font-size: 14px;
+  line-height: 140%;
+
+  width: 407px;
+  height: 60px;
+  margin-bottom: 30px;
+
+  color: #4E4E4E;
+}
+
+.implement__strong{
+  font-weight: 500;
+}
+
+.implement__button__learn__more{
+  padding: 15px 47px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFFFFF;
+  background: #00AFDB;
+  border: 0;
+  margin-bottom: 183px;
+}
+
+.implement__button__learn__more:hover,
+.implement__button__learn__more:focus,
+.implement__button__learn__more:active{
+  background: #009CC2;
+}
+
+/* Implement styles end */
+
+/* Sing up styles begin */
+
+.sing_up{
+  width: 1600px;
+  height: 598px;
+  margin: 0 auto;
+  background: url(../img/sing_up_1.jpg);
+}
+
+.sing_up__wrapper{
+  margin: 217px auto;
+  width: 406px;
+  height: 104px;
+ 
+  text-align: center;
+}
+
+.sing_up__form{
+  width: 410px;
+  height: 46px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sing_up__title{
+  margin-bottom: 30px;
+
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #FFFFFF;
+}
+
+.sing_up__input__email{
+  width: 340px;
+  height: 46px;
+  padding-left: 24px;
+
+  font-size: 14px;
+  line-height: 140%;
+  font-weight: 400;
+  color: #373737;
+
+  background: #FFFFFF;
+  border: 0;
+}
+
+.sing_up__button{
+  width: 66px;
+  height: 46px;
+
+  background: #00AFDB;
+  border: 0;
+}
+
+.sing_up__button:hover{
+  background: #009CC2;
+}
+
+/* Sing up styles end */
+
+/* Download application styles begin */
+
+.download_app{
+  width: 1600px;
+  height: 468px;
+  margin: 0 auto;
+  background: #F5F6F7;
+}
+
+.download_app__wrapper{
+  margin: 120px auto;
+  width: 483px;
+}
+
+.download_app__title{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 20px;
+
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  color: #373737;
+}
+
+.download_app__content{
+  width: 483px;
+  height: 40px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  margin-bottom: 30px;
+
+  text-align: center;
+
+  color: #4E4E4E;
+}
+
+.download_app__form{
+  display: flex;
+}
+
+.download_app__button{
+  width: 188px;
+  padding: 0;
+  display: flex;
+
+  background: #00AFDB;
+  border: 0px;
+  margin-left: 30px;
+}
+
+.download_app__button:hover{
+  background: #009CC2;
+}
+
+.download_app__button__name{
+  width: 128px;
+  margin: auto;
+}
+
+.download_app__button__name p{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+  
+  color: #FFFFFF;
+}
+
+.download_app__button__icon__apple{
+  width: 60px;
+  height: 50px;
+
+  background: url(../img/svg/icon-apple.svg) #009CC2 center no-repeat;
+  border: 0px;
+}
+
+.download_app__button__icon__android{
+  width: 60px;
+  height: 50px;
+
+  background: url(../img/svg/icon-android.svg) #009CC2 center no-repeat;
+  border: 0px;
+}
+
+/* Download application styles end */
