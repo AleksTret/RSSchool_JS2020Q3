@@ -104,13 +104,22 @@ body{
   margin: 0 auto;
 }
 
+strong{
+  font-weight: 500;
+}
+
 /*Header styles begin */
 
-.header{
+header{
   width: 1600px;
   height: 95px;
   margin: 0 auto;
+  display: flex;
   background: rgba(0, 0, 0, 1);
+}
+
+.header__nav{
+  margin: auto;
 }
 
 .header__list{
@@ -158,20 +167,20 @@ body{
 
 /* Intro styles begin */
 
-.intro{
+.your_life{
   width: 1600px;
   height: 744px;
 
   margin: 0 auto;
-  background: url(../img/intro_bg.jpg);
+  background: url(../img/your_life_bg.jpg);
 }
 
-.intro__wrapper{
+.your_life__wrapper{
   margin: auto;
   padding-top: 136px;
 }
 
-.intro__title{
+.your_life__title{
   font-weight: 700;
   font-size: 64px;
   line-height: 75px;
@@ -182,7 +191,7 @@ body{
   margin-bottom: 20px;
 }
 
-.intro__subtitle{
+.your_life__subtitle{
   margin: 0 auto 30px;
   width: 504px;
   height: 50px;
@@ -192,11 +201,11 @@ body{
   color: #FFFFFF;
 }
 
-.intro__form{
+.your_life__form{
   text-align: center;
 }
 
-.intro__button__get__started{
+.your_life__button__get__started{
   padding: 15px 47px;
   text-transform: uppercase;
   font-weight: bold;
@@ -207,18 +216,28 @@ body{
   margin-bottom: 183px;
 }
 
-.intro__button__get__started:hover, 
-.intro__button__get__started:focus, 
-.intro__button__get__started:active{
+.your_life__button__get__started:hover, 
+.your_life__button__get__started:focus, 
+.your_life__button__get__started:active{
   background: #009CC2;
 }
 
-.intro__socials__list{
+.your_life__socials__list{
   display: flex;
   justify-content: space-between;
   width: 170px;
   height: 20px;
   margin: 0 auto;
+}
+
+.your_life__socials__link{
+  opacity: 0.8;
+}
+
+.your_life__socials__link:hover,
+.your_life__socials__link:focus,
+.your_life__socials__link:active{
+  opacity: 1;
 }
 
 /* Intro styles end */
@@ -330,6 +349,11 @@ body{
 .community__item:nth-child(odd){
   width: 8px;
   height: 8px;
+  opacity: 0.8;
+}
+
+.community__item:nth-child(odd):hover{
+  opacity: 1;
 }
 
 .community__item:nth-child(2){
