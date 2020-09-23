@@ -169,7 +169,7 @@ header{
 
 .your_life{
   width: 1600px;
-  height: 744px;
+  height: 650px;
 
   margin: 0 auto;
   background: url(../img/your_life_bg.jpg);
@@ -331,7 +331,7 @@ header{
 }
 
 .community__nav{
-  width: 1331px;
+  width: 1325px;
   height: 20px;
   margin-top: 80px;
   margin-bottom: 20px;
@@ -347,8 +347,8 @@ header{
 }
 
 .community__item:nth-child(odd){
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   opacity: 0.8;
 }
 
@@ -377,11 +377,17 @@ header{
   margin-right: 139px;
   margin-left: 269px;
   text-align: center;
+  padding-top: 37px;
+}
+
+.community__icon{
+  margin-bottom: 11px;
 }
 
 .community__title{
   width: 300px;
   height: 20px;
+  margin-bottom: 13px;
 
   font-weight: 500;
   font-size: 16px;
@@ -488,7 +494,7 @@ header{
 }
 
 .implement__button__learn__more{
-  padding: 15px 47px;
+  padding: 15px 43px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 14px;
@@ -510,14 +516,14 @@ header{
 
 .sing_up{
   width: 1600px;
-  height: 598px;
+  height: 523px;
   display: flex;
   margin: 0 auto;
   background: url(../img/sing_up_1.jpg);
 }
 
 .sing_up__wrapper{
-  margin: 217px auto;
+  margin: 200px auto;
   width: 406px;
   height: 104px;
  
@@ -577,7 +583,7 @@ header{
 
 .download_app{
   width: 1600px;
-  height: 468px;
+  height: 464px;
   margin: 0 auto;
   display: flex;
   background: #F5F6F7;
@@ -585,7 +591,7 @@ header{
 
 .download_app__wrapper{
   margin: 120px auto;
-  width: 483px;
+  width: 465px;
 }
 
 .download_app__title{
@@ -602,7 +608,7 @@ header{
 }
 
 .download_app__content{
-  width: 483px;
+  width: 470px;
   height: 40px;
 
   font-weight: 400;
@@ -692,6 +698,7 @@ footer{
   height: 20px;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 36px;
 }
 
 .footer__nav__item{
