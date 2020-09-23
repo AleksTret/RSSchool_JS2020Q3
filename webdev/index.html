@@ -7,33 +7,29 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <!-- Header begin -->
+    <!-- Header begin -->  
     <header class="header">
-        <div class="wrapper">
-            <div class="header__wrapper">
-                <nav class="header__nav">
-                    <ul class="header__list">
-                        <li class="header__item">
-                            <a href="#1" class="header__link">About</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="#2" class="header__link">Syllabus</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="" class="header__link">
-                                <img src="./img/svg/vector.svg" alt="Your life is WebDev" class="header__logo-pic">
-                            </a>
-                        </li>
-                        <li class="header__item">
-                            <a href="#3" class="header__link">Projects</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="#3" class="header__link">FAQ</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <nav class="header__nav">
+            <ul class="header__list">
+                <li class="header__item">
+                    <a href="#1" class="header__link">About</a>
+                </li>
+                <li class="header__item">
+                    <a href="#2" class="header__link">Syllabus</a>
+                </li>
+                <li class="header__item">
+                    <a href="" class="header__link">
+                        <img src="./img/svg/vector.svg" alt="Your life is WebDev" class="header__logo-pic">
+                    </a>
+                </li>
+                <li class="header__item">
+                    <a href="#3" class="header__link">Projects</a>
+                </li>
+                <li class="header__item">
+                    <a href="#3" class="header__link">FAQ</a>
+                </li>
+            </ul>
+        </nav>
     </header>
     <!-- Header end -->
 
@@ -41,6 +37,7 @@
     <main>
         <!-- Your Life begin -->
         <section class="intro">
+            <div class="intro__wrapper">
                 <h1 class="intro__title">your life is WebDev</h1>
                 <p class="intro__subtitle">
                     Whatever the approach to development may be, 
@@ -52,27 +49,28 @@
                     </button>
                 </form>
                 <ul class="intro__socials__list">
-                    <li class="socials_item">
-                        <a href="#1" class="socials__link">
+                    <li class="intro__socials__item">
+                        <a href="#1" class="intro__socials__link">
                             <img src="./img/svg/mail_fff.svg" alt="mail">
                         </a>
                     </li>
-                    <li class="socials_item">
-                        <a href="#2" class="socials__link">
+                    <li class="intro__socials__item">
+                        <a href="#2" class="intro__socials__link">
                             <img src="./img/svg/facebook_fff.svg" alt="facebook">
                         </a>
                     </li>
-                    <li class="socials_item">
-                        <a href="#3" class="socials__link">
+                    <li class="intro__socials__item">
+                        <a href="#3" class="intro__socials__link">
                             <img src="./img/svg/insta_fff.svg" alt="instagram">
                         </a>
                     </li>
-                    <li class="socials_item">
-                        <a href="#4" class="socials__link">
+                    <li class="intro__socials__item">
+                        <a href="#4" class="intro__socials__link">
                             <img src="./img/svg/telegram_fff.svg" alt="telegram_fff">
                         </a>
                     </li>
-                </ul>
+                </ul>                
+            </div>
         </section>
         <!-- Your Life end -->
 
@@ -102,41 +100,44 @@
 
         <!-- Our community begin -->
         <section class="community">
-            <nav class="community__nav">
-                <ul class="community__list">
-                    <li class="community__item">
-                        <a href="#1">
-                            <img src="../webdev/img/svg/community_rectangle_left.svg" 
-                                alt="left arrow" class="community__item__navigation__rectangle">
-                        </a>
-                    </li>
-                    <li class="community__item">1 / 5</li>
-                    <li class="community__item">
-                        <a href="#2">
-                            <img src="./img/svg/community_rectangle_right.svg" 
-                                alt="right arrow" class="community__item__navigation__rectangle">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
             <div class="community__wrapper">
-                <div class="community__content__wrapper">
-                    <img src="./img/svg/community-icon.svg" alt="community icon" class="community__icon">
-                    <h5 class="community__title">
-                        our community
-                    </h5>
-                    <p class="community__content">
-                        A hacker is any skilled computer expert that uses their 
-                        technical knowledge to overcome a problem, but it can also 
-                        mean a security hacker in common language
-                    </p>
-                </div>
-                <div class="community__image__wrapper"> 
-                    <div class="community__image"></div>
-                    <div class="community__image"></div>
-                    <div class="community__image"></div>                
-                </div>
+                <nav class="community__nav">
+                    <ul class="community__list">
+                        <li class="community__item">
+                            <a href="#1">
+                                <img src="./img/svg/community_rectangle_left.svg" 
+                                    alt="left arrow" class="community__item__navigation__rectangle">
+                            </a>
+                        </li>
+                        <li class="community__item">1 / 5</li>
+                        <li class="community__item">
+                            <a href="#2">
+                                <img src="./img/svg/community_rectangle_right.svg" 
+                                    alt="right arrow" class="community__item__navigation__rectangle">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="community__about__wrapper">
+                    <div class="community__content__wrapper">
+                        <img src="./img/svg/community-icon.svg" alt="community icon" class="community__icon">
+                        <h5 class="community__title">
+                            our community
+                        </h5>
+                        <p class="community__content">
+                            A hacker is any skilled computer expert that uses their 
+                            technical knowledge to overcome a problem, but it can also 
+                            mean a security hacker in common language
+                        </p>
+                    </div>
+                    <div class="community__image__wrapper"> 
+                        <div class="community__image"></div>
+                        <div class="community__image"></div>
+                        <div class="community__image"></div>                
+                    </div>
+                </div>                
             </div>
+
         </section>
         <!-- Our community end -->
 
@@ -166,7 +167,6 @@
 
         <!-- Sing up begin -->
         <section class="sing_up">
-            <p>.</p>
             <div class="sing_up__wrapper">
                 <h2 class="sing_up__title">
                     sign up for our newsletter
@@ -183,7 +183,6 @@
 
         <!-- Download application begin -->
         <section class="download_app">
-            <p>.</p>
             <div class="download_app__wrapper">
                 <h2 class="download_app__title">
                     Download the App
@@ -216,7 +215,7 @@
     <!-- Main end -->
     
     <!-- Footer begin -->
-    <footer class=>
+    <footer>
         <div class="footer__wrapper">
             <nav class="footer__nav">
                 <ul class="footer__nav__list">
