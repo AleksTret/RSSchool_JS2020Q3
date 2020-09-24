@@ -30,6 +30,11 @@ class Calculator{
         if (this.currentOperand === ''){
             return;
         }
+        if (operator === "sqrt"){
+            this.operation = operator;
+            this.compute();
+            return;
+        }
         if (this.previousOperand !== ''){
             this.compute();
         }
@@ -42,7 +47,8 @@ class Calculator{
         let result;
         const previous = parseFloat(this.previousOperand);
         const current = parseFloat(this.currentOperand);
-        if(isNaN(previous) || isNaN(current)){
+
+        if(isNaN(current) || (isNaN(previous) && this.operation !== "sqrt")){
             return;
         }
         switch (this.operation) {
@@ -55,12 +61,16 @@ class Calculator{
             case "*":
                 result = previous * current;
             break;
-            case "÷":
+            case "/":
                 result = previous / current;
+                break;
+            case "sqrt":
+                result = Math.sqrt(current);
                 break;
             default:
                 return;
         }
+
         this.currentOperand = result;
         this.operation = undefined;
         this.previousOperand = '';
@@ -86,8 +96,9 @@ class Calculator{
     }
 
     redrawDisplay(){
+
         this.currentOperandElement.innerText = this.getDisplayNumber(this.currentOperand);
-        if (this.operation != null){
+        if (this.operation != null && this.operation !== "sqrt"){
             this.previousOperandElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
         }
         else {
@@ -115,7 +126,7 @@ numbersButtons.forEach(item => {
 
 operationsCommand.forEach(item => {
     item.addEventListener("click", () => {
-        calculator.enterOperation(item.innerText);
+        calculator.enterOperation(item.dataset.operation);
         calculator.redrawDisplay();
     })
 })
@@ -134,3 +145,4 @@ deleteCommand.addEventListener("click", () => {
     calculator.delete();
     calculator.redrawDisplay();
 })
+
