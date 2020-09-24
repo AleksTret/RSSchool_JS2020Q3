@@ -67,6 +67,9 @@ class Calculator{
             case "sqrt":
                 result = Math.sqrt(current);
                 break;
+            case "^":
+                result = previous ** current;
+                break;
             default:
                 return;
         }
