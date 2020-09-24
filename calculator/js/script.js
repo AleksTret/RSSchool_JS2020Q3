@@ -17,7 +17,7 @@ class Calculator{
     }
 
     enterNumbers(number){
-        if (number === "." && this.currentOperand.includes(".")){
+        if (number === "." && this.currentOperand.toString().includes(".")){
             return;
         }
         this.currentOperand = this.currentOperand.toString() + number.toString();
@@ -40,8 +40,26 @@ class Calculator{
         this.currentOperand = '';
     }
 
+    getPrecision(operand){
+        let result = 0;
+        let decimalDigit = operand.toString().split(".")[1];
+        if(decimalDigit){
+            result = decimalDigit.toString().length;
+        } 
+        return result;
+    }
+
+    shrinkLastZero(number){
+        let result = number.toString();
+        while (result.endsWith("0")){
+            result = result.slice(0, -1);
+        }
+        return result
+    }
+
     compute(){
         let result;
+
         const previous = parseFloat(this.previousOperand);
         const current = parseFloat(this.currentOperand);
 
@@ -50,13 +68,16 @@ class Calculator{
         }
         switch (this.operation) {
             case "+":
-                result = previous + current;
+                result = (previous + current).toFixed(Math.min(Math.max(this.getPrecision(previous), this.getPrecision(current)), 20));
+                result = this.shrinkLastZero(result);
                 break;
             case "-":
-                result = previous - current;
+                result = (previous - current).toFixed(Math.min(Math.max(this.getPrecision(previous), this.getPrecision(current)), 20));
+                result = this.shrinkLastZero(result);
                 break;
             case "*":
-                result = previous * current;
+                result = (previous * current).toFixed(Math.min(this.getPrecision(previous) + this.getPrecision(current), 20));
+                result = this.shrinkLastZero(result);
             break;
             case "/":
                 result = previous / current;
@@ -65,7 +86,7 @@ class Calculator{
                 result = (current > 0 ? Math.sqrt(current) : NaN);
                 break;
             case "^":
-                result = previous ** current;
+                result = (previous ** current).toFixed(Math.max(this.getPrecision(previous) * current), 20);
                 break;
             case "minus":
                 result = -current;
@@ -103,14 +124,14 @@ class Calculator{
 
     redrawDisplay(){
         this.currentOperandElement.innerText = this.getDisplayNumber(this.currentOperand);
-        if (isNaN(this.currentOperand)){
-            this.lockButtons();
-        }
         if (this.operation != null && this.operation !== "sqrt"){
             this.previousOperandElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
         }
         else {
             this.previousOperandElement.innerText = '';
+        }
+        if (this.currentOperandElement.innerText === "NaN"){
+            this.lockButtons();            
         }
     }
 
@@ -129,7 +150,7 @@ class Calculator{
     }
 }
 
-const numbersButtons = document.querySelectorAll('button[data-number]');
+const numbersButtons = document.querySelectorAll('[data-number]');
 const operationsCommand = document.querySelectorAll('[data-operation]');
 const equalsCommand = document.querySelector('[data-equals]');
 const deleteCommand = document.querySelector('[data-delete]');
