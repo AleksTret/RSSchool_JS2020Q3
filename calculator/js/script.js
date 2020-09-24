@@ -9,14 +9,11 @@ class Calculator{
         this.previousOperand = '';
         this.currentOperand = '';
         this.operation = undefined;
+        this.unlockButtons();
     }
 
     delete(){
         this.currentOperand = this.currentOperand.toString().slice(0, -1);
-    }
-
-    equals(){
-
     }
 
     enterNumbers(number){
@@ -30,7 +27,7 @@ class Calculator{
         if (this.currentOperand === ''){
             return;
         }
-        if (operator === "sqrt"){
+        if (operator === "sqrt" || operator === "minus"){
             this.operation = operator;
             this.compute();
             return;
@@ -48,7 +45,7 @@ class Calculator{
         const previous = parseFloat(this.previousOperand);
         const current = parseFloat(this.currentOperand);
 
-        if(isNaN(current) || (isNaN(previous) && this.operation !== "sqrt")){
+        if(isNaN(current) || (isNaN(previous) && this.operation !== "sqrt" && this.operation !== "minus")){
             return;
         }
         switch (this.operation) {
@@ -65,10 +62,13 @@ class Calculator{
                 result = previous / current;
                 break;
             case "sqrt":
-                result = Math.sqrt(current);
+                result = (current > 0 ? Math.sqrt(current) : NaN);
                 break;
             case "^":
                 result = previous ** current;
+                break;
+            case "minus":
+                result = -current;
                 break;
             default:
                 return;
@@ -80,6 +80,9 @@ class Calculator{
     }
 
     getDisplayNumber(number){
+        if (isNaN(number)){
+            return number;
+        }
         let stringNumber = number.toString();
         let integerDigits = parseFloat(stringNumber.split(".")[0]);
         let decimalDigits = stringNumber.split(".")[1];
@@ -99,14 +102,30 @@ class Calculator{
     }
 
     redrawDisplay(){
-
         this.currentOperandElement.innerText = this.getDisplayNumber(this.currentOperand);
+        if (isNaN(this.currentOperand)){
+            this.lockButtons();
+        }
         if (this.operation != null && this.operation !== "sqrt"){
             this.previousOperandElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
         }
         else {
             this.previousOperandElement.innerText = '';
         }
+    }
+
+    lockButtons(){
+        operationsCommand.forEach(item => item.disabled = true);
+        numbersButtons.forEach(item => item.disabled = true);
+        equalsCommand.disabled = true;
+        deleteCommand.disabled = true;
+    }
+
+    unlockButtons(){
+        operationsCommand.forEach(item => item.disabled = false);
+        numbersButtons.forEach(item => item.disabled = false);
+        equalsCommand.disabled = false;
+        deleteCommand.disabled = false;
     }
 }
 
