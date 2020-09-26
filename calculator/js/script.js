@@ -23,21 +23,39 @@ class Calculator{
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
-    enterOperation(operator){
+    enterOperation(operation){
         if (this.currentOperand === ''){
             return;
         }
-        if (operator === "sqrt" || operator === "minus"){
-            this.operation = operator;
+        if (operation === "sqrt"){
+            this.operation = operation;
             this.compute();
             return;
         }
+
+        // if (operation === "minus"){
+        //     if (this.operation === undefined) {
+        //         this.operation = operation;
+        //         this.compute();
+        //         return;                
+        //     }
+        //     else{
+        //         this.compute();
+        //         return;  
+        //     }
+        // }
+
+
         if (this.previousOperand !== ''){
             this.compute();
         }
-        this.operation = operator;
+        this.operation = operation;
         this.previousOperand = this.currentOperand;
         this.currentOperand = '';
+    }
+
+    changeSign(){
+        this.currentOperand = -parseFloat(this.currentOperand);
     }
 
     getPrecision(operand){
@@ -49,9 +67,14 @@ class Calculator{
         return result;
     }
 
-    shrinkLastZero(number){
+    shrinkLastZeroAndDot(number){
         let result = number.toString();
-        while (result.endsWith("0")){
+        if (result.split(".")[1]){
+            while (result.endsWith("0")){
+                result = result.slice(0, -1);
+            }
+        }
+        if (result.endsWith(".")){
             result = result.slice(0, -1);
         }
         return result
@@ -69,15 +92,15 @@ class Calculator{
         switch (this.operation) {
             case "+":
                 result = (previous + current).toFixed(Math.min(Math.max(this.getPrecision(previous), this.getPrecision(current)), 20));
-                result = this.shrinkLastZero(result);
+                result = this.shrinkLastZeroAndDot(result);
                 break;
             case "-":
                 result = (previous - current).toFixed(Math.min(Math.max(this.getPrecision(previous), this.getPrecision(current)), 20));
-                result = this.shrinkLastZero(result);
+                result = this.shrinkLastZeroAndDot(result);
                 break;
             case "*":
                 result = (previous * current).toFixed(Math.min(this.getPrecision(previous) + this.getPrecision(current), 20));
-                result = this.shrinkLastZero(result);
+                result = this.shrinkLastZeroAndDot(result);
             break;
             case "/":
                 result = previous / current;
@@ -157,6 +180,7 @@ const deleteCommand = document.querySelector('[data-delete]');
 const clearCommand = document.querySelector('[data-all-clear]');
 const previousOperand = document.querySelector('[data-previous-operand]');
 const currentOperand = document.querySelector('[data-current-operand]');
+const minusCommand = document.querySelector('[data-minus]');
 
 const calculator = new Calculator(previousOperand, currentOperand);
 
@@ -177,6 +201,7 @@ operationsCommand.forEach(item => {
 equalsCommand.addEventListener("click", () => {
     calculator.compute();
     calculator.redrawDisplay();
+    calculator.clear();
 })
 
 clearCommand.addEventListener("click", () => {
@@ -189,3 +214,7 @@ deleteCommand.addEventListener("click", () => {
     calculator.redrawDisplay();
 })
 
+minusCommand.addEventListener("click", () => {
+    calculator.changeSign();
+    calculator.redrawDisplay();
+})
