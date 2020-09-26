@@ -42,7 +42,8 @@ class Calculator{
     }
 
     changeSign(){
-        this.currentOperand = -parseFloat(this.currentOperand);
+        if (this.currentOperand)
+            this.currentOperand = -parseFloat(this.currentOperand);
     }
 
     getPrecision(operand){
