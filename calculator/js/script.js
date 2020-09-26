@@ -33,19 +33,6 @@ class Calculator{
             return;
         }
 
-        // if (operation === "minus"){
-        //     if (this.operation === undefined) {
-        //         this.operation = operation;
-        //         this.compute();
-        //         return;                
-        //     }
-        //     else{
-        //         this.compute();
-        //         return;  
-        //     }
-        // }
-
-
         if (this.previousOperand !== ''){
             this.compute();
         }
@@ -163,6 +150,7 @@ class Calculator{
         numbersButtons.forEach(item => item.disabled = true);
         equalsCommand.disabled = true;
         deleteCommand.disabled = true;
+        minusCommand.disabled = true;
     }
 
     unlockButtons(){
@@ -170,6 +158,7 @@ class Calculator{
         numbersButtons.forEach(item => item.disabled = false);
         equalsCommand.disabled = false;
         deleteCommand.disabled = false;
+        minusCommand.disabled = false;
     }
 }
 
