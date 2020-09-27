@@ -74,7 +74,7 @@ class Calculator{
         const previous = parseFloat(this.previousOperand);
         const current = parseFloat(this.currentOperand);
 
-        if(isNaN(current) || (isNaN(previous) && this.operation !== "sqrt" && this.operation !== "minus")){
+        if(isNaN(current) || (isNaN(previous) && this.operation !== "sqrt")){
             return;
         }
         switch (this.operation) {
@@ -98,9 +98,6 @@ class Calculator{
                 break;
             case "^":
                 result = (previous ** current).toFixed(Math.max(this.getPrecision(previous) * current), 20);
-                break;
-            case "minus":
-                result = -current;
                 break;
             default:
                 return;
@@ -176,7 +173,7 @@ const calculator = new Calculator(previousOperand, currentOperand);
 
 numbersButtons.forEach(item => {
     item.addEventListener("click", () => {
-        calculator.enterNumbers(item.innerText); 
+        calculator.enterNumbers(item.dataset.number); 
         calculator.redrawDisplay();
     })
 })
@@ -191,7 +188,6 @@ operationsCommand.forEach(item => {
 equalsCommand.addEventListener("click", () => {
     calculator.compute();
     calculator.redrawDisplay();
-    calculator.clear();
 })
 
 clearCommand.addEventListener("click", () => {
