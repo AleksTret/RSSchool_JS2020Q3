@@ -1,0 +1,68 @@
+@import "normalize.css";
+/*Header styles begin */
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aqua;
+}
+.header__nav .header__logo {
+  background-color: lightgreen;
+}
+.header__nav .header__logo .header__logo__title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #4C4C4C;
+  margin-bottom: 10px;
+}
+.header__nav .header__logo .header__logo__subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  color: #4C4C4C;
+}
+.header__nav .header__list {
+  background-color: lightblue;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.header__nav .header__list li {
+  margin-right: 35px;
+}
+.header__nav .header__list li:last-child {
+  margin-right: 0;
+}
+.header__nav .header__list li:first-child a {
+  border-bottom: 3px solid #F1CDB3;
+}
+.header__nav .header__list li:nth-child(n+1):hover a {
+  border-bottom: 3px solid #F1CDB3;
+}
+.header__nav .header__list li a {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 160%;
+  color: #4C4C4C;
+  padding-bottom: 3px;
+}
+.header__nav .invisible__title {
+  visibility: hidden;
+  margin: 0;
+}
+
+/* Header styles end */
+
+/*# sourceMappingURL=style.css.map */

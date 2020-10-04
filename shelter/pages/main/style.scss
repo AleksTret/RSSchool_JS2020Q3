@@ -1,0 +1,167 @@
+@import "normalize.css";
+
+// Colors variable begin
+$color-light-xl: #FFFFFF;
+$color-light-l: #F6F6F6;
+$color-light-s: #FAFAFA;
+$color-dark-s: #CDCDCD;
+$color-dark-m: #B2B2B2;
+$color-dark-l: #545454;
+$color-dark-xl: #4C4C4C;
+$color-dark-2xl: #444444;
+$color-dark-3xl: #292929;
+$color-primary: #F1CDB3;
+$color-primary-light: #FDDCC4;
+
+$start-screen-gradient-background: #211F20;
+$footer-gradient-background: #211F20;
+// Color variable end
+
+// Fonts family begin
+@mixin font__family__Georgia(){
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+@mixin font__family__Arial(){
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+@mixin font__family__Arial__italic(){
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-weight: normal;  
+}
+
+@mixin font__h2(){
+    @include font__family__Georgia();
+    font-size: 44px;
+    line-height: 130%;
+    color: $color-dark-xl;
+}
+
+@mixin font__h3(){
+    @include font__family__Georgia();
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: $color-dark-xl;
+}
+
+@mixin font__h3_mobile(){
+    @include font__family__Georgia();
+    font-size: 25px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: $color-dark-xl;
+}
+
+@mixin font__h4(){
+    @include font__family__Georgia();
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: $color-dark-xl;
+}
+
+@mixin font__h5(){
+    @include font__family__Georgia();
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    color: $color-dark-xl;
+}
+
+@mixin font__paragraph_l(){
+    @include font__family__Arial();
+    font-size: 15px;
+    line-height: 160%;
+    color: $color-dark-xl;
+}
+
+@mixin font__paragraph_s(){
+    @include font__family__Arial__italic();
+    font-size: 12px;
+    line-height: 150%;
+    color: $color-dark-xl;
+}
+
+@mixin font__logo_title(){
+    @include font__family__Georgia();
+    font-size: 32px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+    color: $color-dark-xl;
+}
+
+@mixin font__logo_subtitle(){
+    @include font__family__Arial();
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.1em;
+    color: $color-dark-xl;
+}
+// Fonts family end
+
+/*Header styles begin */
+.header__nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aqua;
+
+    .header__logo{
+        background-color: lightgreen;
+
+        .header__logo__title{
+            @include font__logo_title();
+            margin-bottom: 10px;
+        }
+
+        .header__logo__subtitle{
+            @include font__logo_subtitle();
+        }
+    }
+
+    .header__list{
+        background-color: lightblue;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        display: flex;        
+        // justify-content: center;
+        align-items: center;
+
+        li{
+            margin-right: 35px; 
+            
+            &:last-child{
+                margin-right: 0;                
+            }
+
+            &:first-child a{
+                border-bottom: 3px solid $color-primary;                
+            }
+
+            &:nth-child(n + 1):hover a{
+                border-bottom: 3px solid $color-primary;
+            }
+
+            a{
+                text-decoration: none;
+                @include font__paragraph_l();    
+                padding-bottom: 3px;            
+            }
+        }
+    }
+
+    .invisible__title{
+        visibility: hidden;
+        margin: 0;
+    }
+}
+/* Header styles end */
