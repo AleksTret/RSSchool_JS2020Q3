@@ -117,26 +117,37 @@ $footer-gradient-background: #211F20;
 }
 // Fonts family end
 
+// Cursors begin
+@mixin cursor__normal(){
+    cursor: url(../../assets/images/cursor_normal.png), auto;
+}
+
+@mixin cursor__hover(){
+    cursor: url(../../assets/images/cursor_hover.cur), auto;
+}
+// Cursors end
+
 body{
+    @include cursor__normal();
     width: 1280px;
     margin: auto;
 }
 
-.start__page__wrapper{
-    @include start_screen_gradient_background();
-}    
-
 /* Header styles begin */
 header{
-    padding: 60px 40px 0 40px;
-    margin-bottom: 60px;
+    position: relative;
+    top: 60px;
+    //left: 40px;
+    //width: 94%;
+    padding: 0 40px;
+    z-index: 100;
 
     .header__nav{
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 0 auto;
+        //align-items: center;
+        //width: 100%;
+        //margin: 0 auto;
     
         .header__logo{    
             .header__logo__title{
@@ -160,6 +171,8 @@ header{
             align-items: center;
     
             li{
+                margin-block-start: 9px;
+                margin-block-end: 17px;
                 margin-right: 36px; 
                 
                 &:last-child{
@@ -173,6 +186,7 @@ header{
                 }
 
                 & a:hover, a:active{
+                    @include cursor__hover();
                     color: $color-light-s;
                     border-bottom: 3px solid $color-primary;
                 }
@@ -195,7 +209,11 @@ header{
 
 /* Hero styles begin  */
 .hero{
+    @include start_screen_gradient_background();
     width: 100%;
+    position: relative;
+    top: -60px;
+    padding-top: 180px;
 
     .hero__wrapper{
         margin: 0 40px 0 40px;
@@ -236,9 +254,47 @@ header{
             }
 
             a:hover, a:active{
+                @include cursor__hover();
                 background-color: $color-primary-light;
             }
         } 
     }
 }
 /* Hero styles end */
+
+.about{
+    position: relative;
+    top: -60px;
+    padding: 60px 0;
+
+    .about__content__wrapper{
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        .about__image{
+            padding-top:15px;
+            margin-right: 120px;
+        }
+
+        .about__content{
+            width: 430px;
+
+            h3{
+                @include font__h3();
+                color: $color-dark-l;
+                width: 370px;
+                margin-bottom: 20px;
+            }
+            p{
+                @include font__paragraph_l();
+                color: $color-dark-xl;
+            }
+            & :nth-of-type(1){
+                margin-bottom: 25px;
+            }
+        }
+    }
+}
