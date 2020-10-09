@@ -12,13 +12,15 @@ $color-dark-2xl: #444444;
 $color-dark-3xl: #292929;
 $color-primary: #F1CDB3;
 $color-primary-light: #FDDCC4;
+// Color variable end
 
+// Background styles begin
 $start-screen-gradient-background: #211F20;
 @mixin start_screen_gradient_background(){
     background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
 $footer-gradient-background: #211F20;
-// Color variable end
+// Background styles end
 
 // Fonts family begin
 @mixin font__family__Georgia(){
@@ -115,17 +117,80 @@ $footer-gradient-background: #211F20;
     letter-spacing: 0.06em;
     color: $color-dark-3xl;
 }
+
+@mixin pets__card__title(){
+    @include font__family__Georgia();
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    color: $color-dark-l;
+}
 // Fonts family end
 
-// Cursors begin
+// Cursors styles begin
 @mixin cursor__normal(){
     cursor: url(../../assets/images/cursor_normal.png), auto;
 }
 
 @mixin cursor__hover(){
-    cursor: url(../../assets/images/cursor_hover.cur), auto;
+    cursor: url(../../assets/images/cursor_hover.png), auto;
 }
-// Cursors end
+// Cursors styles end
+
+// Buttons style begin 
+.button__primary:link, .button__primary:visited{
+    @include font__button();
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    background: $color-primary;
+    border-radius: 100px;
+    padding: 15px 45px;
+}
+
+.button__primary:hover, .button__primary:active{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+}
+
+.button_secondary:link, .button_secondary:visited{
+    @include font__button();
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid $color-primary;
+    border-radius: 100px;
+    padding: 13px 43px;
+}
+
+.button_secondary:hover, .button_secondary:active{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+}
+
+.button__arrow:link, .button__arrow:visited{
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    border: 2px solid $color-primary;
+    border-radius: 100px;
+}
+
+.button__arrow:hover, .button__arrow:visited{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+}
+
+.button__arrow__left{
+    background: url("../../assets/icons/left-arrow.svg") center no-repeat;
+}
+
+.button__arrow__right{
+    background: url("../../assets/icons/right-arrow.svg") center no-repeat;
+}
+// Buttons style end 
 
 body{
     @include cursor__normal();
@@ -242,30 +307,17 @@ header{
                     @include font__paragraph_l();
                 }
             }
-   
-            a:link, a:visited{
-                @include font__button();
-                text-decoration: none;
-                text-align: center;
-                display: inline-block;
-                background: $color-primary;
-                border-radius: 100px;
-                padding: 15px 45px;
-            }
-
-            a:hover, a:active{
-                @include cursor__hover();
-                background-color: $color-primary-light;
-            }
         } 
     }
 }
 /* Hero styles end */
 
+/* About styles begin */
 .about{
     position: relative;
     top: -60px;
     padding: 60px 0;
+    background-color: $color-light-xl;
 
     .about__content__wrapper{
         display: flex;
@@ -298,3 +350,58 @@ header{
         }
     }
 }
+/* About styles end */
+
+/* Pets styles begin */
+.pets{
+    position: relative;
+    top: -20px;
+    padding-top: 45px;
+    background-color: $color-light-l;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+
+
+    .pets__content{
+        width: 100%;
+        padding: 0 40px;
+
+        h3{
+            display: block;
+            @include font__h3();   
+            margin-bottom: 60px;        
+        }
+
+        .pets__content__wrapper{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 90px;
+            
+            div{
+                text-align: center;
+
+                img{
+                    margin-bottom: 27px;
+                }
+
+                p{
+                    @include pets__card__title();
+                    margin-bottom: 30px;
+                }
+            } 
+
+            & div:nth-child(3){
+                margin: 0 37px;
+            }
+
+            & > a {
+                margin-top: 30px;
+            }
+        }
+    }   
+}
+/* Pets styles end */

@@ -1,4 +1,69 @@
 @import "normalize.css";
+.button__primary:link, .button__primary:visited {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  background: #F1CDB3;
+  border-radius: 100px;
+  padding: 15px 45px;
+}
+
+.button__primary:hover, .button__primary:active {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+  background-color: #FDDCC4;
+}
+
+.button_secondary:link, .button_secondary:visited {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #292929;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+  padding: 13px 43px;
+}
+
+.button_secondary:hover, .button_secondary:active {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+  background-color: #FDDCC4;
+  border: 2px solid #FDDCC4;
+}
+
+.button__arrow:link, .button__arrow:visited {
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #F1CDB3;
+  border-radius: 100px;
+}
+
+.button__arrow:hover, .button__arrow:visited {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+  background-color: #FDDCC4;
+  border: 2px solid #FDDCC4;
+}
+
+.button__arrow__left {
+  background: url("../../assets/icons/left-arrow.svg") center no-repeat;
+}
+
+.button__arrow__right {
+  background: url("../../assets/icons/right-arrow.svg") center no-repeat;
+}
+
 body {
   cursor: url(../../assets/images/cursor_normal.png), auto;
   width: 1280px;
@@ -63,7 +128,7 @@ header .header__nav .header__list li a:link, header .header__nav .header__list l
   padding-bottom: 3px;
 }
 header .header__nav .header__list li a:hover, header .header__nav .header__list li a:active {
-  cursor: url(../../assets/images/cursor_hover.cur), auto;
+  cursor: url(../../assets/images/cursor_hover.png), auto;
   color: #FAFAFA;
   border-bottom: 3px solid #F1CDB3;
 }
@@ -119,31 +184,14 @@ header .header__nav .invisible__title {
   line-height: 160%;
   color: #CDCDCD;
 }
-.hero .hero__wrapper .hero__content__wrapper a:link, .hero .hero__wrapper .hero__content__wrapper a:visited {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 17px;
-  line-height: 130%;
-  letter-spacing: 0.06em;
-  color: #292929;
-  text-decoration: none;
-  text-align: center;
-  display: inline-block;
-  background: #F1CDB3;
-  border-radius: 100px;
-  padding: 15px 45px;
-}
-.hero .hero__wrapper .hero__content__wrapper a:hover, .hero .hero__wrapper .hero__content__wrapper a:active {
-  cursor: url(../../assets/images/cursor_hover.cur), auto;
-  background-color: #FDDCC4;
-}
 
 /* Hero styles end */
+/* About styles begin */
 .about {
   position: relative;
   top: -60px;
   padding: 60px 0;
+  background-color: #FFFFFF;
 }
 .about .about__content__wrapper {
   display: flex;
@@ -183,5 +231,62 @@ header .header__nav .invisible__title {
 .about .about__content__wrapper .about__content :nth-of-type(1) {
   margin-bottom: 25px;
 }
+
+/* About styles end */
+/* Pets styles begin */
+.pets {
+  position: relative;
+  top: -20px;
+  padding-top: 45px;
+  background-color: #F6F6F6;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.pets .pets__content {
+  width: 100%;
+  padding: 0 40px;
+}
+.pets .pets__content h3 {
+  display: block;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #4C4C4C;
+  margin-bottom: 60px;
+}
+.pets .pets__content .pets__content__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 90px;
+}
+.pets .pets__content .pets__content__wrapper div {
+  text-align: center;
+}
+.pets .pets__content .pets__content__wrapper div img {
+  margin-bottom: 27px;
+}
+.pets .pets__content .pets__content__wrapper div p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  margin-bottom: 30px;
+}
+.pets .pets__content .pets__content__wrapper div:nth-child(3) {
+  margin: 0 37px;
+}
+.pets .pets__content .pets__content__wrapper > a {
+  margin-top: 30px;
+}
+
+/* Pets styles end */
 
 /*# sourceMappingURL=style.css.map */
