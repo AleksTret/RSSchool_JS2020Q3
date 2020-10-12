@@ -174,7 +174,7 @@ $footer-gradient-background: #211F20;
     width: 52px;
     height: 52px;
     border: 2px solid $color-primary;
-    border-radius: 100px;
+    border-radius: 100%;
 }
 
 .button__arrow:hover, .button__arrow:visited{
@@ -202,19 +202,18 @@ body{
 header{
     position: relative;
     top: 60px;
-    //left: 40px;
-    //width: 94%;
     padding: 0 40px;
     z-index: 100;
 
     .header__nav{
         display: flex;
         justify-content: space-between;
-        //align-items: center;
-        //width: 100%;
-        //margin: 0 auto;
     
         .header__logo{    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
             .header__logo__title{
                 @include font__logo_title();
                 margin-bottom: 10px;
@@ -222,7 +221,6 @@ header{
     
             .header__logo__subtitle{
                 @include font__logo_subtitle();
-                padding-left: 4px;
             }
         }
     
@@ -236,21 +234,19 @@ header{
             align-items: center;
     
             li{
-                margin-block-start: 9px;
-                margin-block-end: 17px;
-                margin-right: 36px; 
+                margin: 0 36px 0 0;
                 
                 &:last-child{
                     margin-right: 0;                
                 }
          
-                a:link, a:visited{
+                a{
                     @include font__paragraph_l();    
                     text-decoration: none;
                     padding-bottom: 3px;            
                 }
 
-                & a:hover, a:active{
+                & a:hover{
                     @include cursor__hover();
                     color: $color-light-s;
                     border-bottom: 3px solid $color-primary;
@@ -264,8 +260,7 @@ header{
         }
     
         .invisible__title{
-            visibility: hidden;
-            margin: 0;
+            display: none;
         }
     }
     
@@ -287,25 +282,19 @@ header{
         align-items: center ;
 
         .hero__content__wrapper{
-            padding-bottom: 120px;
-
+            padding-bottom: 117px;
+            width: 460px;
+   
             .hero__title{
                 width: 310px;
                 margin-bottom: 42px;
-
-                h2{
-                    @include font__h2();
-                    color: $color-light-xl;
-                }
+                @include font__h2();
+                color: $color-light-xl;
             }
 
             .hero__content{
-                width: 460px;
                 margin-bottom: 42px;
-
-                p {
-                    @include font__paragraph_l();
-                }
+                @include font__paragraph_l();
             }
         } 
     }
@@ -324,10 +313,9 @@ header{
         height: 100%;
         width: 100%;
         justify-content: center;
-        align-items: center;
 
         .about__image{
-            padding-top:15px;
+            padding-top: 20px;
             margin-right: 120px;
         }
 
@@ -337,7 +325,6 @@ header{
             h3{
                 @include font__h3();
                 color: $color-dark-l;
-                width: 370px;
                 margin-bottom: 20px;
             }
             p{
@@ -345,7 +332,7 @@ header{
                 color: $color-dark-xl;
             }
             & :nth-of-type(1){
-                margin-bottom: 25px;
+                margin-bottom: 24px;
             }
         }
     }
@@ -355,22 +342,15 @@ header{
 /* Pets styles begin */
 .pets{
     position: relative;
-    top: -20px;
-    padding-top: 45px;
+    top: -25px;
+    padding: 46px 0 100px;
     background-color: $color-light-l;
-
     text-align: center;
-    display: flex;
-    justify-content: center;
-
-
 
     .pets__content{
-        width: 100%;
         padding: 0 40px;
 
         h3{
-            display: block;
             @include font__h3();   
             margin-bottom: 60px;        
         }
@@ -382,8 +362,6 @@ header{
             margin-bottom: 90px;
             
             div{
-                text-align: center;
-
                 img{
                     margin-bottom: 27px;
                 }
@@ -394,7 +372,8 @@ header{
                 }
             } 
 
-            & div:nth-child(3){
+            div:not(:last-child):not(:first-child)
+            {
                 margin: 0 37px;
             }
 
