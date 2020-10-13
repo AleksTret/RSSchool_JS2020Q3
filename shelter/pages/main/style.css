@@ -232,7 +232,7 @@ header .header__nav .invisible__title {
 .pets {
   position: relative;
   top: -25px;
-  padding: 47px 0 71px;
+  padding: 47px 0 69px;
   background-color: #F6F6F6;
   text-align: center;
 }
@@ -286,5 +286,61 @@ header .header__nav .invisible__title {
 }
 
 /* Pets styles end */
+/* Help styles begin */
+.help {
+  text-align: center;
+  margin-bottom: 300px;
+  background-color: #FFFFFF;
+}
+.help .help__content__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.help .help__title {
+  margin-block-start: 55px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #4C4C4C;
+  color: #545454;
+  margin-bottom: 60px;
+}
+.help .help__container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1029px;
+}
+.help .help__container img {
+  margin-bottom: 25px;
+  width: 60px;
+  height: 60px;
+}
+.help .help__container p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #4C4C4C;
+  color: #545454;
+}
+.help .help__container div {
+  margin-right: 120px;
+  margin-bottom: 55px;
+}
+.help .help__container div:nth-child(5), .help .help__container div:last-child {
+  margin-right: 0;
+}
+.help .help__container div:nth-child(6) {
+  margin-left: 85px;
+}
+
+/* Help styles end */
 
 /*# sourceMappingURL=style.css.map */
