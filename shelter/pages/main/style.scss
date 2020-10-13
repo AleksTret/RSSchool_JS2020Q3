@@ -343,7 +343,7 @@ header{
 .pets{
     position: relative;
     top: -25px;
-    padding: 46px 0 100px;
+    padding: 47px 0 71px;
     background-color: $color-light-l;
     text-align: center;
 
@@ -355,13 +355,20 @@ header{
             margin-bottom: 60px;        
         }
 
+        .button__primary{
+            margin-bottom: 30px;
+        }
+
         .pets__content__wrapper{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 90px;
+            margin-bottom: 60px;
             
             div{
+                background-color: $color-light-s;
+                border-radius: 9px;
+
                 img{
                     margin-bottom: 27px;
                 }
@@ -370,15 +377,19 @@ header{
                     @include pets__card__title();
                     margin-bottom: 30px;
                 }
+
+                .button_secondary{
+                    margin-bottom: 30px;
+                }
             } 
+
+            div:hover{
+                @include cursor__hover();
+            }
 
             div:not(:last-child):not(:first-child)
             {
                 margin: 0 37px;
-            }
-
-            & > a {
-                margin-top: 30px;
             }
         }
     }   

@@ -232,7 +232,7 @@ header .header__nav .invisible__title {
 .pets {
   position: relative;
   top: -25px;
-  padding: 46px 0 100px;
+  padding: 47px 0 71px;
   background-color: #F6F6F6;
   text-align: center;
 }
@@ -249,11 +249,18 @@ header .header__nav .invisible__title {
   color: #4C4C4C;
   margin-bottom: 60px;
 }
+.pets .pets__content .button__primary {
+  margin-bottom: 30px;
+}
 .pets .pets__content .pets__content__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 90px;
+  margin-bottom: 60px;
+}
+.pets .pets__content .pets__content__wrapper div {
+  background-color: #FAFAFA;
+  border-radius: 9px;
 }
 .pets .pets__content .pets__content__wrapper div img {
   margin-bottom: 27px;
@@ -268,11 +275,14 @@ header .header__nav .invisible__title {
   color: #545454;
   margin-bottom: 30px;
 }
+.pets .pets__content .pets__content__wrapper div .button_secondary {
+  margin-bottom: 30px;
+}
+.pets .pets__content .pets__content__wrapper div:hover {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+}
 .pets .pets__content .pets__content__wrapper div:not(:last-child):not(:first-child) {
   margin: 0 37px;
-}
-.pets .pets__content .pets__content__wrapper > a {
-  margin-top: 30px;
 }
 
 /* Pets styles end */
