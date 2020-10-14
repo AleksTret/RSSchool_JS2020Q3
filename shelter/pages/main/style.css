@@ -344,7 +344,7 @@ header .header__nav .invisible__title {
   background-color: #F6F6F6;
 }
 .donation .donation__content__wrapper {
-  padding: 82px 40px;
+  padding: 82px 40px 101px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -413,5 +413,66 @@ header .header__nav .invisible__title {
 }
 
 /* Donation styles end */
+/* Footer styles begin */
+footer {
+  background-color: #211F20;
+  padding: 40px 40px 0;
+}
+footer .footer__content__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+footer .footer__content__wrapper .footer__information {
+  display: flex;
+  flex-direction: column;
+}
+footer .footer__content__wrapper .footer__information .footer__title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #4C4C4C;
+  color: #FFFFFF;
+  display: inline-flex;
+}
+footer .footer__content__wrapper .footer__information div {
+  display: inline-flex;
+  align-items: center;
+}
+footer .footer__content__wrapper .footer__information div p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #4C4C4C;
+  color: #F1CDB3;
+}
+footer .footer__content__wrapper .footer__information div .footer__icon {
+  margin-right: 20px;
+}
+footer .footer__content__wrapper .footer__information div .footer__icon:hover {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+}
+footer .footer__content__wrapper .footer__contact .footer__title {
+  margin: 18px 0 40px;
+}
+footer .footer__content__wrapper .footer__contact div:nth-child(2) {
+  margin-bottom: 39px;
+}
+footer .footer__content__wrapper .footer__location {
+  padding-right: 8px;
+}
+footer .footer__content__wrapper .footer__location .footer__title {
+  margin: 17px 0 33px;
+}
+footer .footer__content__wrapper .footer__location div:nth-child(2) {
+  margin-bottom: 31px;
+}
+
+/* Footer styles end */
 
 /*# sourceMappingURL=style.css.map */

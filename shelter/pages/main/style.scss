@@ -16,9 +16,13 @@ $color-primary-light: #FDDCC4;
 
 // Background styles begin
 $start-screen-gradient-background: #211F20;
-@mixin start_screen_gradient_background(){
+@mixin hero__gradient__background(){
     background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
+
+// @mixin footer__gradient__background(){
+//     background: url(../../assets/images/noise_transparent@2x.png) radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+// }
 $footer-gradient-background: #211F20;
 // Background styles end
 
@@ -277,7 +281,7 @@ header{
 
 /* Hero styles begin  */
 .hero{
-    @include start_screen_gradient_background();
+    @include hero__gradient__background();
     width: 100%;
     position: relative;
     top: -60px;
@@ -457,7 +461,7 @@ header{
     background-color: $color-light-l;
 
     .donation__content__wrapper{
-        padding: 82px 40px;
+        padding: 82px 40px 101px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -513,3 +517,70 @@ header{
     }
 }
 /* Donation styles end */
+
+/* Footer styles begin */
+footer{
+    //@include footer__gradient__background();
+    background-color: $footer-gradient-background;
+    padding: 40px 40px 0;
+    
+    .footer__content__wrapper{
+        display: flex;
+        justify-content: space-between;
+
+        .footer__information{
+            display: flex;
+            flex-direction: column;
+
+            .footer__title{
+                @include font__h3();
+                color: $color-light-xl;
+                display: inline-flex;
+            }
+
+            div{
+                display: inline-flex;
+                align-items: center;
+
+                p{
+                    @include font__h4();
+                    color: $color-primary;
+                } 
+
+                .footer__icon{
+                    margin-right: 20px;
+                }
+
+                .footer__icon:hover{
+                    @include cursor__hover();
+                }
+            }
+        }
+
+        .footer__contact{
+            .footer__title{
+                margin: 18px 0 40px;
+            }
+            div{
+                &:nth-child(2){
+                    margin-bottom: 39px;  
+                }
+            }
+        }
+
+        .footer__location{
+            padding-right: 8px;
+
+            .footer__title{
+                margin: 17px 0 33px;
+            }
+            div{
+                &:nth-child(2){
+                margin-bottom: 31px;  
+                }
+            }
+        }
+
+    }
+}
+/* Footer styles end */
