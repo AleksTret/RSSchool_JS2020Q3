@@ -15,15 +15,13 @@ $color-primary-light: #FDDCC4;
 // Color variable end
 
 // Background styles begin
-$start-screen-gradient-background: #211F20;
 @mixin hero__gradient__background(){
     background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
 
-// @mixin footer__gradient__background(){
-//     background: url(../../assets/images/noise_transparent@2x.png) radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
-// }
-$footer-gradient-background: #211F20;
+@mixin footer__gradient__background(){
+    background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
 // Background styles end
 
 // Fonts family begin
@@ -282,7 +280,6 @@ header{
 /* Hero styles begin  */
 .hero{
     @include hero__gradient__background();
-    width: 100%;
     position: relative;
     top: -60px;
     padding-top: 180px;
@@ -498,9 +495,14 @@ header{
                 display: inline-flex;
                 margin-bottom: 20px;
 
-                p{
+                a{
                     @include font__h4();
                     color: $color-dark-l;
+                    text-decoration: none;
+                }
+
+                a:hover{
+                    @include cursor__hover();
                 }
 
                 img{
@@ -520,8 +522,7 @@ header{
 
 /* Footer styles begin */
 footer{
-    //@include footer__gradient__background();
-    background-color: $footer-gradient-background;
+    @include footer__gradient__background();
     padding: 40px 40px 0;
     
     .footer__content__wrapper{
@@ -551,7 +552,7 @@ footer{
                     margin-right: 20px;
                 }
 
-                .footer__icon:hover{
+                a:hover{
                     @include cursor__hover();
                 }
             }

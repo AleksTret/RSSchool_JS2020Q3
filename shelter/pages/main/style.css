@@ -389,7 +389,7 @@ header .header__nav .invisible__title {
   display: inline-flex;
   margin-bottom: 20px;
 }
-.donation .donation__content__wrapper .donation__content .donation__credit__card p {
+.donation .donation__content__wrapper .donation__content .donation__credit__card a {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: normal;
@@ -398,6 +398,10 @@ header .header__nav .invisible__title {
   letter-spacing: 0.06em;
   color: #4C4C4C;
   color: #545454;
+  text-decoration: none;
+}
+.donation .donation__content__wrapper .donation__content .donation__credit__card a:hover {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
 }
 .donation .donation__content__wrapper .donation__content .donation__credit__card img {
   margin-right: 15px;
@@ -415,7 +419,7 @@ header .header__nav .invisible__title {
 /* Donation styles end */
 /* Footer styles begin */
 footer {
-  background-color: #211F20;
+  background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
   padding: 40px 40px 0;
 }
 footer .footer__content__wrapper {
@@ -454,7 +458,7 @@ footer .footer__content__wrapper .footer__information div p {
 footer .footer__content__wrapper .footer__information div .footer__icon {
   margin-right: 20px;
 }
-footer .footer__content__wrapper .footer__information div .footer__icon:hover {
+footer .footer__content__wrapper .footer__information div a:hover {
   cursor: url(../../assets/images/cursor_hover.png), auto;
 }
 footer .footer__content__wrapper .footer__contact .footer__title {
