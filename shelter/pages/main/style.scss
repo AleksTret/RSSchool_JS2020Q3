@@ -118,12 +118,20 @@ $footer-gradient-background: #211F20;
     color: $color-dark-3xl;
 }
 
-@mixin pets__card__title(){
+@mixin font__pets__card__title(){
     @include font__family__Georgia();
     font-size: 20px;
     line-height: 23px;
     letter-spacing: 0.06em;
     color: $color-dark-l;
+}
+
+@mixin font__donation__description(){
+    @include font__family__Arial();
+    font-style: italic;
+    font-size: 12px;
+    line-height: 18px;
+    color: $color-dark-m;
 }
 // Fonts family end
 
@@ -374,7 +382,7 @@ header{
                 }
 
                 p{
-                    @include pets__card__title();
+                    @include font__pets__card__title();
                     margin-bottom: 30px;
                 }
 
@@ -399,14 +407,13 @@ header{
 /* Help styles begin */
 .help{
     text-align: center;
-    margin-bottom: 300px;
     background-color: $color-light-xl;
+    margin-bottom: 46px;
 
     .help__content__wrapper{
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
     }
 
     .help__title{
@@ -419,6 +426,7 @@ header{
     .help__container{
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         width: 1029px;
     
         img{
@@ -440,10 +448,68 @@ header{
         div:nth-child(5), div:last-child{
             margin-right: 0;
         }
-
-        div:nth-child(6){
-            margin-left: 85px;
-        }
     }
 }
 /* Help styles end */
+
+/* Donation styles begin */
+.donation{
+    background-color: $color-light-l;
+
+    .donation__content__wrapper{
+        padding: 82px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .donation__content__main__image{
+            margin-right: 30px;
+        }
+
+        .donation__content{
+            width: 380px;
+            text-align: left;
+
+            *{
+                margin-block-start: 0;
+                margin-block-end: 0;
+            }
+
+            .donation__title{
+                @include font__h3();
+                color: $color-dark-l;
+                margin-bottom: 20px;
+            }
+    
+            .donation__subtitle{
+                @include font__h5();
+                color: $color-dark-l;
+                margin-bottom: 20px;
+            }
+
+            .donation__credit__card{
+                background-color: $color-primary;
+                border-radius: 9px;
+                padding: 10px 15px;
+                display: inline-flex;
+                margin-bottom: 20px;
+
+                p{
+                    @include font__h4();
+                    color: $color-dark-l;
+                }
+
+                img{
+                    margin-right: 15px;
+                }
+            }
+    
+            .donation__information{
+                @include font__donation__description();
+            }
+        }
+    
+
+    }
+}
+/* Donation styles end */
