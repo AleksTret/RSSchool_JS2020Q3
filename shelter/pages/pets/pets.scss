@@ -1,0 +1,74 @@
+@import '../../assets/scss/main.scss';
+
+/* Header styles begin */
+header{
+    background-color: $color-light-xl;
+    padding: 30px 40px;
+    position: sticky;
+    top: 0;
+    
+    .header__nav{
+        .header__logo{    
+            .header__logo__title{
+                color: $color-dark-l;
+            }
+    
+            .header__logo__subtitle{
+                color: $color-dark-3xl;
+            }
+        }
+    
+        .header__list{   
+            li{
+                a{
+                    color: $color-dark-l;         
+                }
+            }
+        }
+    }
+}
+/* Header styles end */
+
+/* Pets styles begin */
+.pets{
+    background-color: $color-light-l;
+
+    .pets__content{
+        padding: 80px 40px 80px;
+        text-align: center;
+
+        .pets__title{
+            @include font__h3();
+            color: $color-dark-l;
+            margin-bottom: 60px;
+        }
+
+        .pets__cards__container{
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+            grid-template-rows: repeat(2, auto);
+            grid-column-gap: 40px;
+            grid-row-gap: 30px;
+            margin-bottom: 58px;
+        }
+
+        .pets__cards__nav{
+
+            .pets__cards__nav__list{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                list-style-type: none;
+
+                li{
+                    margin-right: 20px;
+
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+/* Pets styles end */
