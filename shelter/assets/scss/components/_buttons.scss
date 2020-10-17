@@ -1,0 +1,54 @@
+// Buttons style begin 
+.button__primary:link, .button__primary:visited{
+    @include font__button();
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    background: $color-primary;
+    border-radius: 100px;
+    padding: 15px 45px;
+}
+
+.button__primary:hover, .button__primary:active{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+}
+
+.button_secondary:link, .button_secondary:visited{
+    @include font__button();
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid $color-primary;
+    border-radius: 100px;
+    padding: 13px 43px;
+}
+
+.button_secondary:hover, .button_secondary:active{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+}
+
+.button__arrow:link, .button__arrow:visited{
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    border: 2px solid $color-primary;
+    border-radius: 100%;
+}
+
+.button__arrow:hover, .button__arrow:visited{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+}
+
+.button__arrow__left{
+    background: url("../../assets/icons/left-arrow.svg") center no-repeat;
+}
+
+.button__arrow__right{
+    background: url("../../assets/icons/right-arrow.svg") center no-repeat;
+}
+// Buttons style end 
