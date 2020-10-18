@@ -2,17 +2,16 @@
 
 /* Header styles begin */
 header{
-    @extend %header;
+    @include header($color-dark-l, 
+                    $color-dark-3xl, 
+                    $color-dark-l, 
+                    $color-dark-3xl, 
+                    $color-dark-3xl,
+                    2);
+
     background-color: $color-light-xl;
     padding: 30px 40px;
     position: sticky;
-
-    @include header__colors($color-dark-l, 
-                            $color-dark-3xl, 
-                            $color-dark-l, 
-                            $color-dark-3xl, 
-                            $color-dark-3xl,
-                            2);
 }
 /* Header styles end */
 

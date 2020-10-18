@@ -66,11 +66,11 @@
     color: $color-dark-xl;
 }
 
-@mixin font__paragraph_l(){
+@mixin font__paragraph_l($color){
     @include font__family__Arial();
     font-size: 15px;
     line-height: 160%;
-    // color: $color-dark-s;
+    color: $color;
 }
 
 @mixin font__paragraph_s(){
@@ -80,20 +80,20 @@
     color: $color-dark-xl;
 }
 
-@mixin font__logo_title(){
+@mixin font__logo_title($color){
     @include font__family__Georgia();
     font-size: 32px;
     line-height: 110%;
     letter-spacing: 0.06em;
-    // color: $color-primary;
+    color: $color;
 }
 
-@mixin font__logo_subtitle(){
+@mixin font__logo_subtitle($color){
     @include font__family__Arial();
     font-size: 13px;
     line-height: 15px;
     letter-spacing: 0.1em;
-    // color: $color-light-xl;
+    color: $color;
 }
 
 @mixin font__button(){
@@ -130,29 +130,3 @@
     cursor: url(../../assets/images/cursor_hover.png), auto;
 }
 // Cursors styles end
-
-// Headers styles begin
-@mixin header__colors($logo__title, 
-                      $logo__subtitle, 
-                      $link, 
-                      $active__link, 
-                      $hover__link, 
-                      $active__item){
-    p:first-child{
-        color: $logo__title;
-    }
-    p:last-child{
-        color: $logo__subtitle;
-    }
-    a{
-        color: $link; 
-    }
-    li:nth-child(#{$active__item}) a{
-        color: $active__link;
-        border-bottom: 3px solid $color-primary;
-    }
-    a:hover{
-        color: $hover__link;
-    }
-}
-// Headers styles end
