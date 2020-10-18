@@ -348,7 +348,7 @@ body {
   margin: auto;
 }
 
-p, h3 {
+p, h2, h3, h5 {
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -438,6 +438,76 @@ ul {
   background: url("../../assets/icons/double-right-bracket.svg") center no-repeat;
 }
 
+.donation__credit__card {
+  background-color: #F1CDB3;
+  border-radius: 9px;
+  padding: 10px 15px;
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+.donation__credit__card a {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #545454;
+  text-decoration: none;
+}
+.donation__credit__card a:hover {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+}
+.donation__credit__card img {
+  margin-right: 15px;
+}
+
+.help__card img {
+  margin-bottom: 25px;
+  width: 60px;
+  height: 60px;
+}
+.help__card p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+.help__card {
+  margin-right: 120px;
+}
+.help__card:last-child {
+  margin-right: 0;
+}
+
+.pets__card {
+  background-color: #FAFAFA;
+  border-radius: 9px;
+  text-align: center;
+}
+.pets__card img {
+  margin-bottom: 26px;
+}
+.pets__card p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  margin-bottom: 30px;
+}
+.pets__card .button_secondary {
+  margin-bottom: 30px;
+}
+.pets__card:hover {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+}
+
 /* Header styles begin */
 /* Header styles end */
 /* Footer styles begin */
@@ -499,31 +569,6 @@ footer .footer__content__wrapper .footer__location div:nth-child(2) {
 }
 
 /* Footer styles end */
-.pets__card {
-  background-color: #FAFAFA;
-  border-radius: 9px;
-  text-align: center;
-}
-.pets__card img {
-  margin-bottom: 27px;
-}
-.pets__card p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 23px;
-  letter-spacing: 0.06em;
-  color: #545454;
-  margin-bottom: 30px;
-}
-.pets__card .button_secondary {
-  margin-bottom: 30px;
-}
-.pets__card:hover {
-  cursor: url(../../assets/images/cursor_hover.png), auto;
-}
-
 /* Header styles begin */
 header {
   position: relative;
@@ -603,47 +648,41 @@ header nav ul li:nth-child(1) a {
   padding-top: 180px;
 }
 .hero .hero__wrapper {
-  margin: 0 40px 0 40px;
+  margin: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .hero .hero__wrapper .hero__content__wrapper {
-  padding-bottom: 117px;
-  width: 460px;
+  margin-bottom: 80px;
 }
 .hero .hero__wrapper .hero__content__wrapper .hero__title {
-  width: 310px;
-  margin-bottom: 42px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 44px;
   line-height: 130%;
   color: #FFFFFF;
+  margin-bottom: 40px;
 }
 .hero .hero__wrapper .hero__content__wrapper .hero__content {
-  margin-bottom: 42px;
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
   line-height: 160%;
   color: #CDCDCD;
+  max-width: 460px;
+  margin-bottom: 40px;
 }
 
 /* Hero styles end */
 /* About styles begin */
 .about {
-  position: relative;
-  top: -60px;
-  padding: 60px 0;
-  background-color: #FFFFFF;
+  margin-bottom: 96px;
 }
 .about .about__content__wrapper {
   display: flex;
-  height: 100%;
-  width: 100%;
   justify-content: center;
 }
 .about .about__content__wrapper .about__image {
@@ -651,7 +690,7 @@ header nav ul li:nth-child(1) a {
   margin-right: 120px;
 }
 .about .about__content__wrapper .about__content {
-  width: 430px;
+  max-width: 430px;
 }
 .about .about__content__wrapper .about__content h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -661,7 +700,7 @@ header nav ul li:nth-child(1) a {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #545454;
-  margin-bottom: 20px;
+  padding-top: 35px;
 }
 .about .about__content__wrapper .about__content p {
   font-family: Arial, Helvetica, sans-serif;
@@ -672,20 +711,17 @@ header nav ul li:nth-child(1) a {
   color: #4C4C4C;
 }
 .about .about__content__wrapper .about__content :nth-of-type(1) {
-  margin-bottom: 24px;
+  margin-bottom: 25px;
 }
 
 /* About styles end */
 /* Pets styles begin */
 .pets {
-  position: relative;
-  top: -25px;
-  padding: 47px 0 69px;
   background-color: #F6F6F6;
   text-align: center;
 }
 .pets .pets__content {
-  padding: 0 40px;
+  padding: 80px 40px 100px;
 }
 .pets .pets__content h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -697,40 +733,16 @@ header nav ul li:nth-child(1) a {
   color: #4C4C4C;
   margin-bottom: 60px;
 }
-.pets .pets__content .button__primary {
-  margin-bottom: 30px;
-}
 .pets .pets__content .pets__content__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 60px;
 }
-.pets .pets__content .pets__content__wrapper div {
-  background-color: #FAFAFA;
-  border-radius: 9px;
-}
-.pets .pets__content .pets__content__wrapper div img {
-  margin-bottom: 27px;
-}
-.pets .pets__content .pets__content__wrapper div p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 23px;
-  letter-spacing: 0.06em;
-  color: #545454;
-  margin-bottom: 30px;
-}
-.pets .pets__content .pets__content__wrapper div .button_secondary {
-  margin-bottom: 30px;
-}
-.pets .pets__content .pets__content__wrapper div:hover {
-  cursor: url(../../assets/images/cursor_hover.png), auto;
-}
-.pets .pets__content .pets__content__wrapper div:not(:last-child):not(:first-child) {
-  margin: 0 37px;
+.pets .pets__content .pets__content__wrapper .pets__card__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-column-gap: 90px;
 }
 
 /* Pets styles end */
@@ -738,15 +750,13 @@ header nav ul li:nth-child(1) a {
 .help {
   text-align: center;
   background-color: #FFFFFF;
-  margin-bottom: 46px;
 }
 .help .help__content__wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 80px 0 47px;
 }
-.help .help__title {
-  margin-block-start: 55px;
+.help .help__content__wrapper .help__title {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: normal;
@@ -756,32 +766,10 @@ header nav ul li:nth-child(1) a {
   color: #545454;
   margin-bottom: 60px;
 }
-.help .help__container {
+.help .help__content__wrapper .help__container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  width: 1029px;
-}
-.help .help__container img {
-  margin-bottom: 25px;
-  width: 60px;
-  height: 60px;
-}
-.help .help__container p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 115%;
-  letter-spacing: 0.06em;
-  color: #545454;
-}
-.help .help__container div {
-  margin-right: 120px;
   margin-bottom: 55px;
-}
-.help .help__container div:nth-child(5), .help .help__container div:last-child {
-  margin-right: 0;
 }
 
 /* Help styles end */
@@ -797,14 +785,6 @@ header nav ul li:nth-child(1) a {
 }
 .donation .donation__content__wrapper .donation__content__main__image {
   margin-right: 30px;
-}
-.donation .donation__content__wrapper .donation__content {
-  width: 380px;
-  text-align: left;
-}
-.donation .donation__content__wrapper .donation__content * {
-  margin-block-start: 0;
-  margin-block-end: 0;
 }
 .donation .donation__content__wrapper .donation__content .donation__title {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -826,30 +806,8 @@ header nav ul li:nth-child(1) a {
   color: #545454;
   margin-bottom: 20px;
 }
-.donation .donation__content__wrapper .donation__content .donation__credit__card {
-  background-color: #F1CDB3;
-  border-radius: 9px;
-  padding: 10px 15px;
-  display: inline-flex;
-  margin-bottom: 20px;
-}
-.donation .donation__content__wrapper .donation__content .donation__credit__card a {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 115%;
-  letter-spacing: 0.06em;
-  color: #545454;
-  text-decoration: none;
-}
-.donation .donation__content__wrapper .donation__content .donation__credit__card a:hover {
-  cursor: url(../../assets/images/cursor_hover.png), auto;
-}
-.donation .donation__content__wrapper .donation__content .donation__credit__card img {
-  margin-right: 15px;
-}
 .donation .donation__content__wrapper .donation__content .donation__information {
+  max-width: 380px;
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;

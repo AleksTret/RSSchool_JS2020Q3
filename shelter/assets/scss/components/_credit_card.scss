@@ -1,0 +1,20 @@
+.donation__credit__card{
+    background-color: $color-primary;
+    border-radius: 9px;
+    padding: 10px 15px;
+    display: inline-flex;
+    margin-bottom: 20px;
+
+    a{
+        @include font__h4($color-dark-l);
+        text-decoration: none;
+    }
+
+    a:hover{
+        @include cursor__hover();
+    }
+
+    img{
+        margin-right: 15px;
+    }
+}

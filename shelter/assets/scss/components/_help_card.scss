@@ -1,0 +1,19 @@
+.help__card{
+    img{
+        margin-bottom: 25px;
+        width: 60px;
+        height: 60px;
+    }
+
+    p{
+        @include font__h4($color-dark-l);
+    }
+
+    &{
+        margin-right: 120px;
+    }
+
+    &:last-child{
+        margin-right: 0;
+    }
+}
