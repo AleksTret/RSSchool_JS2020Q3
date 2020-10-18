@@ -11,13 +11,15 @@ header{
 
     background-color: $color-light-xl;
     padding: 30px 40px;
-    position: sticky;
+    position: fixed;
+    width: inherit;
 }
 /* Header styles end */
 
 /* Pets styles begin */
 .pets{
     background-color: $color-light-l;
+    padding-top: 120px;
 
     .pets__content{
         padding: 80px 40px 80px;

@@ -67,4 +67,10 @@
 .button__double__right__bracket{
     background: url("../../assets/icons/double-right-bracket.svg") center no-repeat;
 }
+
+.button__number{    
+    text-decoration: none;
+    @include font__h4($color-dark-3xl);
+    padding-top: 11px;
+}
 // Buttons style end 

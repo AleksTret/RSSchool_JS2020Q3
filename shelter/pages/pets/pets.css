@@ -348,7 +348,7 @@ body {
   margin: auto;
 }
 
-p, h3 {
+p, h2, h3, h5 {
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -438,74 +438,70 @@ ul {
   background: url("../../assets/icons/double-right-bracket.svg") center no-repeat;
 }
 
-/* Header styles begin */
-/* Header styles end */
-/* Footer styles begin */
-footer {
-  background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
-  padding: 40px 40px 0;
-}
-footer .footer__content__wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-footer .footer__content__wrapper .footer__information {
-  display: flex;
-  flex-direction: column;
-}
-footer .footer__content__wrapper .footer__information .footer__title {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 35px;
-  line-height: 130%;
-  letter-spacing: 0.06em;
-  color: #FFFFFF;
-  display: inline-flex;
-}
-footer .footer__content__wrapper .footer__information div {
-  display: inline-flex;
-  align-items: center;
-}
-footer .footer__content__wrapper .footer__information div p {
+.button__number {
+  text-decoration: none;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
-  color: #F1CDB3;
-}
-footer .footer__content__wrapper .footer__information div .footer__icon {
-  margin-right: 20px;
-}
-footer .footer__content__wrapper .footer__information div a:hover {
-  cursor: url(../../assets/images/cursor_hover.png), auto;
-}
-footer .footer__content__wrapper .footer__contact .footer__title {
-  margin: 18px 0 40px;
-}
-footer .footer__content__wrapper .footer__contact div:nth-child(2) {
-  margin-bottom: 39px;
-}
-footer .footer__content__wrapper .footer__location {
-  padding-right: 8px;
-}
-footer .footer__content__wrapper .footer__location .footer__title {
-  margin: 17px 0 33px;
-}
-footer .footer__content__wrapper .footer__location div:nth-child(2) {
-  margin-bottom: 31px;
+  color: #292929;
+  padding-top: 11px;
 }
 
-/* Footer styles end */
+.donation__credit__card {
+  background-color: #F1CDB3;
+  border-radius: 9px;
+  padding: 10px 15px;
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+.donation__credit__card a {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #545454;
+  text-decoration: none;
+}
+.donation__credit__card a:hover {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+}
+.donation__credit__card img {
+  margin-right: 15px;
+}
+
+.help__card img {
+  margin-bottom: 25px;
+  width: 60px;
+  height: 60px;
+}
+.help__card p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+.help__card {
+  margin-right: 120px;
+}
+.help__card:last-child {
+  margin-right: 0;
+}
+
 .pets__card {
   background-color: #FAFAFA;
   border-radius: 9px;
   text-align: center;
 }
 .pets__card img {
-  margin-bottom: 27px;
+  margin-bottom: 26px;
 }
 .pets__card p {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -524,11 +520,77 @@ footer .footer__content__wrapper .footer__location div:nth-child(2) {
   cursor: url(../../assets/images/cursor_hover.png), auto;
 }
 
+.information__card {
+  display: flex;
+  flex-direction: column;
+}
+.information__card h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  display: inline-flex;
+}
+.information__card div {
+  display: inline-flex;
+  align-items: center;
+}
+.information__card div p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #F1CDB3;
+}
+.information__card div .footer__icon {
+  margin-right: 20px;
+}
+.information__card div a:hover {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+}
+
+/* Header styles begin */
+/* Header styles end */
+/* Footer styles begin */
+footer {
+  background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+  padding: 40px 40px 0;
+}
+footer .footer__content__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+footer .footer__content__wrapper .footer__contact {
+  margin-top: 17px;
+}
+footer .footer__content__wrapper .footer__contact .footer__title {
+  margin-bottom: 42px;
+}
+footer .footer__content__wrapper .footer__contact div:nth-child(2) {
+  margin-bottom: 39px;
+}
+footer .footer__content__wrapper .footer__location {
+  margin: 17px 8px 0 0;
+}
+footer .footer__content__wrapper .footer__location .footer__title {
+  margin-bottom: 33px;
+}
+footer .footer__content__wrapper .footer__location div:nth-child(2) {
+  margin-bottom: 31px;
+}
+
+/* Footer styles end */
 /* Header styles begin */
 header {
   background-color: #FFFFFF;
   padding: 30px 40px;
-  position: sticky;
+  position: fixed;
+  width: inherit;
 }
 header nav {
   display: flex;
@@ -597,6 +659,7 @@ header nav ul li:nth-child(2) a {
 /* Pets styles begin */
 .pets {
   background-color: #F6F6F6;
+  padding-top: 120px;
 }
 .pets .pets__content {
   padding: 80px 40px 80px;
