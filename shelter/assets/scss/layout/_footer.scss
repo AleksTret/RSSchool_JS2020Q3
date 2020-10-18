@@ -7,36 +7,11 @@ footer{
         display: flex;
         justify-content: space-between;
 
-        .footer__information{
-            display: flex;
-            flex-direction: column;
-
-            .footer__title{
-                @include font__h3($color-light-xl);
-                display: inline-flex;
-            }
-
-            div{
-                display: inline-flex;
-                align-items: center;
-
-                p{
-                    @include font__h4($color-primary);
-                } 
-
-                .footer__icon{
-                    margin-right: 20px;
-                }
-
-                a:hover{
-                    @include cursor__hover();
-                }
-            }
-        }
-
         .footer__contact{
+            margin-top: 16px;
+
             .footer__title{
-                margin: 18px 0 40px;
+                margin-bottom: 42px;
             }
             div{
                 &:nth-child(2){
@@ -46,10 +21,10 @@ footer{
         }
 
         .footer__location{
-            padding-right: 8px;
+            margin: 16px 8px 0 0;
 
             .footer__title{
-                margin: 17px 0 33px;
+                margin-bottom: 33px;
             }
             div{
                 &:nth-child(2){

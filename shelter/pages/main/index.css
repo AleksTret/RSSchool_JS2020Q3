@@ -508,6 +508,40 @@ ul {
   cursor: url(../../assets/images/cursor_hover.png), auto;
 }
 
+.information__card {
+  display: flex;
+  flex-direction: column;
+}
+.information__card h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+  display: inline-flex;
+}
+.information__card div {
+  display: inline-flex;
+  align-items: center;
+}
+.information__card div p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #F1CDB3;
+}
+.information__card div .footer__icon {
+  margin-right: 20px;
+}
+.information__card div a:hover {
+  cursor: url(../../assets/images/cursor_hover.png), auto;
+}
+
 /* Header styles begin */
 /* Header styles end */
 /* Footer styles begin */
@@ -519,50 +553,20 @@ footer .footer__content__wrapper {
   display: flex;
   justify-content: space-between;
 }
-footer .footer__content__wrapper .footer__information {
-  display: flex;
-  flex-direction: column;
-}
-footer .footer__content__wrapper .footer__information .footer__title {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 35px;
-  line-height: 130%;
-  letter-spacing: 0.06em;
-  color: #FFFFFF;
-  display: inline-flex;
-}
-footer .footer__content__wrapper .footer__information div {
-  display: inline-flex;
-  align-items: center;
-}
-footer .footer__content__wrapper .footer__information div p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 115%;
-  letter-spacing: 0.06em;
-  color: #F1CDB3;
-}
-footer .footer__content__wrapper .footer__information div .footer__icon {
-  margin-right: 20px;
-}
-footer .footer__content__wrapper .footer__information div a:hover {
-  cursor: url(../../assets/images/cursor_hover.png), auto;
+footer .footer__content__wrapper .footer__contact {
+  margin-top: 16px;
 }
 footer .footer__content__wrapper .footer__contact .footer__title {
-  margin: 18px 0 40px;
+  margin-bottom: 42px;
 }
 footer .footer__content__wrapper .footer__contact div:nth-child(2) {
   margin-bottom: 39px;
 }
 footer .footer__content__wrapper .footer__location {
-  padding-right: 8px;
+  margin: 16px 8px 0 0;
 }
 footer .footer__content__wrapper .footer__location .footer__title {
-  margin: 17px 0 33px;
+  margin-bottom: 33px;
 }
 footer .footer__content__wrapper .footer__location div:nth-child(2) {
   margin-bottom: 31px;
