@@ -2,30 +2,17 @@
 
 /* Header styles begin */
 header{
+    @extend %header;
     background-color: $color-light-xl;
     padding: 30px 40px;
     position: sticky;
-    top: 0;
-    
-    .header__nav{
-        .header__logo{    
-            .header__logo__title{
-                color: $color-dark-l;
-            }
-    
-            .header__logo__subtitle{
-                color: $color-dark-3xl;
-            }
-        }
-    
-        .header__list{   
-            li{
-                a{
-                    color: $color-dark-l;         
-                }
-            }
-        }
-    }
+
+    @include header__colors($color-dark-l, 
+                            $color-dark-3xl, 
+                            $color-dark-l, 
+                            $color-dark-3xl, 
+                            $color-dark-3xl,
+                            2);
 }
 /* Header styles end */
 

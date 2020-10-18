@@ -439,75 +439,59 @@ ul {
 }
 
 /* Header styles begin */
-header {
-  position: relative;
-  top: 60px;
-  padding: 0 40px;
-  z-index: 100;
-}
-header .header__nav {
+header nav {
   display: flex;
   justify-content: space-between;
 }
-header .header__nav .header__logo {
+header nav div {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-header .header__nav .header__logo .header__logo__title {
+header nav div p:first-child {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 32px;
   line-height: 110%;
   letter-spacing: 0.06em;
-  color: #F1CDB3;
   margin-bottom: 10px;
 }
-header .header__nav .header__logo .header__logo__subtitle {
+header nav div p:last-child {
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
   line-height: 15px;
   letter-spacing: 0.1em;
-  color: #FFFFFF;
 }
-header .header__nav .header__list {
+header nav h1 {
+  display: none;
+}
+header nav ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-header .header__nav .header__list li {
+header nav ul li {
   margin: 0 36px 0 0;
 }
-header .header__nav .header__list li:last-child {
+header nav ul li:last-child {
   margin-right: 0;
 }
-header .header__nav .header__list li a {
+header nav ul li a {
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
   line-height: 160%;
-  color: #CDCDCD;
   text-decoration: none;
   padding-bottom: 3px;
 }
-header .header__nav .header__list li a:hover {
+header nav ul li a:hover {
   cursor: url(../../assets/images/cursor_hover.png), auto;
-  color: #FAFAFA;
   border-bottom: 3px solid #F1CDB3;
-}
-header .header__nav .header__list li:first-child a {
-  color: #FAFAFA;
-  border-bottom: 3px solid #F1CDB3;
-}
-header .header__nav .invisible__title {
-  display: none;
 }
 
 /* Header styles end */
@@ -602,16 +586,22 @@ header {
   background-color: #FFFFFF;
   padding: 30px 40px;
   position: sticky;
-  top: 0;
 }
-header .header__nav .header__logo .header__logo__title {
+header p:first-child {
   color: #545454;
 }
-header .header__nav .header__logo .header__logo__subtitle {
+header p:last-child {
   color: #292929;
 }
-header .header__nav .header__list li a {
+header a {
   color: #545454;
+}
+header li:nth-child(2) a {
+  color: #292929;
+  border-bottom: 3px solid #F1CDB3;
+}
+header a:hover {
+  color: #292929;
 }
 
 /* Header styles end */

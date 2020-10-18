@@ -1,38 +1,34 @@
 /* Header styles begin */
-header{
-    position: relative;
-    top: 60px;
-    padding: 0 40px;
-    z-index: 100;
-
-    .header__nav{
+%header{
+    nav{
         display: flex;
         justify-content: space-between;
-    
-        .header__logo{    
+        
+        div{
             display: flex;
             flex-direction: column;
             align-items: center;
 
-            .header__logo__title{
+            p:first-child{
                 @include font__logo_title();
                 margin-bottom: 10px;
             }
-    
-            .header__logo__subtitle{
+
+            p:last-child{
                 @include font__logo_subtitle();
             }
         }
-    
-        .header__list{
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-    
+
+        h1{
+            display: none;
+        }
+
+        ul{
+            list-style-type: none;   
             display: flex;        
             justify-content: center;
             align-items: center;
-    
+
             li{
                 margin: 0 36px 0 0;
                 
@@ -48,21 +44,10 @@ header{
 
                 & a:hover{
                     @include cursor__hover();
-                    color: $color-light-s;
                     border-bottom: 3px solid $color-primary;
-                }
-
-                &:first-child a{
-                    color: $color-light-s;
-                    border-bottom: 3px solid $color-primary;                
                 }
             }
         }
-    
-        .invisible__title{
-            display: none;
-        }
     }
-    
 }
 /* Header styles end */

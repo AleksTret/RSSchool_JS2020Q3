@@ -1,5 +1,22 @@
 @import '../../assets/scss/main.scss';
 
+/* Header styles begin */
+header{
+    @extend %header;
+    position: relative;
+    top: 60px;
+    padding: 0 40px;
+    z-index: 100;
+
+    @include header__colors($color-primary, 
+                            $color-light-xl, 
+                            $color-dark-s, 
+                            $color-light-s, 
+                            $color-light-s, 
+                            1);
+}
+/* Header styles end */
+
 /* Hero styles begin  */
 .hero{
     @include hero__gradient__background();
