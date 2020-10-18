@@ -27,43 +27,43 @@
     font-weight: normal;  
 }
 
-@mixin font__h2(){
+@mixin font__h2($color){
     @include font__family__Georgia();
     font-size: 44px;
     line-height: 130%;
-    color: $color-dark-xl;
+    color: $color;
 }
 
-@mixin font__h3(){
+@mixin font__h3($color){
     @include font__family__Georgia();
     font-size: 35px;
     line-height: 130%;
     letter-spacing: 0.06em;
-    color: $color-dark-xl;
+    color: $color;
 }
 
-@mixin font__h3_mobile(){
+@mixin font__h3_mobile($color){
     @include font__family__Georgia();
     font-size: 25px;
     line-height: 130%;
     letter-spacing: 0.06em;
-    color: $color-dark-xl;
+    color: $color;
 }
 
-@mixin font__h4(){
+@mixin font__h4($color){
     @include font__family__Georgia();
     font-size: 20px;
     line-height: 115%;
     letter-spacing: 0.06em;
-    color: $color-dark-xl;
+    color: $color;
 }
 
-@mixin font__h5(){
+@mixin font__h5($color){
     @include font__family__Georgia();
     font-size: 15px;
     line-height: 110%;
     letter-spacing: 0.06em;
-    color: $color-dark-xl;
+    color: $color;
 }
 
 @mixin font__paragraph_l($color){
@@ -73,11 +73,11 @@
     color: $color;
 }
 
-@mixin font__paragraph_s(){
+@mixin font__paragraph_s($color){
     @include font__family__Arial__italic();
     font-size: 12px;
     line-height: 150%;
-    color: $color-dark-xl;
+    color: $color;
 }
 
 @mixin font__logo_title($color){
@@ -96,28 +96,28 @@
     color: $color;
 }
 
-@mixin font__button(){
+@mixin font__button($color){
     @include font__family__Georgia();
     font-size: 17px;
     line-height: 130%;
     letter-spacing: 0.06em;
-    color: $color-dark-3xl;
+    color: $color
 }
 
-@mixin font__pets__card__title(){
+@mixin font__pets__card__title($color){
     @include font__family__Georgia();
     font-size: 20px;
     line-height: 23px;
     letter-spacing: 0.06em;
-    color: $color-dark-l;
+    color: $color;
 }
 
-@mixin font__donation__description(){
+@mixin font__donation__description($color){
     @include font__family__Arial();
     font-style: italic;
     font-size: 12px;
     line-height: 18px;
-    color: $color-dark-m;
+    color: $color;
 }
 // Fonts family end
 

@@ -12,8 +12,7 @@ footer{
             flex-direction: column;
 
             .footer__title{
-                @include font__h3();
-                color: $color-light-xl;
+                @include font__h3($color-light-xl);
                 display: inline-flex;
             }
 
@@ -22,8 +21,7 @@ footer{
                 align-items: center;
 
                 p{
-                    @include font__h4();
-                    color: $color-primary;
+                    @include font__h4($color-primary);
                 } 
 
                 .footer__icon{
@@ -55,11 +53,10 @@ footer{
             }
             div{
                 &:nth-child(2){
-                margin-bottom: 31px;  
+                    margin-bottom: 31px;  
                 }
             }
         }
-
     }
 }
 /* Footer styles end */

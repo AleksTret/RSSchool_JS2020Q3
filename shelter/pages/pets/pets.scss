@@ -24,8 +24,7 @@ header{
         text-align: center;
 
         .pets__title{
-            @include font__h3();
-            color: $color-dark-l;
+            @include font__h3($color-dark-l);
             margin-bottom: 60px;
         }
 

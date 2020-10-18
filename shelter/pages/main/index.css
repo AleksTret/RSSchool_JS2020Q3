@@ -400,7 +400,7 @@ ul {
   border: 2px solid #FDDCC4;
 }
 
-.button__arrow:link, .button__arrow:visited {
+.round__button:link, .round__button:visited {
   display: inline-block;
   width: 52px;
   height: 52px;
@@ -408,17 +408,17 @@ ul {
   border-radius: 100%;
 }
 
-.button__arrow:hover, .button__arrow:visited {
+.round__button:hover, .round__button:visited {
   cursor: url(../../assets/images/cursor_hover.png), auto;
   background-color: #FDDCC4;
   border: 2px solid #FDDCC4;
 }
 
-.button__arrow__left {
+.button__left__arrow {
   background: url("../../assets/icons/left-arrow.svg") center no-repeat;
 }
 
-.button__arrow__right {
+.button__right__arrow {
   background: url("../../assets/icons/right-arrow.svg") center no-repeat;
 }
 
@@ -460,7 +460,6 @@ footer .footer__content__wrapper .footer__information .footer__title {
   font-size: 35px;
   line-height: 130%;
   letter-spacing: 0.06em;
-  color: #4C4C4C;
   color: #FFFFFF;
   display: inline-flex;
 }
@@ -475,7 +474,6 @@ footer .footer__content__wrapper .footer__information div p {
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
-  color: #4C4C4C;
   color: #F1CDB3;
 }
 footer .footer__content__wrapper .footer__information div .footer__icon {
@@ -622,7 +620,6 @@ header nav ul li:nth-child(1) a {
   font-weight: normal;
   font-size: 44px;
   line-height: 130%;
-  color: #4C4C4C;
   color: #FFFFFF;
 }
 .hero .hero__wrapper .hero__content__wrapper .hero__content {
@@ -663,7 +660,6 @@ header nav ul li:nth-child(1) a {
   font-size: 35px;
   line-height: 130%;
   letter-spacing: 0.06em;
-  color: #4C4C4C;
   color: #545454;
   margin-bottom: 20px;
 }
@@ -757,7 +753,6 @@ header nav ul li:nth-child(1) a {
   font-size: 35px;
   line-height: 130%;
   letter-spacing: 0.06em;
-  color: #4C4C4C;
   color: #545454;
   margin-bottom: 60px;
 }
@@ -779,7 +774,6 @@ header nav ul li:nth-child(1) a {
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
-  color: #4C4C4C;
   color: #545454;
 }
 .help .help__container div {
@@ -819,7 +813,6 @@ header nav ul li:nth-child(1) a {
   font-size: 35px;
   line-height: 130%;
   letter-spacing: 0.06em;
-  color: #4C4C4C;
   color: #545454;
   margin-bottom: 20px;
 }
@@ -830,7 +823,6 @@ header nav ul li:nth-child(1) a {
   font-size: 15px;
   line-height: 110%;
   letter-spacing: 0.06em;
-  color: #4C4C4C;
   color: #545454;
   margin-bottom: 20px;
 }
@@ -848,7 +840,6 @@ header nav ul li:nth-child(1) a {
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
-  color: #4C4C4C;
   color: #545454;
   text-decoration: none;
 }

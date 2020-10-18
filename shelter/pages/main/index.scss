@@ -36,8 +36,7 @@ header{
             .hero__title{
                 width: 310px;
                 margin-bottom: 42px;
-                @include font__h2();
-                color: $color-light-xl;
+                @include font__h2($color-light-xl);
             }
 
             .hero__content{
@@ -71,8 +70,7 @@ header{
             width: 430px;
 
             h3{
-                @include font__h3();
-                color: $color-dark-l;
+                @include font__h3($color-dark-l);
                 margin-bottom: 20px;
             }
             p{
@@ -98,7 +96,7 @@ header{
         padding: 0 40px;
 
         h3{
-            @include font__h3();   
+            @include font__h3($color-dark-xl);   
             margin-bottom: 60px;        
         }
 
@@ -121,7 +119,7 @@ header{
                 }
 
                 p{
-                    @include font__pets__card__title();
+                    @include font__pets__card__title($color-dark-l);
                     margin-bottom: 30px;
                 }
 
@@ -157,8 +155,7 @@ header{
 
     .help__title{
         margin-block-start: 55px;
-        @include font__h3();
-        color: $color-dark-l;
+        @include font__h3($color-dark-l);
         margin-bottom: 60px;
     }
 
@@ -175,8 +172,7 @@ header{
         }
 
         p{
-            @include font__h4();
-            color: $color-dark-l;
+            @include font__h4($color-dark-l);
         }
 
         div{
@@ -215,14 +211,12 @@ header{
             }
 
             .donation__title{
-                @include font__h3();
-                color: $color-dark-l;
+                @include font__h3($color-dark-l);
                 margin-bottom: 20px;
             }
     
             .donation__subtitle{
-                @include font__h5();
-                color: $color-dark-l;
+                @include font__h5($color-dark-l);
                 margin-bottom: 20px;
             }
 
@@ -234,8 +228,7 @@ header{
                 margin-bottom: 20px;
 
                 a{
-                    @include font__h4();
-                    color: $color-dark-l;
+                    @include font__h4($color-dark-l);
                     text-decoration: none;
                 }
 
@@ -249,11 +242,9 @@ header{
             }
     
             .donation__information{
-                @include font__donation__description();
+                @include font__donation__description($color-dark-m);
             }
         }
-    
-
     }
 }
 /* Donation styles end */
