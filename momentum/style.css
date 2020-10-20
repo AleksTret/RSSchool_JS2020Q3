@@ -13,11 +13,16 @@ body {
   text-align: center;
   height: 100vh;
   background-size: cover;
-  color: #000000;
+  color: #ffffff;
+  mix-blend-mode: difference;
 }
 
 .time {
   font-size: 8rem;
+}
+
+.displayDate{
+  font-size: 2.5rem;
 }
 
 h1 {
@@ -32,5 +37,8 @@ h2 {
 @media (max-width: 700px) {
   .time {
     font-size: 6rem;
+  }
+  .date{
+    font-size: 4rem;
   }
 }
