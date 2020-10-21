@@ -16,38 +16,37 @@ class Momentum{
     constructor(){
         this.getName();
         this.getGoal();
-        this.setBackgroundList();
-        this.currentBackgroundIndex = 0;
+        this.getBackgroundList();
     }
 
-    setBackgroundList(){
+    getBackgroundList(){
         this.backgroundImageList = [];
+        let daysPart = ['night', 'morning', 'day', 'evening'];
 
         let filesName = []
         for (let i = 0; i < 20; i++){
             filesName[i] = `${this.addZero(i + 1)}.jpg`;
         }
-
-        let daysPart = this.getDaysPart((new Date()).getHours());
-
+        
         for (let i = 0; i < 4; i++){
-            this.backgroundImageList = this.backgroundImageList.concat(this.getRandomArray(filesName).map(item => `assets/images/${daysPart}/${item}`));
-            daysPart = this.getNextDaysPart(daysPart);
+            this.backgroundImageList = this.backgroundImageList
+                                           .concat(this.shuffleArray(filesName)
+                                           .map(item => `assets/images/${daysPart[i]}/${item}`)
+                                           .slice(0, 6));
         }
+
+        this.indexBackgroundImage = (new Date()).getHours() + 1;
     }
 
-    getRandomArray(array){
+    addZero(number){
+        return parseInt(number, 10) < 10 ? `0${number}` : number;
+    } 
+
+    shuffleArray(array){
         return array
             .map(function(elem,index) { return [elem, Math.random()]})
             .sort(function(a,b){ return a[1] - b[1]})
             .map(function(elem){return elem[0]});
-    }
-
-    getNextDaysPart(input){
-        let daysPart = ['morning', 'day', 'evening', 'night'];
-        let index = daysPart.indexOf(input);
-        index = index + 1 === daysPart.length ? 0 : ++index;
-        return daysPart[index];
     }
 
     getDaysPart(input){
@@ -69,39 +68,28 @@ class Momentum{
     }
 
     redraw(){
+        let hour = (new Date()).getHours();
+        this.changeBackground(this.backgroundImageList[hour]);
+        greeting.textContent = `Good ${this.getDaysPart(hour)}`;
+
         this.redrawTime();
-        this.redrawBackground();
     }
 
     redrawTime() {
         let today = new Date();
+        let hour = today.getHours()
+        let minutes = today.getMinutes();
     
-        time.innerHTML = `${today.getHours()}<span>:</span>${this.addZero(today.getMinutes())}<span>:</span>${this.addZero(today.getSeconds())}`;
+        time.innerHTML = `${this.addZero(hour)}<span>:</span>${this.addZero(minutes)}<span>:</span>${this.addZero(today.getSeconds())}`;
         date.innerHTML = `${weekdaysName[today.getDay()]}<span> </span>${today.getDate()}<span> </span>${monthsName[today.getMonth()]}`;
+
+        if(minutes == 0){
+            this.changeBackground(this.backgroundImageList[hour]);
+            greeting.textContent = `Good ${this.getDaysPart(hour)}`;
+        }
 
         let that = this;
         setTimeout(() => that.redrawTime(), 1000);
-    }
-
-    addZero(number){
-        return parseInt(number, 10) < 10 ? `0${number}` : number;
-    }
-
-    getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }    
-
-    redrawBackground(){
-        let daysPart = this.getDaysPart((new Date()).getHours());
-    
-        let imageNumber = this.addZero(this.getRandomInt(1, 20));
-
-        document.body.style.backgroundImage = 
-            `url(assets/images/${daysPart}/${imageNumber}.jpg)`;
-        greeting.textContent = `Good ${daysPart}`;
-
-        let that = this;
-        setTimeout(() => that.redrawBackground(), 3600000);
     }
 
     changeBackground(source){
@@ -143,11 +131,11 @@ class Momentum{
     }
 
     nextBackground(){
-        if (this.currentBackgroundIndex >= this.backgroundImageList.length){
-             this.currentBackgroundIndex = 0;
+        if (this.indexBackgroundImage >= this.backgroundImageList.length){
+             this.indexBackgroundImage = 0;
         }
-        this.changeBackground(this.backgroundImageList[this.currentBackgroundIndex]);
-        this.currentBackgroundIndex++
+        this.changeBackground(this.backgroundImageList[this.indexBackgroundImage]);
+        this.indexBackgroundImage++
     }
 }
 
