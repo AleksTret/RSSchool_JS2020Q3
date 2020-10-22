@@ -4,19 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/owfont-regular.css">
   <link rel="stylesheet" href="style.css" />
   <title>momentum</title>
 </head>
 <body>
-  <time class="time"></time>
-  <span class="date"></span>
-  <h1>
-    <span class="greeting"></span>
-    <span date-editable class="name" contenteditable="true"></span>
-  </h1>
-  <h2>What Is Your Goal For Today?</h2>
-  <h2 date-editable class="goal" contenteditable="true"></h2>
-  <button class="btn"></button>
-  <script src="script.js"></script>
+    <section class="weather">
+      <div class="weather__wrapper">
+        <div class="weather-icon owf"></div>
+        <div class="weather-temperature"></div>
+        <div class="weather-description"></div>
+        <div class="weather-wind-speed"></div>
+        <div class="weather-humidity"></div>
+      </div>
+      <!-- <input type="text" class="city"></input> -->
+      <span class="city" contenteditable="true"></span>
+    </section>
+    <section class="timer">
+        <time class="time"></time>
+        <span class="date"></span>
+        <h1>
+          <span class="greeting"></span>
+          <span date-editable class="name" contenteditable="true"></span>
+        </h1>
+        <h2>What Is Your Goal For Today?</h2>
+        <h2 date-editable class="goal" contenteditable="true"></h2>
+        <button class="btn"></button>
+        <script src="script.js"></script>
+    </section>  
 </body>
 </html>

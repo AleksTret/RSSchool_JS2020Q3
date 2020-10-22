@@ -8,9 +8,77 @@ const date = document.querySelector('.date');
 const editable = document.querySelectorAll('[date-editable]');
 const button = document.querySelector('.btn');
 
+const city = document.querySelector('.city');
+
 const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                     'September', 'October', 'November', 'December'];
 const weekdaysName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+class Weather{
+    constructor(){
+        this.weatherIcon = document.querySelector('.weather-icon');
+        this.weatherTemperature = document.querySelector('.weather-temperature');
+        this.weatherDescription = document.querySelector('.weather-description');
+        this.weatherWindSpeed = document.querySelector('.weather-wind-speed');
+        this.weatherHumidity = document.querySelector('.weather-humidity');
+        this.city = document.querySelector('.city');
+        this.getCity();
+        this.getWeather();
+    }
+
+    async getWeather() {
+        if(localStorage.getItem('city') == '[Enter your city]' || this.city.textContent == ''){
+            return;
+        }
+
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city.textContent}&lang=en&appid=bab12a5c09e3dbbecd3f8654073b3a9f&units=metric`;
+
+        const response = await fetch(url);
+        const jsonData = await response.json();
+
+        if(jsonData.cod == 200){
+            this.weatherIcon.className = 'weather-icon owf';
+            this.weatherIcon.classList.add(`owf-${jsonData.weather[0].id}`);
+            this.weatherTemperature.textContent = `${jsonData.main.temp.toFixed(0)} °C`;
+            this.weatherWindSpeed.textContent = `wind ${jsonData.wind.speed} m/c`;
+            this.weatherHumidity.textContent = `humidity ${jsonData.main.humidity}`;
+            this.weatherDescription.textContent = jsonData.weather[0].description;
+        }
+
+        if(jsonData.cod == 404){
+            this.weatherIcon.className = 'weather-icon';
+            this.weatherTemperature.textContent = '';
+            this.weatherWindSpeed.textContent = '';
+            this.weatherHumidity.textContent = '';
+            this.weatherDescription.textContent  = jsonData.message;
+            this.city.textContent = '[Enter your city]'
+        }
+    }
+
+    onKeydown(event){
+        if(event.code === 'Enter'){
+            let className = event.currentTarget.classList.item(0).toString();
+            localStorage.setItem(className, event.currentTarget.innerText); 
+            event.currentTarget.blur();
+            this.getWeather();
+        }
+    }
+
+    whenBlur(event){
+        let className = event.currentTarget.classList.item(0).toString();
+        localStorage.setItem(className, event.currentTarget.innerText);
+        this.getWeather();
+    }
+
+    setStorage(event){
+        let className = event.currentTarget.classList.item(0).toString();
+        localStorage.setItem(className, event.currentTarget.innerText);
+    }
+
+    getCity(){
+        this.city.textContent = localStorage.getItem('city') || '[Enter your city]';
+    }
+}
 
 class Momentum{
     constructor(){
@@ -140,6 +208,7 @@ class Momentum{
 }
 
 let momentum = new Momentum();
+let weather = new Weather();
 
 editable.forEach(item => {
     item.addEventListener('input', momentum.setStorage);
@@ -149,5 +218,8 @@ editable.forEach(item => {
 })
 
 button.addEventListener('click', () => momentum.nextBackground());
+
+city.addEventListener('blur', (event) => weather.whenBlur(event));
+city.addEventListener('keydown', (event) => weather.onKeydown(event));
 
 momentum.redraw();
