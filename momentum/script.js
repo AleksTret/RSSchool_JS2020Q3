@@ -10,6 +10,8 @@ const button = document.querySelector('.btn');
 
 const city = document.querySelector('.city');
 
+const buttonRefreshQuote = document.querySelector('.refreshQuote');
+
 const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                     'September', 'October', 'November', 'December'];
 const weekdaysName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -207,8 +209,28 @@ class Momentum{
     }
 }
 
+class Quote{
+    constructor(){
+        this.blockquote = document.querySelector('blockquote');
+        this.figcaption = document.querySelector('figcaption');
+        this.getQuote();
+    }
+
+    async getQuote() {  
+        console.log("I'm here");
+        const url = 'https://favqs.com/api/qotd';
+        const response = await fetch(url);
+        const data = await response.json(); 
+        this.blockquote.textContent = data.quote.body;
+        this.figcaption.textContent = data.quote.author;
+    }
+
+}
+
 let momentum = new Momentum();
 let weather = new Weather();
+let quote = new Quote();
+
 
 editable.forEach(item => {
     item.addEventListener('input', momentum.setStorage);
@@ -221,5 +243,7 @@ button.addEventListener('click', () => momentum.nextBackground());
 
 city.addEventListener('blur', (event) => weather.whenBlur(event));
 city.addEventListener('keydown', (event) => weather.onKeydown(event));
+
+buttonRefreshQuote.addEventListener('click', () => quote.getQuote());
 
 momentum.redraw();

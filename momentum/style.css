@@ -24,7 +24,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 90%;
+  height: 70%;
 }
 
 .weather{
@@ -32,6 +32,13 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   height: 10%;
+}
+
+.quote{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20%; 
 }
 
 .weather__wrapper{
@@ -85,21 +92,24 @@ h2 {
   transform: scale(1.02)
 }
 
-input {
-
-	min-width: 100px;
-	font-size: 13px;
-	padding: 0;
-	border: 0;
-	background: transparent;
-  border-radius: 0;
-  
-  font-family: 'Quicksand', sans-serif;
-  color: #ffffff;
-  /* mix-blend-mode: difference; */
-  text-shadow: 5px 5px 10px #000000;  
-}
-
 .city{
   min-width: 100px;
+}
+
+.quote-text{
+  font-family: 'Quicksand', sans-serif;
+  color: #ffffff;
+  text-shadow: 5px 5px 10px #000000;
+  min-width: 300px;
+  min-height: 100px;
+  
+}
+
+.quote figcaption,
+.quote blockquote {
+  margin: 1em;
+}
+
+.quote figcaption {
+  text-align: right;
 }
