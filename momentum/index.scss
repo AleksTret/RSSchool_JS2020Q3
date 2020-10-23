@@ -1,0 +1,63 @@
+@import 'assets/scss/main.scss';
+
+.timer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 70%;
+
+    .time {
+        font-size: 8rem;
+    }
+
+    .date{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .time {
+      font-size: 6rem;
+    }
+    .date{
+      font-size: 4rem;
+    }
+}
+
+.weather{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 10%;
+
+    .weather__wrapper{
+        min-width: 150px;
+    }
+
+    .city{
+        min-width: 100px;
+      }
+}
+
+.quote{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20%; 
+
+    .quote-text{
+        min-width: 300px;
+        min-height: 100px; 
+        
+        blockquote {
+              margin: 1em;
+        }
+
+        figcaption {
+            margin: 1em;
+            text-align: right;
+        }
+    }     
+}
