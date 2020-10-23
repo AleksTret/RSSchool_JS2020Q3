@@ -1,21 +1,5 @@
 'use strict';
 
-const time = document.querySelector('.time');
-const greeting = document.querySelector('.greeting');
-const name = document.querySelector('.name');
-const goal = document.querySelector('.goal');
-const date = document.querySelector('.date');
-const editable = document.querySelectorAll('[date-editable]');
-const button = document.querySelector('.btn');
-
-const city = document.querySelector('.city');
-
-const buttonRefreshQuote = document.querySelector('.refreshQuote');
-
-const monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-                    'September', 'October', 'November', 'December'];
-const weekdaysName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
 class Weather{
     constructor(){
         this.weatherIcon = document.querySelector('.weather-icon');
@@ -89,7 +73,16 @@ class Weather{
 }
 
 class Momentum{
+    #monthsName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                   'September', 'October', 'November', 'December'];
+    #weekdaysName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
     constructor(){
+        this.time = document.querySelector('.time');
+        this.greeting = document.querySelector('.greeting');
+        this.name = document.querySelector('.name');
+        this.goal = document.querySelector('.goal');
+        this.date = document.querySelector('.date');
         this.getName();
         this.getGoal();
         this.getBackgroundList();
@@ -146,7 +139,7 @@ class Momentum{
     redraw(){
         let hour = (new Date()).getHours();
         this.changeBackground(this.backgroundImageList[hour]);
-        greeting.textContent = `Good ${this.getDaysPart(hour)}`;
+        this.greeting.textContent = `Good ${this.getDaysPart(hour)}`;
 
         this.redrawTime();
     }
@@ -156,12 +149,12 @@ class Momentum{
         let hour = today.getHours()
         let minutes = today.getMinutes();
     
-        time.innerHTML = `${this.addZero(hour)}<span>:</span>${this.addZero(minutes)}<span>:</span>${this.addZero(today.getSeconds())}`;
-        date.innerHTML = `${weekdaysName[today.getDay()]}<span> </span>${today.getDate()}<span> </span>${monthsName[today.getMonth()]}`;
+        this.time.innerHTML = `${this.addZero(hour)}<span>:</span>${this.addZero(minutes)}<span>:</span>${this.addZero(today.getSeconds())}`;
+        this.date.innerHTML = `${this.#weekdaysName[today.getDay()]}<span> </span>${today.getDate()}<span> </span>${this.#monthsName[today.getMonth()]}`;
 
         if(minutes == 0){
             this.changeBackground(this.backgroundImageList[hour]);
-            greeting.textContent = `Good ${this.getDaysPart(hour)}`;
+            this.greeting.textContent = `Good ${this.getDaysPart(hour)}`;
         }
 
         let that = this;
@@ -175,11 +168,11 @@ class Momentum{
     }
 
     getName(){
-        name.textContent = localStorage.getItem('name') || '[Enter your Name]';
+        this.name.textContent = localStorage.getItem('name') || '[Enter your Name]';
     }
 
     getGoal(){
-        goal.textContent = localStorage.getItem('goal') || '[Enter your goal]';
+        this.goal.textContent = localStorage.getItem('goal') || '[Enter your goal]';
     }
 
     onClick(event){
@@ -236,6 +229,10 @@ let momentum = new Momentum();
 let weather = new Weather();
 let quote = new Quote();
 
+const editable = document.querySelectorAll('[date-editable]');
+const buttonRefreshBackground = document.querySelector('.refreshBackground');
+const buttonRefreshQuote = document.querySelector('.refreshQuote');
+const city = document.querySelector('.city');
 
 editable.forEach(item => {
     item.addEventListener('input', momentum.setStorage);
@@ -244,13 +241,12 @@ editable.forEach(item => {
     item.addEventListener('keydown', momentum.onKeydown);
 })
 
-button.addEventListener('click', () => momentum.nextBackground());
-
 city.addEventListener('input', (event) => weather.setStorage(event));
 city.addEventListener('blur', (event) => weather.whenBlur(event));
 city.addEventListener('click', (event) => weather.onClick(event));
 city.addEventListener('keydown', (event) => weather.onKeydown(event));
 
+buttonRefreshBackground.addEventListener('click', () => momentum.nextBackground());
 buttonRefreshQuote.addEventListener('click', () => quote.getQuote());
 
 momentum.redraw();
