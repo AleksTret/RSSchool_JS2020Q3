@@ -68,13 +68,19 @@ class Weather{
 
     whenBlur(event){
         let className = event.currentTarget.classList.item(0).toString();
-        localStorage.setItem(className, event.currentTarget.innerText);
+        event.currentTarget.innerText = localStorage.getItem(className);
         this.getWeather();
     }
 
     setStorage(event){
         let className = event.currentTarget.classList.item(0).toString();
         localStorage.setItem(className, event.currentTarget.innerText);
+    }
+
+    onClick(event){
+        let className = event.currentTarget.classList.item(0).toString();
+        localStorage.setItem(className, event.currentTarget.innerText); 
+        event.currentTarget.innerText = '';   
     }
 
     getCity(){
@@ -217,7 +223,6 @@ class Quote{
     }
 
     async getQuote() {  
-        console.log("I'm here");
         const url = 'https://favqs.com/api/qotd';
         const response = await fetch(url);
         const data = await response.json(); 
@@ -241,7 +246,9 @@ editable.forEach(item => {
 
 button.addEventListener('click', () => momentum.nextBackground());
 
+city.addEventListener('input', (event) => weather.setStorage(event));
 city.addEventListener('blur', (event) => weather.whenBlur(event));
+city.addEventListener('click', (event) => weather.onClick(event));
 city.addEventListener('keydown', (event) => weather.onKeydown(event));
 
 buttonRefreshQuote.addEventListener('click', () => quote.getQuote());
