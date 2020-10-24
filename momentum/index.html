@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css">
+  <title>Momentum</title>
+</head>
+<body>
+    <section class="weather">
+      <div class="weather__wrapper">
+        <div class="icon-temp__wrapper">
+          <div class="weather-icon owf"></div>
+          <div class="weather-temperature"></div>          
+        </div>
+        <div class="weather-description"></div>
+        <div class="weather-wind-speed"></div>
+        <div class="weather-humidity"></div>
+      </div>
+      <span class="city min-width" contenteditable="true"></span>
+    </section>
+    <section class="timer">
+        <time class="time"></time>
+        <span class="date"></span>
+        <h1>
+          <span class="greeting"></span>
+          <span date-editable class="name fixed-size" contenteditable="true"></span>
+        </h1>
+        <h2>What Is Your Goal For Today?</h2>
+        <h2 date-editable class="goal fixed-size" contenteditable="true"></h2>
+        <button class="refreshBackground refreshButton"></button>
+    </section>  
+    <section class="quote">
+      <div class="quote__wrapper">
+        <figure class="quote-text">
+          <blockquote></blockquote>
+          <figcaption></figcaption>
+        </figure>
+        <button date-quote class="refreshQuote refreshButton"></button>        
+      </div>
+    </section>
+    <script src="/assets/scripts/main.js"></script>
+</body>
+</html>
