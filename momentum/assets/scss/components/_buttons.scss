@@ -7,18 +7,19 @@
     filter: grayscale(1);
     margin: 10px;
     opacity: 0.5;
+    transition: transform 0.5s linear;
   }
-
 
   .refreshButton:hover {
     filter: grayscale(.8);
     cursor: pointer;
-    opacity: 1;
-  }
-  .refreshButton:active{
+    transition: transform 1s linear;
     transform: scale(1.2);
     opacity: 1;
-    
+  }
+  
+  .refreshButton:active{
+    opacity: 1;
     outline: 0;
   }
 
