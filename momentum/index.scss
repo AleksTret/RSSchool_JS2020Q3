@@ -21,6 +21,7 @@
 
             .weather-icon{
                 @include adaptive-font(50, 30);
+                margin-right: 10px;
             }
 
             .weather-temperature{
@@ -31,6 +32,7 @@
 
     .city{
         min-width: 100px;
+        @include adaptive-font(40, 20);
     }
 }
 
