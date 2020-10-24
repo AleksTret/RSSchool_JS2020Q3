@@ -456,8 +456,9 @@ ul {
   padding: 10px 15px;
   display: inline-flex;
   margin-bottom: 20px;
+  text-decoration: none;
 }
-.donation__credit__card a {
+.donation__credit__card p {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: normal;
@@ -465,10 +466,10 @@ ul {
   line-height: 115%;
   letter-spacing: 0.06em;
   color: #545454;
-  text-decoration: none;
 }
-.donation__credit__card a:hover {
+.donation__credit__card:hover {
   cursor: url(../../assets/images/cursor_hover.png), auto;
+  background-color: #FDDCC4;
 }
 .donation__credit__card img {
   margin-right: 15px;
@@ -518,6 +519,7 @@ ul {
 }
 .pets__card:hover {
   cursor: url(../../assets/images/cursor_hover.png), auto;
+  box-shadow: 0 0 5px 2px #292929;
 }
 
 .information__card {
@@ -596,12 +598,11 @@ header nav {
   display: flex;
   justify-content: space-between;
 }
-header nav div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+header nav a {
+  text-decoration: none;
+  cursor: url(../../assets/images/cursor_hover.png), auto;
 }
-header nav div p:first-child {
+header nav a p:first-child {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
   font-weight: normal;
@@ -611,7 +612,7 @@ header nav div p:first-child {
   color: #545454;
   margin-bottom: 10px;
 }
-header nav div p:last-child {
+header nav a p:last-child {
   font-family: Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -619,6 +620,7 @@ header nav div p:last-child {
   line-height: 15px;
   letter-spacing: 0.1em;
   color: #292929;
+  text-align: center;
 }
 header nav h1 {
   display: none;
@@ -652,7 +654,7 @@ header nav ul li a:hover {
 }
 header nav ul li:nth-child(2) a {
   color: #292929;
-  border-bottom: 3px solid #F1CDB3;
+  font-weight: 600;
 }
 
 /* Header styles end */

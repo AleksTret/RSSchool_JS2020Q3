@@ -9,11 +9,10 @@
         display: flex;
         justify-content: space-between;
         
-        div{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
+        a{
+            text-decoration: none;
+            @include cursor__hover();
+            
             p:first-child{
                 @include font__logo_title($color__logo__title);
                 margin-bottom: 10px;
@@ -21,6 +20,7 @@
 
             p:last-child{
                 @include font__logo_subtitle($color__logo__subtitle);
+                text-align: center;
             }
         }
 
@@ -55,7 +55,7 @@
 
                 &:nth-child(#{$active__nav__item}) a{
                     color: $color__active__link;
-                    border-bottom: 3px solid $color-primary;
+                    font-weight: 600;
                 }
             }
         }
