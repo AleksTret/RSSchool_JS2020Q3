@@ -1,21 +1,27 @@
 .refreshButton {
-    width: 60px;
-    height: 60px;
+    @include adaptive-size(60, 30);
     border: 0;
     background: url('/assets/icons/vcsupdaterequired_93493.svg'); 
     background-size: contain;
     background-repeat: no-repeat;
     filter: grayscale(1);
     margin: 10px;
+    opacity: 0.5;
   }
+
 
   .refreshButton:hover {
     filter: grayscale(.8);
-  }
-  .refreshButton:active,
-  .refreshButton:focus {
-    outline: 0;
+    cursor: pointer;
+    opacity: 1;
   }
   .refreshButton:active{
-    transform: scale(1.02)
+    transform: scale(1.2);
+    opacity: 1;
+    
+    outline: 0;
+  }
+
+  .refreshButton:focus {
+    outline: 0;
   }

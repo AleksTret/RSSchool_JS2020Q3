@@ -5,21 +5,33 @@
     justify-content: flex-start;
     align-items: flex-start;
     height: 10%;
-    padding: 3rem 0 0 3rem;
+    padding: 3% 0 0 3%;
 
     .weather__wrapper{
-        min-width: 150px;
-        text-align: center;
+        margin-right: 30px;
+        text-align: left;
+
+        div{
+            @include adaptive-font(20, 10);
+        }
 
         .icon-temp__wrapper{
             display: flex;
-            justify-content: space-evenly;
+            justify-content: flex-start;
+
+            .weather-icon{
+                @include adaptive-font(50, 30);
+            }
+
+            .weather-temperature{
+                @include adaptive-font(40, 20);
+            }
         }
     }
 
     .city{
         min-width: 100px;
-      }
+    }
 }
 
 .timer{
@@ -31,49 +43,41 @@
     height: 70%;
 
     .time {
-        font-size: 8rem;
+        @include adaptive-font(150, 80);
     }
 
     .date{
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        @include adaptive-font(32, 16);
+        margin-bottom: 16px;
     }
 
     .greeting, .name{
+        @include adaptive-font(60, 30);
         display: inline-block;
     }
 
-    h1{
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 700px) {
-    .time {
-      font-size: 6rem;
-    }
-    .date{
-      font-size: 4rem;
+    h2{
+        @include adaptive-font(30, 20);
     }
 }
 
 .quote{
     height: 20%; 
-    padding: 0 3rem 3rem;
+    padding: 0 3% 3% 0;
 
     .quote__wrapper{
         display: flex;
         justify-content: flex-end;
 
         .quote-text{
-            min-width: 80%;
             max-width: 80%;
+            @include adaptive-font(18, 11);
             blockquote {
-                  margin: 1em;
+                  margin: 16px;
             }
     
             figcaption {
-                margin: 1em;
+                margin: 16px;
                 text-align: right;
             }
 
