@@ -1,0 +1,168 @@
+@import '../../assets/scss/main.scss';
+
+/* Header styles begin */
+header{
+    @include header($color-primary, 
+                    $color-light-xl, 
+                    $color-dark-s, 
+                    $color-light-s, 
+                    $color-light-s, 
+                    1);
+
+    position: relative;
+    top: 60px;
+    padding: 0 40px;
+    z-index: 100;
+}
+/* Header styles end */
+
+/* Hero styles begin  */
+.hero{
+    @include hero__gradient__background();
+    position: relative;
+    top: -60px;
+    padding-top: 180px;
+
+    .hero__wrapper{
+        margin: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center ;
+
+        .hero__content__wrapper{
+            margin-bottom: 80px;
+   
+            .hero__title{
+                @include font__h2($color-light-xl);
+                margin-bottom: 40px;
+            }
+
+            .hero__content{
+                @include font__paragraph_l($color-dark-s);
+                max-width: 460px;
+                margin-bottom: 40px;
+            }
+        } 
+    }
+}
+/* Hero styles end */
+
+/* About styles begin */
+.about{
+    margin-bottom: 96px;
+
+    .about__content__wrapper{
+        display: flex;
+        justify-content: center;
+
+        .about__image{
+            padding-top: 20px;
+            margin-right: 120px;
+        }
+
+        .about__content{
+            max-width: 430px;
+
+            h3{
+                @include font__h3($color-dark-l);
+                padding-top: 35px;
+            }
+
+            p{
+                @include font__paragraph_l($color-dark-xl);
+            }
+
+            & :nth-of-type(1){
+                margin-bottom: 25px;
+            }
+        }
+    }
+}
+/* About styles end */
+
+/* Pets styles begin */
+.pets{
+    background-color: $color-light-l;
+    text-align: center;
+
+    .pets__content{
+        padding: 80px 40px 100px;
+
+        h3{
+            @include font__h3($color-dark-xl);   
+            margin-bottom: 60px;        
+        }
+
+        .pets__content__wrapper{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+
+            .pets__card__wrapper{
+                display: grid;
+                grid-template-columns: repeat(3, auto);
+                grid-column-gap: 90px;
+            }
+        }
+    }   
+}
+/* Pets styles end */
+
+/* Help styles begin */
+.help{
+    text-align: center;
+    background-color: $color-light-xl;
+
+    .help__content__wrapper{
+        display: flex;
+        flex-direction: column;
+        padding: 80px 0 47px;
+
+        .help__title{
+            @include font__h3($color-dark-l);
+            margin-bottom: 60px;
+        }
+
+        .help__container{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 55px;
+        }
+    }
+}
+/* Help styles end */
+
+/* Donation styles begin */
+.donation{
+    background-color: $color-light-l;
+
+    .donation__content__wrapper{
+        padding: 82px 40px 101px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .donation__content__main__image{
+            margin-right: 30px;
+        }
+
+        .donation__content{
+            .donation__title{
+                @include font__h3($color-dark-l);
+                margin-bottom: 20px;
+            }
+    
+            .donation__subtitle{
+                @include font__h5($color-dark-l);
+                margin-bottom: 20px;
+            }
+    
+            .donation__information{
+                max-width: 380px;
+                @include font__donation__description($color-dark-m);
+            }
+        }
+    }
+}
+/* Donation styles end */

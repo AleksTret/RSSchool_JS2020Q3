@@ -1,0 +1,37 @@
+/* Footer styles begin */
+footer{
+    @include footer__gradient__background();
+    padding: 40px 40px 0;
+    
+    .footer__content__wrapper{
+        display: flex;
+        justify-content: space-between;
+
+        .footer__contact{
+            margin-top: 17px;
+
+            .footer__title{
+                margin-bottom: 42px;
+            }
+            div{
+                &:nth-child(2){
+                    margin-bottom: 39px;  
+                }
+            }
+        }
+
+        .footer__location{
+            margin: 17px 8px 0 0;
+
+            .footer__title{
+                margin-bottom: 33px;
+            }
+            div{
+                &:nth-child(2){
+                    margin-bottom: 31px;  
+                }
+            }
+        }
+    }
+}
+/* Footer styles end */

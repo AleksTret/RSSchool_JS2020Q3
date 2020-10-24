@@ -1,0 +1,15 @@
+body{
+    @include cursor__normal();
+    width: 1280px;
+    margin: auto;
+}
+
+
+p, h2, h3, h5 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+ul{
+    padding-inline-start: 0;
+}

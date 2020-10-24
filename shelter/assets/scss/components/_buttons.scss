@@ -1,0 +1,76 @@
+// Buttons style begin 
+.button__primary:link, .button__primary:visited{
+    @include font__button($color-dark-3xl);
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    background: $color-primary;
+    border-radius: 100px;
+    padding: 15px 45px;
+}
+
+.button__primary:hover, .button__primary:active{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+}
+
+.button_secondary:link, .button_secondary:visited{
+    @include font__button($color-dark-3xl);
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid $color-primary;
+    border-radius: 100px;
+    padding: 13px 43px;
+}
+
+.button_secondary:hover, .button_secondary:active{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+}
+
+.round__button:link, .round__button:visited{
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    border: 2px solid $color-primary;
+    border-radius: 100%;
+}
+
+.round__button:hover, .round__button:visited{
+    @include cursor__hover();
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+}
+
+.button__left__arrow{
+    background: url("../../assets/icons/left-arrow.svg") center no-repeat;
+}
+
+.button__right__arrow{
+    background: url("../../assets/icons/right-arrow.svg") center no-repeat;
+}
+
+.button__double__left__bracket{
+    background: url("../../assets/icons/double-left-bracket.svg") center no-repeat;
+}
+
+.button__left__bracket{
+    background: url("../../assets/icons/left-bracket.svg") center no-repeat;
+}
+
+.button__right__bracket{
+    background: url("../../assets/icons/right-bracket.svg") center no-repeat;
+}
+
+.button__double__right__bracket{
+    background: url("../../assets/icons/double-right-bracket.svg") center no-repeat;
+}
+
+.button__number{    
+    text-decoration: none;
+    @include font__h4($color-dark-3xl);
+    padding-top: 11px;
+}
+// Buttons style end 

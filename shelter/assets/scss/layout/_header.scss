@@ -1,0 +1,64 @@
+/* Header styles begin */
+@mixin header($color__logo__title, 
+              $color__logo__subtitle, 
+              $color__link, 
+              $color__active__link, 
+              $color__hover__link, 
+              $active__nav__item){
+    nav{
+        display: flex;
+        justify-content: space-between;
+        
+        a{
+            text-decoration: none;
+            @include cursor__hover();
+            
+            p:first-child{
+                @include font__logo_title($color__logo__title);
+                margin-bottom: 10px;
+            }
+
+            p:last-child{
+                @include font__logo_subtitle($color__logo__subtitle);
+                text-align: center;
+            }
+        }
+
+        h1{
+            display: none;
+        }
+
+        ul{
+            list-style-type: none;   
+            display: flex;        
+            justify-content: center;
+            align-items: center;
+
+            li{
+                margin: 0 36px 0 0;
+                
+                &:last-child{
+                    margin-right: 0;                
+                }
+            
+                a{
+                    @include font__paragraph_l($color__link);    
+                    text-decoration: none;
+                    padding-bottom: 3px;            
+                }
+
+                & a:hover{
+                    @include cursor__hover();
+                    color: $color__hover__link;
+                    border-bottom: 3px solid $color-primary;
+                }
+
+                &:nth-child(#{$active__nav__item}) a{
+                    color: $color__active__link;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+/* Header styles end */

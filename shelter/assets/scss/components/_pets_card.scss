@@ -1,0 +1,23 @@
+.pets__card{
+    background-color: $color-light-s;
+    border-radius: 9px;
+    text-align: center;
+
+    img{
+        margin-bottom: 26px;
+    }
+
+    p{
+        @include font__pets__card__title($color-dark-l);
+        margin-bottom: 30px;
+    }
+
+    .button_secondary{
+        margin-bottom: 30px;
+    }
+
+    &:hover{
+        @include cursor__hover();
+        box-shadow: 0 0 5px 2px $color-dark-3xl;
+    }
+}

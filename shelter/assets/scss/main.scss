@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+// Configuration and helpers
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// Vendors
+@import 'vendors/normalize';
+
+// Base stuff
+@import 'base/base';
+
+// Components
+@import 'components/buttons';
+@import 'components/credit_card';
+@import 'components/help_card';
+@import 'components/pets_card';
+@import 'components/information_card';
+
+// Layout
+@import 'layout/header';
+@import 'layout/footer';
