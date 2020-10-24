@@ -13,11 +13,11 @@
   .refreshButton:hover {
     filter: grayscale(.8);
     cursor: pointer;
-    transition: transform 1s linear;
+    transition: transform 0.5s linear;
     transform: scale(1.2);
     opacity: 1;
   }
-  
+
   .refreshButton:active{
     opacity: 1;
     outline: 0;
