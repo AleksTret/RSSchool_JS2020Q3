@@ -1,7 +1,7 @@
 .refreshButton {
     @include adaptive-size(60, 30);
     border: 0;
-    background: url('/assets/icons/vcsupdaterequired_93493.svg'); 
+    background: url('assets/icons/vcsupdaterequired_93493.svg'); 
     background-size: contain;
     background-repeat: no-repeat;
     filter: grayscale(1);
