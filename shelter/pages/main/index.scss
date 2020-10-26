@@ -77,17 +77,30 @@ header{
 .about{
     margin-bottom: 96px;
 
+    @media (max-width: 768px){
+        position: relative;
+        top: -45px;
+        margin-bottom: 50px;
+    }
+
     .about__content__wrapper{
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
 
         .about__image{
             padding-top: 20px;
             margin-right: 120px;
+            order: 1;
+
+            @media (max-width: 768px){
+                margin: 60px 40px 0 35px;
+            }
         }
 
         .about__content{
             max-width: 430px;
+            order: 0;
 
             h3{
                 @include font__h3($color-dark-l);

@@ -740,16 +740,31 @@ header nav ul li:nth-child(1) a {
 .about {
   margin-bottom: 96px;
 }
+@media (max-width: 768px) {
+  .about {
+    position: relative;
+    top: -45px;
+    margin-bottom: 50px;
+  }
+}
 .about .about__content__wrapper {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .about .about__content__wrapper .about__image {
   padding-top: 20px;
   margin-right: 120px;
+  order: 1;
+}
+@media (max-width: 768px) {
+  .about .about__content__wrapper .about__image {
+    margin: 60px 40px 0 35px;
+  }
 }
 .about .about__content__wrapper .about__content {
   max-width: 430px;
+  order: 0;
 }
 .about .about__content__wrapper .about__content h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
