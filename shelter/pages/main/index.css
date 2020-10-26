@@ -375,9 +375,6 @@ ul {
 @media (max-width: 768px) {
   .button__primary:link, .button__primary:visited {
     align-self: center;
-    padding: 25px 80px;
-    font-size: 28px;
-    margin-left: 25px;
   }
 }
 
@@ -483,6 +480,9 @@ ul {
   margin-right: 15px;
 }
 
+.help__card {
+  margin-bottom: 58px;
+}
 .help__card img {
   margin-bottom: 25px;
   width: 60px;
@@ -681,7 +681,7 @@ header nav ul li:nth-child(1) a {
 }
 @media (max-width: 768px) {
   .hero {
-    top: -72px;
+    top: -90px;
   }
 }
 .hero .hero__wrapper {
@@ -693,7 +693,6 @@ header nav ul li:nth-child(1) a {
 @media (max-width: 768px) {
   .hero .hero__wrapper {
     flex-direction: column;
-    margin-top: 85px;
   }
 }
 .hero .hero__wrapper .hero__content__wrapper {
@@ -701,6 +700,11 @@ header nav ul li:nth-child(1) a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+@media (max-width: 768px) {
+  .hero .hero__wrapper .hero__content__wrapper {
+    margin-bottom: 105px;
+  }
 }
 .hero .hero__wrapper .hero__content__wrapper .hero__title {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -710,12 +714,6 @@ header nav ul li:nth-child(1) a {
   line-height: 130%;
   color: #FFFFFF;
   margin-bottom: 40px;
-}
-@media (max-width: 768px) {
-  .hero .hero__wrapper .hero__content__wrapper .hero__title {
-    font-size: 75px;
-    margin-bottom: 68px;
-  }
 }
 .hero .hero__wrapper .hero__content__wrapper .hero__content {
   font-family: Arial, Helvetica, sans-serif;
@@ -728,20 +726,13 @@ header nav ul li:nth-child(1) a {
   max-width: 460px;
 }
 @media (max-width: 768px) {
-  .hero .hero__wrapper .hero__content__wrapper .hero__content {
-    max-width: 768px;
-    font-size: 25px;
-    margin-bottom: 80px;
+  .hero .hero__wrapper .hero__image {
+    align-self: flex-end;
+    max-width: 564px;
   }
-}
-.hero .hero__wrapper .hero__image {
-  max-width: 698px;
-  max-height: 728px;
 }
 .hero .hero__wrapper .hero__image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* Hero styles end */
@@ -822,7 +813,7 @@ header nav ul li:nth-child(1) a {
 .help .help__content__wrapper {
   display: flex;
   flex-direction: column;
-  padding: 80px 0 47px;
+  padding: 80px 0 40px;
 }
 .help .help__content__wrapper .help__title {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -836,8 +827,16 @@ header nav ul li:nth-child(1) a {
 }
 .help .help__content__wrapper .help__container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 55px;
+}
+.help .help__content__wrapper .help__container .help__card:first-child {
+  margin-left: 120px;
+}
+@media (max-width: 768px) {
+  .help .help__content__wrapper .help__container .help__card:first-child {
+    margin-left: 0;
+  }
 }
 
 /* Help styles end */

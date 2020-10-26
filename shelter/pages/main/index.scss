@@ -24,7 +24,7 @@ header{
     padding-top: 180px;
 
     @media (max-width: 768px){
-        top: -72px;
+        top: -90px;
     }
 
     .hero__wrapper{
@@ -35,7 +35,6 @@ header{
         
         @media (max-width: 768px) {
             flex-direction: column;
-            margin-top: 85px;
         }
 
         .hero__content__wrapper{
@@ -44,37 +43,30 @@ header{
             flex-direction: column;
             align-items: flex-start;
 
+            @media (max-width: 768px){
+                margin-bottom: 105px;
+            }
+
             .hero__title{
                 @include font__h2($color-light-xl);
                 margin-bottom: 40px;
-
-                @media (max-width: 768px){
-                    font-size: 75px;
-                    margin-bottom: 68px;
-                }
             }
 
             .hero__content{
                 @include font__paragraph_l($color-dark-s);
                 margin-bottom: 40px;
                 max-width: 460px;
-
-                @media (max-width: 768px){
-                    max-width: 768px;
-                    font-size: 25px;
-                    margin-bottom: 80px;
-                }
             }
         } 
 
         .hero__image{
-            max-width: 698px;
-            max-height: 728px;
-
+            @media (max-width: 768px){
+                align-self: flex-end;
+                max-width: 564px;
+            }
+            
             img{
                 width: 100%;
-                height: 100%;
-                object-fit: cover;
             }
         }
     }
@@ -151,7 +143,7 @@ header{
     .help__content__wrapper{
         display: flex;
         flex-direction: column;
-        padding: 80px 0 47px;
+        padding: 80px 0 40px;
 
         .help__title{
             @include font__h3($color-dark-l);
@@ -160,8 +152,16 @@ header{
 
         .help__container{
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 55px;
+
+            .help__card:first-child{
+                margin-left: 120px;
+
+                @media (max-width: 768px){
+                    margin-left: 0;
+                }
+            }            
         }
     }
 }
