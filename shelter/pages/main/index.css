@@ -854,8 +854,6 @@ header nav ul li:nth-child(1) a {
   background-color: #FFFFFF;
 }
 .help .help__content__wrapper {
-  display: flex;
-  flex-direction: column;
   padding: 80px 0 40px;
 }
 .help .help__content__wrapper .help__title {
@@ -871,7 +869,7 @@ header nav ul li:nth-child(1) a {
 .help .help__content__wrapper .help__container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 @media (max-width: 768px) {
   .help .help__content__wrapper .help__container {
