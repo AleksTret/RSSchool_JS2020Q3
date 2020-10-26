@@ -71,6 +71,14 @@
     color: $color;
 }
 
+@mixin font__h5__mobile($color){
+    @include font__family__Georgia();
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0;
+    color: $color;
+}
+
 @mixin font__paragraph_l($color){
     @include font__family__Arial();
     font-size: 15px;

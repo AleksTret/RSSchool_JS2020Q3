@@ -10,9 +10,6 @@
 
     @media (max-width: 768px){
         align-self: center;
-        //padding: 25px 80px;
-        //font-size: 28px;
-        //margin-left: 25px;
     }
 }
 
@@ -53,10 +50,20 @@
 
 .button__left__arrow{
     background: url("../../assets/icons/left-arrow.svg") center no-repeat;
+
+    @media (max-width: 320px){
+        order: 1;
+        margin: 10px 0 0 68px;
+    }
 }
 
 .button__right__arrow{
     background: url("../../assets/icons/right-arrow.svg") center no-repeat;
+
+    @media (max-width: 320px){
+        order: 2;
+        margin: 10px 68px 0 0;
+    }
 }
 
 .button__double__left__bracket{

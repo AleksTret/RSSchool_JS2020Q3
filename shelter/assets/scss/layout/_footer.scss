@@ -6,6 +6,10 @@ footer{
     @media (max-width: 768px){
         padding: 15px 35px 0;
     }
+
+    @media (max-width: 320px){
+        padding: 15px 10px 38px;
+    }
     
     .footer__content__wrapper{
         display: flex;
@@ -16,8 +20,16 @@ footer{
             justify-content: space-around;
         }
 
+        @media (max-width: 320px){
+            text-align: center;
+        }
+
         .footer__contact{
             margin-top: 17px;
+
+            @media (max-width: 320px){
+                margin: 15px 25px;
+            }
 
             .footer__title{
                 margin-bottom: 42px;
@@ -32,12 +44,24 @@ footer{
         .footer__location{
             margin: 17px 8px 0 0;
 
+            @media (max-width: 320px){
+                margin: 22px 0 0 0;
+            }
+
             .footer__title{
                 margin-bottom: 33px;
+
+                @media (max-width: 320px){
+                    margin: 0 20px 42px;
+                }
             }
             div{
                 &:nth-child(2){
                     margin-bottom: 31px;  
+
+                    @media (max-width: 320px){
+                        margin-bottom: 37px;
+                    }
                 }
             }
         }
@@ -45,6 +69,16 @@ footer{
         .footer__image{
             @media (max-width: 768px){
                 padding-top: 60px;
+            }
+
+            @media (max-width: 320px){
+                width: 260px;
+                height: 269px;
+                padding-top: 38px;
+            }
+
+            img{
+                width: 100%;
             }
         }
     }

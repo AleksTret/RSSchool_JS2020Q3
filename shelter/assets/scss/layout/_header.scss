@@ -8,6 +8,10 @@
     nav{
         display: flex;
         justify-content: space-between;
+
+        @media (max-width: 320px){
+            align-items: center;
+        }
         
         a{
             text-decoration: none;
@@ -60,6 +64,14 @@
                     color: $color__active__link;
                 }
             }
+        }
+
+        .burger_menu{
+            @media (min-width: 321px){
+                display: none;
+            }
+
+            margin-right: 42px;
         }
     }
 }

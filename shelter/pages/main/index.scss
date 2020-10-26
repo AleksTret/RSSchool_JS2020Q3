@@ -18,6 +18,10 @@ header{
         top: 30px;
         padding: 0 30px;
     }
+
+    @media (max-width: 320px){
+        padding: 0 10px;
+    }
 }
 /* Header styles end */
 
@@ -112,6 +116,7 @@ header{
     @media (max-width: 320px){
         position: relative;
         top: -85px;
+        margin-bottom: 0px;
     }
 
     .about__content__wrapper{
@@ -181,6 +186,11 @@ header{
     background-color: $color-light-l;
     text-align: center;
 
+    @media (max-width: 320px){
+        position: relative;
+        top: -45px;
+    }
+
     .pets__content{
         padding: 80px 40px 100px;
 
@@ -188,9 +198,18 @@ header{
             padding: 80px 30px 100px;
         }
 
+        @media (max-width: 320px){
+            padding: 40px 0px 42px;
+        }
+
         h3{
             @include font__h3($color-dark-xl);   
-            margin-bottom: 60px;        
+            margin-bottom: 60px;    
+            
+            @media (max-width: 320px){
+                @include font__h3_mobile($color-dark-xl);
+                margin-bottom: 43px;
+            }
         }
 
         .pets__content__wrapper{
@@ -199,10 +218,21 @@ header{
             align-items: center;
             margin-bottom: 60px;
 
+            flex-wrap: wrap;
+
+            @media (max-width: 320px){
+                margin-bottom: 42px;
+            }
+
             .pets__card__wrapper{
                 display: flex;
                 min-width: 82.4%;
                 justify-content: space-between;
+
+                @media (max-width: 320px){
+                    order: 0;
+                    margin: 0 0 10px 25px;
+                }
             }
         }
     }   
@@ -217,9 +247,18 @@ header{
     .help__content__wrapper{
         padding: 80px 0 40px;
 
+        @media (max-width: 320px){
+            padding: 0px 15px 15px;
+        }
+
         .help__title{
             @include font__h3($color-dark-l);
             margin-bottom: 60px;
+
+            @media (max-width: 320px){
+                @include font__h3_mobile($color-dark-l);
+                margin-bottom: 35px;
+            }
         }
 
         .help__container{
@@ -230,6 +269,11 @@ header{
             @media (max-width: 768px){
                 justify-content: space-around;
                 padding: 0px 45px;
+            }
+
+            @media (max-width: 320px){
+                justify-content: space-between;
+                padding: 0;
             }
 
             .help__card:first-child{
@@ -259,6 +303,11 @@ header{
             padding: 82px 40px 92px;
         }
 
+        @media (max-width: 320px){
+            text-align: center;
+            padding: 43px 15px 33px;
+        }
+
         .donation__content__main__image{
             margin-right: 30px;
 
@@ -266,27 +315,52 @@ header{
                 order: 1;
                 margin-right: 0;
             }
+
+            img{
+                width: 100%;
+            }
         }
         
         .donation__content{
             @media (max-width: 768px){
                 order: 0;
                 margin-bottom: 60px;
-            }       
+            }      
+            
+            @media (max-width: 320px){
+                margin-bottom: 30px;
+            }
             
             .donation__title{
                 @include font__h3($color-dark-l);
                 margin-bottom: 20px;
+
+                @media (max-width: 768px){
+                    @include font__h3_mobile($color-dark-l);
+                }
+
+                @media (max-width: 320px){
+                    margin-bottom: 25px;
+                }
             }
     
             .donation__subtitle{
                 @include font__h5($color-dark-l);
                 margin-bottom: 20px;
+
+                @media (max-width: 320px){
+                    @include font__h5__mobile($color-dark-l);
+                    margin-bottom: 25px;
+                }
             }
     
             .donation__information{
                 max-width: 380px;
                 @include font__donation__description($color-dark-m);
+
+                @media (max-width: 320px){
+                    text-align: justify;
+                }
             }
         }
     }
