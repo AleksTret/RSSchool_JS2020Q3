@@ -24,6 +24,10 @@ header{
         }
     }
 
+    @media (max-width: 320px){
+        padding: 30px 10px;
+    }
+
 }
 /* Header styles end */
 
@@ -43,12 +47,21 @@ header{
             padding: 80px 40px 56px;
         }
 
+        @media (max-width: 320px){
+            padding: 42px 0px 27px;
+        }
+
         .pets__title{
             @include font__h3($color-dark-l);
             margin-bottom: 60px;
 
             @media (max-width: 768px){
                 margin-bottom: 30px;
+            }
+
+            @media (max-width: 320px){
+                @include font__h3_mobile ($color-dark-l);
+                margin-bottom: 40px;
             }
         }
 
@@ -71,6 +84,12 @@ header{
                     display: none;
                 }
             }
+
+            .pets__hidden-320px{
+                @media (max-width: 320px){
+                    display: none;
+                }
+            }
         }
 
         .pets__cards__nav{
@@ -83,6 +102,10 @@ header{
 
                 li{
                     margin-right: 20px;
+
+                    @media (max-width: 320px){
+                        margin-right: 10px;
+                    }
 
                     &:last-child{
                         margin-right: 0;
