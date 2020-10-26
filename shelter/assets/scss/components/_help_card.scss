@@ -1,6 +1,8 @@
 .help__card{
     margin-bottom: 58px;
-    
+    width: 170px;
+    height: 113px;
+
     img{
         margin-bottom: 25px;
         width: 60px;
@@ -13,6 +15,10 @@
 
     &{
         margin-right: 120px;
+
+        @media (max-width: 768px){
+            margin-right: 0;
+        }
     }
 
     &:last-child{

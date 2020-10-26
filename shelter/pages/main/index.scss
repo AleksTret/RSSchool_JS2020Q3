@@ -20,7 +20,7 @@ header{
 .hero{
     @include hero__gradient__background();
     position: relative;
-    top: -60px;
+    top: -64px;
     padding-top: 180px;
 
     @media (max-width: 768px){
@@ -91,19 +91,19 @@ header{
         .about__image{
             padding-top: 20px;
             margin-right: 120px;
-            order: 1;
 
             @media (max-width: 768px){
+                order: 1;
                 margin: 60px 40px 0 35px;
             }
         }
 
         .about__content{
             max-width: 430px;
-            order: 0;
 
             h3{
                 @include font__h3($color-dark-l);
+                order: 0;
                 padding-top: 35px;
             }
 
@@ -172,6 +172,11 @@ header{
             flex-wrap: wrap;
             justify-content: center;
 
+            @media (max-width: 768px){
+                justify-content: space-around;
+                padding: 0px 45px;
+            }
+
             .help__card:first-child{
                 margin-left: 120px;
 
@@ -189,16 +194,31 @@ header{
     background-color: $color-light-l;
 
     .donation__content__wrapper{
-        padding: 82px 40px 101px;
+        padding: 82px 40px 98px;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
+
+        @media (max-width: 768px){
+            padding: 82px 40px 95px;
+        }
 
         .donation__content__main__image{
             margin-right: 30px;
-        }
 
+            @media (max-width: 768px){
+                order: 1;
+                margin-right: 0;
+            }
+        }
+        
         .donation__content{
+            @media (max-width: 768px){
+                order: 0;
+                margin-bottom: 60px;
+            }       
+            
             .donation__title{
                 @include font__h3($color-dark-l);
                 margin-bottom: 20px;
