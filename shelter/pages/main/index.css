@@ -797,6 +797,11 @@ header nav ul li:nth-child(1) a {
 .pets .pets__content {
   padding: 80px 40px 100px;
 }
+@media (max-width: 768px) {
+  .pets .pets__content {
+    padding: 80px 30px 100px;
+  }
+}
 .pets .pets__content h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
