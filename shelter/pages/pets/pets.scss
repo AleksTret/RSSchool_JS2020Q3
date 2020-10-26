@@ -12,12 +12,18 @@ header{
     background-color: $color-light-xl;
     padding: 30px 40px;
     position: fixed;
-    width: 98%;
-
+    
     @media (max-width: 768px){
         padding: 30px 30px;
         width: 100%;
     }
+
+    .header__logo{
+        @media (min-width: 769px){
+            margin-right: 571px;
+        }
+    }
+
 }
 /* Header styles end */
 

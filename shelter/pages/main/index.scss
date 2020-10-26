@@ -300,7 +300,7 @@ header{
         flex-wrap: wrap;
 
         @media (max-width: 768px){
-            padding: 82px 40px 92px;
+            padding: 80px 40px 94px;
         }
 
         @media (max-width: 320px){
@@ -335,11 +335,8 @@ header{
                 @include font__h3($color-dark-l);
                 margin-bottom: 20px;
 
-                @media (max-width: 768px){
-                    @include font__h3_mobile($color-dark-l);
-                }
-
                 @media (max-width: 320px){
+                    @include font__h3_mobile($color-dark-l);
                     margin-bottom: 25px;
                 }
             }
