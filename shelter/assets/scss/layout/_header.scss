@@ -55,7 +55,7 @@
 
                 &:nth-child(#{$active__nav__item}) a{
                     color: $color__active__link;
-                    font-weight: 600;
+                    //font-weight: 600;
                 }
             }
         }

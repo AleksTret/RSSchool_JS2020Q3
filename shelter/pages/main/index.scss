@@ -13,6 +13,11 @@ header{
     top: 60px;
     padding: 0 40px;
     z-index: 100;
+
+    @media (max-width: 768px){
+        top: 30px;
+        padding: 0 30px;
+    }
 }
 /* Header styles end */
 
@@ -201,7 +206,7 @@ header{
         flex-wrap: wrap;
 
         @media (max-width: 768px){
-            padding: 82px 40px 95px;
+            padding: 82px 40px 92px;
         }
 
         .donation__content__main__image{

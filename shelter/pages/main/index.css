@@ -584,9 +584,15 @@ footer {
   background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
   padding: 40px 40px 0;
 }
+@media (max-width: 768px) {
+  footer {
+    padding: 15px 35px 0;
+  }
+}
 footer .footer__content__wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 footer .footer__content__wrapper .footer__contact {
   margin-top: 17px;
@@ -605,6 +611,11 @@ footer .footer__content__wrapper .footer__location .footer__title {
 }
 footer .footer__content__wrapper .footer__location div:nth-child(2) {
   margin-bottom: 31px;
+}
+@media (max-width: 768px) {
+  footer .footer__content__wrapper .footer__image {
+    padding-top: 60px;
+  }
 }
 
 /* Footer styles end */
@@ -675,7 +686,12 @@ header nav ul li a:hover {
 }
 header nav ul li:nth-child(1) a {
   color: #FAFAFA;
-  font-weight: 600;
+}
+@media (max-width: 768px) {
+  header {
+    top: 30px;
+    padding: 0 30px;
+  }
 }
 
 /* Header styles end */
@@ -886,7 +902,7 @@ header nav ul li:nth-child(1) a {
 }
 @media (max-width: 768px) {
   .donation .donation__content__wrapper {
-    padding: 82px 40px 95px;
+    padding: 82px 40px 92px;
   }
 }
 .donation .donation__content__wrapper .donation__content__main__image {
