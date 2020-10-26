@@ -4,7 +4,7 @@
 header{
     @include header($color-dark-l, 
                     $color-dark-3xl, 
-                    $color-dark-l, 
+                    $color-dark-m, 
                     $color-dark-3xl, 
                     $color-dark-3xl,
                     2);
@@ -12,7 +12,12 @@ header{
     background-color: $color-light-xl;
     padding: 30px 40px;
     position: fixed;
-    width: inherit;
+    width: 98%;
+
+    @media (max-width: 768px){
+        padding: 30px 30px;
+        width: 100%;
+    }
 }
 /* Header styles end */
 
@@ -25,9 +30,20 @@ header{
         padding: 80px 40px 80px;
         text-align: center;
 
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 40px 56px;
+        }
+
         .pets__title{
             @include font__h3($color-dark-l);
             margin-bottom: 60px;
+
+            @media (max-width: 768px){
+                margin-bottom: 30px;
+            }
         }
 
         .pets__cards__container{
@@ -37,6 +53,18 @@ header{
             grid-column-gap: 40px;
             grid-row-gap: 30px;
             margin-bottom: 58px;
+            
+            @media (max-width: 768px) {
+                max-width: 85%;
+                grid-template-columns: repeat(auto-fill, 270px);
+                margin-bottom: 23px;
+            }
+
+            .pets__hidden{
+                @media (max-width: 768px){
+                    display: none;
+                }
+            }
         }
 
         .pets__cards__nav{
