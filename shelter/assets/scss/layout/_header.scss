@@ -33,6 +33,10 @@
             display: flex;        
             justify-content: center;
 
+            @media (max-width: 320px){
+                display: none;
+            }
+
             li{
                 margin: 0 36px 0 0;
                 

@@ -42,6 +42,10 @@ header{
             flex-direction: column;
         }
 
+        @media (max-width: 320px){
+            margin: 0px 10px;
+        }
+
         .hero__content__wrapper{
             margin-bottom: 80px;
             display: flex;
@@ -52,15 +56,28 @@ header{
                 margin-bottom: 105px;
             }
 
+            @media (max-width: 320px){
+                align-items: center;
+            }
+
             .hero__title{
                 @include font__h2($color-light-xl);
                 margin-bottom: 40px;
+
+                @media (max-width: 320px){
+                    text-align: center;
+                }
             }
 
             .hero__content{
                 @include font__paragraph_l($color-dark-s);
                 margin-bottom: 40px;
                 max-width: 460px;
+
+                @media (max-width: 320px){
+                    text-align: center;   
+                    margin-bottom: 44px;                
+                }
             }
         } 
 
@@ -70,6 +87,10 @@ header{
                 max-width: 564px;
             }
             
+            @media (max-width: 320px){
+                max-width: 258px;
+            }
+
             img{
                 width: 100%;
             }
@@ -88,10 +109,19 @@ header{
         margin-bottom: 50px;
     }
 
+    @media (max-width: 320px){
+        position: relative;
+        top: -85px;
+    }
+
     .about__content__wrapper{
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+
+        @media (max-width: 320px){
+            margin: 0 15px;
+        }
 
         .about__image{
             padding-top: 20px;
@@ -101,19 +131,41 @@ header{
                 order: 1;
                 margin: 60px 40px 0 35px;
             }
+
+            @media (max-width: 320px){
+                max-width: 260px;
+                margin: 18px 0 0 0;
+            }
+
+            img{
+                width: 100%;
+            }
         }
 
         .about__content{
             max-width: 430px;
 
+            @media (max-width: 320px){
+                text-align: center;
+                margin: 0 10px;
+            }
+
             h3{
                 @include font__h3($color-dark-l);
                 order: 0;
                 padding-top: 35px;
+
+                @media (max-width: 320px){
+                    @include font__h3_mobile($color-dark-l);
+                }
             }
 
             p{
                 @include font__paragraph_l($color-dark-xl);
+
+                @media (max-width: 320px){
+                    text-align: justify;
+                }
             }
 
             & :nth-of-type(1){
