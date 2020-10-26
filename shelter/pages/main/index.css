@@ -510,6 +510,12 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 60px;
+}
+@media (max-width: 768px) {
+  .help__card {
+    margin-right: 0;
+  }
 }
 @media (max-width: 320px) {
   .help__card {
@@ -519,7 +525,7 @@ ul {
   }
 }
 .help__card .help__card__image {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   width: 60px;
   height: 60px;
 }
@@ -548,17 +554,6 @@ ul {
     letter-spacing: 0.06em;
     color: #545454;
   }
-}
-.help__card {
-  margin-right: 120px;
-}
-@media (max-width: 768px) {
-  .help__card {
-    margin-right: 0;
-  }
-}
-.help__card:last-child {
-  margin-right: 0;
 }
 
 .pets__card {
@@ -680,10 +675,11 @@ footer .footer__content__wrapper {
 }
 footer .footer__content__wrapper .footer__contact {
   margin-top: 17px;
+  max-width: 280px;
 }
 @media (max-width: 768px) {
   footer .footer__content__wrapper .footer__contact {
-    max-width: 280px;
+    margin-top: 20px;
   }
 }
 @media (max-width: 320px) {
@@ -698,13 +694,8 @@ footer .footer__content__wrapper .footer__contact div:nth-child(2) {
   margin-bottom: 39px;
 }
 footer .footer__content__wrapper .footer__location {
-  margin: 17px 8px 0 0;
-}
-@media (max-width: 768px) {
-  footer .footer__content__wrapper .footer__location {
-    margin: 17px 20px 0 0;
-    max-width: 280px;
-  }
+  margin: 20px 0 0 0;
+  width: 302px;
 }
 @media (max-width: 320px) {
   footer .footer__content__wrapper .footer__location {
@@ -714,23 +705,13 @@ footer .footer__content__wrapper .footer__location {
 footer .footer__content__wrapper .footer__location .footer__title {
   margin-bottom: 33px;
 }
-@media (max-width: 768px) {
-  footer .footer__content__wrapper .footer__location .footer__title {
-    margin-bottom: 20px;
-  }
-}
 @media (max-width: 320px) {
   footer .footer__content__wrapper .footer__location .footer__title {
     margin: 0 20px 42px;
   }
 }
 footer .footer__content__wrapper .footer__location div:nth-child(2) {
-  margin-bottom: 31px;
-}
-@media (max-width: 768px) {
-  footer .footer__content__wrapper .footer__location div:nth-child(2) {
-    margin-bottom: 20px;
-  }
+  margin-bottom: 30px;
 }
 @media (max-width: 320px) {
   footer .footer__content__wrapper .footer__location div:nth-child(2) {
@@ -1014,6 +995,12 @@ header nav .burger_menu {
   color: #545454;
   order: 0;
   padding-top: 35px;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .about .about__content__wrapper .about__content h3 {
+    margin-bottom: 25px;
+  }
 }
 @media (max-width: 320px) {
   .about .about__content__wrapper .about__content h3 {
@@ -1039,7 +1026,7 @@ header nav .burger_menu {
     text-align: justify;
   }
 }
-.about .about__content__wrapper .about__content :nth-of-type(1) {
+.about .about__content__wrapper .about__content p:nth-of-type(1) {
   margin-bottom: 25px;
 }
 
@@ -1136,7 +1123,7 @@ header nav .burger_menu {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #545454;
-  margin-bottom: 60px;
+  margin-bottom: 56px;
 }
 @media (max-width: 320px) {
   .help .help__content__wrapper .help__title {
@@ -1153,7 +1140,7 @@ header nav .burger_menu {
 .help .help__content__wrapper .help__container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 @media (max-width: 768px) {
   .help .help__content__wrapper .help__container {
@@ -1165,14 +1152,6 @@ header nav .burger_menu {
   .help .help__content__wrapper .help__container {
     justify-content: space-between;
     padding: 0;
-  }
-}
-.help .help__content__wrapper .help__container .help__card:first-child {
-  margin-left: 120px;
-}
-@media (max-width: 768px) {
-  .help .help__content__wrapper .help__container .help__card:first-child {
-    margin-left: 0;
   }
 }
 

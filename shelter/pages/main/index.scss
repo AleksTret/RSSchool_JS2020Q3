@@ -159,6 +159,11 @@ header{
                 @include font__h3($color-dark-l);
                 order: 0;
                 padding-top: 35px;
+                margin-bottom: 20px;
+
+                @media (max-width: 768px){
+                    margin-bottom: 25px;
+                }
 
                 @media (max-width: 320px){
                     @include font__h3_mobile($color-dark-l);
@@ -173,7 +178,7 @@ header{
                 }
             }
 
-            & :nth-of-type(1){
+            & p:nth-of-type(1){
                 margin-bottom: 25px;
             }
         }
@@ -253,7 +258,7 @@ header{
 
         .help__title{
             @include font__h3($color-dark-l);
-            margin-bottom: 60px;
+            margin-bottom: 56px;
 
             @media (max-width: 320px){
                 @include font__h3_mobile($color-dark-l);
@@ -264,7 +269,7 @@ header{
         .help__container{
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
 
             @media (max-width: 768px){
                 justify-content: space-around;
@@ -274,15 +279,7 @@ header{
             @media (max-width: 320px){
                 justify-content: space-between;
                 padding: 0;
-            }
-
-            .help__card:first-child{
-                margin-left: 120px;
-
-                @media (max-width: 768px){
-                    margin-left: 0;
-                }
-            }            
+            }          
         }
     }
 }

@@ -28,9 +28,10 @@ footer{
 
         .footer__contact{
             margin-top: 17px;
+            max-width: 280px;
 
             @media (max-width: 768px){
-                max-width: 280px;
+                margin-top: 20px;
             }
 
             @media (max-width: 320px){
@@ -48,12 +49,12 @@ footer{
         }
 
         .footer__location{
-            margin: 17px 8px 0 0;
+            margin: 20px 0 0 0;
+            width: 302px;
 
-            @media (max-width: 768px){
-                margin: 17px 20px 0 0;
-                max-width: 280px;
-            }
+            // @media (max-width: 768px){
+            //     margin: 20px 0 0 0;
+            // }
 
             @media (max-width: 320px){
                 margin: 22px 0 0 0;
@@ -62,21 +63,13 @@ footer{
             .footer__title{
                 margin-bottom: 33px;
 
-                @media (max-width: 768px){
-                    margin-bottom: 20px;
-                }
-
                 @media (max-width: 320px){
                     margin: 0 20px 42px;
                 }
             }
             div{
                 &:nth-child(2){
-                    margin-bottom: 31px;  
-
-                    @media (max-width: 768px){
-                        margin-bottom: 20px;
-                    }
+                    margin-bottom: 30px;
 
                     @media (max-width: 320px){
                         margin-bottom: 37px;
