@@ -21,3 +21,9 @@
         box-shadow: 0 0 5px 2px $color-dark-3xl;
     }
 }
+
+.pets__card-hidden{
+    @media (max-width: 1000px){
+        display: none;
+    }
+}

@@ -344,7 +344,7 @@ template {
 
 body {
   cursor: url(../../assets/images/cursor_normal.png), auto;
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
 }
 
@@ -363,7 +363,7 @@ ul {
   font-weight: normal;
   font-size: 17px;
   line-height: 130%;
-  letter-spacing: 0.06em;
+  letter-spacing: 1px;
   color: #292929;
   text-decoration: none;
   text-align: center;
@@ -371,6 +371,14 @@ ul {
   background: #F1CDB3;
   border-radius: 100px;
   padding: 15px 45px;
+}
+@media (max-width: 768px) {
+  .button__primary:link, .button__primary:visited {
+    align-self: center;
+    padding: 25px 80px;
+    font-size: 28px;
+    margin-left: 25px;
+  }
 }
 
 .button__primary:hover, .button__primary:active {
@@ -384,7 +392,7 @@ ul {
   font-weight: normal;
   font-size: 17px;
   line-height: 130%;
-  letter-spacing: 0.06em;
+  letter-spacing: 1px;
   color: #292929;
   text-decoration: none;
   text-align: center;
@@ -520,6 +528,12 @@ ul {
 .pets__card:hover {
   cursor: url(../../assets/images/cursor_hover.png), auto;
   box-shadow: 0 0 5px 2px #292929;
+}
+
+@media (max-width: 768px) {
+  .pets__card-hidden {
+    display: none;
+  }
 }
 
 .information__card {
