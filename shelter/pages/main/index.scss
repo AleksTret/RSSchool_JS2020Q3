@@ -124,7 +124,7 @@ header{
         justify-content: center;
         flex-wrap: wrap;
 
-        @media (max-width: 320px){
+        @media (max-width: 520px){
             margin: 0 15px;
         }
 
@@ -150,7 +150,7 @@ header{
         .about__content{
             max-width: 430px;
 
-            @media (max-width: 320px){
+            @media (max-width: 520px){
                 text-align: center;
                 margin: 0 10px;
             }
@@ -165,7 +165,7 @@ header{
                     margin-bottom: 25px;
                 }
 
-                @media (max-width: 320px){
+                @media (max-width: 520px){
                     @include font__h3_mobile($color-dark-l);
                 }
             }
@@ -173,7 +173,7 @@ header{
             p{
                 @include font__paragraph_l($color-dark-xl);
 
-                @media (max-width: 320px){
+                @media (max-width: 520px){
                     text-align: justify;
                 }
             }
@@ -234,7 +234,8 @@ header{
                 min-width: 82.4%;
                 justify-content: space-between;
 
-                @media (max-width: 320px){
+                @media (max-width: 767px){
+                    justify-content: center;
                     order: 0;
                     margin: 0 0 10px 25px;
                 }
@@ -300,7 +301,7 @@ header{
             padding: 80px 40px 94px;
         }
 
-        @media (max-width: 320px){
+        @media (max-width: 520px){
             text-align: center;
             padding: 43px 15px 33px;
         }
@@ -324,7 +325,7 @@ header{
                 margin-bottom: 60px;
             }      
             
-            @media (max-width: 320px){
+            @media (max-width: 520px){
                 margin-bottom: 30px;
             }
             
@@ -332,7 +333,7 @@ header{
                 @include font__h3($color-dark-l);
                 margin-bottom: 20px;
 
-                @media (max-width: 320px){
+                @media (max-width: 520px){
                     @include font__h3_mobile($color-dark-l);
                     margin-bottom: 25px;
                 }
@@ -342,7 +343,7 @@ header{
                 @include font__h5($color-dark-l);
                 margin-bottom: 20px;
 
-                @media (max-width: 320px){
+                @media (max-width: 520px){
                     @include font__h5__mobile($color-dark-l);
                     margin-bottom: 25px;
                 }
@@ -352,7 +353,7 @@ header{
                 max-width: 380px;
                 @include font__donation__description($color-dark-m);
 
-                @media (max-width: 320px){
+                @media (max-width: 520px){
                     text-align: justify;
                 }
             }

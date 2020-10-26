@@ -28,8 +28,8 @@
     }
 }
 
-.pets__card-hidden-320{
-    @media (max-width: 500px){
+.pets__card-hidden-767{
+    @media (max-width: 767px){
         display: none;
     }
 }
