@@ -344,7 +344,7 @@ template {
 
 body {
   cursor: url(../../assets/images/cursor_normal.png), auto;
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
 }
 
@@ -363,7 +363,7 @@ ul {
   font-weight: normal;
   font-size: 17px;
   line-height: 130%;
-  letter-spacing: 0.06em;
+  letter-spacing: 1px;
   color: #292929;
   text-decoration: none;
   text-align: center;
@@ -371,6 +371,11 @@ ul {
   background: #F1CDB3;
   border-radius: 100px;
   padding: 15px 45px;
+}
+@media (max-width: 768px) {
+  .button__primary:link, .button__primary:visited {
+    align-self: center;
+  }
 }
 
 .button__primary:hover, .button__primary:active {
@@ -384,7 +389,7 @@ ul {
   font-weight: normal;
   font-size: 17px;
   line-height: 130%;
-  letter-spacing: 0.06em;
+  letter-spacing: 1px;
   color: #292929;
   text-decoration: none;
   text-align: center;
@@ -475,6 +480,11 @@ ul {
   margin-right: 15px;
 }
 
+.help__card {
+  margin-bottom: 58px;
+  width: 170px;
+  height: 113px;
+}
 .help__card img {
   margin-bottom: 25px;
   width: 60px;
@@ -491,6 +501,11 @@ ul {
 }
 .help__card {
   margin-right: 120px;
+}
+@media (max-width: 768px) {
+  .help__card {
+    margin-right: 0;
+  }
 }
 .help__card:last-child {
   margin-right: 0;
@@ -520,6 +535,12 @@ ul {
 .pets__card:hover {
   cursor: url(../../assets/images/cursor_hover.png), auto;
   box-shadow: 0 0 5px 2px #292929;
+}
+
+@media (max-width: 1000px) {
+  .pets__card-hidden {
+    display: none;
+  }
 }
 
 .information__card {
@@ -563,9 +584,20 @@ footer {
   background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
   padding: 40px 40px 0;
 }
+@media (max-width: 768px) {
+  footer {
+    padding: 15px 35px 0;
+  }
+}
 footer .footer__content__wrapper {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  footer .footer__content__wrapper {
+    justify-content: space-around;
+  }
 }
 footer .footer__content__wrapper .footer__contact {
   margin-top: 17px;
@@ -585,6 +617,11 @@ footer .footer__content__wrapper .footer__location .footer__title {
 footer .footer__content__wrapper .footer__location div:nth-child(2) {
   margin-bottom: 31px;
 }
+@media (max-width: 768px) {
+  footer .footer__content__wrapper .footer__image {
+    padding-top: 60px;
+  }
+}
 
 /* Footer styles end */
 /* Header styles begin */
@@ -592,7 +629,7 @@ header {
   background-color: #FFFFFF;
   padding: 30px 40px;
   position: fixed;
-  width: inherit;
+  width: 98%;
 }
 header nav {
   display: flex;
@@ -629,7 +666,6 @@ header nav ul {
   list-style-type: none;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 header nav ul li {
   margin: 0 36px 0 0;
@@ -643,7 +679,7 @@ header nav ul li a {
   font-weight: normal;
   font-size: 15px;
   line-height: 160%;
-  color: #545454;
+  color: #B2B2B2;
   text-decoration: none;
   padding-bottom: 3px;
 }
@@ -654,7 +690,12 @@ header nav ul li a:hover {
 }
 header nav ul li:nth-child(2) a {
   color: #292929;
-  font-weight: 600;
+}
+@media (max-width: 768px) {
+  header {
+    padding: 30px 30px;
+    width: 100%;
+  }
 }
 
 /* Header styles end */
@@ -667,6 +708,14 @@ header nav ul li:nth-child(2) a {
   padding: 80px 40px 80px;
   text-align: center;
 }
+@media (max-width: 768px) {
+  .pets .pets__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 40px 56px;
+  }
+}
 .pets .pets__content .pets__title {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
@@ -677,6 +726,11 @@ header nav ul li:nth-child(2) a {
   color: #545454;
   margin-bottom: 60px;
 }
+@media (max-width: 768px) {
+  .pets .pets__content .pets__title {
+    margin-bottom: 30px;
+  }
+}
 .pets .pets__content .pets__cards__container {
   display: grid;
   grid-template-columns: repeat(4, auto);
@@ -684,6 +738,18 @@ header nav ul li:nth-child(2) a {
   grid-column-gap: 40px;
   grid-row-gap: 30px;
   margin-bottom: 58px;
+}
+@media (max-width: 768px) {
+  .pets .pets__content .pets__cards__container {
+    max-width: 85%;
+    grid-template-columns: repeat(auto-fill, 270px);
+    margin-bottom: 23px;
+  }
+}
+@media (max-width: 768px) {
+  .pets .pets__content .pets__cards__container .pets__hidden {
+    display: none;
+  }
 }
 .pets .pets__content .pets__cards__nav .pets__cards__nav__list {
   display: flex;

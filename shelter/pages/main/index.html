@@ -36,6 +36,9 @@
                     </a>
                 </li>
             </ul>
+            <div class="burger_menu">
+                <img src="../../assets/images/Burger.png" alt="burger_menu">
+            </div>
         </nav>
     </header> 
     <main>
@@ -46,9 +49,11 @@
                     <p class="hero__content">We offer to give a chance to a little and nice puppy with an extremely 
                         wide and open heart. He or she will love you more than anybody else 
                         in the world, you will see!</p>
-                    <a href="#" class="button__primary">Make a friend</a>
+                    <a href="../pets/pets.html" class="button__primary">Make a friend</a>
                 </div>
-                <img src="../../assets/images/start-screen-puppy.png" alt="puppy">
+                <div class="hero__image">
+                    <img src="../../assets/images/start-screen-puppy.png" alt="puppy">           
+                </div>                   
             </div>
         </section>        
         <section class="about">
@@ -90,12 +95,12 @@
                             <p>Katrine</p>
                             <a href="#" class="button_secondary">Learn more</a>
                         </div>
-                        <div class="pets__card">
+                        <div class="pets__card pets__card-hidden-320">
                             <img src="../../assets/images/pets-jennifer.png" alt="pets-jennifer">
                             <p>Jennifer</p>
                             <a href="#" class="button_secondary">Learn more</a>
                         </div>
-                        <div class="pets__card">
+                        <div class="pets__card pets__card-hidden">
                             <img src="../../assets/images/pets-woody.png" alt="pets-woody">
                             <p>Woody</p>
                             <a href="#" class="button_secondary">Learn more</a>
@@ -103,7 +108,7 @@
                     </div>                    
                     <a href="#" class="round__button button__right__arrow"></a>
                 </div>
-                <a href="#" class="button__primary">Get to know the rest</a>
+                <a href="../pets/pets.html" class="button__primary">Get to know the rest</a>
             </div>
         </section> 
         <section class="help">
@@ -113,41 +118,57 @@
                 </h3>
                 <div class="help__container">
                     <div class="help__card">
-                        <img src="../../assets/icons/pet-food.svg" alt="pet-food">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/pet-food.svg" alt="pet-food">
+                        </div>
                         <p>Pet food</p>
                     </div>
                     <div class="help__card">
-                        <img src="../../assets/icons/transportation.svg" alt="transportation">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/transportation.svg" alt="transportation">            
+                        </div>
                         <p>Transportation</p>
                     </div>
                     <div class="help__card">
-                        <img src="../../assets/icons/toys.svg" alt="toys">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/toys.svg" alt="toys">        
+                        </div>
                         <p>Toys</p>
                     </div>
                     <div class="help__card">
-                        <img src="../../assets/icons/bowls-and-cups.svg" alt="bowls-and-cups">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/bowls-and-cups.svg" alt="bowls-and-cups">   
+                        </div>
                         <p>Bowls and cups</p>
                     </div>
                     <div class="help__card">
-                        <img src="../../assets/icons/shampoos.svg" alt="shampoos">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/shampoos.svg" alt="shampoos">
+                        </div>
                         <p>Shampoos</p>
                     </div>
-                </div>
-                <div class="help__container">
                     <div class="help__card">
-                        <img src="../../assets/icons/vitamins.svg" alt="vitamins">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/vitamins.svg" alt="vitamins">
+                        </div>
                         <p>Vitamins</p>
                     </div>
                     <div class="help__card">
-                        <img src="../../assets/icons/medicines.svg" alt="medicines">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/medicines.svg" alt="medicines">
+                        </div>                        
                         <p>Medicines</p>
                     </div>
                     <div class="help__card">
-                        <img src="../../assets/icons/collars-or-leashes.svg" alt="collars-or-leashes">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/collars-or-leashes.svg" alt="collars-or-leashes">
+                        </div>
                         <p>Collars / leashes</p>
                     </div>
                     <div class="help__card">
-                        <img src="../../assets/icons/sleeping-area.svg" alt="sleeping-area">
+                        <div class="help__card__image">
+                            <img src="../../assets/icons/sleeping-area.svg" alt="sleeping-area">
+                        </div>
                         <p>Sleeping areas</p>
                     </div>
                 </div>
@@ -155,7 +176,9 @@
         </section>
         <section class="donation">
             <div class="donation__content__wrapper">
-                <img class="donation__content__main__image" src="../../assets/images/donation-dog.png" alt="donation-dog">
+                <div class="donation__content__main__image">
+                    <img src="../../assets/images/donation-dog.png" alt="donation-dog">
+                </div>
                 <div class="donation__content">
                     <h3 class="donation__title">
                         You can also <br> make a donation
@@ -182,7 +205,7 @@
         <div class="footer__content__wrapper">
             <div class="footer__contact information__card">
                 <h3 class="footer__title">
-                    For questions <br> and suggestions
+                    For questions and suggestions
                 </h3>
                 <div>
                     <a href="mailto:email@shelter.com" target="_blank">
@@ -199,13 +222,13 @@
             </div>
             <div class="footer__location information__card">
                 <h3 class="footer__title">
-                    We are waiting <br> for your visit
+                    We are waiting for your visit
                 </h3>
                 <div>
                     <a href="https://goo.gl/maps/spz13P5XVXCddM55A" target="_blank">
                         <img src="../../assets/icons/pin.svg" alt="pin" class="footer__icon">    
                     </a>
-                    <p>1 Central Street, Boston <br> (entrance from the store)</p>
+                    <p>1 Central Street, Boston (entrance from the store)</p>
                 </div>
                 <div>
                     <a href="https://goo.gl/maps/1GtcJU5YwLvFfTt76" target="_blank">
@@ -214,7 +237,9 @@
                     <p>18 South Park, London </p>
                 </div>
             </div>
-            <img src="../../assets/images/footer-puppy.png" alt="footer-puppy" class="footer__image">
+            <div class="footer__image">
+                <img src="../../assets/images/footer-puppy.png" alt="footer-puppy">
+            </div>            
         </div>
     </footer>
 </body>

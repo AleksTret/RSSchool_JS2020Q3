@@ -13,6 +13,15 @@ header{
     top: 60px;
     padding: 0 40px;
     z-index: 100;
+
+    @media (max-width: 768px){
+        top: 30px;
+        padding: 0 30px;
+    }
+
+    @media (max-width: 320px){
+        padding: 0 10px;
+    }
 }
 /* Header styles end */
 
@@ -20,29 +29,76 @@ header{
 .hero{
     @include hero__gradient__background();
     position: relative;
-    top: -60px;
+    top: -64px;
     padding-top: 180px;
+
+    @media (max-width: 768px){
+        top: -90px;
+    }
 
     .hero__wrapper{
         margin: 0 40px;
         display: flex;
         justify-content: space-between;
         align-items: center ;
+        
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        @media (max-width: 320px){
+            margin: 0px 10px;
+        }
 
         .hero__content__wrapper{
             margin-bottom: 80px;
-   
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            @media (max-width: 768px){
+                margin-bottom: 105px;
+            }
+
+            @media (max-width: 320px){
+                align-items: center;
+            }
+
             .hero__title{
                 @include font__h2($color-light-xl);
                 margin-bottom: 40px;
+
+                @media (max-width: 320px){
+                    text-align: center;
+                }
             }
 
             .hero__content{
                 @include font__paragraph_l($color-dark-s);
-                max-width: 460px;
                 margin-bottom: 40px;
+                max-width: 460px;
+
+                @media (max-width: 320px){
+                    text-align: center;   
+                    margin-bottom: 44px;                
+                }
             }
         } 
+
+        .hero__image{
+            @media (max-width: 768px){
+                align-self: flex-end;
+                max-width: 564px;
+            }
+            
+            @media (max-width: 320px){
+                max-width: 258px;
+            }
+
+            img{
+                width: 100%;
+            }
+        }
     }
 }
 /* Hero styles end */
@@ -51,25 +107,70 @@ header{
 .about{
     margin-bottom: 96px;
 
+    @media (max-width: 768px){
+        position: relative;
+        top: -45px;
+        margin-bottom: 50px;
+    }
+
+    @media (max-width: 320px){
+        position: relative;
+        top: -85px;
+        margin-bottom: 0px;
+    }
+
     .about__content__wrapper{
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
+
+        @media (max-width: 320px){
+            margin: 0 15px;
+        }
 
         .about__image{
             padding-top: 20px;
             margin-right: 120px;
+
+            @media (max-width: 768px){
+                order: 1;
+                margin: 60px 40px 0 35px;
+            }
+
+            @media (max-width: 320px){
+                max-width: 260px;
+                margin: 18px 0 0 0;
+            }
+
+            img{
+                width: 100%;
+            }
         }
 
         .about__content{
             max-width: 430px;
 
+            @media (max-width: 320px){
+                text-align: center;
+                margin: 0 10px;
+            }
+
             h3{
                 @include font__h3($color-dark-l);
+                order: 0;
                 padding-top: 35px;
+
+                @media (max-width: 320px){
+                    @include font__h3_mobile($color-dark-l);
+                }
             }
 
             p{
                 @include font__paragraph_l($color-dark-xl);
+
+                @media (max-width: 320px){
+                    text-align: justify;
+                }
             }
 
             & :nth-of-type(1){
@@ -85,12 +186,30 @@ header{
     background-color: $color-light-l;
     text-align: center;
 
+    @media (max-width: 320px){
+        position: relative;
+        top: -45px;
+    }
+
     .pets__content{
         padding: 80px 40px 100px;
 
+        @media (max-width: 768px){
+            padding: 80px 30px 100px;
+        }
+
+        @media (max-width: 320px){
+            padding: 40px 0px 42px;
+        }
+
         h3{
             @include font__h3($color-dark-xl);   
-            margin-bottom: 60px;        
+            margin-bottom: 60px;    
+            
+            @media (max-width: 320px){
+                @include font__h3_mobile($color-dark-xl);
+                margin-bottom: 43px;
+            }
         }
 
         .pets__content__wrapper{
@@ -99,10 +218,21 @@ header{
             align-items: center;
             margin-bottom: 60px;
 
+            flex-wrap: wrap;
+
+            @media (max-width: 320px){
+                margin-bottom: 42px;
+            }
+
             .pets__card__wrapper{
-                display: grid;
-                grid-template-columns: repeat(3, auto);
-                grid-column-gap: 90px;
+                display: flex;
+                min-width: 82.4%;
+                justify-content: space-between;
+
+                @media (max-width: 320px){
+                    order: 0;
+                    margin: 0 0 10px 25px;
+                }
             }
         }
     }   
@@ -115,19 +245,44 @@ header{
     background-color: $color-light-xl;
 
     .help__content__wrapper{
-        display: flex;
-        flex-direction: column;
-        padding: 80px 0 47px;
+        padding: 80px 0 40px;
+
+        @media (max-width: 320px){
+            padding: 0px 15px 15px;
+        }
 
         .help__title{
             @include font__h3($color-dark-l);
             margin-bottom: 60px;
+
+            @media (max-width: 320px){
+                @include font__h3_mobile($color-dark-l);
+                margin-bottom: 35px;
+            }
         }
 
         .help__container{
             display: flex;
-            justify-content: center;
-            margin-bottom: 55px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            @media (max-width: 768px){
+                justify-content: space-around;
+                padding: 0px 45px;
+            }
+
+            @media (max-width: 320px){
+                justify-content: space-between;
+                padding: 0;
+            }
+
+            .help__card:first-child{
+                margin-left: 120px;
+
+                @media (max-width: 768px){
+                    margin-left: 0;
+                }
+            }            
         }
     }
 }
@@ -138,29 +293,74 @@ header{
     background-color: $color-light-l;
 
     .donation__content__wrapper{
-        padding: 82px 40px 101px;
+        padding: 82px 40px 98px;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
+
+        @media (max-width: 768px){
+            padding: 82px 40px 92px;
+        }
+
+        @media (max-width: 320px){
+            text-align: center;
+            padding: 43px 15px 33px;
+        }
 
         .donation__content__main__image{
             margin-right: 30px;
-        }
 
+            @media (max-width: 768px){
+                order: 1;
+                margin-right: 0;
+            }
+
+            img{
+                width: 100%;
+            }
+        }
+        
         .donation__content{
+            @media (max-width: 768px){
+                order: 0;
+                margin-bottom: 60px;
+            }      
+            
+            @media (max-width: 320px){
+                margin-bottom: 30px;
+            }
+            
             .donation__title{
                 @include font__h3($color-dark-l);
                 margin-bottom: 20px;
+
+                @media (max-width: 768px){
+                    @include font__h3_mobile($color-dark-l);
+                }
+
+                @media (max-width: 320px){
+                    margin-bottom: 25px;
+                }
             }
     
             .donation__subtitle{
                 @include font__h5($color-dark-l);
                 margin-bottom: 20px;
+
+                @media (max-width: 320px){
+                    @include font__h5__mobile($color-dark-l);
+                    margin-bottom: 25px;
+                }
             }
     
             .donation__information{
                 max-width: 380px;
                 @include font__donation__description($color-dark-m);
+
+                @media (max-width: 320px){
+                    text-align: justify;
+                }
             }
         }
     }

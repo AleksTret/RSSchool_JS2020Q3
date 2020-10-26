@@ -8,6 +8,10 @@
     nav{
         display: flex;
         justify-content: space-between;
+
+        @media (max-width: 320px){
+            align-items: center;
+        }
         
         a{
             text-decoration: none;
@@ -32,7 +36,10 @@
             list-style-type: none;   
             display: flex;        
             justify-content: center;
-            align-items: center;
+
+            @media (max-width: 320px){
+                display: none;
+            }
 
             li{
                 margin: 0 36px 0 0;
@@ -55,9 +62,16 @@
 
                 &:nth-child(#{$active__nav__item}) a{
                     color: $color__active__link;
-                    font-weight: 600;
                 }
             }
+        }
+
+        .burger_menu{
+            @media (min-width: 321px){
+                display: none;
+            }
+
+            margin-right: 42px;
         }
     }
 }

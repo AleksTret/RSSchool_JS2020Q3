@@ -32,6 +32,11 @@
     font-size: 44px;
     line-height: 130%;
     color: $color;
+
+    @media (max-width: 320px){
+        font-size: 25px;
+        letter-spacing: 0.06em;
+    }
 }
 
 @mixin font__h3($color){
@@ -63,6 +68,14 @@
     font-size: 15px;
     line-height: 110%;
     letter-spacing: 0.06em;
+    color: $color;
+}
+
+@mixin font__h5__mobile($color){
+    @include font__family__Georgia();
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0;
     color: $color;
 }
 
@@ -100,7 +113,7 @@
     @include font__family__Georgia();
     font-size: 17px;
     line-height: 130%;
-    letter-spacing: 0.06em;
+    letter-spacing: 1px;
     color: $color
 }
 
