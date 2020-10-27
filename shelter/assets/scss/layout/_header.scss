@@ -50,12 +50,13 @@
                 }
             
                 a{
-                    @include font__paragraph_l($color__link);    
+                    @include font__paragraph_l($color__link); 
+                    @include cursor__normal();   
                     text-decoration: none;
                     padding-bottom: 3px;            
                 }
 
-                & a:hover{
+                .link-active:hover{
                     @include cursor__hover();
                     color: $color__hover__link;
                     border-bottom: 3px solid $color-primary;
