@@ -357,6 +357,12 @@ ul {
   padding-inline-start: 0;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
 .button__primary:link, .button__primary:visited {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
@@ -422,7 +428,7 @@ ul {
 .button__left__arrow {
   background: url("../../assets/icons/left-arrow.svg") center no-repeat;
 }
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   .button__left__arrow {
     order: 1;
     margin: 10px 0 0 68px;
@@ -432,7 +438,7 @@ ul {
 .button__right__arrow {
   background: url("../../assets/icons/right-arrow.svg") center no-repeat;
 }
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   .button__right__arrow {
     order: 2;
     margin: 10px 68px 0 0;
@@ -484,7 +490,7 @@ ul {
   letter-spacing: 0.06em;
   color: #545454;
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .donation__credit__card p {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-style: normal;
@@ -588,8 +594,8 @@ ul {
   }
 }
 
-@media (max-width: 500px) {
-  .pets__card-hidden-320 {
+@media (max-width: 767px) {
+  .pets__card-hidden-767 {
     display: none;
   }
 }
@@ -608,7 +614,7 @@ ul {
   color: #FFFFFF;
   display: inline-flex;
 }
-@media (max-width: 320px) {
+@media (max-width: 1000px) {
   .information__card h3 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-style: normal;
@@ -745,6 +751,7 @@ header {
 header nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 @media (max-width: 320px) {
   header nav {
@@ -783,7 +790,7 @@ header nav ul {
   display: flex;
   justify-content: center;
 }
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   header nav ul {
     display: none;
   }
@@ -815,7 +822,7 @@ header nav ul li:nth-child(1) a {
 header nav .burger_menu {
   margin-right: 42px;
 }
-@media (min-width: 321px) {
+@media (min-width: 767px) {
   header nav .burger_menu {
     display: none;
   }
@@ -856,7 +863,7 @@ header nav .burger_menu {
     flex-direction: column;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .hero .hero__wrapper {
     margin: 0px 10px;
   }
@@ -872,7 +879,7 @@ header nav .burger_menu {
     margin-bottom: 105px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .hero .hero__wrapper .hero__content__wrapper {
     align-items: center;
   }
@@ -886,14 +893,15 @@ header nav .burger_menu {
   color: #FFFFFF;
   margin-bottom: 40px;
 }
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .hero .hero__wrapper .hero__content__wrapper .hero__title {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-style: normal;
+    font-weight: normal;
     font-size: 25px;
+    line-height: 130%;
     letter-spacing: 0.06em;
-  }
-}
-@media (max-width: 320px) {
-  .hero .hero__wrapper .hero__content__wrapper .hero__title {
+    color: #FFFFFF;
     text-align: center;
   }
 }
@@ -907,7 +915,7 @@ header nav .burger_menu {
   margin-bottom: 40px;
   max-width: 460px;
 }
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .hero .hero__wrapper .hero__content__wrapper .hero__content {
     text-align: center;
     margin-bottom: 44px;
@@ -952,7 +960,7 @@ header nav .burger_menu {
   justify-content: center;
   flex-wrap: wrap;
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .about .about__content__wrapper {
     margin: 0 15px;
   }
@@ -979,7 +987,7 @@ header nav .burger_menu {
 .about .about__content__wrapper .about__content {
   max-width: 430px;
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .about .about__content__wrapper .about__content {
     text-align: center;
     margin: 0 10px;
@@ -1002,7 +1010,7 @@ header nav .burger_menu {
     margin-bottom: 25px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .about .about__content__wrapper .about__content h3 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-style: normal;
@@ -1021,7 +1029,7 @@ header nav .burger_menu {
   line-height: 160%;
   color: #4C4C4C;
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .about .about__content__wrapper .about__content p {
     text-align: justify;
   }
@@ -1094,8 +1102,9 @@ header nav .burger_menu {
   min-width: 82.4%;
   justify-content: space-between;
 }
-@media (max-width: 320px) {
+@media (max-width: 767px) {
   .pets .pets__content .pets__content__wrapper .pets__card__wrapper {
+    justify-content: center;
     order: 0;
     margin: 0 0 10px 25px;
   }
@@ -1172,7 +1181,7 @@ header nav .burger_menu {
     padding: 80px 40px 94px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .donation .donation__content__wrapper {
     text-align: center;
     padding: 43px 15px 33px;
@@ -1196,7 +1205,7 @@ header nav .burger_menu {
     margin-bottom: 60px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .donation .donation__content__wrapper .donation__content {
     margin-bottom: 30px;
   }
@@ -1211,7 +1220,7 @@ header nav .burger_menu {
   color: #545454;
   margin-bottom: 20px;
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .donation .donation__content__wrapper .donation__content .donation__title {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-style: normal;
@@ -1233,7 +1242,7 @@ header nav .burger_menu {
   color: #545454;
   margin-bottom: 20px;
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .donation .donation__content__wrapper .donation__content .donation__subtitle {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-style: normal;
@@ -1255,7 +1264,7 @@ header nav .burger_menu {
   line-height: 18px;
   color: #B2B2B2;
 }
-@media (max-width: 320px) {
+@media (max-width: 520px) {
   .donation .donation__content__wrapper .donation__content .donation__information {
     text-align: justify;
   }

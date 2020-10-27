@@ -9,7 +9,7 @@
     p{
         @include font__h4($color-dark-l);
 
-        @media (max-width:320px){
+        @media (max-width:520px){
             @include font__h5($color-dark-l);
         }
     }

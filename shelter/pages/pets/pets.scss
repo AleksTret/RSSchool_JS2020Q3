@@ -11,17 +11,9 @@ header{
 
     background-color: $color-light-xl;
     padding: 30px 40px;
-    position: fixed;
     
     @media (max-width: 768px){
         padding: 30px 30px;
-        width: 100%;
-    }
-
-    .header__logo{
-        @media (min-width: 769px){
-            margin-right: 571px;
-        }
     }
 
     @media (max-width: 320px){
@@ -34,8 +26,7 @@ header{
 /* Pets styles begin */
 .pets{
     background-color: $color-light-l;
-    padding-top: 120px;
-
+    
     .pets__content{
         padding: 80px 40px 80px;
         text-align: center;
@@ -67,15 +58,13 @@ header{
 
         .pets__cards__container{
             display: grid;
-            grid-template-columns: repeat(4, auto);
-            grid-template-rows: repeat(2, auto);
+            grid-template-columns: repeat(auto-fill, 270px);
+            justify-content: center;
             grid-column-gap: 40px;
             grid-row-gap: 30px;
             margin-bottom: 58px;
             
             @media (max-width: 768px) {
-                max-width: 85%;
-                grid-template-columns: repeat(auto-fill, 270px);
                 margin-bottom: 23px;
             }
 

@@ -6,7 +6,7 @@
         @include font__h3($color-light-xl);
         display: inline-flex;
 
-        @media (max-width: 320px){
+        @media (max-width: 1000px){
             @include font__h3_mobile($color-light-xl);
         }
     }
