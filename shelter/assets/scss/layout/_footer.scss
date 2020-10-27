@@ -16,7 +16,7 @@ footer{
         justify-content: space-between;
         
 
-        @media (max-width: 768px){
+        @media (max-width: 1279px){
             flex-wrap: wrap;
             justify-content: space-around;
         }
@@ -51,10 +51,6 @@ footer{
         .footer__location{
             margin: 20px 0 0 0;
             width: 302px;
-
-            // @media (max-width: 768px){
-            //     margin: 20px 0 0 0;
-            // }
 
             @media (max-width: 320px){
                 margin: 22px 0 0 0;
