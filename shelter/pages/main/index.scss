@@ -46,7 +46,7 @@ header{
             flex-direction: column;
         }
 
-        @media (max-width: 320px){
+        @media (max-width: 500px){
             margin: 0px 10px;
         }
 
@@ -60,7 +60,7 @@ header{
                 margin-bottom: 105px;
             }
 
-            @media (max-width: 320px){
+            @media (max-width: 500px){
                 align-items: center;
             }
 
@@ -68,7 +68,8 @@ header{
                 @include font__h2($color-light-xl);
                 margin-bottom: 40px;
 
-                @media (max-width: 320px){
+                @media (max-width: 500px){
+                    @include font__h3_mobile($color-light-xl);
                     text-align: center;
                 }
             }
@@ -78,7 +79,7 @@ header{
                 margin-bottom: 40px;
                 max-width: 460px;
 
-                @media (max-width: 320px){
+                @media (max-width: 500px){
                     text-align: center;   
                     margin-bottom: 44px;                
                 }

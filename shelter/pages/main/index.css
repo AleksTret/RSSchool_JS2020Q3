@@ -357,6 +357,12 @@ ul {
   padding-inline-start: 0;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
 .button__primary:link, .button__primary:visited {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: normal;
@@ -857,7 +863,7 @@ header nav .burger_menu {
     flex-direction: column;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .hero .hero__wrapper {
     margin: 0px 10px;
   }
@@ -873,7 +879,7 @@ header nav .burger_menu {
     margin-bottom: 105px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .hero .hero__wrapper .hero__content__wrapper {
     align-items: center;
   }
@@ -887,14 +893,15 @@ header nav .burger_menu {
   color: #FFFFFF;
   margin-bottom: 40px;
 }
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .hero .hero__wrapper .hero__content__wrapper .hero__title {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-style: normal;
+    font-weight: normal;
     font-size: 25px;
+    line-height: 130%;
     letter-spacing: 0.06em;
-  }
-}
-@media (max-width: 320px) {
-  .hero .hero__wrapper .hero__content__wrapper .hero__title {
+    color: #FFFFFF;
     text-align: center;
   }
 }
@@ -908,7 +915,7 @@ header nav .burger_menu {
   margin-bottom: 40px;
   max-width: 460px;
 }
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .hero .hero__wrapper .hero__content__wrapper .hero__content {
     text-align: center;
     margin-bottom: 44px;
