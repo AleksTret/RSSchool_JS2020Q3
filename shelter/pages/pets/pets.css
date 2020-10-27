@@ -378,7 +378,7 @@ ul {
   border-radius: 100px;
   padding: 15px 45px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1279px) {
   .button__primary:link, .button__primary:visited {
     align-self: center;
   }
@@ -672,7 +672,7 @@ footer .footer__content__wrapper {
   display: flex;
   justify-content: space-between;
 }
-@media (max-width: 768px) {
+@media (max-width: 1279px) {
   footer .footer__content__wrapper {
     flex-wrap: wrap;
     justify-content: space-around;
