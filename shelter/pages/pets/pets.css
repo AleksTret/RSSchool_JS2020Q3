@@ -425,6 +425,11 @@ ul {
   border: 2px solid #FDDCC4;
 }
 
+.round__button-disabled {
+  pointer-events: none;
+  cursor: url(../../assets/images/cursor_normal.png), auto;
+}
+
 .button__left__arrow {
   background: url("../../assets/icons/left-arrow.svg") center no-repeat;
 }

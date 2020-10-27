@@ -48,6 +48,11 @@
     border: 2px solid $color-primary-light;
 }
 
+.round__button-disabled{
+    pointer-events: none; 
+    @include cursor__normal();
+}
+
 .button__left__arrow{
     background: url("../../assets/icons/left-arrow.svg") center no-repeat;
 
