@@ -1,4 +1,530 @@
-const Keyboard = {
+const en = {
+    1 : {
+        normal : "1",
+        caps : "1",
+        shift : "!"
+    },
+    2 : {
+        normal : "2",
+        caps : "2",
+        shift : "@"
+    },
+    3 : {
+        normal : "3",
+        caps : "3",
+        shift : "#"
+    },
+    4 : {
+        normal : "4",
+        caps : "4",
+        shift : "$"
+    },
+    5 : {
+        normal : "5",
+        caps : "5",
+        shift : "%"
+    },
+    6 : {
+        normal : "6",
+        caps : "6",
+        shift : "^"
+    },
+    7 : {
+        normal : "7",
+        caps : "7",
+        shift : "&"
+    },
+    8 : {
+        normal : "8",
+        caps : "8",
+        shift : "*"
+    },
+    9 : {
+        normal : "9",
+        caps : "9",
+        shift : "("
+    },
+    10 : {
+        normal : "0",
+        caps : "0",
+        shift : ")"
+    },
+    11 : {
+        normal : "-",
+        caps : "-",
+        shift : "_"
+    },
+    12 : {
+        normal : "=",
+        caps : "=",
+        shift : "+"
+    },
+    13 : {
+        normal : "backspace",
+        caps : "backspace",
+        shift : "backspace"
+    },
+    14 : {
+        normal : "q",
+        caps : "Q",
+        shift : "Q"
+    },
+    15 : {
+        normal : "w",
+        caps : "W",
+        shift : "W"
+    },
+    16 : {
+        normal : "e",
+        caps : "E",
+        shift : "E"
+    },
+    17 : {
+        normal : "r",
+        caps : "R",
+        shift : "R"
+    },
+    18 : {
+        normal : "t",
+        caps : "T",
+        shift : "T"
+    },
+    19 : {
+        normal : "y",
+        caps : "Y",
+        shift : "Y"
+    },
+    20 : {
+        normal : "u",
+        caps : "U",
+        shift : "U"
+    },
+    21 : {
+        normal : "i",
+        caps : "I",
+        shift : "I"
+    },
+    22 : {
+        normal : "o",
+        caps : "O",
+        shift : "O"
+    },
+    23 : {
+        normal : "p",
+        caps : "P",
+        shift : "P"
+    },
+    24 : {
+        normal : "[",
+        caps : "[",
+        shift : "{"
+    },
+    25 : {
+        normal : "]",
+        caps : "]",
+        shift : "}"
+    },
+    26 : {
+        normal : "capslock",
+        caps : "capslock",
+        shift : "casplock"
+    },
+    27 : {
+        normal : "a",
+        caps : "A",
+        shift : "A"
+    },
+    28 : {
+        normal : "s",
+        caps : "S",
+        shift : "S"
+    },
+    29 : {
+        normal : "d",
+        caps : "D",
+        shift : "D"
+    },
+    30 : {
+        normal : "f",
+        caps : "F",
+        shift : "F"
+    },
+    31 : {
+        normal : "g",
+        caps : "G",
+        shift : "G"
+    },
+    32 : {
+        normal : "h",
+        caps : "H",
+        shift : "H"
+    },
+    33 : {
+        normal : "j",
+        caps : "J",
+        shift : "J"
+    },
+    34 : {
+        normal : "k",
+        caps : "K",
+        shift : "K"
+    },
+    35 : {
+        normal : "l",
+        caps : "L",
+        shift : "L"
+    },
+    36 : {
+        normal : ";",
+        caps : ";",
+        shift : ":"
+    },
+    37 : {
+        normal : "'",
+        caps : "'",
+        shift : "\""
+    },
+    38 : {
+        normal : "enter",
+        caps : "enter",
+        shift : "enter"
+    },
+    39 : {
+        normal : "language",
+        caps : "language",
+        shift : "language"
+    },
+    40 : {
+        normal : "shift",
+        caps : "shift",
+        shift : "shift"
+    },
+    41 : {
+        normal : "z",
+        caps : "Z",
+        shift : "Z"
+    },
+    42 : {
+        normal : "x",
+        caps : "X",
+        shift : "X"
+    },
+    43 : {
+        normal : "c",
+        caps : "C",
+        shift : "C"
+    },
+    44 : {
+        normal : "v",
+        caps : "V",
+        shift : "V"
+    },
+    45 : {
+        normal : "b",
+        caps : "B",
+        shift : "B"
+    },
+    46 : {
+        normal : "n",
+        caps : "N",
+        shift : "N"
+    },
+    47 : {
+        normal : "m",
+        caps : "M",
+        shift : "M"
+    },
+    48 : {
+        normal : ",",
+        caps : ",",
+        shift : "<"
+    },
+    49 : {
+        normal : ".",
+        caps : ".",
+        shift : ">"
+    },
+    50 : {
+        normal : "/",
+        caps : "/",
+        shift : "?"
+    },
+    51 : {
+        normal : "done",
+        caps : "done",
+        shift : "done"
+    },
+    52 : {
+        normal : "space",
+        caps : "space",
+        shift : "space"
+    },
+}
+
+const ru = {
+    1 : {
+        normal : "1",
+        caps : "1",
+        shift : "!"
+    },
+    2 : {
+        normal : "2",
+        caps : "2",
+        shift : "\""
+    },
+    3 : {
+        normal : "3",
+        caps : "3",
+        shift : "№"
+    },
+    4 : {
+        normal : "4",
+        caps : "4",
+        shift : ";"
+    },
+    5 : {
+        normal : "5",
+        caps : "5",
+        shift : "%"
+    },
+    6 : {
+        normal : "6",
+        caps : "6",
+        shift : ":"
+    },
+    7 : {
+        normal : "7",
+        caps : "7",
+        shift : "?"
+    },
+    8 : {
+        normal : "8",
+        caps : "8",
+        shift : "*"
+    },
+    9 : {
+        normal : "9",
+        caps : "9",
+        shift : "("
+    },
+    10 : {
+        normal : "0",
+        caps : "0",
+        shift : ")"
+    },
+    11 : {
+        normal : "-",
+        caps : "-",
+        shift : "_"
+    },
+    12 : {
+        normal : "=",
+        caps : "=",
+        shift : "+"
+    },
+    13 : {
+        normal : "backspace",
+        caps : "backspace",
+        shift : "backspace"
+    },
+    14 : {
+        normal : "й",
+        caps : "Й",
+        shift : "Й"
+    },
+    15 : {
+        normal : "ц",
+        caps : "Ц",
+        shift : "Ц"
+    },
+    16 : {
+        normal : "у",
+        caps : "У",
+        shift : "У"
+    },
+    17 : {
+        normal : "к",
+        caps : "К",
+        shift : "К"
+    },
+    18 : {
+        normal : "е",
+        caps : "Е",
+        shift : "Е"
+    },
+    19 : {
+        normal : "н",
+        caps : "Н",
+        shift : "Н"
+    },
+    20 : {
+        normal : "г",
+        caps : "Г",
+        shift : "Г"
+    },
+    21 : {
+        normal : "ш",
+        caps : "Ш",
+        shift : "Ш"
+    },
+    22 : {
+        normal : "щ",
+        caps : "Щ",
+        shift : "Щ"
+    },
+    23 : {
+        normal : "з",
+        caps : "З",
+        shift : "З"
+    },
+    24 : {
+        normal : "х",
+        caps : "Х",
+        shift : "Х"
+    },
+    25 : {
+        normal : "ъ",
+        caps : "Ъ",
+        shift : "Ъ"
+    },
+    26 : {
+        normal : "capslock",
+        caps : "capslock",
+        shift : "casplock"
+    },
+    27 : {
+        normal : "ф",
+        caps : "Ф",
+        shift : "Ф"
+    },
+    28 : {
+        normal : "ы",
+        caps : "Ы",
+        shift : "Ы"
+    },
+    29 : {
+        normal : "в",
+        caps : "В",
+        shift : "В"
+    },
+    30 : {
+        normal : "а",
+        caps : "А",
+        shift : "А"
+    },
+    31 : {
+        normal : "п",
+        caps : "П",
+        shift : "П"
+    },
+    32 : {
+        normal : "р",
+        caps : "Р",
+        shift : "Р"
+    },
+    33 : {
+        normal : "о",
+        caps : "О",
+        shift : "О"
+    },
+    34 : {
+        normal : "л",
+        caps : "Л",
+        shift : "Л"
+    },
+    35 : {
+        normal : "д",
+        caps : "Д",
+        shift : "Д"
+    },
+    36 : {
+        normal : "ж",
+        caps : "Ж",
+        shift : "Ж"
+    },
+    37 : {
+        normal : "э",
+        caps : "Э",
+        shift : "Э"
+    },
+    38 : {
+        normal : "enter",
+        caps : "enter",
+        shift : "enter"
+    },
+    39 : {
+        normal : "language",
+        caps : "language",
+        shift : "language"
+    },
+    40 : {
+        normal : "shift",
+        caps : "shift",
+        shift : "shift"
+    },
+    41 : {
+        normal : "я",
+        caps : "Я",
+        shift : "Я"
+    },
+    42 : {
+        normal : "ч",
+        caps : "Ч",
+        shift : "Ч"
+    },
+    43 : {
+        normal : "с",
+        caps : "С",
+        shift : "С"
+    },
+    44 : {
+        normal : "м",
+        caps : "М",
+        shift : "М"
+    },
+    45 : {
+        normal : "и",
+        caps : "И",
+        shift : "И"
+    },
+    46 : {
+        normal : "т",
+        caps : "Т",
+        shift : "Т"
+    },
+    47 : {
+        normal : "ь",
+        caps : "Ь",
+        shift : "Ь"
+    },
+    48 : {
+        normal : "б",
+        caps : "Б",
+        shift : "Б"
+    },
+    49 : {
+        normal : "ю",
+        caps : "Ю",
+        shift : "Ю"
+    },
+    50 : {
+        normal : ".",
+        caps : ".",
+        shift : ","
+    },
+    51 : {
+        normal : "done",
+        caps : "done",
+        shift : "done"
+    },
+    52 : {
+        normal : "space",
+        caps : "space",
+        shift : "space"
+    },
+}
+
+const Keyboard2 = {
     textArea: document.querySelector(".use-keyboard-input"),
 
     elements: {
@@ -15,17 +541,27 @@ const Keyboard = {
     properties: {
         value: "",
         capsLock: false,
-        shift: false
+        shift: false,
+        language: ""
     },
 
-    init(){
+    init() {
+
+        this.languages = ["en", "ru"],
+        this.properties.language = this.languages[0]
+        this.keyLayouts = new Map();
+        this.keyLayouts.set("en", new Map(Object.entries(en)));
+        this.keyLayouts.set("ru", new Map(Object.entries(ru)));
+        
+        this.currentLayout = this.keyLayouts.get(this.properties.language);
+
         this.elements.main = document.createElement("div");
         this.elements.keysContainer = document.createElement("div");
 
         this.elements.main.classList.add("keyboard", "keyboard--hidden");
         this.elements.keysContainer.classList.add("keyboard__keys");
+
         this.elements.keysContainer.appendChild(this._createKeys());
-        this.specialSymbol = this._createSpecialSymbols();
 
         this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
 
@@ -39,31 +575,30 @@ const Keyboard = {
         })
     },
 
+    _createIconHTML(icon_name){
+        return `<i class="material-icons">${icon_name}</i>`;
+    },
+
     _createKeys(){
         const fragment = document.createDocumentFragment();
-        const keyLayout = [
-            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace",
-            "caps", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
-            "shift", "a", "s", "d", "f", "g", "h", "j", "k", "l", "enter",
-            "done", "z", "x", "c", "v", "b", "n", "m", ",", ".", "?",
-            "space"
-        ];
 
-        const createIconHTML = (icon_name) => {
-            return `<i class="material-icons">${icon_name}</i>`;
-        }
+        // const createIconHTML = (icon_name) => {
+        //     return `<i class="material-icons">${icon_name}</i>`;
+        // }
 
-        keyLayout.forEach(key => {
+        this.currentLayout.forEach((value, key, map) => {
             const keyElement = document.createElement("button");
-            const insertLineBreak = ["backspace", "p", "enter", "?"].indexOf(key) !== -1;
+
+            const insertLineBreak = ["13", "25", "38", "50"].indexOf(key) !== -1;
 
             keyElement.setAttribute("type", "button");
+            keyElement.setAttribute("data", key);
             keyElement.classList.add("keyboard__key");
 
-            switch (key) {
+            switch (value.normal) {
                 case "backspace":
                     keyElement.classList.add("keyboard__key--wide");
-                    keyElement.innerHTML = createIconHTML("backspace");
+                    keyElement.innerHTML = this._createIconHTML("backspace");
 
                     keyElement.addEventListener("click", () => {
                         this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
@@ -72,9 +607,9 @@ const Keyboard = {
                     });
                     break;
 
-                case "caps":
+                case "capslock":
                     keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
-                    keyElement.innerHTML = createIconHTML("keyboard_capslock");
+                    keyElement.innerHTML = this._createIconHTML("keyboard_capslock");
 
                     keyElement.addEventListener("click", () => {
                         this._toggleCapsLock();
@@ -85,7 +620,7 @@ const Keyboard = {
 
                 case "enter":
                     keyElement.classList.add("keyboard__key--wide");
-                    keyElement.innerHTML = createIconHTML("keyboard_return");
+                    keyElement.innerHTML = this._createIconHTML("keyboard_return");
 
                     keyElement.addEventListener("click", () => {
                         this.properties.value += "\n";
@@ -96,7 +631,7 @@ const Keyboard = {
 
                 case "space":
                     keyElement.classList.add("keyboard__key--extra-wide");
-                    keyElement.innerHTML = createIconHTML("space_bar");
+                    keyElement.innerHTML = this._createIconHTML("space_bar");
 
                     keyElement.addEventListener("click", () => {
                         this.properties.value += " ";
@@ -107,7 +642,7 @@ const Keyboard = {
 
                 case "done":
                     keyElement.classList.add("keyboard__key--wide", "keyboard__key--dark");
-                    keyElement.innerHTML = createIconHTML("check_circle");
+                    keyElement.innerHTML = this._createIconHTML("check_circle");
 
                     keyElement.addEventListener("click", () => {
                         this.close();
@@ -116,38 +651,29 @@ const Keyboard = {
                     break;
 
                 case "shift":
-                    keyElement.classList.add("keyboard__key--activatable");
-                    keyElement.innerHTML = createIconHTML("arrow_circle_up");
+                    keyElement.classList.add("keyboard__key--activatable", "keyboard__key--wide");
+                    keyElement.innerHTML = this._createIconHTML("arrow_circle_up");
                     keyElement.addEventListener("click", () => {
                         this._toggleShift();
                         keyElement.classList.toggle("keyboard__key--active", this.properties.shift);
                         this.textArea.focus();
                     });
-
+                    break;
+                
+                case "language":
+                    keyElement.classList.add("keyboard__key--wide");
+                    keyElement.innerHTML = this._createIconHTML("language") + `<span class="language_name">${this.properties.language}</span>`;
+                    keyElement.addEventListener("click", () => {
+                        this._toggleLang();
+                        this.textArea.focus();
+                    })
                     break;
         
                 default:
-                    keyElement.textContent = key.toLowerCase();
+                    keyElement.innerHTML = value.normal;
 
-                    keyElement.addEventListener("click", () => {
-                        if(this.properties.shift){
-                            if (this.specialSymbol.has(key)){
-                                this.properties.value += this.specialSymbol.get(key)
-                            }
-                            else{
-                                this.properties.value += !this.properties.capsLock ? 
-                                                            key.toUpperCase(): 
-                                                            key.toLowerCase(); 
-                            }
-                        }
-                        else{
-                            this.properties.value += this.properties.capsLock ? 
-                                                        key.toUpperCase(): 
-                                                        key.toLowerCase(); 
-                        }
-                        this._triggerEvent("oninput");
-                        this.textArea.focus();
-                    });
+                    keyElement.addEventListener("click", (event) => this._print(event));
+
                     break;
             }
 
@@ -161,26 +687,12 @@ const Keyboard = {
         return fragment;
     },
 
-    _createSpecialSymbols(){
-        const specialSymbol = {
-            "1" : "!",
-            "2" : "@",
-            "3" : "#",
-            "4" : "$",
-            "5" : "%",
-            "6" : "^",
-            "7" : "&",
-            "8" : "*",
-            "9" : "(",
-            "0" : ")",
-            "," : "<",
-            "." : ">",
-            "?" : "/"
-        };
+    _print(event){
+        this.properties.value += event.currentTarget.innerText;
 
-        return new Map(Object.entries(specialSymbol));
+        this._triggerEvent("oninput");
+        this.textArea.focus();
     },
-
 
     _triggerEvent(handlerName){
         if(typeof this.eventHandlers[handlerName] == "function"){
@@ -192,52 +704,58 @@ const Keyboard = {
         this.properties.capsLock = !this.properties.capsLock;  
 
         this.elements.keys.forEach(key => {
-            if(key.childElementCount === 0){
-                if (this.properties.capsLock){
-                    key.textContent = !this.properties.shift ?
-                                        key.textContent.toUpperCase(): 
-                                        key.textContent.toLowerCase();
-                }
-                else {
-                    key.textContent = this.properties.shift ? 
-                                        key.textContent.toUpperCase(): 
-                                        key.textContent.toLowerCase(); 
-                }
-            }
-        })
+            if(key.childElementCount !== 0) return;
+            const dataAttribute = key.getAttribute("data");
+            const letterObject = this.currentLayout.get(dataAttribute);
+            key.innerHTML = this._getSymbol(this.properties.capsLock, this.properties.shift, letterObject);
+        });
+    },
+
+    _getSymbol(caps, shift, letterObject){
+        const isSpecialSymbol = letterObject.normal === letterObject.caps;
+        if (caps){
+            return !shift ? letterObject.caps : 
+                            isSpecialSymbol ? letterObject.shift : letterObject.normal;
+        }
+        else {
+            return shift ? letterObject.shift : letterObject.normal;
+        }
     },
 
     _toggleShift(){
         this.properties.shift = !this.properties.shift;
 
         this.elements.keys.forEach(key => {
-            if(key.childElementCount === 0){
-                if (this.properties.shift){
-                    if (this.specialSymbol.has(key.textContent)){
-                        key.textContent = this.specialSymbol.get(key.textContent)
-                    }
-                    else{
-                        key.textContent = !this.properties.capsLock ? 
-                                            key.textContent.toUpperCase(): 
-                                            key.textContent.toLowerCase(); 
-                    }
-                }
-                else{
-                    let keySpecialSymbol = ([...this.specialSymbol].find(([, value]) => value === key.textContent) || [])[0];
-                    if (keySpecialSymbol){
-                        key.textContent = keySpecialSymbol;
-                    }
-                    else{
-                        key.textContent = this.properties.capsLock ? 
-                                            key.textContent.toUpperCase(): 
-                                            key.textContent.toLowerCase(); 
-                    }
-                }
-            }
-        })
+            if(key.childElementCount !== 0) return;
+            const dataAttribute = key.getAttribute("data");
+            const letterObject = this.currentLayout.get(dataAttribute);        
+            key.innerHTML = this._getSymbol(this.properties.capsLock, this.properties.shift, letterObject);     
+        });
     },
 
+    _toggleLang(){
+        const index = this.languages.indexOf(this.properties.language);
+        const next = index < this.languages.length - 1 ? index + 1 : 0;
+        this.properties.language = this.languages[next];
+        
+        this.currentLayout = this.keyLayouts.get(this.properties.language);
 
+        this.elements.keys.forEach(key => {
+
+
+            if(key.childElementCount !== 0) {
+                let span = key.getElementsByClassName("language_name");
+                if (span.length){
+                    key.innerHTML = this._createIconHTML("language") + `<span class="language_name">${this.properties.language}</span>`;
+                }                
+                return;
+            }
+            const dataAttribute = key.getAttribute("data");
+            const letterObject = this.properties.language ? this.currentLayout.get(dataAttribute) : this.currentLayout.get(dataAttribute);       
+
+            key.innerHTML = this._getSymbol(this.properties.capsLock, this.properties.shift, letterObject);
+        })
+    },
 
     open(initialValue, oninput, onclose){
         this.properties.value = initialValue || "";
@@ -254,4 +772,4 @@ const Keyboard = {
     }
 }
 
-window.addEventListener("DOMContentLoaded", () => Keyboard.init());
+window.addEventListener("DOMContentLoaded", () => Keyboard2.init());
