@@ -84,3 +84,19 @@
 .language_name{
   margin-left: 3px;
 }
+
+.keyboard__key--highlight{
+  /* animation-name: highlight;
+  animation-duration: 0.5s; */
+  color: red;
+}
+
+/* @keyframes highlight {
+  0% {color: #ffffff;}
+  50% {color: red;}
+  100% {color: #ffffff;}
+} */
+
+.keyboard__key__code-hidden{
+  display: none;
+}
