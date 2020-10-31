@@ -11,7 +11,8 @@ const Keyboard = {
         capsLock: false,
         shift: false,
         language: "",
-        sound: false
+        sound: false,
+        sync: false
     },
 
     async init(keyboardLayouts) {
@@ -236,6 +237,8 @@ const Keyboard = {
             return;
         }
 
+        !this.properties.sync && this._syncKeyLayout(event.key);
+
         event.code.includes("CapsLock") && this._clickOnCapsLock();
         event.code.includes("Shift") && this._clickOnShift();
         this.properties.sound && !event.altKey && !event.ctrlKey && this._soundClick(event.code);
@@ -244,6 +247,25 @@ const Keyboard = {
             key.childElementCount !== 0 && event.code.includes(key.querySelector("span")?.innerHTML) && key.querySelector("i").classList.add("keyboard__key--highlight");
             key.innerHTML.toLowerCase() == event.key.toLowerCase() && key.classList.add("keyboard__key--highlight");             
         });
+    },
+
+    _syncKeyLayout(key){
+        console.log(this.properties.sync);
+        console.log(key);
+
+        if (/[a-z]/i.test(key) && this.properties.language == "ru"){
+            this._toggleLang();
+            this._toggleSync();
+        } 
+        if (/[а-я]/i.test(key) && this.properties.language == "en"){
+            this._toggleLang();
+            this._toggleSync();
+        } 
+    },
+
+    _toggleSync(){
+        this.properties.sync = !this.properties.sync; 
+        console.log
     },
 
     _onKeyup(event){
@@ -336,7 +358,8 @@ const Keyboard = {
                 return;
             }
             const dataAttribute = key.getAttribute("data");
-            const letterObject = this.properties.language ? this.currentLayout.get(dataAttribute) : this.currentLayout.get(dataAttribute);       
+            //const letterObject = this.properties.language ? this.currentLayout.get(dataAttribute) : this.currentLayout.get(dataAttribute); 
+            const letterObject = this.currentLayout.get(dataAttribute);      
 
             key.innerHTML = this._getSymbol(this.properties.capsLock, this.properties.shift, letterObject);
         })
