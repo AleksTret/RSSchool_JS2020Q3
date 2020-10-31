@@ -250,9 +250,6 @@ const Keyboard = {
     },
 
     _syncKeyLayout(key){
-        console.log(this.properties.sync);
-        console.log(key);
-
         if (/[a-z]/i.test(key) && this.properties.language == "ru"){
             this._toggleLang();
             this._toggleSync();
@@ -265,7 +262,6 @@ const Keyboard = {
 
     _toggleSync(){
         this.properties.sync = !this.properties.sync; 
-        console.log
     },
 
     _onKeyup(event){
