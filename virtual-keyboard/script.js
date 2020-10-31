@@ -231,9 +231,14 @@ const Keyboard = {
     },
 
     _onKeydown(event){
+        if  ((event.altKey && event.shiftKey) || (event.ctrlKey && event.shiftKey)) {
+            this._toggleLang();
+            return;
+        }
+
         event.code.includes("CapsLock") && this._clickOnCapsLock();
         event.code.includes("Shift") && this._clickOnShift();
-        this.properties.sound && this._soundClick(event.code);
+        this.properties.sound && !event.altKey && !event.ctrlKey && this._soundClick(event.code);
      
         this.elements.keys.forEach(key => {
             key.childElementCount !== 0 && event.code.includes(key.querySelector("span")?.innerHTML) && key.querySelector("i").classList.add("keyboard__key--highlight");
@@ -320,10 +325,9 @@ const Keyboard = {
         this.properties.language = this.languages[next];
         
         this.currentLayout = this.keyLayouts.get(this.properties.language);
+        this.properties.sound && this._soundClick();
 
         this.elements.keys.forEach(key => {
-
-
             if(key.childElementCount !== 0) {
                 let span = key.getElementsByClassName("language_name");
                 if (span.length){
