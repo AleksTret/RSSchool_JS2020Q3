@@ -11,7 +11,7 @@ const Keyboard = {
         capsLock: false,
         shift: false,
         language: "",
-        highlight: false
+        sound: false
     },
 
     async init(keyboardLayouts) {
@@ -48,6 +48,9 @@ const Keyboard = {
                 this._showKeyboard();
             });    
         })
+
+        // make copy properties for callback functions
+        this.currentProperties = this.properties;
 
         document.querySelectorAll(".use-keyboard-input").forEach(element => {
             element.addEventListener("keydown", (event) => {
@@ -102,7 +105,10 @@ const Keyboard = {
                     keyElement.innerHTML = this._createIconHTML("keyboard_capslock") + this._createKeyCode("CapsLock");
 
                     this.keyCapsLock = keyElement;
-                    keyElement.addEventListener("click", () => this._clickOnCapsLock());
+                    keyElement.addEventListener("click", () => {
+                        this._clickOnCapsLock();
+                        this.properties.sound && this._soundClick("CapsLock");
+                    });
                     break;
 
                 case "enter":
@@ -132,7 +138,10 @@ const Keyboard = {
                     
                     keyElement.innerHTML = this._createIconHTML("arrow_circle_up") + this._createKeyCode("Shift");
                     this.keyShift = keyElement;
-                    keyElement.addEventListener("click", () => this._clickOnShift());
+                    keyElement.addEventListener("click", () => {
+                        this._clickOnShift();
+                        this.properties.sound && this._soundClick("Shift");
+                    });
                     break;
                 
                 case "language":
@@ -153,6 +162,7 @@ const Keyboard = {
                             let currentPositionCursor = this.textArea.selectionStart;
                             this.textArea.setSelectionRange(currentPositionCursor - 1,currentPositionCursor - 1);
                         }
+                        this.properties.sound && this._soundClick();
                         this.textArea.focus();
                     })
                     break;
@@ -163,8 +173,19 @@ const Keyboard = {
                         this.textArea.focus();
                         let currentPositionCursor = this.textArea.selectionStart;
                         this.textArea.setSelectionRange(currentPositionCursor + 1,currentPositionCursor + 1);
+                        this.properties.sound && this._soundClick();
                         this.textArea.focus();
                     })
+                    break;
+
+                case "sound":
+                    keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
+                    keyElement.innerHTML = this._createIconHTML("audiotrack") + this._createKeyCode("audiotrack");
+                    this.keySound = keyElement;
+                    keyElement.addEventListener("click", () => {
+                        this._toggleSound();
+                        this._soundClick();
+                    });
                     break;
         
                 default:
@@ -183,6 +204,20 @@ const Keyboard = {
         return fragment;
     },
 
+    _soundClick(code){
+        let urlSoundFile = `assets/sounds/${this.currentProperties.language}_click.mp3`;
+        if(code?.includes("keyboard_return")){
+            urlSoundFile = `assets/sounds/enter_click.mp3`;
+        }
+
+        if(code?.includes("Backspace") || code?.includes("Enter") || code?.includes("CapsLock") || code?.includes("Shift")){
+            urlSoundFile = `assets/sounds/${code}_click.mp3`;
+        } 
+        
+        let audio = new Audio(urlSoundFile);
+        audio.play();
+    },
+
     _clickOnCapsLock(){
         this._toggleCapsLock();
         this.keyCapsLock.classList.toggle("keyboard__key--active", this.properties.capsLock);
@@ -198,6 +233,7 @@ const Keyboard = {
     _onKeydown(event){
         event.code.includes("CapsLock") && this._clickOnCapsLock();
         event.code.includes("Shift") && this._clickOnShift();
+        this.properties.sound && this._soundClick(event.code);
      
         this.elements.keys.forEach(key => {
             key.childElementCount !== 0 && event.code.includes(key.querySelector("span")?.innerHTML) && key.querySelector("i").classList.add("keyboard__key--highlight");
@@ -213,13 +249,14 @@ const Keyboard = {
     },
 
     _print(event, textArea, symbol){
+        this.properties.sound && this._soundClick(event.currentTarget.innerText);
         const startPosition = textArea.selectionStart;
         const endPosition = textArea.selectionEnd;
         
         let text = textArea.value.substring(0, startPosition) + (symbol || event.currentTarget.innerText) + textArea.value.substring(endPosition);
 
         textArea.value = text;
-
+        
         textArea.focus();
 
         textArea.selectionEnd = (startPosition == endPosition) ? (startPosition + 1) : endPosition - 1;
@@ -228,6 +265,7 @@ const Keyboard = {
     _delete(textArea){
         const startPosition = textArea.selectionStart;
         const endPosition = textArea.selectionEnd;
+        this.properties.sound && this._soundClick("Backspace");
      
         textArea.value = (startPosition == endPosition) ?
                             textArea.value.substring(0, startPosition - 1) + textArea.value.substring(endPosition):
@@ -246,6 +284,12 @@ const Keyboard = {
             const letterObject = this.currentLayout.get(dataAttribute);
             key.innerHTML = this._getSymbol(this.properties.capsLock, this.properties.shift, letterObject);
         });
+    },
+
+    _toggleSound(){
+        this.properties.sound = !this.properties.sound;
+        this.keySound.classList.toggle("keyboard__key--active", this.properties.sound);
+        this.textArea.focus();
     },
 
     _getSymbol(caps, shift, letterObject){

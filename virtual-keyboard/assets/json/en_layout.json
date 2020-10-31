@@ -268,5 +268,10 @@
     "normal": "right_arrow",
     "caps": "right_arrow",
     "shift": "right_arrow"
+  },
+  "55": {
+    "normal": "sound",
+    "caps": "sound",
+    "shift": "sound"
   }
 }
