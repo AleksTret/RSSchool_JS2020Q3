@@ -1095,6 +1095,21 @@ figure {
 }
 .timer .time {
   font-size: calc(80px + 70 * ((100vw - 320px) / 1480));
+  display: flex;
+  width: 40rem;
+  padding-left: 5.5rem;
+}
+@media screen and (max-width: 800px) {
+  .timer .time {
+    width: 25rem;
+    padding-left: 2rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .timer .time {
+    width: 20rem;
+    padding-left: 1rem;
+  }
 }
 .timer .date {
   font-size: calc(16px + 16 * ((100vw - 320px) / 1480));

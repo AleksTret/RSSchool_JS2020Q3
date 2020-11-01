@@ -43,8 +43,10 @@ class Weather{
 
     onKeydown(event){
         if(event.code === 'Enter'){
-            let className = event.currentTarget.classList.item(0).toString();
-            localStorage.setItem(className, event.currentTarget.innerText); 
+            if (!(event.currentTarget.innerText?.trim() === "" || event.currentTarget.innerText?.length === 0)){
+                let className = event.currentTarget.classList.item(0).toString();
+                localStorage.setItem(className, event.currentTarget.innerText); 
+            }
             event.currentTarget.blur();
             this.getWeather();
         }
@@ -58,7 +60,9 @@ class Weather{
 
     setStorage(event){
         let className = event.currentTarget.classList.item(0).toString();
-        localStorage.setItem(className, event.currentTarget.innerText);
+        if (!(event.currentTarget.innerText?.trim() === "" || event.currentTarget.innerText?.length === 0)){
+            localStorage.setItem(className, event.currentTarget.innerText);
+        }  
     }
 
     onClick(event){
@@ -181,14 +185,22 @@ class Momentum{
         event.currentTarget.innerText = '';   
     }
     
+    isEmptyString(string) {
+        console.log(string?.length === 0 || string?.trim());
+        return (string?.length === 0 || string?.trim());
+    }
+
+
     onKeydown(event){
         if(event.code === 'Enter'){
-            let className = event.currentTarget.classList.item(0).toString();
-            localStorage.setItem(className, event.currentTarget.innerText); 
+            if (!(event.currentTarget.innerText?.trim() === "" || event.currentTarget.innerText?.length === 0)){
+                let className = event.currentTarget.classList.item(0).toString();
+                localStorage.setItem(className, event.currentTarget.innerText); 
+            }
             event.currentTarget.blur();
         }
     }
-    
+
     whenBlur(event){
         let className = event.currentTarget.classList.item(0).toString();
         event.currentTarget.innerText = localStorage.getItem(className);
@@ -196,7 +208,9 @@ class Momentum{
     
     setStorage(event){
         let className = event.currentTarget.classList.item(0).toString();
-        localStorage.setItem(className, event.currentTarget.innerText);
+        if (!(event.currentTarget.innerText?.trim() === "" || event.currentTarget.innerText?.length === 0)){
+            localStorage.setItem(className, event.currentTarget.innerText);
+        }        
     }
 
     nextBackground(){
