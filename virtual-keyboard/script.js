@@ -212,7 +212,7 @@ const Keyboard = {
         }
 
         if(code?.includes("Backspace") || code?.includes("Enter") || code?.includes("CapsLock") || code?.includes("Shift")){
-            urlSoundFile = `assets/sounds/${code}_click.mp3`;
+            urlSoundFile = `assets/sounds/${code.toLowerCase()}_click.mp3`;
         } 
         
         let audio = new Audio(urlSoundFile);
@@ -250,11 +250,11 @@ const Keyboard = {
     },
 
     _syncKeyLayout(key){
-        if (/[a-z]/i.test(key) && this.properties.language == "ru"){
+        if (/[a-z]/i.test(key) && this.properties.language == this.languages[1]){
             this._toggleLang();
             this._toggleSync();
         } 
-        if (/[а-я]/i.test(key) && this.properties.language == "en"){
+        if (/[а-я]/i.test(key) && this.properties.language == this.languages[0]){
             this._toggleLang();
             this._toggleSync();
         } 
