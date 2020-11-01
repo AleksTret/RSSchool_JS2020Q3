@@ -46,6 +46,21 @@
 
     .time {
         @include adaptive-font(150, 80);
+        display: flex;
+        width: 40rem;
+        padding-left: 5.5rem;
+
+        @media screen and (max-width: 800px)
+        {
+            width: 25rem;
+            padding-left: 2rem;
+        }
+
+        @media screen and (max-width: 400px)
+        {
+            width: 20rem;
+            padding-left: 1rem;
+        }
     }
 
     .date{
