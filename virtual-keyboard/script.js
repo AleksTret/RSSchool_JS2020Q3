@@ -17,6 +17,36 @@ const Keyboard = {
     },
 
     async init(keyboardLayouts) {
+
+        await this._createKeyLayout(keyboardLayouts);
+
+        this._createKeyboard();
+
+        this._speechRecognitionInit();
+    },
+
+    _createKeyboard(){
+        this.elements.main = document.createElement("div");
+        this.elements.keysContainer = document.createElement("div");
+
+        this.elements.main.classList.add("keyboard", "keyboard--hidden");
+        this.elements.keysContainer.classList.add("keyboard__keys");
+
+        this.elements.keysContainer.appendChild(this._createKeys());
+
+        this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
+
+        this.elements.main.appendChild(this.elements.keysContainer);
+        document.body.appendChild(this.elements.main);
+
+        this.textArea.addEventListener("focus", () => this._showKeyboard());    
+
+        this.textArea.addEventListener("keydown", (event) => this._onKeydown(event));
+
+        this.textArea.addEventListener("keyup", (event) => this._onKeyup(event));
+    },
+
+    async _createKeyLayout(keyboardLayouts){
         this.languages = [];
         this.keyLayouts = new Map();
 
@@ -32,42 +62,24 @@ const Keyboard = {
 
         this.currentLayout = this.keyLayouts.get(this.languages[0]);
 
-        this.elements.main = document.createElement("div");
-        this.elements.keysContainer = document.createElement("div");
-
-        this.elements.main.classList.add("keyboard", "keyboard--hidden");
-        this.elements.keysContainer.classList.add("keyboard__keys");
-
-        this.elements.keysContainer.appendChild(this._createKeys());
-
-        this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
-
-        this.elements.main.appendChild(this.elements.keysContainer);
-        document.body.appendChild(this.elements.main);
-
-        document.querySelectorAll(".use-keyboard-input").forEach(element => {
-            element.addEventListener("focus", () => {
-                this._showKeyboard();
-            });    
-        })
-
-        // make copy properties for callback functions
-        this.currentProperties = this.properties;
-
-        document.querySelectorAll(".use-keyboard-input").forEach(element => {
-            element.addEventListener("keydown", (event) => {
-                this._onKeydown(event);
-            });    
-        })
-
-        document.querySelectorAll(".use-keyboard-input").forEach(element => {
-            element.addEventListener("keyup", (event) => {
-                this._onKeyup(event);
-            });    
-        });
-
-        this._speechRecognitionInit();
+        this._createRegularExpression();
     },
+
+    _createRegularExpression(){
+        let reg = /[^1234567890\-=\[\]{};:'",.\/]/i;
+        this.regularExpression = new Map();
+
+        this.keyLayouts.forEach((layout, language) => {
+            let lettersSetFromKeyLayout = Array.from(layout.values())
+                                                .map(item => item.normal)
+                                                .filter(item => item.length === 1 && reg.test(item))
+                                                .join("");
+
+            let regExp = new RegExp(`[${lettersSetFromKeyLayout}]`);
+
+            this.regularExpression.set(language, regExp);
+        });
+    }, 
 
     async _loadKeyLayout(url){
         const response = await fetch(url);
@@ -215,7 +227,7 @@ const Keyboard = {
     },
 
     _soundClick(code){
-        let urlSoundFile = `assets/sounds/${this.currentProperties.language}_click.mp3`;
+        let urlSoundFile = `assets/sounds/${this.properties.language}_click.mp3`;
         if(code?.includes("keyboard_return")){
             urlSoundFile = `assets/sounds/enter_click.mp3`;
         }
@@ -259,14 +271,12 @@ const Keyboard = {
     },
 
     _syncKeyLayout(key){
-        if (/[a-z]/i.test(key) && this.properties.language == this.languages[1]){
-            this._toggleLang();
-            this._toggleSync();
-        } 
-        if (/[а-я]/i.test(key) && this.properties.language == this.languages[0]){
-            this._toggleLang();
-            this._toggleSync();
-        } 
+        this.regularExpression.forEach((regexp, language) => {
+            if (regexp.test(key) && this.properties.language != language){
+                this._toggleLang();
+                this._toggleSync();
+            } 
+        })
     },
 
     _toggleSync(){
