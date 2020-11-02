@@ -16,23 +16,24 @@ const Keyboard = {
         microphone: false
     },
 
-    async init(keyboardLayouts) {
+    async init(keyboardLayouts, breakLine = ["13", "25", "38", "50"]){
+        console.log(breakLine);
 
         await this._createKeyLayout(keyboardLayouts);
 
-        this._createKeyboard();
+        this._createKeyboard(breakLine);
 
         this._speechRecognitionInit();
     },
 
-    _createKeyboard(){
+    _createKeyboard(breakLine){
         this.elements.main = document.createElement("div");
         this.elements.keysContainer = document.createElement("div");
 
         this.elements.main.classList.add("keyboard", "keyboard--hidden");
         this.elements.keysContainer.classList.add("keyboard__keys");
 
-        this.elements.keysContainer.appendChild(this._createKeys());
+        this.elements.keysContainer.appendChild(this._createKeys(breakLine));
 
         this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
 
@@ -94,13 +95,13 @@ const Keyboard = {
         return `<span class="keyboard__key__code-hidden">${text}</span>`;
     },
 
-    _createKeys(){
+    _createKeys(breakLine){
         const fragment = document.createDocumentFragment();
 
         this.currentLayout.forEach((value, key, map) => {
             const keyElement = document.createElement("button");
 
-            const insertLineBreak = ["13", "25", "38", "50"].indexOf(key) !== -1;
+            const insertLineBreak = breakLine.indexOf(key) !== -1;
 
             keyElement.setAttribute("type", "button");
             keyElement.setAttribute("data", key);
@@ -426,5 +427,6 @@ const Keyboard = {
 const keyboardLayouts = {
     "en" : "assets/json/en_layout.json",
     "ru" : "assets/json/ru_layout.json"
-}
+};
+
 window.addEventListener("DOMContentLoaded", () => Keyboard.init(keyboardLayouts));
