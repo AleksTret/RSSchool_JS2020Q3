@@ -61,7 +61,25 @@ const Keyboard = {
         this.properties.language = this.languages[0];
 
         this.currentLayout = this.keyLayouts.get(this.languages[0]);
+
+        this._createRegularExpression();
     },
+
+    _createRegularExpression(){
+        let reg = /[^1234567890\-=\[\]{};:'",.\/]/i;
+        this.regularExpression = new Map();
+
+        this.keyLayouts.forEach((layout, language) => {
+            let lettersSetFromKeyLayout = Array.from(layout.values())
+                                                .map(item => item.normal)
+                                                .filter(item => item.length === 1 && reg.test(item))
+                                                .join("");
+
+            let regExp = new RegExp(`[${lettersSetFromKeyLayout}]`);
+
+            this.regularExpression.set(language, regExp);
+        });
+    }, 
 
     async _loadKeyLayout(url){
         const response = await fetch(url);
@@ -253,14 +271,12 @@ const Keyboard = {
     },
 
     _syncKeyLayout(key){
-        if (/[a-z]/i.test(key) && this.properties.language == this.languages[1]){
-            this._toggleLang();
-            this._toggleSync();
-        } 
-        if (/[а-я]/i.test(key) && this.properties.language == this.languages[0]){
-            this._toggleLang();
-            this._toggleSync();
-        } 
+        this.regularExpression.forEach((regexp, language) => {
+            if (regexp.test(key) && this.properties.language != language){
+                this._toggleLang();
+                this._toggleSync();
+            } 
+        })
     },
 
     _toggleSync(){
