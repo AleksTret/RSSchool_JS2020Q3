@@ -17,6 +17,36 @@ const Keyboard = {
     },
 
     async init(keyboardLayouts) {
+
+        await this._createKeyLayout(keyboardLayouts);
+
+        this._createKeyboard();
+
+        this._speechRecognitionInit();
+    },
+
+    _createKeyboard(){
+        this.elements.main = document.createElement("div");
+        this.elements.keysContainer = document.createElement("div");
+
+        this.elements.main.classList.add("keyboard", "keyboard--hidden");
+        this.elements.keysContainer.classList.add("keyboard__keys");
+
+        this.elements.keysContainer.appendChild(this._createKeys());
+
+        this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
+
+        this.elements.main.appendChild(this.elements.keysContainer);
+        document.body.appendChild(this.elements.main);
+
+        this.textArea.addEventListener("focus", () => this._showKeyboard());    
+
+        this.textArea.addEventListener("keydown", (event) => this._onKeydown(event));
+
+        this.textArea.addEventListener("keyup", (event) => this._onKeyup(event));
+    },
+
+    async _createKeyLayout(keyboardLayouts){
         this.languages = [];
         this.keyLayouts = new Map();
 
@@ -31,42 +61,6 @@ const Keyboard = {
         this.properties.language = this.languages[0];
 
         this.currentLayout = this.keyLayouts.get(this.languages[0]);
-
-        this.elements.main = document.createElement("div");
-        this.elements.keysContainer = document.createElement("div");
-
-        this.elements.main.classList.add("keyboard", "keyboard--hidden");
-        this.elements.keysContainer.classList.add("keyboard__keys");
-
-        this.elements.keysContainer.appendChild(this._createKeys());
-
-        this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
-
-        this.elements.main.appendChild(this.elements.keysContainer);
-        document.body.appendChild(this.elements.main);
-
-        document.querySelectorAll(".use-keyboard-input").forEach(element => {
-            element.addEventListener("focus", () => {
-                this._showKeyboard();
-            });    
-        })
-
-        // make copy properties for callback functions
-        this.currentProperties = this.properties;
-
-        document.querySelectorAll(".use-keyboard-input").forEach(element => {
-            element.addEventListener("keydown", (event) => {
-                this._onKeydown(event);
-            });    
-        })
-
-        document.querySelectorAll(".use-keyboard-input").forEach(element => {
-            element.addEventListener("keyup", (event) => {
-                this._onKeyup(event);
-            });    
-        });
-
-        this._speechRecognitionInit();
     },
 
     async _loadKeyLayout(url){
@@ -215,7 +209,7 @@ const Keyboard = {
     },
 
     _soundClick(code){
-        let urlSoundFile = `assets/sounds/${this.currentProperties.language}_click.mp3`;
+        let urlSoundFile = `assets/sounds/${this.properties.language}_click.mp3`;
         if(code?.includes("keyboard_return")){
             urlSoundFile = `assets/sounds/enter_click.mp3`;
         }
