@@ -12,7 +12,8 @@ const Keyboard = {
         shift: false,
         language: "",
         sound: false,
-        sync: false
+        sync: false,
+        microphone: false
     },
 
     async init(keyboardLayouts) {
@@ -63,7 +64,9 @@ const Keyboard = {
             element.addEventListener("keyup", (event) => {
                 this._onKeyup(event);
             });    
-        })
+        });
+
+        this._speechRecognitionInit();
     },
 
     async _loadKeyLayout(url){
@@ -189,6 +192,12 @@ const Keyboard = {
                     });
                     break;
         
+                case "microphone":
+                    keyElement.innerHTML = this._createIconHTML("mic_off") + this._createKeyCode("microphone");
+                    this.keyMicrophone = keyElement;
+                    keyElement.addEventListener("click", () => this._toggleMicrophone());
+                    break;
+
                 default:
                     keyElement.innerHTML = value.normal;
                     keyElement.addEventListener("click", (event) => this._print(event, this.textArea));
@@ -272,17 +281,18 @@ const Keyboard = {
     },
 
     _print(event, textArea, symbol){
-        this.properties.sound && this._soundClick(event.currentTarget.innerText);
+        this.properties.sound && this._soundClick(event?.currentTarget.innerText);
         const startPosition = textArea.selectionStart;
         const endPosition = textArea.selectionEnd;
         
-        let text = textArea.value.substring(0, startPosition) + (symbol || event.currentTarget.innerText) + textArea.value.substring(endPosition);
+        let text = textArea.value.substring(0, startPosition) + (symbol || event?.currentTarget.innerText) + textArea.value.substring(endPosition);
 
         textArea.value = text;
         
         textArea.focus();
 
         textArea.selectionEnd = (startPosition == endPosition) ? (startPosition + 1) : endPosition - 1;
+
     },
 
     _delete(textArea){
@@ -345,6 +355,8 @@ const Keyboard = {
         this.currentLayout = this.keyLayouts.get(this.properties.language);
         this.properties.sound && this._soundClick();
 
+        this.recognition.lang = `${this.properties.language}-${this.properties.language.toUpperCase()}`;
+
         this.elements.keys.forEach(key => {
             if(key.childElementCount !== 0) {
                 let span = key.getElementsByClassName("language_name");
@@ -367,7 +379,38 @@ const Keyboard = {
 
     _hideKeyboard(){
         this.elements.main.classList.add("keyboard--hidden");
-    }
+    },
+
+    _toggleMicrophone(){
+        this.properties.microphone = !this.properties.microphone;
+        this.properties.microphone ? this.keyMicrophone.querySelector("i").innerHTML = "mic" : this.keyMicrophone.querySelector("i").innerHTML = "mic_off";
+        this.properties.sound && this._soundClick();
+
+        this.recognition.lang = `${this.properties.language}-${this.properties.language.toUpperCase()}`;
+        this.properties.microphone ? this.recognition.start() : this.recognition?.stop();
+    },
+
+    _speechRecognitionInit(){
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        this.recognition = new SpeechRecognition();
+        this.recognition.interimResults = true;
+        this.recognition.lang = `${this.properties.language}-${this.properties.language.toUpperCase()}`;
+
+        this.storageValueTextArea = this.textArea.value;
+
+        this.recognition.addEventListener('result', event => {
+            const transcript = Array.from(event.results)
+            .map(result => result[0])
+            .map(result => result.transcript)
+            .join('');
+
+            this.textArea.value = this.storageValueTextArea + transcript;
+            this.textArea.focus();
+        });
+
+        this.recognition.addEventListener("start", () => { this.storageValueTextArea = this.textArea.value + " "});
+        this.recognition.addEventListener('end', () => this.properties.microphone ? this.recognition.start() : this.microphone?.stop());
+    },
 }
 
 const keyboardLayouts = {

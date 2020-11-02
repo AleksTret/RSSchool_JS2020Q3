@@ -273,5 +273,10 @@
       "normal": "sound",
       "caps": "sound",
       "shift": "sound"
+    },
+    "56": {
+      "normal": "microphone",
+      "caps": "microphone",
+      "shift": "microphone"
     }
 }
