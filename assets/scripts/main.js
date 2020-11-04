@@ -11,6 +11,8 @@ const gemPuzzle = {
         this.piecesInRow = Math.sqrt(this.sizeBoard);
         this.cells = Array(this.sizeBoard);
         this._createGameBoard(); 
+        this.step = 0;
+        this.timerStart = Date.now();
     },
 
     _createGameBoard(){
@@ -26,6 +28,11 @@ const gemPuzzle = {
         this.elements.pieces.style.width = `${this.piecesInRow*70 + this.piecesInRow *2}px`;
     
         document.body.appendChild(this.elements.main);
+    },
+
+    refresh(){
+        document.body.removeChild(this.elements.main);
+        this.init();
     },
 
     _createPieces(){
@@ -61,6 +68,7 @@ const gemPuzzle = {
     },
 
     _onClick(event){
+        this.step++;
         this._movePieces(event.target.innerHTML);
         this._checkWin();
     },
@@ -102,7 +110,14 @@ const gemPuzzle = {
             return cell.cellsNumber == cell.pieceNumber
         });
 
-        console.log(isWin);
+
+        if (isWin){
+            console.log(isWin);
+            console.log(this.step);
+            let delta = Date.now() - this.timerStart;
+            console.log(`${Math.floor(delta / 1000)}sec`);
+        }
+
     },
 
     _swapStyleOrder(firstElement, secondElement){
@@ -133,23 +148,33 @@ const gemPuzzle = {
  
 
             let pairsCount = numberInRandomOrder.reduce((result, number, index, array) =>{
-                //console.log(array.slice(index + 1));
                 let temp = array.slice(index + 1)?.reduce((subResult, nexNumber) => {
                     if (number > nexNumber){
                         return subResult + 1;
                     }
                     return subResult;
-                    //number > nexNumber ? subResult + 1 : subResult
                 }, 0); 
                 return result + temp;
                
             }, 0);
-            console.log(pairsCount);
             isOdd = pairsCount % 2;
         }while (isOdd)
-        console.log(numberInRandomOrder);
+
         return numberInRandomOrder;
     }
 }
 
+const menu = {
+    init(){
+        const keyElement = document.createElement("button");
+        keyElement.setAttribute("type", "button");
+        keyElement.classList.add("keyboard__key");
+        keyElement.innerHTML = "New game";
+        keyElement.style.backgroundColor = "red";
+        keyElement.addEventListener("click", () => gemPuzzle.refresh());
+        document.body.appendChild(keyElement);
+    }
+}
+
+window.addEventListener("DOMContentLoaded", () => menu.init());
 window.addEventListener("DOMContentLoaded", () => gemPuzzle.init());
