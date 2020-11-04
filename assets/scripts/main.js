@@ -7,7 +7,7 @@ const gemPuzzle = {
     },
 
     init(){
-        this.sizeBoard = 64;
+        this.sizeBoard = 16;
         this.piecesInRow = Math.sqrt(this.sizeBoard);
         this.cells = Array(this.sizeBoard);
         this._createGameBoard(); 
@@ -31,14 +31,17 @@ const gemPuzzle = {
     _createPieces(){
         const fragment = document.createDocumentFragment();
 
+        let numbersInSimpleOrder = Array(this.sizeBoard - 1).fill(1).map((item, index) => item + index);
+        let numberInRandomOrder = this._lloydsParity(numbersInSimpleOrder); 
+
         for (let index = 1; index < this.sizeBoard; index++){
             const keyElement = document.createElement("div");
             keyElement.classList.add("keyboard__key");
-            keyElement.innerHTML = index;
+            keyElement.innerHTML = numberInRandomOrder[index - 1];
             keyElement.style.order = index;
-            keyElement.setAttribute("data-number", index);
+            keyElement.setAttribute("data-number", numberInRandomOrder[index - 1]);
 
-            this.cells[index-1] = {cellsNumber: index, pieceNumber: index};
+            this.cells[index-1] = {cellsNumber: index, pieceNumber: numberInRandomOrder[index - 1]};
 
             keyElement.addEventListener("click", (event)=> {
                 this._onClick(event);                    
@@ -98,6 +101,7 @@ const gemPuzzle = {
             }           
             return cell.cellsNumber == cell.pieceNumber
         });
+
         console.log(isWin);
     },
 
@@ -111,6 +115,40 @@ const gemPuzzle = {
         const temp = firstElement.pieceNumber;
         firstElement.pieceNumber = secondElement.pieceNumber;
         secondElement.pieceNumber = temp;
+    },
+    
+    _shuffleArray(array){
+        return array
+            .map(function(elem,index) { return [elem, Math.random()]})
+            .sort(function(a,b){ return a[1] - b[1]})
+            .map(function(elem){return elem[0]});
+    },
+
+    _lloydsParity(inputArray){
+        let isOdd = true;
+        let numberInRandomOrder;
+        do{
+            numberInRandomOrder = this._shuffleArray(inputArray);
+
+ 
+
+            let pairsCount = numberInRandomOrder.reduce((result, number, index, array) =>{
+                //console.log(array.slice(index + 1));
+                let temp = array.slice(index + 1)?.reduce((subResult, nexNumber) => {
+                    if (number > nexNumber){
+                        return subResult + 1;
+                    }
+                    return subResult;
+                    //number > nexNumber ? subResult + 1 : subResult
+                }, 0); 
+                return result + temp;
+               
+            }, 0);
+            console.log(pairsCount);
+            isOdd = pairsCount % 2;
+        }while (isOdd)
+        console.log(numberInRandomOrder);
+        return numberInRandomOrder;
     }
 }
 
