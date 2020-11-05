@@ -6,10 +6,14 @@ const gemPuzzle = {
         pieces: null
     },
 
+    properties: {
+        newGame: false,
+    },
+
     init(){
         this.sizeBoard = 16;
         this.piecesInRow = Math.sqrt(this.sizeBoard);
-        this.cells = Array(this.sizeBoard);
+        this.game = Array(this.sizeBoard);
         this._createGameBoard(); 
         this.step = 0;
         this.timerStart = Date.now();
@@ -21,6 +25,15 @@ const gemPuzzle = {
         
         this.elements.pieces = document.createElement("div");
         this.elements.pieces.classList.add("keyboard__keys");
+
+        if(this.properties.newGame){
+            this._generateNewGame()
+            this._saveGame();
+        } 
+        else{
+            this._loadGame();
+        } 
+
         this.elements.pieces.appendChild(this._createPieces());
 
         this.elements.main.appendChild(this.elements.pieces);
@@ -32,37 +45,50 @@ const gemPuzzle = {
 
     refresh(){
         document.body.removeChild(this.elements.main);
+        this._toggleNewGame();
         this.init();
+        this._toggleNewGame();
+    },
+
+    _toggleNewGame(){
+        this.properties.newGame = !this.properties.newGame;
+    },
+
+    _loadGame(){  
+        if (localStorage.getItem('gem-puzzle')){
+            this.game = JSON.parse(localStorage.getItem('gem-puzzle'));
+        }
+        else{
+            this._generateNewGame();
+        }
+    },
+
+    _generateNewGame(){
+        let numbersInSimpleOrder = Array(this.sizeBoard - 1).fill(1).map((item, index) => item + index);
+        let numberInRandomOrder = this._lloydsParity(numbersInSimpleOrder);
+
+        this.game.length = 0;
+        this.game = numberInRandomOrder.map((item, index) => {return {cellsNumber: index + 1, pieceNumber: item}});
+        this.game.push({cellsNumber: this.game.length + 1, pieceNumber: -1})
+    },
+
+    _saveGame(){
+        localStorage.setItem("gem-puzzle", JSON.stringify(this.game));
     },
 
     _createPieces(){
         const fragment = document.createDocumentFragment();
 
-        let numbersInSimpleOrder = Array(this.sizeBoard - 1).fill(1).map((item, index) => item + index);
-        let numberInRandomOrder = this._lloydsParity(numbersInSimpleOrder); 
-
-        for (let index = 1; index < this.sizeBoard; index++){
+        this.game.forEach((item, index) => {
             const keyElement = document.createElement("div");
             keyElement.classList.add("keyboard__key");
-            keyElement.innerHTML = numberInRandomOrder[index - 1];
+            keyElement.innerHTML = ~this.game[index].pieceNumber ? this.game[index].pieceNumber : "";
             keyElement.style.order = index;
-            keyElement.setAttribute("data-number", numberInRandomOrder[index - 1]);
-
-            this.cells[index-1] = {cellsNumber: index, pieceNumber: numberInRandomOrder[index - 1]};
-
-            keyElement.addEventListener("click", (event)=> {
-                this._onClick(event);                    
-            });
+            keyElement.setAttribute("data-number", this.game[index ].pieceNumber);
+            keyElement.addEventListener("click", (event)=> this._onClick(event));
 
             fragment.appendChild(keyElement);
-        }
-
-        this.cells[this.sizeBoard-1] = {cellsNumber: this.sizeBoard, pieceNumber: -1};
-        const keyElement = document.createElement("div");
-        keyElement.classList.add("keyboard__key");
-        keyElement.style.order = this.sizeBoard;
-        keyElement.setAttribute("data-number", -1);
-        fragment.appendChild(keyElement);
+        })
 
         return fragment;
     },
@@ -70,6 +96,7 @@ const gemPuzzle = {
     _onClick(event){
         this.step++;
         this._movePieces(event.target.innerHTML);
+        this._saveGame();
         this._checkWin();
     },
 
@@ -80,30 +107,32 @@ const gemPuzzle = {
         const hole = elements[elements.length - 1];
         elements.forEach(item => item.dataset.number == number && (currentElement = item));
 
-        const currentPosition = this.cells.find((cell) => cell.pieceNumber == number);
-        const index = this.cells.indexOf(currentPosition);
+        const currentPosition = this.game.find((cell) => cell.pieceNumber == number);
+        const index = this.game.indexOf(currentPosition);
 
-        if (this.cells[index + 1]?.pieceNumber == -1){
+        if (this.game[index + 1]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
-            this._swapArrayPosition(this.cells[index], this.cells[index + 1]);
+            this._swapArrayPosition(this.game[index], this.game[index + 1]);
         }
-        if (this.cells[index - 1]?.pieceNumber == -1){
+        if (this.game[index - 1]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
-            this._swapArrayPosition(this.cells[index], this.cells[index - 1]);
+            this._swapArrayPosition(this.game[index], this.game[index - 1]);
         }
-        if (this.cells[index + this.piecesInRow]?.pieceNumber == -1){
+        if (this.game[index + this.piecesInRow]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
-            this._swapArrayPosition(this.cells[index], this.cells[index + this.piecesInRow]);
+            this._swapArrayPosition(this.game[index], this.game[index + this.piecesInRow]);
         }
-        if (this.cells[index - this.piecesInRow]?.pieceNumber == -1){
+        if (this.game[index - this.piecesInRow]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
-            this._swapArrayPosition(this.cells[index], this.cells[index - this.piecesInRow]);
+            this._swapArrayPosition(this.game[index], this.game[index - this.piecesInRow]);
         }
+
+
     },
 
     _checkWin(){
-        const lastElement = this.cells.length;
-        const isWin = this.cells.every(cell => {
+        const lastElement = this.game.length;
+        const isWin = this.game.every(cell => {
             if (cell.cellsNumber == lastElement){
                 return cell.pieceNumber == -1
             }           
@@ -145,18 +174,9 @@ const gemPuzzle = {
         do{
             numberInRandomOrder = this._shuffleArray(inputArray);
 
- 
-
-            let pairsCount = numberInRandomOrder.reduce((result, number, index, array) =>{
-                let temp = array.slice(index + 1)?.reduce((subResult, nexNumber) => {
-                    if (number > nexNumber){
-                        return subResult + 1;
-                    }
-                    return subResult;
-                }, 0); 
-                return result + temp;
-               
-            }, 0);
+            const pairsCount = numberInRandomOrder.reduce((result, number, index, array) =>
+                result + array.slice(index + 1)?.reduce((subResult, nexNumber) => (number > nexNumber) ? subResult + 1 : subResult, 0)            
+                , 0);
             isOdd = pairsCount % 2;
         }while (isOdd)
 
