@@ -81,11 +81,41 @@ const gemPuzzle = {
 
         this.game.forEach((item, index) => {
             const keyElement = document.createElement("div");
+
             keyElement.classList.add("keyboard__key");
-            keyElement.innerHTML = ~this.game[index].pieceNumber ? this.game[index].pieceNumber : "";
             keyElement.style.order = index;
-            keyElement.setAttribute("data-number", this.game[index ].pieceNumber);
-            keyElement.addEventListener("click", (event)=> this._onClick(event));
+            keyElement.setAttribute("data-number", item.pieceNumber);
+
+            // set the text value for a normal piece & and D&D events
+            if(~item.pieceNumber){
+                keyElement.innerHTML = item.pieceNumber;
+                keyElement.setAttribute("draggable", "true");
+
+                keyElement.addEventListener("dragstart", (event) => event.dataTransfer.setData("pieceNumber", event.target.dataset.number));
+    
+                // keyElement.addEventListener("drag", (event) => {
+                //     //console.log(`element ${event.target.dataset.number} is dragging`);
+                // });
+    
+                keyElement.addEventListener("dragend", () => {
+                    let elements = document.querySelectorAll("[data-number]");
+                    let hole;
+                    elements.forEach(item => item.dataset.number == -1 && (hole = item));
+                    hole.style.backgroundColor = "";
+                });
+
+                keyElement.addEventListener("click", (event)=> this._movePieces(event.target.innerHTML));        
+            }
+            // don't set text value for a hole & add D&D events
+            else{
+                keyElement.addEventListener("dragover", (event) => event.preventDefault());
+
+                keyElement.addEventListener("dragenter", (event) => event.target.style.backgroundColor = "darkolivegreen");
+
+                keyElement.addEventListener("dragleave", (event) => event.target.style.backgroundColor = "");
+
+                keyElement.addEventListener("drop", (event) => this._movePieces(event.dataTransfer.getData("pieceNumber")));
+            }            
 
             fragment.appendChild(keyElement);
         })
@@ -93,41 +123,56 @@ const gemPuzzle = {
         return fragment;
     },
 
-    _onClick(event){
+    _movePieces(piece){
         this.step++;
-        this._movePieces(event.target.innerHTML);
+        this._swapPieces(piece);
         this._saveGame();
         this._checkWin();
     },
 
-    _movePieces(number){
+    _swapPieces(number){
+        // get the current structure of div elements in the document, because it could have changed
         let elements = document.querySelectorAll("[data-number]");
 
+        // get the clicked piece & hole
         let currentElement = undefined;
-        const hole = elements[elements.length - 1];
-        elements.forEach(item => item.dataset.number == number && (currentElement = item));
+        let hole;
+        elements.forEach(item => {
+            if(item.dataset.number == number){
+                currentElement = item;
+            } 
+            if(item.dataset.number == -1){
+                hole = item;
+            }
+        });
 
-        const currentPosition = this.game.find((cell) => cell.pieceNumber == number);
-        const index = this.game.indexOf(currentPosition);
+        // get index the clicked piece in current game
+        const elementInGame = this.game.find((item) => item.pieceNumber == number);
+        const index = this.game.indexOf(elementInGame);
 
+        // if hole to the right from the clicked piece
         if (this.game[index + 1]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index + 1]);
         }
+
+        // if hole to the left from the clicked piece
         if (this.game[index - 1]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index - 1]);
         }
+
+        // if hole to the down from the clicked piece
         if (this.game[index + this.piecesInRow]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index + this.piecesInRow]);
         }
+
+        // if hole to the top from the clicked piece
         if (this.game[index - this.piecesInRow]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index - this.piecesInRow]);
         }
-
-
     },
 
     _checkWin(){
