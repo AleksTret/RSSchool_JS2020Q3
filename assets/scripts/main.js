@@ -8,6 +8,7 @@ const gemPuzzle = {
 
     properties: {
         newGame: false,
+        sound: false,
     },
 
     init(){
@@ -154,24 +155,28 @@ const gemPuzzle = {
         if (this.game[index + 1]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index + 1]);
+            this.properties.sound && this._soundClick();
         }
 
         // if hole to the left from the clicked piece
         if (this.game[index - 1]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index - 1]);
+            this.properties.sound && this._soundClick();
         }
 
         // if hole to the down from the clicked piece
         if (this.game[index + this.piecesInRow]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index + this.piecesInRow]);
+            this.properties.sound && this._soundClick();
         }
 
         // if hole to the top from the clicked piece
         if (this.game[index - this.piecesInRow]?.pieceNumber == -1){
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index - this.piecesInRow]);
+            this.properties.sound && this._soundClick();
         }
     },
 
@@ -226,7 +231,18 @@ const gemPuzzle = {
         }while (isOdd)
 
         return numberInRandomOrder;
-    }
+    },
+
+    toggleSound(event){
+        this.properties.sound = !this.properties.sound;
+        event.target.classList.toggle("keyboard__key--active", this.properties.sound);
+    },
+
+    _soundClick(){
+        let urlSoundFile = `assets/sounds/click.mp3`;     
+        let audio = new Audio(urlSoundFile);
+        audio.play();
+    },
 }
 
 const menu = {
@@ -238,6 +254,15 @@ const menu = {
         keyElement.style.backgroundColor = "red";
         keyElement.addEventListener("click", () => gemPuzzle.refresh());
         document.body.appendChild(keyElement);
+
+        const keySound = document.createElement("button");
+        keySound.setAttribute("type", "button");
+        keySound.classList.add("keyboard__key", "keyboard__key--activatable");
+        keySound.innerHTML = "sound";
+        keySound.style.backgroundColor = "red";
+        keySound.addEventListener("click", (event) => gemPuzzle.toggleSound(event));
+        document.body.appendChild(keySound);
+
     }
 }
 
