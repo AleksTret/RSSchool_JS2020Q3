@@ -54,3 +54,13 @@
   .keyboard__key--active::after {
     background: #08ff00;
   }
+
+  .table__step{
+    display: inline-block;
+    min-width: 15%;
+  }
+
+  .table__timer{
+    display: inline-block;
+    min-width: 15%;
+  }

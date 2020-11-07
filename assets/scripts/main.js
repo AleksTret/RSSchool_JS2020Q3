@@ -9,15 +9,80 @@ const gemPuzzle = {
     properties: {
         newGame: false,
         sound: false,
+        newStopwatch: true,
     },
 
     init(){
         this.sizeBoard = 16;
         this.piecesInRow = Math.sqrt(this.sizeBoard);
         this.game = Array(this.sizeBoard);
+        this._getMenuElements();
         this._createGameBoard(); 
-        this.step = 0;
-        this.timerStart = Date.now();
+        this.counter = 0;
+    },
+
+    _getMenuElements(){
+        this.stopwatchElementInMenu = document.getElementById("stopwatch");
+        this.counterElementInMenu = document.getElementById("counter")
+    },
+
+    _initMenuElement(){
+        this._stopStopwatch();
+        this.stopwatchElementInMenu.value = "00:00:00:00";
+        this.counterElementInMenu.value = "0";
+    },
+
+    _startStopwatch(){
+        this.stopwatchStartTime =  this.properties.newGame ? new Date() : this._restoreStopwatch();
+
+        this._toggleStopwatch();
+
+        this._redrawTime();        
+    },
+
+    _restoreStopwatch(){
+        let now = new Date();
+        let temp = this.stopwatchElementInMenu.value.split(":");
+
+        now.setHours(now.getHours() - temp[0], now.getMinutes() - temp[1], now.getSeconds() - temp[2], now.getMilliseconds() - temp[3]);
+
+        return now;
+    },
+
+    _stopStopwatch(){
+        clearTimeout(this.stopwatchIdTimer);
+    },
+
+    _redrawTime() {
+        let now = new Date();
+
+        let diff = now.getTime() - this.stopwatchStartTime.getTime();
+
+        let milliseconds = diff % 1000;
+        diff -= milliseconds;
+        milliseconds = Math.floor(milliseconds/10);
+        
+        diff = Math.floor(diff / 1000);
+        let seconds = diff % 60;
+        diff -= seconds;
+
+        diff = Math.floor(diff / 60);
+        let minutes = diff % 60;
+        diff -= minutes;
+
+        diff = Math.floor(diff / 60);
+        let hours = diff % 60;
+
+        let result = `${this._addZero(hours)}:${this._addZero(minutes)}:${this._addZero(seconds)}:${this._addZero(milliseconds)}`;
+
+        this.stopwatchElementInMenu.value = result;
+        localStorage.setItem("gem-puzzle_stopwatch", result);
+
+        this.stopwatchIdTimer =  setTimeout(() => this._redrawTime(), 10);
+    },
+
+    _addZero(number){
+        return parseInt(number, 10) < 10 ? `0${number}` : number;
     },
 
     _createGameBoard(){
@@ -46,9 +111,10 @@ const gemPuzzle = {
 
     refresh(){
         document.body.removeChild(this.elements.main);
-        this._toggleNewGame();
+        this._initMenuElement();
+        !this.properties.newGame && this._toggleNewGame();
+        !this.properties.newStopwatch && this._toggleStopwatch();
         this.init();
-        this._toggleNewGame();
     },
 
     _toggleNewGame(){
@@ -58,10 +124,17 @@ const gemPuzzle = {
     _loadGame(){  
         if (localStorage.getItem('gem-puzzle')){
             this.game = JSON.parse(localStorage.getItem('gem-puzzle'));
+            this.stopwatchElementInMenu.value = localStorage.getItem("gem-puzzle_stopwatch");
+            this.counter = localStorage.getItem("gem-puzzle_counter");
+            this.counterElementInMenu.value = this.counter;
         }
         else{
             this._generateNewGame();
         }
+    },
+
+    _toggleStopwatch(){
+        this.properties.newStopwatch = !this.properties.newStopwatch;
     },
 
     _generateNewGame(){
@@ -75,6 +148,7 @@ const gemPuzzle = {
 
     _saveGame(){
         localStorage.setItem("gem-puzzle", JSON.stringify(this.game));
+        localStorage.setItem("gem-puzzle_counter", this.counter);
     },
 
     _createPieces(){
@@ -124,11 +198,16 @@ const gemPuzzle = {
         return fragment;
     },
 
-    _movePieces(piece){
-        this.step++;
-        this._swapPieces(piece);
+    _movePieces(piece){ 
+        this._swapPieces(piece) &&  this._increaseCounter() && this.properties.newStopwatch && this._startStopwatch();
         this._saveGame();
         this._checkWin();
+    },
+
+    _increaseCounter(){
+        !this.properties.newGame && (this.counter = this.counterElementInMenu.value);
+        this.counterElementInMenu.value = ++this.counter;
+        return true;
     },
 
     _swapPieces(number){
@@ -156,6 +235,7 @@ const gemPuzzle = {
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index + 1]);
             this.properties.sound && this._soundClick();
+            return true;
         }
 
         // if hole to the left from the clicked piece
@@ -163,6 +243,7 @@ const gemPuzzle = {
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index - 1]);
             this.properties.sound && this._soundClick();
+            return true;
         }
 
         // if hole to the down from the clicked piece
@@ -170,6 +251,7 @@ const gemPuzzle = {
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index + this.piecesInRow]);
             this.properties.sound && this._soundClick();
+            return true;
         }
 
         // if hole to the top from the clicked piece
@@ -177,7 +259,10 @@ const gemPuzzle = {
             this._swapStyleOrder(currentElement, hole);
             this._swapArrayPosition(this.game[index], this.game[index - this.piecesInRow]);
             this.properties.sound && this._soundClick();
+            return true;
         }
+
+        return false;
     },
 
     _checkWin(){
@@ -192,9 +277,8 @@ const gemPuzzle = {
 
         if (isWin){
             console.log(isWin);
-            console.log(this.step);
-            let delta = Date.now() - this.timerStart;
-            console.log(`${Math.floor(delta / 1000)}sec`);
+            console.log(this.counter);
+            this._stopStopwatch();
         }
 
     },
@@ -247,13 +331,16 @@ const gemPuzzle = {
 
 const menu = {
     init(){
+        this.menu = document.createElement("div"); 
+        this.menu.classList.add("keyboard");
+
         const keyElement = document.createElement("button");
         keyElement.setAttribute("type", "button");
         keyElement.classList.add("keyboard__key");
         keyElement.innerHTML = "New game";
         keyElement.style.backgroundColor = "red";
         keyElement.addEventListener("click", () => gemPuzzle.refresh());
-        document.body.appendChild(keyElement);
+
 
         const keySound = document.createElement("button");
         keySound.setAttribute("type", "button");
@@ -261,8 +348,27 @@ const menu = {
         keySound.innerHTML = "sound";
         keySound.style.backgroundColor = "red";
         keySound.addEventListener("click", (event) => gemPuzzle.toggleSound(event));
-        document.body.appendChild(keySound);
 
+        const stopwatch = document.createElement("input");
+        stopwatch.setAttribute("value", "00:00:00.00");
+        stopwatch.setAttribute("id", "stopwatch");
+        stopwatch.setAttribute("size", "12");
+        stopwatch.setAttribute("maxlength", "12");
+
+
+        const counter = document.createElement("input");
+        counter.setAttribute("value", "000");
+        counter.setAttribute("id", "counter");
+        counter.setAttribute("size", "12");
+        counter.setAttribute("maxlength", "12");
+
+
+        this.menu.appendChild(keyElement);
+        this.menu.appendChild(keySound);
+        this.menu.appendChild(stopwatch);
+        this.menu.appendChild(counter);
+
+        document.body.appendChild(this.menu);
     }
 }
 
