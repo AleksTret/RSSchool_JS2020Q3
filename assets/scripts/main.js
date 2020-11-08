@@ -12,12 +12,9 @@ const gemPuzzle = {
         newStopwatch: true,
     },
 
-    init(){
-        this.sizeBoard = 16;
-        this.piecesInRow = Math.sqrt(this.sizeBoard);
-        this.game = Array(this.sizeBoard);
+    init(sizeBoard){
         this._getMenuElements();
-        this._createGameBoard(); 
+        this._createGameBoard(sizeBoard); 
         this.counter = 0;
     },
 
@@ -85,7 +82,11 @@ const gemPuzzle = {
         return parseInt(number, 10) < 10 ? `0${number}` : number;
     },
 
-    _createGameBoard(){
+    _createGameBoard(sizeBoard){
+        this.sizeBoard = sizeBoard;
+        this.piecesInRow = Math.sqrt(this.sizeBoard);
+        this.game = Array(this.sizeBoard);
+
         this.elements.main = document.createElement("div"); 
         this.elements.main.classList.add("keyboard");
         
@@ -109,12 +110,19 @@ const gemPuzzle = {
         document.body.appendChild(this.elements.main);
     },
 
-    refresh(){
+    refresh(sizeBoard){
         document.body.removeChild(this.elements.main);
         this._initMenuElement();
         !this.properties.newGame && this._toggleNewGame();
         !this.properties.newStopwatch && this._toggleStopwatch();
-        this.init();
+        this._clearLocalStorage();
+        this.init(sizeBoard);
+    },
+
+    _clearLocalStorage(){
+        localStorage.removeItem("gem-puzzle");
+        localStorage.removeItem("gem-puzzle_counter");
+        localStorage.removeItem("gem-puzzle_stopwatch");
     },
 
     _toggleNewGame(){
@@ -124,6 +132,9 @@ const gemPuzzle = {
     _loadGame(){  
         if (localStorage.getItem('gem-puzzle')){
             this.game = JSON.parse(localStorage.getItem('gem-puzzle'));
+            this.sizeBoard = this.game.length;
+            this.piecesInRow = Math.sqrt(this.sizeBoard);
+
             this.stopwatchElementInMenu.value = localStorage.getItem("gem-puzzle_stopwatch");
             this.counter = localStorage.getItem("gem-puzzle_counter");
             this.counterElementInMenu.value = this.counter;
@@ -331,6 +342,8 @@ const gemPuzzle = {
 
 const menu = {
     init(){
+        this.sizeBoard = 16;
+
         this.menu = document.createElement("div"); 
         this.menu.classList.add("keyboard");
 
@@ -339,7 +352,7 @@ const menu = {
         keyElement.classList.add("keyboard__key");
         keyElement.innerHTML = "New game";
         keyElement.style.backgroundColor = "red";
-        keyElement.addEventListener("click", () => gemPuzzle.refresh());
+        keyElement.addEventListener("click", () => gemPuzzle.refresh(this.sizeBoard));
 
 
         const keySound = document.createElement("button");
@@ -357,20 +370,31 @@ const menu = {
 
 
         const counter = document.createElement("input");
-        counter.setAttribute("value", "000");
+        counter.setAttribute("value", "0");
         counter.setAttribute("id", "counter");
         counter.setAttribute("size", "12");
         counter.setAttribute("maxlength", "12");
 
+        const select = document.createElement("select");
+        select.setAttribute("id", "board_size");
+        select.options[0] = new Option("3x3", "9");
+        select.options[1] = new Option("4x4", "16");
+        select.options[2] = new Option("5x5", "25");  
+        select.options[3] = new Option("6x6", "36");  
+        select.options[4] = new Option("7x7", "49");  
+        select.options[5] = new Option("8x8", "64");          
+        select.options[1].selected=true;      
+        select.addEventListener("change", (event) => this.sizeBoard = event.target.value);
 
         this.menu.appendChild(keyElement);
         this.menu.appendChild(keySound);
         this.menu.appendChild(stopwatch);
         this.menu.appendChild(counter);
+        this.menu.appendChild(select);
 
         document.body.appendChild(this.menu);
     }
 }
 
 window.addEventListener("DOMContentLoaded", () => menu.init());
-window.addEventListener("DOMContentLoaded", () => gemPuzzle.init());
+window.addEventListener("DOMContentLoaded", () => gemPuzzle.init(16));
