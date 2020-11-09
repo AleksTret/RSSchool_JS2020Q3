@@ -12,10 +12,11 @@ const gemPuzzle = {
         newStopwatch: true,
     },
 
-    init(sizeBoard){
+    async init(sizeBoard){
         this._getMenuElements();
         this._createGameBoard(sizeBoard); 
         this.counter = 0;
+        await this._loadHoF("assets/json/HoF.json");
     },
 
     _getMenuElements(){
@@ -30,6 +31,8 @@ const gemPuzzle = {
     },
 
     _startStopwatch(){
+        this.storageStopwatchForHoF = 0;
+
         this.stopwatchStartTime =  this.properties.newGame ? new Date() : this._restoreStopwatch();
 
         this._toggleStopwatch();
@@ -48,6 +51,7 @@ const gemPuzzle = {
 
     _stopStopwatch(){
         clearTimeout(this.stopwatchIdTimer);
+        return true;
     },
 
     _redrawTime() {
@@ -74,6 +78,7 @@ const gemPuzzle = {
 
         this.stopwatchElementInMenu.value = result;
         localStorage.setItem("gem-puzzle_stopwatch", result);
+        this.storageStopwatchForHoF = result;
 
         this.stopwatchIdTimer =  setTimeout(() => this._redrawTime(), 10);
     },
@@ -160,6 +165,7 @@ const gemPuzzle = {
     _saveGame(){
         localStorage.setItem("gem-puzzle", JSON.stringify(this.game));
         localStorage.setItem("gem-puzzle_counter", this.counter);
+
     },
 
     _createPieces(){
@@ -285,13 +291,104 @@ const gemPuzzle = {
             return cell.cellsNumber == cell.pieceNumber
         });
 
+        isWin && this._stopStopwatch() && this._saveHoF();
+    },
 
-        if (isWin){
-            console.log(isWin);
-            console.log(this.counter);
-            this._stopStopwatch();
+    _saveHoF(){
+        const result = {
+            name: "player name",
+            counter: `${this.counter}`,
+            stopwatch: this.storageStopwatchForHoF,
         }
 
+        // sorry for that magic const, but we save only the 10 best result
+        let position = 11;
+        this.HoF.get(this.sizeBoard).forEach((value, key) => 
+            +result.counter < +value.counter && +key < +position && (position = key)
+        ); 
+
+
+        if (position < 11){
+            let subMap = this.HoF.get(`${this.sizeBoard}`);
+
+            let newSubMap = this._insertAtMap(position - 1 , position, result, subMap);
+
+            this.HoF.set(`${this.sizeBoard}`, newSubMap);
+        }
+
+        let jsonObject = {};  
+        this.HoF.forEach((value, key) => { 
+                let subObject = {};
+                value.forEach((subValue, subKey) => subObject[subKey] = subValue)
+            jsonObject[key] = subObject  
+        }); 
+
+        localStorage.setItem("gem-puzzle_HoF", JSON.stringify(jsonObject));
+    },
+
+    _insertAtMap(index, key, value, map){
+        let temp = Array.from(map);
+
+        temp.splice(index, 0, [`${key}`, value]);
+        temp.length = 10;
+
+        temp.forEach((item, index) => {
+            item[0] = index + 1;
+        })
+
+        return new Map(temp);
+    },
+
+    async _loadHoF(url){
+        let json = localStorage.getItem("gem-puzzle_HoF");
+
+        if (!json) {
+            const response = await fetch(url);
+            json =  await response.json();
+
+            localStorage.setItem("gem-puzzle_HoF", JSON.stringify(json));
+
+            this.HoF = this._jsonToMapMap(json);
+        }
+        else{
+            this.HoF = this._jsonToMapMap(JSON.parse(json));
+        }        
+    },
+
+    _jsonToMapMap(json){
+        let result = new Map();
+    
+        const temp = new Map(Object.entries(json));
+
+        temp.forEach((value, key) => {
+            result.set(key, new Map(Object.entries(value)));
+        })
+
+        return result;
+    },
+
+    async _createKeyLayout(keyboardLayouts){
+        this.languages = [];
+        this.keyLayouts = new Map();
+
+        const promises = Object.entries(keyboardLayouts).map(async (item)=> {
+            this.languages.push(item[0]);
+            let json =  await this._loadKeyLayout(item[1]);
+            this.keyLayouts.set(item[0], new Map(Object.entries(json)));
+        });
+
+        await Promise.all(promises);
+
+        this.properties.language = this.languages[0];
+
+        this.currentLayout = this.keyLayouts.get(this.languages[0]);
+
+        this._createRegularExpression();
+    },
+
+    async _loadJSON(url){
+        const response = await fetch(url);
+        return await response.json();
     },
 
     _swapStyleOrder(firstElement, secondElement){
