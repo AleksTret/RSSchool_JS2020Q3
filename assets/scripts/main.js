@@ -17,6 +17,7 @@ const gemPuzzle = {
         this._createGameBoard(sizeBoard); 
         this.counter = 0;
         await this._loadHoF("assets/json/HoF.json");
+        return this.elements.main;
     },
 
     _getMenuElements(){
@@ -111,17 +112,21 @@ const gemPuzzle = {
         this.elements.main.appendChild(this.elements.pieces);
 
         this.elements.pieces.style.width = `${this.piecesInRow*70 + this.piecesInRow *2}px`;
-    
-        document.body.appendChild(this.elements.main);
     },
 
     refresh(sizeBoard){
-        document.body.removeChild(this.elements.main);
-        this._initMenuElement();
+        this._removeChild();
         !this.properties.newGame && this._toggleNewGame();
         !this.properties.newStopwatch && this._toggleStopwatch();
         this._clearLocalStorage();
-        this.init(sizeBoard);
+        this._initMenuElement();
+        return  this.init(sizeBoard);
+    },
+
+    _removeChild(){
+        while (this.elements.main.firstChild) {
+            this.elements.main.removeChild(this.elements.main.firstChild);
+        }
     },
 
     _clearLocalStorage(){
@@ -139,7 +144,7 @@ const gemPuzzle = {
             this.game = JSON.parse(localStorage.getItem('gem-puzzle'));
             this.sizeBoard = this.game.length;
             this.piecesInRow = Math.sqrt(this.sizeBoard);
-
+            
             this.stopwatchElementInMenu.value = localStorage.getItem("gem-puzzle_stopwatch");
             this.counter = localStorage.getItem("gem-puzzle_counter");
             this.counterElementInMenu.value = this.counter;
@@ -165,7 +170,6 @@ const gemPuzzle = {
     _saveGame(){
         localStorage.setItem("gem-puzzle", JSON.stringify(this.game));
         localStorage.setItem("gem-puzzle_counter", this.counter);
-
     },
 
     _createPieces(){
@@ -184,10 +188,6 @@ const gemPuzzle = {
                 keyElement.setAttribute("draggable", "true");
 
                 keyElement.addEventListener("dragstart", (event) => event.dataTransfer.setData("pieceNumber", event.target.dataset.number));
-    
-                // keyElement.addEventListener("drag", (event) => {
-                //     //console.log(`element ${event.target.dataset.number} is dragging`);
-                // });
     
                 keyElement.addEventListener("dragend", () => {
                     let elements = document.querySelectorAll("[data-number]");
@@ -211,7 +211,6 @@ const gemPuzzle = {
 
             fragment.appendChild(keyElement);
         })
-
         return fragment;
     },
 
@@ -278,7 +277,6 @@ const gemPuzzle = {
             this.properties.sound && this._soundClick();
             return true;
         }
-
         return false;
     },
 
@@ -303,7 +301,7 @@ const gemPuzzle = {
 
         // sorry for that magic const, but we save only the 10 best result
         let position = 11;
-        this.HoF.get(this.sizeBoard).forEach((value, key) => 
+        this.HoF.get(this.sizeBoard)?.forEach((value, key) => 
             +result.counter < +value.counter && +key < +position && (position = key)
         ); 
 
@@ -363,7 +361,6 @@ const gemPuzzle = {
         temp.forEach((value, key) => {
             result.set(key, new Map(Object.entries(value)));
         })
-
         return result;
     },
 
@@ -384,11 +381,6 @@ const gemPuzzle = {
         this.currentLayout = this.keyLayouts.get(this.languages[0]);
 
         this._createRegularExpression();
-    },
-
-    async _loadJSON(url){
-        const response = await fetch(url);
-        return await response.json();
     },
 
     _swapStyleOrder(firstElement, secondElement){
@@ -438,6 +430,70 @@ const gemPuzzle = {
 }
 
 const menu = {
+    properties:{
+        HoF: false,
+    },
+
+    _toggleHoF(){
+        this.properties.HoF = !this.properties.HoF;
+    },
+
+    _fillUpHoF(){
+        this.HoF = this._getHoF();
+    
+        const fragment = new DocumentFragment();
+
+        this.HoF.get(`${this.sizeBoard}`).forEach((value, key) => {
+            const row = document.createElement("div");
+            row.classList.add("HoF__row");
+
+            const position = document.createElement("span");
+            position.innerHTML = key;
+
+            const name = document.createElement("span");
+            name.innerHTML = value.name;
+
+            const counter = document.createElement("span");
+            counter.innerHTML = value.counter;
+
+            const stopwatch = document.createElement("span");
+            stopwatch.innerHTML = value.stopwatch;
+
+            row.appendChild(position);
+            row.appendChild(name);
+            row.appendChild(counter);
+            row.appendChild(stopwatch);
+
+            fragment.appendChild(row);
+        });
+
+        this.wrapperHoF.appendChild(fragment);
+    }, 
+
+    _clearHoF(){
+        while (this.wrapperHoF.firstChild) {
+            this.wrapperHoF.removeChild(this.wrapperHoF.firstChild);
+        }
+    },
+
+    _getHoF(){
+        let result = undefined;
+        let json = localStorage.getItem("gem-puzzle_HoF");
+        json && (result = this._jsonToMapMap(JSON.parse(json)));
+        return result;
+    },
+
+    _jsonToMapMap(json){
+        let result = new Map();
+    
+        const temp = new Map(Object.entries(json));
+
+        temp.forEach((value, key) => {
+            result.set(key, new Map(Object.entries(value)));
+        })
+        return result;
+    },
+
     init(){
         this.sizeBoard = 16;
 
@@ -449,8 +505,9 @@ const menu = {
         keyElement.classList.add("keyboard__key");
         keyElement.innerHTML = "New game";
         keyElement.style.backgroundColor = "red";
-        keyElement.addEventListener("click", () => gemPuzzle.refresh(this.sizeBoard));
-
+        keyElement.addEventListener("click", async () => {
+            wrapper.elements.main.appendChild(await gemPuzzle.refresh(this.sizeBoard));
+        });
 
         const keySound = document.createElement("button");
         keySound.setAttribute("type", "button");
@@ -459,12 +516,22 @@ const menu = {
         keySound.style.backgroundColor = "red";
         keySound.addEventListener("click", (event) => gemPuzzle.toggleSound(event));
 
+        const keyHoF = document.createElement("button");
+        keyHoF.setAttribute("type", "button");
+        keyHoF.classList.add("keyboard__key");
+        keyHoF.innerHTML = "Hall of Frame";
+        keyHoF.style.backgroundColor = "red";
+        keyHoF.addEventListener("click", () => {
+            this.wrapperHoF.classList.toggle("wrapper__HoF-hidden", this.properties.HoF);
+            this._toggleHoF();
+            this.properties.HoF ? this._fillUpHoF() : this._clearHoF();
+        });
+
         const stopwatch = document.createElement("input");
         stopwatch.setAttribute("value", "00:00:00.00");
         stopwatch.setAttribute("id", "stopwatch");
         stopwatch.setAttribute("size", "12");
         stopwatch.setAttribute("maxlength", "12");
-
 
         const counter = document.createElement("input");
         counter.setAttribute("value", "0");
@@ -483,15 +550,42 @@ const menu = {
         select.options[1].selected=true;      
         select.addEventListener("change", (event) => this.sizeBoard = event.target.value);
 
+        this.wrapperHoF = document.createElement("div");
+        this.wrapperHoF.classList.add("wrapper__HoF", "wrapper__HoF-hidden");
+
         this.menu.appendChild(keyElement);
         this.menu.appendChild(keySound);
+        this.menu.appendChild(keyHoF);
         this.menu.appendChild(stopwatch);
         this.menu.appendChild(counter);
         this.menu.appendChild(select);
+        this.menu.appendChild(this.wrapperHoF);
 
-        document.body.appendChild(this.menu);
+        return this.menu;
     }
 }
 
-window.addEventListener("DOMContentLoaded", () => menu.init());
-window.addEventListener("DOMContentLoaded", () => gemPuzzle.init(16));
+const wrapper = {
+    elements:{
+        main: null
+    },
+
+    init(){
+        this.elements.main = document.createElement("div");
+        this.elements.main.classList.add("wrapper");
+        this.elements.main.setAttribute("id", "wrapper__id");
+        this.elements.main.appendChild(menu.init());
+        
+        document.body.appendChild(this.elements.main);   
+        
+        this._addChild(); 
+    },
+
+    async _addChild(){
+        let puzzle = await gemPuzzle.init(16);
+
+        this.elements.main.appendChild(puzzle);
+    }
+}
+
+window.addEventListener("DOMContentLoaded",  () => wrapper.init());

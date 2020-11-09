@@ -63,4 +63,29 @@
   min-width: 15%;
 }
 
+.wrapper__HoF {
+  width: 300px;
+  height: 400px;
+}
+
+.wrapper__HoF-hidden {
+  display: none;
+}
+
+.HoF__row {
+  display: block;
+  color: red;
+}
+.HoF__row span {
+  display: inline-block;
+  margin: 0 10px 20px 10px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
 /*# sourceMappingURL=index.css.map */
