@@ -13,17 +13,19 @@ const gemPuzzle = {
     },
 
     async init(sizeBoard){
-        this._getMenuElements();
+        this._getDocumentElements();
         this._createGameBoard(sizeBoard); 
         this.counter = 0;
         await this._loadHoF("assets/json/HoF.json");
         return this.elements.main;
     },
 
-    _getMenuElements(){
+    _getDocumentElements(){
         this.stopwatchElementInMenu = document.getElementById("stopwatch");
         this.counterElementInMenu = document.getElementById("counter")
         this._initMenuElement();
+        this.popupElement = document.getElementById("popup");
+        this.popupTitle = document.getElementById("popup__title");
     },
 
     _initMenuElement(){
@@ -290,12 +292,12 @@ const gemPuzzle = {
             return cell.cellsNumber == cell.pieceNumber
         });
 
-        isWin && this._stopStopwatch() && this._saveHoF();
+        isWin && this._stopStopwatch() && this._saveHoF() && this._showPopup();
     },
 
     _saveHoF(){
-        const result = {
-            name: "player name",
+        this.gameResult = {
+            name: "your name",
             counter: `${this.counter}`,
             stopwatch: this.storageStopwatchForHoF,
         }
@@ -303,14 +305,14 @@ const gemPuzzle = {
         // sorry for that magic const, but we save only the 10 best result
         let position = 11;
         this.HoF.get(this.sizeBoard)?.forEach((value, key) => 
-            +result.counter < +value.counter && +key < +position && (position = key)
+            +this.gameResult.counter < +value.counter && +key < +position && (position = key)
         ); 
 
 
         if (position < 11){
             let subMap = this.HoF.get(`${this.sizeBoard}`);
 
-            let newSubMap = this._insertAtMap(position - 1 , position, result, subMap);
+            let newSubMap = this._insertAtMap(position - 1 , position, this.gameResult, subMap);
 
             this.HoF.set(`${this.sizeBoard}`, newSubMap);
         }
@@ -323,6 +325,13 @@ const gemPuzzle = {
         }); 
 
         localStorage.setItem("gem-puzzle_HoF", JSON.stringify(jsonObject));
+
+        return true;
+    },
+
+    _showPopup(){
+        this.popupTitle.innerHTML = `Ура! Вы решили головоломку, сделано ходов ${this.gameResult.counter} за время ${this.gameResult.stopwatch}`;
+        this.popupElement.classList.toggle("popup-show");
     },
 
     _insertAtMap(index, key, value, map){
@@ -428,7 +437,7 @@ const gemPuzzle = {
         let audio = new Audio(urlSoundFile);
         audio.play();
     },
-}
+};
 
 const menu = {
     properties:{
@@ -554,9 +563,11 @@ const menu = {
         this.wrapperHoF = document.createElement("div");
         this.wrapperHoF.classList.add("wrapper__HoF", "wrapper__HoF-hidden");
 
+
         this.menu.appendChild(keyElement);
         this.menu.appendChild(keySound);
         this.menu.appendChild(keyHoF);
+
         this.menu.appendChild(stopwatch);
         this.menu.appendChild(counter);
         this.menu.appendChild(select);
@@ -564,7 +575,44 @@ const menu = {
 
         return this.menu;
     }
-}
+};
+
+const popup = {
+    init(){
+        this.popup = document.createElement("div");
+        this.popup.classList.add("popup");
+        this.popup.setAttribute("id", "popup");
+        
+        const popupArea = document.createElement("a");
+        popupArea.classList.add("popup__area");
+        popupArea.addEventListener("click", () => {this.popup.classList.toggle("popup-show")});
+
+        const popupBody = document.createElement("div");
+        popupBody.classList.add("popup__body");
+
+        const popupContent = document.createElement("div");
+        popupContent.classList.add("popup__content");
+
+        const popupClose = document.createElement("a");
+        popupClose.classList.add("popup__close");
+        popupClose.innerHTML = "X";
+        popupClose.addEventListener("click", () => {this.popup.classList.toggle("popup-show")});
+
+        const popupTitle = document.createElement("h1");
+        popupTitle.setAttribute("id", "popup__title");
+        popupTitle.classList.add("popup__title");
+        //popupTitle.innerHTML = "Ура! Вы решили головоломку за ##:## и N ходов";
+
+        popupContent.appendChild(popupClose);
+        popupContent.appendChild(popupTitle);
+        popupBody.appendChild(popupContent);
+
+        this.popup.appendChild(popupArea);
+        this.popup.appendChild(popupBody);
+
+        return this.popup;
+    }
+};
 
 const wrapper = {
     elements:{
@@ -576,6 +624,7 @@ const wrapper = {
         this.elements.main.classList.add("wrapper");
         this.elements.main.setAttribute("id", "wrapper__id");
         this.elements.main.appendChild(menu.init());
+        this.elements.main.appendChild(popup.init());
         
         document.body.appendChild(this.elements.main);   
         
@@ -587,6 +636,6 @@ const wrapper = {
 
         this.elements.main.appendChild(puzzle);
     }
-}
+};
 
 window.addEventListener("DOMContentLoaded",  () => wrapper.init());
