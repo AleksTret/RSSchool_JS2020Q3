@@ -1,0 +1,92 @@
+@charset 'UTF-8';
+
+.keyboard {
+    display: inline-block;
+    background: #004134;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: bottom 0.4s;
+  }
+
+  .keyboard__key {
+    height: 70px;
+    width: 70px;
+    max-width: 90px;
+    margin: 1px;
+    border-radius: 4px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 1.05rem;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+  }
+
+  .keyboard__keys {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    border: 3px solid red;
+  }
+
+  .keyboard__key-onClick {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .keyboard__key--activatable::after {
+    content: '';
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+  }
+  
+  .keyboard__key--active::after {
+    background: #08ff00;
+  }
+
+  .table__step{
+    display: inline-block;
+    min-width: 15%;
+  }
+
+  .table__timer{
+    display: inline-block;
+    min-width: 15%;
+  }
+
+  .wrapper__HoF{
+    width: 300px;
+    height: 400px;
+  }
+
+  .wrapper__HoF-hidden{
+    display: none;
+  }
+
+  .HoF__row{
+    display: block;
+    color: red;
+
+    & span{
+      display: inline-block;
+      margin: 0 10px 20px 10px;
+    }
+  }
+
+  .wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
