@@ -23,6 +23,7 @@ const gemPuzzle = {
     _getMenuElements(){
         this.stopwatchElementInMenu = document.getElementById("stopwatch");
         this.counterElementInMenu = document.getElementById("counter")
+        this._initMenuElement();
     },
 
     _initMenuElement(){
