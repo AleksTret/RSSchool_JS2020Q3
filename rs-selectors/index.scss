@@ -1,0 +1,211 @@
+@import 'assets/scss/main.scss';
+
+.main-wrapper{
+    display:flex;
+    flex-direction: row;
+    color: #ce743a;
+}
+
+.game{
+    width: 70%;
+    height: 100vh;
+    text-align: center;
+    background-color: #1e1e1e;
+
+    .header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 0 0;
+
+        .header__logo{
+            width: 64px;
+            height: 64px;
+            background: url("./assets/svg/file_type_css_icon_130661.svg");
+            margin: 0 40px 0 20px;
+        }
+    }
+
+    .game__task{
+        font-size: 48px;
+    }
+
+    .game-field{
+        perspective: 400px;
+        position: relative;
+
+        .game-field__table{
+            min-height: 150px;
+            max-width: 700px;
+            margin: 0 auto;
+            transform: rotateX(20deg);
+            transform-origin: bottom;
+            background-color: #e2a24c;
+        }
+
+        .game-field__edge{
+            min-height: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            transform: rotateX(-40deg);
+            transform-origin: top;
+            background-color: #af7222;
+            transform-origin: top;
+
+            .table-leg{
+                min-height: 15px;
+                max-width: 25px;
+                background-color: #af7222;
+                position: absolute;
+                top: 15px;
+
+                &:first-child{
+                    left: 15px;
+                }
+
+                &:last-child{
+                    right: 15px;
+                }
+            }
+        }
+    }
+
+    .editor{
+        display: flex;
+        text-align: left;
+        width: 90%;
+        margin: 30px auto;
+        border: solid 10px #111111;
+        border-radius: 4px;
+        font-family: menlo, monospace;
+        font-size: 14px;
+        line-height: 150%;
+
+        .editor-pane{
+            width: 50%;
+            
+            .editor-pane__input-header{
+                padding: 10px 15px;
+                border: solid 1px #333;
+
+                .editor-pane__file-name{
+                    float: right;
+                }
+            }
+
+            .file-window{
+                display: flex;
+
+                .line-numbers{
+                    padding: 10px 10px;
+                    height: 100%;
+                    line-height: 150%;
+                    text-align: right;
+                }
+
+                .code-area{
+                    padding: 10px 10px;
+
+                    .input-css{
+                        background: #efefef;
+                        border: none;
+
+                        &:focus{
+                            outline: none;
+                        }
+                    }
+                }
+                
+            }
+
+            .css-view{
+                background: #efefef;
+                color: #AAA;
+
+                .line-numbers{
+                    color: #999;
+                    background: #DDD;
+                }
+            }
+
+            .html-view{
+                color: #666;
+                border-right: solid 1px #333;
+
+                .line-numbers{
+                    border-right: solid 1px #333;
+                }
+
+            }
+        }
+    }
+
+    .footer{
+        width: 100%;
+        margin-top: 35px;
+        color: #ce743a;
+    }
+}
+
+.menu{
+    width: 30%;
+    height: 100vh;
+    background-color: #252525;
+
+    .menu-title{
+        margin-left: 20px;
+    }
+
+    .levels{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+
+        a{
+            text-decoration: none;
+            color: #ce743a;
+            font-weight: bold;
+            display: block;
+            cursor: pointer;
+            padding: 10px 0 10px 20px;
+            opacity: 0.6;
+
+            .check-mark{
+                display: inline-block;
+                margin-right: 15px;
+                width: 8px;
+                height: 13px;
+                border: solid 3px white;
+                border-width: 0 3px 3px 0;
+                opacity: 0.2;
+                top: -1px;
+                transform: rotate(40deg);
+            }
+
+            .level-number{
+                display: inline-block;
+                opacity: 0.6;
+                min-width: 25px;                
+            }
+        }
+    }
+
+    .reset-progress{
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        text-decoration: none;
+        border: solid 2px #ce743a;
+        opacity: 0.7;
+        width: 90%;
+        color: #ce743a;
+        padding: 10px 0;
+    }
+}
+
+
+
+
+
+
+

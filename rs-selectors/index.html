@@ -3,10 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>RS-Selectors</title>
 </head>
 <body>
-    <h1>RS-Selectors</h1>
+    <div class="main-wrapper">
+        <div class="game">
+            <header class="header">
+                <div class="header__logo"></div>
+                <h2 class="header__title">RS Selectors</h2>
+            </header>
+            <h2 class="game__task">Current task</h2>
+            <div class="game-field">
+                <div class="game-field__table"></div>
+                <div class="game-field__edge">
+                    <div class="table-leg"></div>
+                    <div class="table-leg"></div>
+                </div>
+            </div>
+            <div class="editor">
+                <div class="editor-pane">
+                    <div class="editor-pane__input-header">
+                        CSS Editor
+                        <div class="editor-pane__file-name">
+                            style.css
+                        </div>
+                    </div>
+                    <div class="file-window css-view">
+                        <div class="line-numbers">
+                            1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>
+                            11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20
+                        </div>
+                        <div class="code-area">
+                            <input class="input-css" type="text" placeholder="Type in a CSS selector">
+                            <div>
+                                {<br>/* Styles would go here. */<br>}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="editor-pane">
+                    <div class="editor-pane__input-header">
+                        HTML Viewer
+                        <div class="editor-pane__file-name">
+                            table.html
+                        </div>
+                    </div>
+                    <div class="file-window html-view">
+                        <div class="line-numbers">
+                            1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>
+                            11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20
+                        </div>
+                        <div class="code-area">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <p>Made by Aleks Tret</p>
+            </footer>
+        </div>
+        <div class="menu">
+            <h2 class="menu-title">
+                Choose a level
+            </h2>
+            <div class="levels">
+                <a href=""><span class="check-mark"></span><span class="level-number">1</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">2</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">3</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">4</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">5</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">6</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">7</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">8</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">9</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">10</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">11</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">12</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">13</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">14</span>Task name</a>
+                <a href=""><span class="check-mark"></span><span class="level-number">15</span>Task name</a>
+            </div>
+            <a href="" class="reset-progress">Reset Progress</a>
+        </div>        
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
