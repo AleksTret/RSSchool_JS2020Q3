@@ -30,20 +30,21 @@
         font-size: 48px;
     }
 
-    .game-field{
+    .table-wrapper{
         perspective: 400px;
         position: relative;
 
-        .game-field__table{
+        .table{
             min-height: 150px;
             max-width: 700px;
             margin: 0 auto;
             transform: rotateX(20deg);
             transform-origin: bottom;
             background-color: #e2a24c;
+            padding: 15px;
         }
 
-        .game-field__edge{
+        .table__edge{
             min-height: 20px;
             max-width: 700px;
             margin: 0 auto;
@@ -52,7 +53,7 @@
             background-color: #af7222;
             transform-origin: top;
 
-            .table-leg{
+            .table__leg{
                 min-height: 15px;
                 max-width: 25px;
                 background-color: #af7222;
@@ -105,15 +106,36 @@
 
                 .code-area{
                     padding: 10px 10px;
+                    width: 100%;
 
-                    .input-css{
-                        background: #efefef;
-                        border: none;
+                    .input{
+                        display: flex;
+                        justify-content: space-between;
+                        
+                        .input-css{
+                            background: #efefef;
+                            border: none;
+                            padding: 0;
+    
+                            &:focus{
+                                outline: none;
+                            }
+                        }
 
-                        &:focus{
-                            outline: none;
+                        .button-enter{
+                            background: #ddd;
+                            display: block;
+                            border-radius: 4px;
+                            padding: 0 7px;
+                            color: #666;
+                            border: solid 3px #999;
+                            border-width: 1px 1px 6px 1px;
+                            margin: -6px 0 0;
+                            font-size: 9px;
+                            cursor: pointer;
                         }
                     }
+
                 }
                 
             }
@@ -152,60 +174,148 @@
     height: 100vh;
     background-color: #252525;
 
-    .menu-title{
-        margin-left: 20px;
-    }
+    .levels-wrapper{
+        position: fixed;
+        width: 30%;
+        background-color: #252525;
+        height: 100vh;
+        right: -4000px;
+        transition: right 0.5s;
+        z-index: 2;
 
-    .levels{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 30px;
+        .levels__title{
+            margin-left: 20px;
+        }
 
-        a{
-            text-decoration: none;
-            color: #ce743a;
-            font-weight: bold;
-            display: block;
-            cursor: pointer;
-            padding: 10px 0 10px 20px;
-            opacity: 0.6;
-
-            .check-mark{
-                display: inline-block;
-                margin-right: 15px;
-                width: 8px;
-                height: 13px;
-                border: solid 3px white;
-                border-width: 0 3px 3px 0;
-                opacity: 0.2;
-                top: -1px;
-                transform: rotate(40deg);
-            }
-
-            .level-number{
-                display: inline-block;
+        .levels{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+    
+            a{
+                text-decoration: none;
+                color: #ce743a;
+                font-weight: bold;
+                display: block;
+                cursor: pointer;
+                padding: 10px 0 10px 20px;
                 opacity: 0.6;
-                min-width: 25px;                
+    
+                .check-mark{
+                    display: inline-block;
+                    margin-right: 15px;
+                    width: 8px;
+                    height: 13px;
+                    border: solid 3px white;
+                    border-width: 0 3px 3px 0;
+                    opacity: 0.2;
+                    top: -1px;
+                    transform: rotate(40deg);
+                }
+    
+                .level-number{
+                    display: inline-block;
+                    opacity: 0.6;
+                    min-width: 25px;                
+                }
             }
+        }
+
+        .reset-progress{
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            text-decoration: none;
+            border: solid 2px #ce743a;
+            opacity: 0.7;
+            width: 90%;
+            color: #ce743a;
+            padding: 10px 0;
         }
     }
 
-    .reset-progress{
-        display: block;
-        text-align: center;
-        margin: 0 auto;
-        text-decoration: none;
-        border: solid 2px #ce743a;
-        opacity: 0.7;
-        width: 90%;
-        color: #ce743a;
-        padding: 10px 0;
+    .task-wrapper {
+        position: fixed;
+        padding: 10px;
+        width: 30%;
+        background-color: #252525;
+        height: 100vh;
+        z-index: 1;
     }
 }
 
+.plate{
+    position: relative;
+    z-index: 99999;
+    background: white;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    border-radius: 100px;
+    border-bottom: solid 5px #DDD;
+    box-shadow: 0px 8px 0px rgba(0,0,0,.1);
+    
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: calc(50% - 32px);
+        top: calc(50% - 32px);
+        height: 65px;
+        width: 65px;
+        border-radius: 60px;
+        border-top: solid 6px #CCC;
+        opacity: 0.4;
+        background: rgba(255,255,255,1);
+    }
+}
 
+.burger-checkbox-hidden{
+    display: none;
 
+    &:checked ~ .levels-wrapper {
+        right: 0;
+    }
+    
+    &:checked ~ .burger-menu span.first {
+        transform: rotate(-45deg);
+        top: 10px;
+    }
+    
+    &:checked ~ .burger-menu span.second {
+        opacity: 0;
+    }
+    
+    &:checked ~ .burger-menu span.third {
+        transform: rotate(45deg);
+        top: -10px;
+    }
+}
 
+.burger-menu {
+    background-color: #252525;
+    padding: 5px;
+    position: fixed;
+    right: 30px;
+    top: 15px;
+    cursor: pointer;
+    transition: left .23s;
+    z-index: 3;
+    width: 35px;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 
+    span {
+        display: block;
+        height: 5px;
+        background-color: #ce743a;
+        margin: 5px 0 0;
+        transition: all .1s linear .23s;
+        position: relative;
 
-
+        .first {
+            margin-top: 0;
+        }
+    }
+}

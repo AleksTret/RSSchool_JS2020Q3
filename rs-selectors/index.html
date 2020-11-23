@@ -14,11 +14,11 @@
                 <h2 class="header__title">RS Selectors</h2>
             </header>
             <h2 class="game__task">Current task</h2>
-            <div class="game-field">
-                <div class="game-field__table"></div>
-                <div class="game-field__edge">
-                    <div class="table-leg"></div>
-                    <div class="table-leg"></div>
+            <div class="table-wrapper" >
+                <div class="table" id="table"></div>
+                <div class="table__edge">
+                    <div class="table__leg"></div>
+                    <div class="table__leg"></div>
                 </div>
             </div>
             <div class="editor">
@@ -35,7 +35,10 @@
                             11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20
                         </div>
                         <div class="code-area">
-                            <input class="input-css" type="text" placeholder="Type in a CSS selector">
+                            <div class="input">
+                                <input class="input-css" type="text" placeholder="Type in a CSS selector">
+                                <div class="button-enter">Enter</div>
+                            </div>
                             <div>
                                 {<br>/* Styles would go here. */<br>}
                             </div>
@@ -65,30 +68,47 @@
             </footer>
         </div>
         <div class="menu">
-            <h2 class="menu-title">
-                Choose a level
-            </h2>
-            <div class="levels">
-                <a href=""><span class="check-mark"></span><span class="level-number">1</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">2</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">3</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">4</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">5</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">6</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">7</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">8</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">9</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">10</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">11</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">12</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">13</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">14</span>Task name</a>
-                <a href=""><span class="check-mark"></span><span class="level-number">15</span>Task name</a>
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox-hidden">
+            <label class="burger-menu" for="burger-checkbox">
+                <span class="first"></span>
+                <span class="second"></span>
+                <span class="third"></span>
+            </label>
+            <div class="task-wrapper">
+                <h2 class="task__title">
+                    Level N of 15
+                </h2>
+                <div class="task-description">
+                    <h3 class="task-name">
+                        task Number
+                    </h3>
+                </div>
             </div>
-            <a href="" class="reset-progress">Reset Progress</a>
+            <div class="levels-wrapper">
+                <h2 class="levels__title">
+                    Choose a level
+                </h2>
+                <div class="levels">
+                    <a><span class="check-mark"></span><span class="level-number">1</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">2</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">3</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">4</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">5</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">6</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">7</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">8</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">9</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">10</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">11</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">12</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">13</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">14</span>Task name</a>
+                    <a><span class="check-mark"></span><span class="level-number">15</span>Task name</a>
+                </div>
+                <a href="" class="reset-progress">Reset Progress</a>
+            </div>
         </div>        
     </div>
-
-    <script src="main.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>

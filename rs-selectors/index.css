@@ -369,19 +369,20 @@ template {
 .game .game__task {
   font-size: 48px;
 }
-.game .game-field {
+.game .table-wrapper {
   perspective: 400px;
   position: relative;
 }
-.game .game-field .game-field__table {
+.game .table-wrapper .table {
   min-height: 150px;
   max-width: 700px;
   margin: 0 auto;
   transform: rotateX(20deg);
   transform-origin: bottom;
   background-color: #e2a24c;
+  padding: 15px;
 }
-.game .game-field .game-field__edge {
+.game .table-wrapper .table__edge {
   min-height: 20px;
   max-width: 700px;
   margin: 0 auto;
@@ -390,17 +391,17 @@ template {
   background-color: #af7222;
   transform-origin: top;
 }
-.game .game-field .game-field__edge .table-leg {
+.game .table-wrapper .table__edge .table__leg {
   min-height: 15px;
   max-width: 25px;
   background-color: #af7222;
   position: absolute;
   top: 15px;
 }
-.game .game-field .game-field__edge .table-leg:first-child {
+.game .table-wrapper .table__edge .table__leg:first-child {
   left: 15px;
 }
-.game .game-field .game-field__edge .table-leg:last-child {
+.game .table-wrapper .table__edge .table__leg:last-child {
   right: 15px;
 }
 .game .editor {
@@ -435,13 +436,31 @@ template {
 }
 .game .editor .editor-pane .file-window .code-area {
   padding: 10px 10px;
+  width: 100%;
 }
-.game .editor .editor-pane .file-window .code-area .input-css {
+.game .editor .editor-pane .file-window .code-area .input {
+  display: flex;
+  justify-content: space-between;
+}
+.game .editor .editor-pane .file-window .code-area .input .input-css {
   background: #efefef;
   border: none;
+  padding: 0;
 }
-.game .editor .editor-pane .file-window .code-area .input-css:focus {
+.game .editor .editor-pane .file-window .code-area .input .input-css:focus {
   outline: none;
+}
+.game .editor .editor-pane .file-window .code-area .input .button-enter {
+  background: #ddd;
+  display: block;
+  border-radius: 4px;
+  padding: 0 7px;
+  color: #666;
+  border: solid 3px #999;
+  border-width: 1px 1px 6px 1px;
+  margin: -6px 0 0;
+  font-size: 9px;
+  cursor: pointer;
 }
 .game .editor .editor-pane .css-view {
   background: #efefef;
@@ -469,15 +488,24 @@ template {
   height: 100vh;
   background-color: #252525;
 }
-.menu .menu-title {
+.menu .levels-wrapper {
+  position: fixed;
+  width: 30%;
+  background-color: #252525;
+  height: 100vh;
+  right: -4000px;
+  transition: right 0.5s;
+  z-index: 2;
+}
+.menu .levels-wrapper .levels__title {
   margin-left: 20px;
 }
-.menu .levels {
+.menu .levels-wrapper .levels {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
 }
-.menu .levels a {
+.menu .levels-wrapper .levels a {
   text-decoration: none;
   color: #ce743a;
   font-weight: bold;
@@ -486,7 +514,7 @@ template {
   padding: 10px 0 10px 20px;
   opacity: 0.6;
 }
-.menu .levels a .check-mark {
+.menu .levels-wrapper .levels a .check-mark {
   display: inline-block;
   margin-right: 15px;
   width: 8px;
@@ -497,12 +525,12 @@ template {
   top: -1px;
   transform: rotate(40deg);
 }
-.menu .levels a .level-number {
+.menu .levels-wrapper .levels a .level-number {
   display: inline-block;
   opacity: 0.6;
   min-width: 25px;
 }
-.menu .reset-progress {
+.menu .levels-wrapper .reset-progress {
   display: block;
   text-align: center;
   margin: 0 auto;
@@ -512,6 +540,83 @@ template {
   width: 90%;
   color: #ce743a;
   padding: 10px 0;
+}
+.menu .task-wrapper {
+  position: fixed;
+  padding: 10px;
+  width: 30%;
+  background-color: #252525;
+  height: 100vh;
+  z-index: 1;
+}
+
+.plate {
+  position: relative;
+  z-index: 99999;
+  background: white;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 0 10px;
+  border-radius: 100px;
+  border-bottom: solid 5px #DDD;
+  box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.1);
+}
+.plate:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: calc(50% - 32px);
+  top: calc(50% - 32px);
+  height: 65px;
+  width: 65px;
+  border-radius: 60px;
+  border-top: solid 6px #CCC;
+  opacity: 0.4;
+  background: white;
+}
+
+.burger-checkbox-hidden {
+  display: none;
+}
+.burger-checkbox-hidden:checked ~ .levels-wrapper {
+  right: 0;
+}
+.burger-checkbox-hidden:checked ~ .burger-menu span.first {
+  transform: rotate(-45deg);
+  top: 10px;
+}
+.burger-checkbox-hidden:checked ~ .burger-menu span.second {
+  opacity: 0;
+}
+.burger-checkbox-hidden:checked ~ .burger-menu span.third {
+  transform: rotate(45deg);
+  top: -10px;
+}
+
+.burger-menu {
+  background-color: #252525;
+  padding: 5px;
+  position: fixed;
+  right: 30px;
+  top: 15px;
+  cursor: pointer;
+  transition: left 0.23s;
+  z-index: 3;
+  width: 35px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.burger-menu span {
+  display: block;
+  height: 5px;
+  background-color: #ce743a;
+  margin: 5px 0 0;
+  transition: all 0.1s linear 0.23s;
+  position: relative;
+}
+.burger-menu span .first {
+  margin-top: 0;
 }
 
 /*# sourceMappingURL=index.css.map */
