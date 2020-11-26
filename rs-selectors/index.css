@@ -342,6 +342,36 @@ template {
   display: none;
 }
 
+/* exo-2-200 - latin */
+@font-face {
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 200;
+  src: url("./assets/fonts/exo-2-v9-latin-200.eot");
+  /* IE9 Compat Modes */
+  src: local(""), url("./assets/fonts/exo-2-v9-latin-200.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/exo-2-v9-latin-200.woff2") format("woff2"), url("./assets/fonts/exo-2-v9-latin-200.woff") format("woff"), url("./assets/fonts/exo-2-v9-latin-200.ttf") format("truetype"), url("./assets/fonts/exo-2-v9-latin-200.svg#Exo2") format("svg");
+  /* Legacy iOS */
+}
+/* exo-2-regular - latin */
+@font-face {
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/exo-2-v9-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local(""), url("./assets/fonts/exo-2-v9-latin-regular.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/exo-2-v9-latin-regular.woff2") format("woff2"), url("./assets/fonts/exo-2-v9-latin-regular.woff") format("woff"), url("./assets/fonts/exo-2-v9-latin-regular.ttf") format("truetype"), url("./assets/fonts/exo-2-v9-latin-regular.svg#Exo2") format("svg");
+  /* Legacy iOS */
+}
+/* exo-2-600 - latin */
+@font-face {
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/exo-2-v9-latin-600.eot");
+  /* IE9 Compat Modes */
+  src: local(""), url("./assets/fonts/exo-2-v9-latin-600.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/exo-2-v9-latin-600.woff2") format("woff2"), url("./assets/fonts/exo-2-v9-latin-600.woff") format("woff"), url("./assets/fonts/exo-2-v9-latin-600.ttf") format("truetype"), url("./assets/fonts/exo-2-v9-latin-600.svg#Exo2") format("svg");
+  /* Legacy iOS */
+}
 .main-wrapper {
   display: flex;
   flex-direction: row;
@@ -349,7 +379,7 @@ template {
 }
 
 .game {
-  width: 70%;
+  width: 65%;
   height: 100vh;
   text-align: center;
   background-color: #1e1e1e;
@@ -484,13 +514,13 @@ template {
 }
 
 .menu {
-  width: 30%;
+  width: 35%;
   height: 100vh;
   background-color: #252525;
 }
 .menu .levels-wrapper {
   position: fixed;
-  width: 30%;
+  width: 35%;
   background-color: #252525;
   height: 100vh;
   right: -4000px;
@@ -549,6 +579,59 @@ template {
   height: 100vh;
   z-index: 1;
 }
+.menu .task-wrapper .task {
+  font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
+}
+.menu .task-wrapper .task .task__level {
+  margin-bottom: 45px;
+}
+.menu .task-wrapper .task .task__name {
+  font-size: 18px;
+  margin: 0 0 5px 0;
+}
+.menu .task-wrapper .task .task__description {
+  font-size: 18px;
+  margin: 0 0 15px 0;
+  font-weight: 300;
+  opacity: 0.7;
+}
+.menu .task-wrapper .task .task__syntax {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  font-weight: 200;
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.05);
+  display: inline-block;
+  padding: 5px 8px;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.1);
+}
+.menu .task-wrapper .task .task__hint {
+  font-size: 15px;
+  margin-bottom: 50px;
+  line-height: 150%;
+}
+.menu .task-wrapper .task .example {
+  padding: 10px 0 12px 0;
+  line-height: 170%;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+.menu .task-wrapper .task .example:last-child {
+  border: none;
+}
+.menu .task-wrapper .task strong, .menu .task-wrapper .task tag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3px 6px 3px 6px;
+  margin: 0px 2px;
+  font-size: 13px;
+  font-family: menlo, monospace;
+  font-weight: normal;
+}
+.menu .task-wrapper .task tag:before {
+  content: "<";
+}
+.menu .task-wrapper .task tag:after {
+  content: ">";
+}
 
 .plate {
   position: relative;
@@ -574,6 +657,19 @@ template {
   border-top: solid 6px #CCC;
   opacity: 0.4;
   background: white;
+}
+
+.fancy:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: calc(50% - 47px);
+  top: calc(50% - 44px);
+  height: 90px;
+  width: 95px;
+  border-radius: 60px;
+  border: solid 10px #009ff2;
+  opacity: 0.4;
 }
 
 .burger-checkbox-hidden {
