@@ -2,8 +2,9 @@
 
 const game = {
     async init(urlGameLevels){
-        this._initPageElement();
+        this._getPageElements();
         this.levels = await this._loadLevels(urlGameLevels);
+        this._createMenu();
         this._createLevel(this.levels.get("2"));
     },
 
@@ -26,13 +27,14 @@ const game = {
         return result;
     },
 
-    _initPageElement(){
-        this._getMenuElement();
-        this._getCodeAreaElement();
-        this._getTableElement();
+    _getPageElements(){
+        this._getTaskElements();
+        this._getCodeAreaElements();
+        this._getTableElements();
+        this._getMenuElements();
     },
 
-    _getMenuElement(){
+    _getTaskElements(){
         this.task = document.getElementById("task");
         this.taskLevel = document.getElementById("taskLevel");
         this.taskName = document.getElementById("taskName");
@@ -42,12 +44,50 @@ const game = {
         this.taskExamples = document.getElementById("taskExamples");
     },
 
-    _getTableElement(){
+    _getTableElements(){
         this.table = document.getElementById("table");
     },
 
-    _getCodeAreaElement(){
+    _getCodeAreaElements(){
         this.codeArea = document.getElementById("codeArea");
+    },
+
+    _getMenuElements(){
+        this.menu = document.getElementsByClassName("levels")[0];
+    },
+
+    _createMenu(){
+        const fragment = document.createDocumentFragment();
+
+        this.levels.forEach(level => {
+            fragment.appendChild(this._createMenuLink(level.level, level.name));
+        });
+
+        this.menu.appendChild(fragment);
+    },
+
+    _createMenuLink(level, nameLevel){
+        // create
+        // <a><span class="check-mark"></span><span class="level-number">level number</span><span>level name text</span></a>
+
+        const fragment = document.createDocumentFragment();
+        const a = document.createElement("a");
+
+        const firstSpan = document.createElement("span");
+        firstSpan.classList.add("check-mark");
+        const secondSpan = document.createElement("span");
+        secondSpan.classList.add("level-number");
+        secondSpan.innerHTML = level;
+        const thirdSpan = document.createElement("span");
+        thirdSpan.innerHTML = nameLevel;
+
+        a.appendChild(firstSpan);
+        a.appendChild(secondSpan);
+        a.appendChild(thirdSpan);
+        
+        fragment.appendChild(a);
+
+        return fragment;
     },
 
     _createLevel(task){
@@ -93,15 +133,25 @@ const game = {
     },
 
     _createExamples(examples){
-        const result = document.createDocumentFragment();
+        const fragment = document.createDocumentFragment();
         examples.forEach(item => {
             const element = document.createElement("div");
             element.classList.add("example");
             element.innerHTML = item;
-            result.appendChild(element) 
+            fragment.appendChild(element) 
         });
-        return result;
+        return fragment;
     }
+}
+
+const menu = {
+    init (){
+        this._getPageElement();
+    },
+
+    _getPageElement(){
+
+    },
 }
 
 const urlGameLevels = "assets/json/levels.json";
