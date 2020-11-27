@@ -5,7 +5,7 @@ const game = {
         this._getPageElements();
         this.levels = await this._loadLevels(urlGameLevels);
         this._createMenu();
-        this._createLevel(this.levels.get("2"));
+        this._setLevel(1);
     },
 
     async _loadLevels(urlGameLevels){   
@@ -84,10 +84,18 @@ const game = {
         a.appendChild(firstSpan);
         a.appendChild(secondSpan);
         a.appendChild(thirdSpan);
+
+        a.addEventListener('click', () => this._setLevel(level));
         
         fragment.appendChild(a);
 
         return fragment;
+    },
+
+    _setLevel(levelNumber){
+        this._removeChild(this.table);
+        this._removeChild(this.taskExamples);
+        this._createLevel(this.levels.get(levelNumber.toString()));
     },
 
     _createLevel(task){
@@ -141,16 +149,14 @@ const game = {
             fragment.appendChild(element) 
         });
         return fragment;
-    }
-}
-
-const menu = {
-    init (){
-        this._getPageElement();
     },
 
-    _getPageElement(){
-
+    _removeChild(element){
+        if (element.childNodes.length){
+            while (element.firstChild){
+                element.removeChild(element.firstChild);
+            }
+        }
     },
 }
 
