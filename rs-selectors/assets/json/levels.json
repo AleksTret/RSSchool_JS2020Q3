@@ -10,10 +10,16 @@
       "<strong>p</strong> selects all <tag>p</tag> elements."
     ],
     "markup": [
-      "plate",
-      "plate"
+      {
+        "name": "plate",
+        "animated": "true"
+      },
+      {
+        "name": "plate",
+        "animated": "true"
+      }
     ],
-    "solution": "empty"
+    "answer": "plate"
   },
   "2": {
     "level": "2",
@@ -26,9 +32,15 @@
       "<strong>ul#long</strong> selects <tag>ul id='long'</tag>"
     ],
     "markup": [
-      "plate id='fancy'",
-      "plate"
+      {
+        "name": "plate id='fancy'",
+        "animated": "true"
+      },
+      {
+        "name": "plate",
+        "animated": "false"
+      }
     ],
-    "solution": "empty"
+    "answer": "#fancy"
   }
 }

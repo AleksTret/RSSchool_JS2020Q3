@@ -3,8 +3,9 @@
 const game = {
     async init(urlGameLevels){
         this._getPageElements();
+        this._setListeners();
         this.levels = await this._loadLevels(urlGameLevels);
-        this._createMenu();
+        this._createMenu(1);
         this._setLevel(1);
     },
 
@@ -19,7 +20,7 @@ const game = {
     },
 
     _jsonToMap(json){
-        let result = new Map();
+        const result = new Map();
     
         Object.entries(json).forEach((item) => {
             result.set(item[0], item[1]);
@@ -50,28 +51,52 @@ const game = {
 
     _getCodeAreaElements(){
         this.codeArea = document.getElementById("codeArea");
+        this.inputCss = document.getElementById("inputCss");
+        this.buttonEnter = document.getElementById("buttonEnter");
+    },
+
+    _setListeners(){
+        this.inputCss.addEventListener("keydown", (event) => {
+            event.key == "Enter" && this._checkWin(event.target.value);
+        });
+
+        this.buttonEnter.addEventListener("click", () => {
+            this._checkWin(this.inputCss.value);
+        });
+    },
+
+    _checkWin(solution){
+        this.answer == solution && this.elementAnimated.forEach(item => item.classList.toggle("animated"));
+
+        const parentLink = document.querySelector(".current");
+        const nextLevel = +parentLink?.querySelector(".level-number").innerHTML + 1;
+
+        parentLink?.querySelector(".check-mark").classList.add("done");
+
+        setTimeout(() => this._setLevel(nextLevel), 1000); 
     },
 
     _getMenuElements(){
         this.menu = document.getElementsByClassName("levels")[0];
     },
 
-    _createMenu(){
+    _createMenu(currentLevel){
         const fragment = document.createDocumentFragment();
 
         this.levels.forEach(level => {
-            fragment.appendChild(this._createMenuLink(level.level, level.name));
+            fragment.appendChild(this._createMenuLink(level.level, level.name, currentLevel));
         });
 
         this.menu.appendChild(fragment);
     },
 
-    _createMenuLink(level, nameLevel){
+    _createMenuLink(level, nameLevel, currentLevel){
         // create
         // <a><span class="check-mark"></span><span class="level-number">level number</span><span>level name text</span></a>
 
         const fragment = document.createDocumentFragment();
         const a = document.createElement("a");
+        level == currentLevel && a.classList.add("current");
 
         const firstSpan = document.createElement("span");
         firstSpan.classList.add("check-mark");
@@ -85,7 +110,16 @@ const game = {
         a.appendChild(secondSpan);
         a.appendChild(thirdSpan);
 
-        a.addEventListener('click', () => this._setLevel(level));
+        a.addEventListener('click', (event) => {
+            const temp = document.getElementsByClassName("current")[0]?.classList.remove("current");
+            if(event.target.childElementCount) {
+                event.target.classList.toggle("current");
+            } 
+            else {
+                event.target.parentNode.classList.toggle("current");
+            }
+            this._setLevel(level)
+        });
         
         fragment.appendChild(a);
 
@@ -93,9 +127,11 @@ const game = {
     },
 
     _setLevel(levelNumber){
+        const currentLevel = this.levels.has(levelNumber.toString()) ? levelNumber.toString() : "1";
         this._removeChild(this.table);
         this._removeChild(this.taskExamples);
-        this._createLevel(this.levels.get(levelNumber.toString()));
+        this._createLevel(this.levels.get(currentLevel));
+        this.answer = this.levels.get(currentLevel).answer;
     },
 
     _createLevel(task){
@@ -117,16 +153,19 @@ const game = {
     _createPlate(plate){
         const result =  document.createElement("div");
         result.classList.add("plate");
-        plate.includes("fancy") && result.classList.add("fancy");
+        plate.name.includes("fancy") && result.classList.add("fancy");
         return result;
     },
 
     _createElementOnTable(markup){
         const result = document.createDocumentFragment();
+        this.elementAnimated = new Array();
         markup.forEach(item => {
-            if(item.includes("plate")){
-                result.appendChild(this._createPlate(item));
-            }; 
+            if(item.name.includes("plate")){
+                const element = this._createPlate(item);
+                result.appendChild(element);
+                JSON.parse(item.animated) && this.elementAnimated.push(element);
+            }             
         });
         return result;
     },
@@ -134,7 +173,7 @@ const game = {
     _createCodeArea(markup){
         let result = '&lt;div class="table"&gt;<br>';
         markup.forEach(item => {
-            result += `&nbsp;&nbsp;&nbsp;&lt;${item}/&gt;<br>`;
+            result += `&nbsp;&nbsp;&nbsp;&lt;${item.name}/&gt;<br>`;
         });
         result += '&lt;/div&gt;';
         return result;
@@ -152,10 +191,8 @@ const game = {
     },
 
     _removeChild(element){
-        if (element.childNodes.length){
-            while (element.firstChild){
-                element.removeChild(element.firstChild);
-            }
+        while (element.firstChild){
+            element.removeChild(element.firstChild);
         }
     },
 }

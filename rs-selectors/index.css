@@ -538,7 +538,6 @@ template {
 .menu .levels-wrapper .levels a {
   text-decoration: none;
   color: #ce743a;
-  font-weight: bold;
   display: block;
   cursor: pointer;
   padding: 10px 0 10px 20px;
@@ -557,8 +556,17 @@ template {
 }
 .menu .levels-wrapper .levels a .level-number {
   display: inline-block;
-  opacity: 0.6;
   min-width: 25px;
+}
+.menu .levels-wrapper .levels a .done {
+  opacity: 0.55;
+  border: solid 3px #45bb43;
+  border-width: 0 3px 3px 0;
+}
+.menu .levels-wrapper .levels .current {
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.07);
+  opacity: 1;
 }
 .menu .levels-wrapper .reset-progress {
   display: block;
@@ -644,6 +652,7 @@ template {
   border-radius: 100px;
   border-bottom: solid 5px #DDD;
   box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.1);
+  transition: transform ease-out 0.2s;
 }
 .plate:before {
   content: "";
@@ -657,6 +666,10 @@ template {
   border-top: solid 6px #CCC;
   opacity: 0.4;
   background: white;
+}
+
+.animated {
+  transform: translateY(-100vh);
 }
 
 .fancy:after {

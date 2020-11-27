@@ -195,7 +195,6 @@
             a{
                 text-decoration: none;
                 color: #ce743a;
-                font-weight: bold;
                 display: block;
                 cursor: pointer;
                 padding: 10px 0 10px 20px;
@@ -215,9 +214,20 @@
     
                 .level-number{
                     display: inline-block;
-                    opacity: 0.6;
                     min-width: 25px;                
                 }
+
+                .done{
+                    opacity: 0.55;
+                    border: solid 3px #45bb43;
+                    border-width: 0 3px 3px 0;
+                }
+            }
+
+            .current{
+                font-weight: bold;
+                background: rgba(255,255,255,.07);
+                opacity: 1;
             }
         }
 
@@ -319,6 +329,7 @@
     border-radius: 100px;
     border-bottom: solid 5px #DDD;
     box-shadow: 0px 8px 0px rgba(0,0,0,.1);
+    transition: transform ease-out .2s;
     
     &:before {
         content: "";
@@ -333,6 +344,10 @@
         opacity: 0.4;
         background: rgba(255,255,255,1);
     }
+}
+
+.animated{
+    transform: translateY(-100vh);
 }
 
 .fancy:after{
