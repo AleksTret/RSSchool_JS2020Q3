@@ -3,7 +3,7 @@
 const game = {
     _game:{
         startLevel : "1",
-        completedLevel : [],
+        completedLevels : null,
     },    
 
     async init(urlGameLevels){
@@ -72,20 +72,23 @@ const game = {
     },
 
     _checkWin(solution){
-        this.answer == solution && this.elementAnimated.forEach(item => item.classList.toggle("animated"));
+        console.log("enter _ckeckWin");
+        if (this.answer == solution) {
+            this.elementAnimated.forEach(item => item.classList.toggle("animated"));
 
-        const elementA = document.querySelector(".current");
-        elementA?.querySelector(".check-mark").classList.add("done");
-
-        const currentLevel = elementA?.querySelector(".level-number").innerHTML;
-        const nextLevel = +currentLevel + 1;
-
-        elementA.classList.remove("current");
-        elementA.nextSibling?.classList.add("current");
-       
-        this._saveGame(currentLevel);
-
-        setTimeout(() => this._setLevel(nextLevel), 1000); 
+            const elementA = document.querySelector(".current");
+            elementA?.querySelector(".check-mark").classList.add("done");
+    
+            const currentLevel = elementA?.querySelector(".level-number").innerHTML;
+            const nextLevel = +currentLevel + 1;
+    
+            elementA.classList.remove("current");
+            elementA.nextSibling?.classList.add("current");
+           
+            this._saveGame(currentLevel);
+    
+            setTimeout(() => this._setLevel(nextLevel), 1000); 
+        }
     },
 
     _getMenuElements(){
@@ -96,13 +99,14 @@ const game = {
         const fragment = document.createDocumentFragment();
 
         this.levels.forEach(level => {
-            fragment.appendChild(this._createMenuLink(level.level, level.name, currentLevel));
+            const done = this._game.completedLevels.get(level.level)?.done;
+            fragment.appendChild(this._createMenuLink(level.level, level.name, currentLevel, done));
         });
 
         this.menu.appendChild(fragment);
     },
 
-    _createMenuLink(level, nameLevel, currentLevel){
+    _createMenuLink(level, nameLevel, currentLevel, done){
         // create
         // <a><span class="check-mark"></span><span class="level-number">level number</span><span>level name text</span></a>
 
@@ -110,7 +114,7 @@ const game = {
         const a = document.createElement("a");
         (level == currentLevel) && a.classList.add("current");
 
-        a.appendChild(this._createSpanElement("check-mark"));
+        a.appendChild(this._createSpanElement("check-mark", null, done));
         a.appendChild(this._createSpanElement("level-number", level));
         a.appendChild(this._createSpanElement(null, nameLevel));
 
@@ -127,10 +131,11 @@ const game = {
         return fragment;
     },
 
-    _createSpanElement(className, text){
+    _createSpanElement(className, text, done){
         const result = document.createElement("span");
         className && result.classList.add(className);
         text && (result.innerHTML = text);
+        done && (result.classList.add("done"));
         return result;
     },
 
@@ -206,11 +211,26 @@ const game = {
 
     _saveGame(level){
         localStorage.setItem("currentLevel", level);
+
+        this._game.completedLevels.set(level, {done : true});
+
+        localStorage.setItem("completedLevels", JSON.stringify([...this._game.completedLevels]));        
     },
 
     _loadGame(){
+        this._game.completedLevels = this._initCompletedLevel(localStorage.getItem("completedLevels"));
+
         const result = localStorage.getItem("currentLevel");
-        return result ? +result + 1 : this._game.startLevel;
+        
+        return (result && (+result < this.levels.size) ? +result + 1 : this._game.startLevel);
+    },
+
+    _initCompletedLevel(jsonString){
+        if (jsonString){
+            return new Map(JSON.parse(jsonString));
+        }else {
+            return new Map();
+        }
     },
 }
 
