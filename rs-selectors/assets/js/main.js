@@ -61,6 +61,12 @@ const game = {
         this.buttonEnter = document.getElementById("buttonEnter");
     },
 
+    _getMenuElements(){
+        this.menu = document.getElementsByClassName("levels")[0];
+        this.buttonReset = document.getElementById("buttonReset");
+        this.burgerCheckbox = document.getElementById("burger-checkbox");
+    },
+
     _setListeners(){
         this.inputCss.addEventListener("keydown", (event) => {
             event.key == "Enter" && this._checkWin(event.target.value);
@@ -69,30 +75,60 @@ const game = {
         this.buttonEnter.addEventListener("click", () => {
             this._checkWin(this.inputCss.value);
         });
+
+        this.buttonReset.addEventListener("click", () => {
+            this._resetGame();
+        });
+    },
+
+    _resetGame(){
+        this._clearLocalStorage();
+        this._resetMenu();
+        this._setLevel(this._game.startLevel);
+    },
+
+    _resetMenu(){
+        document.getElementsByClassName("current")[0].classList.remove("current");
+        const marks = document.getElementsByClassName("done");
+        for (let mark of marks){
+            mark.classList.remove("done");
+        }
+
+        document.getElementsByClassName("levels")[0].firstChild.classList.add("current");
+
+        this.inputCss.value = "";
+
+        this.burgerCheckbox.checked = false;
+    },
+
+    _clearLocalStorage(){
+        localStorage.removeItem("currentLevel");
+        localStorage.removeItem("completedLevels");
     },
 
     _checkWin(solution){
-        console.log("enter _ckeckWin");
-        if (this.answer == solution) {
-            this.elementAnimated.forEach(item => item.classList.toggle("animated"));
+        if (this.answer == solution) {         
+            const currentLevel = this._animateChangeLevel();
+            const nextLevel = (+currentLevel + 1).toString();
 
-            const elementA = document.querySelector(".current");
-            elementA?.querySelector(".check-mark").classList.add("done");
-    
-            const currentLevel = elementA?.querySelector(".level-number").innerHTML;
-            const nextLevel = +currentLevel + 1;
-    
-            elementA.classList.remove("current");
-            elementA.nextSibling?.classList.add("current");
-           
             this._saveGame(currentLevel);
-    
+
             setTimeout(() => this._setLevel(nextLevel), 1000); 
         }
     },
 
-    _getMenuElements(){
-        this.menu = document.getElementsByClassName("levels")[0];
+    _animateChangeLevel(){
+        this.elementAnimated.forEach(item => item.classList.toggle("animated"));
+
+        const menuLinkElement = document.querySelector(".current");
+        menuLinkElement?.querySelector(".check-mark").classList.add("done");
+        menuLinkElement?.classList.remove("current");
+        menuLinkElement?.nextSibling?.classList.add("current");
+
+        this.inputCss.value = "";
+
+        const currentLevel = menuLinkElement?.querySelector(".level-number").innerHTML;
+        return currentLevel;
     },
 
     _createMenu(currentLevel){
@@ -140,7 +176,7 @@ const game = {
     },
 
     _setLevel(levelNumber){
-        const currentLevel = this.levels.has(levelNumber.toString()) ? levelNumber.toString() : this._game.startLevel;
+        const currentLevel = this.levels.has(levelNumber?.toString()) ? levelNumber.toString() : this._game.startLevel;
         this._removeChild(this.table);
         this._removeChild(this.taskExamples);
         this._createLevel(this.levels.get(currentLevel));
