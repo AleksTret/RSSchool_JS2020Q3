@@ -118,7 +118,10 @@ const game = {
     },
 
     _animateChangeLevel(){
-        this.elementAnimated.forEach(item => item.classList.toggle("animated"));
+        const animatedElement = document.getElementsByClassName("animated");
+        for (let element of animatedElement){
+            element.classList.toggle("getOut");
+        }
 
         const menuLinkElement = document.querySelector(".current");
         menuLinkElement?.querySelector(".check-mark").classList.add("done");
@@ -179,6 +182,7 @@ const game = {
         const currentLevel = this.levels.has(levelNumber?.toString()) ? levelNumber.toString() : this._game.startLevel;
         this._removeChild(this.table);
         this._removeChild(this.taskExamples);
+        this._removeChild(this.codeArea);
         this._createLevel(this.levels.get(currentLevel));
         this.answer = this.levels.get(currentLevel).answer;
     },
@@ -193,38 +197,55 @@ const game = {
         this.taskExamples.appendChild(this._createExamples(task.examples));
 
         // fill code area
-        this.codeArea.innerHTML = this._createCodeArea(task.markup);
+        this.codeArea.appendChild(this._createCodeArea(task.markup));
 
         // create elements on the table
         this.table.appendChild(this._createElementOnTable(task.markup));
     },
 
-    _createPlate(plate){
-        const result =  document.createElement("div");
-        result.classList.add("plate");
-        plate.name.includes("fancy") && result.classList.add("fancy");
-        return result;
+    _createOneElement(element){
+        const fragment = document.createDocumentFragment();
+
+        const classes = [];
+        element.name.includes("plate") && classes.push("plate");
+        element.name.includes("fancy") && classes.push("fancy");
+        JSON.parse(element.animated) && classes.push("animated")
+
+        const result = this._createDiv(classes);
+        result.appendChild(this._createDiv(["hint"], `&lt;${element.name}/&gt;`));
+
+        fragment.appendChild(result);
+
+        return fragment;
     },
 
     _createElementOnTable(markup){
         const result = document.createDocumentFragment();
         this.elementAnimated = new Array();
-        markup.forEach(item => {
-            if(item.name.includes("plate")){
-                const element = this._createPlate(item);
-                result.appendChild(element);
-                JSON.parse(item.animated) && this.elementAnimated.push(element);
-            }             
+        markup.forEach(element => {
+            result.appendChild(this._createOneElement(element));       
         });
         return result;
     },
 
     _createCodeArea(markup){
-        let result = '&lt;div class="table"&gt;<br>';
+        const fragment = document.createDocumentFragment();
+
+        fragment.appendChild(this._createDiv([], '&lt;div class="table"&gt;'));
+
         markup.forEach(item => {
-            result += `&nbsp;&nbsp;&nbsp;&lt;${item.name}/&gt;<br>`;
+            fragment.appendChild(this._createDiv(["highlight"], `&lt;${item.name}/&gt;`, 3));
         });
-        result += '&lt;/div&gt;';
+
+        fragment.appendChild(this._createDiv([], '&lt;/div&gt;'));
+
+        return fragment;
+    },
+
+    _createDiv(classesName, content, whitespace = 0){
+        const result = document.createElement("div");
+        Array.isArray(classesName) && classesName.length && result.classList.add(...classesName);
+        content && (result.innerHTML = `${'&nbsp;'.repeat(whitespace)}${content}`);
         return result;
     },
 
