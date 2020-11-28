@@ -1,12 +1,18 @@
 'use strict';
 
 const game = {
+    _game:{
+        startLevel : "1",
+        completedLevel : [],
+    },    
+
     async init(urlGameLevels){
         this._getPageElements();
         this._setListeners();
         this.levels = await this._loadLevels(urlGameLevels);
-        this._createMenu(1);
-        this._setLevel(1);
+        const currentLevel = this._loadGame();
+        this._createMenu(currentLevel);
+        this._setLevel(currentLevel);
     },
 
     async _loadLevels(urlGameLevels){   
@@ -68,10 +74,16 @@ const game = {
     _checkWin(solution){
         this.answer == solution && this.elementAnimated.forEach(item => item.classList.toggle("animated"));
 
-        const parentLink = document.querySelector(".current");
-        const nextLevel = +parentLink?.querySelector(".level-number").innerHTML + 1;
+        const elementA = document.querySelector(".current");
+        elementA?.querySelector(".check-mark").classList.add("done");
 
-        parentLink?.querySelector(".check-mark").classList.add("done");
+        const currentLevel = elementA?.querySelector(".level-number").innerHTML;
+        const nextLevel = +currentLevel + 1;
+
+        elementA.classList.remove("current");
+        elementA.nextSibling?.classList.add("current");
+       
+        this._saveGame(currentLevel);
 
         setTimeout(() => this._setLevel(nextLevel), 1000); 
     },
@@ -96,28 +108,17 @@ const game = {
 
         const fragment = document.createDocumentFragment();
         const a = document.createElement("a");
-        level == currentLevel && a.classList.add("current");
+        (level == currentLevel) && a.classList.add("current");
 
-        const firstSpan = document.createElement("span");
-        firstSpan.classList.add("check-mark");
-        const secondSpan = document.createElement("span");
-        secondSpan.classList.add("level-number");
-        secondSpan.innerHTML = level;
-        const thirdSpan = document.createElement("span");
-        thirdSpan.innerHTML = nameLevel;
+        a.appendChild(this._createSpanElement("check-mark"));
+        a.appendChild(this._createSpanElement("level-number", level));
+        a.appendChild(this._createSpanElement(null, nameLevel));
 
-        a.appendChild(firstSpan);
-        a.appendChild(secondSpan);
-        a.appendChild(thirdSpan);
+        a.addEventListener('click', () => {
+            document.getElementsByClassName("current")[0]?.classList.remove("current");
+            
+            a.classList.add("current");
 
-        a.addEventListener('click', (event) => {
-            const temp = document.getElementsByClassName("current")[0]?.classList.remove("current");
-            if(event.target.childElementCount) {
-                event.target.classList.toggle("current");
-            } 
-            else {
-                event.target.parentNode.classList.toggle("current");
-            }
             this._setLevel(level)
         });
         
@@ -126,8 +127,15 @@ const game = {
         return fragment;
     },
 
+    _createSpanElement(className, text){
+        const result = document.createElement("span");
+        className && result.classList.add(className);
+        text && (result.innerHTML = text);
+        return result;
+    },
+
     _setLevel(levelNumber){
-        const currentLevel = this.levels.has(levelNumber.toString()) ? levelNumber.toString() : "1";
+        const currentLevel = this.levels.has(levelNumber.toString()) ? levelNumber.toString() : this._game.startLevel;
         this._removeChild(this.table);
         this._removeChild(this.taskExamples);
         this._createLevel(this.levels.get(currentLevel));
@@ -136,7 +144,7 @@ const game = {
 
     _createLevel(task){
         // fill menu element
-        this.taskLevel.innerHTML = `Level ${task.level} of 15`;
+        this.taskLevel.innerHTML = `Level ${task.level} of ${this.levels.size}`;
         this.taskName.innerHTML = task.name;
         this.taskDescription.innerHTML = task.description;
         this.taskSyntax.innerHTML = task.syntax;
@@ -194,6 +202,15 @@ const game = {
         while (element.firstChild){
             element.removeChild(element.firstChild);
         }
+    },
+
+    _saveGame(level){
+        localStorage.setItem("currentLevel", level);
+    },
+
+    _loadGame(){
+        const result = localStorage.getItem("currentLevel");
+        return result ? +result + 1 : this._game.startLevel;
     },
 }
 
