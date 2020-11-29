@@ -518,6 +518,23 @@ template {
 .game .editor .editor-pane .html-view .highlight:hover {
   color: #ce743a;
 }
+.game .tremble {
+  animation: tremble 0.1s 5;
+}
+@keyframes tremble {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
 .game .footer {
   width: 100%;
   margin-top: 35px;

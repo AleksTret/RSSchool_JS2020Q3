@@ -56,6 +56,7 @@ const game = {
     },
 
     _getCodeAreaElements(){
+        this.editor = document.getElementById("editor");
         this.codeArea = document.getElementById("codeArea");
         this.inputCss = document.getElementById("inputCss");
         this.buttonEnter = document.getElementById("buttonEnter");
@@ -115,6 +116,11 @@ const game = {
 
             setTimeout(() => this._setLevel(nextLevel), 1000); 
         }
+        else{
+            this.editor.classList.toggle("tremble");
+            setTimeout(()=> this.editor.classList.toggle("tremble"), 500);
+        }
+        
     },
 
     _animateChangeLevel(){
