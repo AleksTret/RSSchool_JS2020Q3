@@ -203,7 +203,7 @@ const game = {
         this.table.appendChild(this._createElementOnTable(task.markup));
     },
 
-    _createOneElement(element){
+    _createOneElementOnTable(element){
         const fragment = document.createDocumentFragment();
 
         const classes = [];
@@ -223,7 +223,7 @@ const game = {
         const result = document.createDocumentFragment();
         this.elementAnimated = new Array();
         markup.forEach(element => {
-            result.appendChild(this._createOneElement(element));       
+            result.appendChild(this._createOneElementOnTable(element));       
         });
         return result;
     },
@@ -233,8 +233,11 @@ const game = {
 
         fragment.appendChild(this._createDiv([], '&lt;div class="table"&gt;'));
 
-        markup.forEach(item => {
-            fragment.appendChild(this._createDiv(["highlight"], `&lt;${item.name}/&gt;`, 3));
+        markup.forEach((item, index) => {
+            const temp = this._createDiv(["highlight"], `&lt;${item.name}/&gt;`, 3);
+            temp.addEventListener("mouseenter", () => this.table.getElementsByClassName("hint")[index].classList.toggle("show"));
+            temp.addEventListener("mouseleave", () => this.table.getElementsByClassName("hint")[index].classList.toggle("show"));
+            fragment.appendChild(temp);
         });
 
         fragment.appendChild(this._createDiv([], '&lt;/div&gt;'));
@@ -252,10 +255,7 @@ const game = {
     _createExamples(examples){
         const fragment = document.createDocumentFragment();
         examples.forEach(item => {
-            const element = document.createElement("div");
-            element.classList.add("example");
-            element.innerHTML = item;
-            fragment.appendChild(element) 
+            fragment.appendChild(this._createDiv(["example"], item));
         });
         return fragment;
     },
@@ -283,11 +283,7 @@ const game = {
     },
 
     _initCompletedLevel(jsonString){
-        if (jsonString){
-            return new Map(JSON.parse(jsonString));
-        }else {
-            return new Map();
-        }
+        return (jsonString ? new Map(JSON.parse(jsonString)) : new Map());
     },
 }
 

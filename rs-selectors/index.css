@@ -698,6 +698,9 @@ template {
   word-wrap: nowrap;
   white-space: nowrap;
 }
+.plate .show {
+  display: block;
+}
 
 .getOut {
   transform: translateY(-100vh);
