@@ -89,11 +89,12 @@ const game = {
     },
 
     _resetMenu(){
-        document.getElementsByClassName("current")[0].classList.remove("current");
-        const marks = document.getElementsByClassName("done");
+        const marks = document.querySelectorAll(".done");
         for (let mark of marks){
             mark.classList.remove("done");
         }
+
+        document.getElementsByClassName("current")[0]?.classList.remove("current");
 
         document.getElementsByClassName("levels")[0].firstChild.classList.add("current");
 
@@ -114,19 +115,18 @@ const game = {
 
             this._saveGame(currentLevel);
 
-            setTimeout(() => this._setLevel(nextLevel), 1000); 
+            setTimeout(() => this._setLevel(nextLevel), 500); 
         }
         else{
             this.editor.classList.toggle("tremble");
             setTimeout(()=> this.editor.classList.toggle("tremble"), 500);
         }
-        
     },
 
     _animateChangeLevel(){
-        const animatedElement = document.getElementsByClassName("animated");
+        const animatedElement = document.querySelectorAll(".plate_dancer");
         for (let element of animatedElement){
-            element.classList.toggle("getOut");
+            element.classList.add("plate_takeoff");
         }
 
         const menuLinkElement = document.querySelector(".current");
@@ -215,7 +215,7 @@ const game = {
         const classes = [];
         element.name.includes("plate") && classes.push("plate");
         element.name.includes("fancy") && classes.push("fancy");
-        JSON.parse(element.animated) && classes.push("animated")
+        JSON.parse(element.animated) && classes.push("plate_dancer");
 
         const result = this._createDiv(classes);
         result.appendChild(this._createDiv(["hint"], `&lt;${element.name}/&gt;`));
