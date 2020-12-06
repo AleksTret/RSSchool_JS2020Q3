@@ -50,6 +50,7 @@ const game = {
         this.taskSyntax = document.getElementById("taskSyntax");
         this.taskHint = document.getElementById("taskHint");
         this.taskExamples = document.getElementById("taskExamples");
+        this.buttonHelp = document.getElementById("buttonHelp");
     },
 
     _getTableElements(){
@@ -81,6 +82,10 @@ const game = {
         this.buttonReset.addEventListener("click", () => {
             this._resetGame();
         });
+
+        this.buttonHelp.addEventListener("click", () => {
+            this._showAnswer();
+        })
     },
 
     _resetGame(){
@@ -90,9 +95,14 @@ const game = {
     },
 
     _resetMenu(){
-        const marks = document.querySelectorAll(".done");
+        // const marks = document.querySelectorAll(".mark-red");
+        // for (let mark of marks){
+        //     mark.classList.remove("mark-red");
+        // }
+        const marks = document.querySelectorAll("a > span:first-child");
         for (let mark of marks){
-            mark.classList.remove("done");
+            mark.classList.remove("mark-red");
+            mark.classList.remove("mark-green");
         }
 
         document.getElementsByClassName("current")[0]?.classList.remove("current");
@@ -104,6 +114,30 @@ const game = {
         this.burgerCheckbox.checked = false;
     },
 
+    _showAnswer(){
+        const timeout = 200;
+        this._printText(this.answer[0], 0, "", timeout);
+        setTimeout(() => {
+            const currentLevel = this._animateChangeLevel(false);
+            const nextLevel = (+currentLevel + 1).toString();
+    
+            this._saveGame(currentLevel, true);
+            
+            setTimeout(() => this._setLevel(nextLevel), 500); 
+        }, timeout * this.answer[0].length + 1);
+    },
+
+    _printText(answer, counter, output, timeout){
+        let timerId = setInterval(() => {
+            output += answer[counter++];
+            this.inputCss.value = output;
+
+            if(counter == answer.length){
+                clearTimeout(timerId);
+            }
+        }, timeout);
+    },
+
     _clearLocalStorage(){
         localStorage.removeItem("currentLevel");
         localStorage.removeItem("completedLevels");
@@ -111,10 +145,10 @@ const game = {
 
     _checkWin(solution){
         if (~this.answer.indexOf(solution)) {         
-            const currentLevel = this._animateChangeLevel();
+            const currentLevel = this._animateChangeLevel(true);
             const nextLevel = (+currentLevel + 1).toString();
 
-            this._saveGame(currentLevel);
+            this._saveGame(currentLevel, false);
 
             setTimeout(() => this._setLevel(nextLevel), 500); 
         }
@@ -124,20 +158,22 @@ const game = {
         }
     },
 
-    _animateChangeLevel(){
+    _animateChangeLevel(done){
         const animatedElement = document.querySelectorAll(".element_dancer");
         for (let element of animatedElement){
             element.classList.add("element_takeoff");
         }
 
         const menuLinkElement = document.querySelector(".current");
-        menuLinkElement?.querySelector(".check-mark").classList.add("done");
+        const markColor = done ? "mark-green" : "mark-red";
+        menuLinkElement?.querySelector(".check-mark").classList.add(markColor);
         menuLinkElement?.classList.remove("current");
         menuLinkElement?.nextSibling?.classList.add("current");
 
+        const currentLevel = menuLinkElement?.querySelector(".level-number").innerHTML;
+
         this.inputCss.value = "";
 
-        const currentLevel = menuLinkElement?.querySelector(".level-number").innerHTML;
         return currentLevel;
     },
 
@@ -146,13 +182,14 @@ const game = {
 
         this.levels.forEach(level => {
             const done = this._game.completedLevels.get(level.level)?.done;
-            fragment.appendChild(this._createMenuLink(level.level, level.name, currentLevel, done));
+            const withHelp = this._game.completedLevels.get(level.level)?.withHelp;
+            fragment.appendChild(this._createMenuLink(level.level, level.name, currentLevel, done, withHelp));
         });
 
         this.menu.appendChild(fragment);
     },
 
-    _createMenuLink(level, nameLevel, currentLevel, done){
+    _createMenuLink(level, nameLevel, currentLevel, done, withHelp){
         // create
         // <a><span class="check-mark"></span><span class="level-number">level number</span><span>level name text</span></a>
 
@@ -160,7 +197,7 @@ const game = {
         const a = document.createElement("a");
         (level == currentLevel) && a.classList.add("current");
 
-        a.appendChild(this._createSpanElement("check-mark", null, done));
+        a.appendChild(this._createSpanElement("check-mark", null, done, withHelp));
         a.appendChild(this._createSpanElement("level-number", level));
         a.appendChild(this._createSpanElement(null, nameLevel));
 
@@ -178,11 +215,14 @@ const game = {
         return fragment;
     },
 
-    _createSpanElement(className, text, done){
+    _createSpanElement(className, text, done, withHelp){
         const result = document.createElement("span");
         className && result.classList.add(className);
         text && (result.innerHTML = text);
-        done && (result.classList.add("done"));
+        
+        const markColor = withHelp ? "mark-red" : "mark-green";
+        done && (result.classList.add(markColor));
+
         return result;
     },
 
@@ -351,7 +391,6 @@ const game = {
         const result = document.createElement("div");
         Array.isArray(classesName) && classesName.length && result.classList.add(...classesName);
         content && (result.innerHTML = `${'&nbsp;'.repeat(whitespace)}${content}`);
-        console.log(attribute);
         attribute && typeof(attrValue) !== "undefined" && attrValue !== null && result.setAttribute(attribute, attrValue);
         return result;
     },
@@ -370,10 +409,10 @@ const game = {
         }
     },
 
-    _saveGame(level){
+    _saveGame(level, withHelp){
         localStorage.setItem("currentLevel", level);
 
-        this._game.completedLevels.set(level, {done : true});
+        this._game.completedLevels.set(level, {done : true, withHelp : withHelp});
 
         localStorage.setItem("completedLevels", JSON.stringify([...this._game.completedLevels]));        
     },
