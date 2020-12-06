@@ -95,10 +95,6 @@ const game = {
     },
 
     _resetMenu(){
-        // const marks = document.querySelectorAll(".mark-red");
-        // for (let mark of marks){
-        //     mark.classList.remove("mark-red");
-        // }
         const marks = document.querySelectorAll("a > span:first-child");
         for (let mark of marks){
             mark.classList.remove("mark-red");
@@ -124,7 +120,7 @@ const game = {
             this._saveGame(currentLevel, true);
             
             setTimeout(() => this._setLevel(nextLevel), 500); 
-        }, timeout * this.answer[0].length + 1);
+        }, timeout * (this.answer[0].length + 4));
     },
 
     _printText(answer, counter, output, timeout){
@@ -357,6 +353,7 @@ const game = {
                 event.target.classList.add("html-view-highlight");
                 const hint = document.querySelector(`[data-numberElement="${tag.dataset.highlight}"]`);
                 hint.classList.add("hint-display-block");
+                hint.parentNode.classList.add("element_shadow");
                 event.stopPropagation();
             });
 
@@ -365,6 +362,7 @@ const game = {
                 event.target.classList.remove("html-view-highlight");
                 const hint = document.querySelector(`[data-numberElement="${tag.dataset.highlight}"]`);
                 hint.classList.remove("hint-display-block");
+                hint.parentNode.classList.remove("element_shadow");
                 event.stopPropagation();
             });
         }
@@ -418,6 +416,8 @@ const game = {
     },
 
     _loadGame(){
+        console.log(this._game.completedLevels);
+
         this._game.completedLevels = this._initCompletedLevel(localStorage.getItem("completedLevels"));
 
         const result = localStorage.getItem("currentLevel");

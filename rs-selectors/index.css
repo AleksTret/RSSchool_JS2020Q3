@@ -397,7 +397,7 @@ template {
   margin: 0 40px 0 20px;
 }
 .game .game__task {
-  font-size: 48px;
+  font-size: 35px;
 }
 .game .table-wrapper {
   perspective: 400px;
@@ -537,8 +537,21 @@ template {
 }
 .game .footer {
   width: 100%;
-  margin-top: 35px;
+  margin-top: 25px;
   color: #ce743a;
+  display: flex;
+  justify-content: center;
+}
+.game .footer .logo-rsSchool {
+  width: 100px;
+  height: 50px;
+  background: url("./assets/svg/rs_school_js.svg") no-repeat;
+}
+.game .footer .logo-github {
+  width: 100px;
+  height: 50px;
+  background: url("./assets/svg/Octocat.svg") no-repeat;
+  background-size: contain;
 }
 
 .menu {
@@ -760,14 +773,6 @@ template {
   transform: rotate(-8deg);
 }
 
-.aleks::before {
-  content: "Aleks";
-}
-
-.mickle::before {
-  content: "Mickle";
-}
-
 .hint {
   position: absolute;
   z-index: 100;
@@ -792,6 +797,10 @@ template {
 
 .html-view-highlight {
   color: #ce743a;
+}
+
+.element_shadow {
+  box-shadow: 0 0 0 6px rgba(175, 114, 34, 0.5) !important;
 }
 
 .apple {

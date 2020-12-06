@@ -522,8 +522,8 @@
       }
     ],
     "answer": [
-      "bento :first-child",
-      "bento:first-child"
+      "bento:first-child",
+      "bento :first-child"
     ]
   },
   "14": {
@@ -572,8 +572,8 @@
       }
     ],
     "answer": [
-      "plate :only-child",
-      "plate:only-child"
+      "plate:only-child",
+      "plate :only-child"
     ]
   },
   "15": {

@@ -27,7 +27,7 @@
     }
 
     .game__task{
-        font-size: 48px;
+        font-size: 35px;
     }
 
     .table-wrapper{
@@ -187,8 +187,24 @@
 
     .footer{
         width: 100%;
-        margin-top: 35px;
+        margin-top: 25px;
         color: #ce743a;
+        display: flex;
+        justify-content: center;
+
+        .logo-rsSchool{
+            width: 100px;
+            height: 50px;
+            background: url('./assets/svg/rs_school_js.svg') no-repeat;
+        }
+
+        .logo-github{
+            width: 100px;
+            height: 50px;
+            background: url('./assets/svg/Octocat.svg') no-repeat;
+            background-size: contain;
+
+        }
     }
 }
 
@@ -439,14 +455,6 @@
     transform: rotate(-8deg);
 }
 
-.aleks::before{
-    content: "Aleks";
-}
-
-.mickle::before{
-    content: "Mickle";
-}
-
 .hint{
     position: absolute;
     z-index: 100;
@@ -464,7 +472,7 @@
     font-size: 18px;
     font-family: menlo, monospace;
     word-wrap: nowrap;
-    white-space: nowrap;
+    white-space: nowrap;    
 }
 
 .hint-display-block{
@@ -473,6 +481,10 @@
 
 .html-view-highlight{
     color:#ce743a;
+}
+
+.element_shadow{
+    box-shadow: 0 0 0 6px rgba(175, 114, 34, 0.5) !important;
 }
 
 .apple{
