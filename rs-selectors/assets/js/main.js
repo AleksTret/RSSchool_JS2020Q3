@@ -39,6 +39,7 @@ const game = {
         this._getCodeAreaElements();
         this._getTableElements();
         this._getMenuElements();
+        this.gameTitle = document.getElementById("gameTast");
     },
 
     _getTaskElements(){
@@ -109,7 +110,7 @@ const game = {
     },
 
     _checkWin(solution){
-        if (this.answer == solution) {         
+        if (~this.answer.indexOf(solution)) {         
             const currentLevel = this._animateChangeLevel();
             const nextLevel = (+currentLevel + 1).toString();
 
@@ -124,9 +125,9 @@ const game = {
     },
 
     _animateChangeLevel(){
-        const animatedElement = document.querySelectorAll(".plate_dancer");
+        const animatedElement = document.querySelectorAll(".element_dancer");
         for (let element of animatedElement){
-            element.classList.add("plate_takeoff");
+            element.classList.add("element_takeoff");
         }
 
         const menuLinkElement = document.querySelector(".current");
@@ -167,8 +168,9 @@ const game = {
             document.getElementsByClassName("current")[0]?.classList.remove("current");
             
             a.classList.add("current");
+            this.burgerCheckbox.checked = false;
 
-            this._setLevel(level)
+            this._setLevel(level);
         });
         
         fragment.appendChild(a);
@@ -194,7 +196,10 @@ const game = {
     },
 
     _createLevel(task){
-        // fill menu element
+        // fill the title
+        this.gameTitle.innerHTML = task.title;
+
+        // fill menu's elements
         this.taskLevel.innerHTML = `Level ${task.level} of ${this.levels.size}`;
         this.taskName.innerHTML = task.name;
         this.taskDescription.innerHTML = task.description;
@@ -202,36 +207,71 @@ const game = {
         this.taskHint.innerHTML = task.hint;
         this.taskExamples.appendChild(this._createExamples(task.examples));
 
-        // fill code area
+        // fill the code area
         this.codeArea.appendChild(this._createCodeArea(task.markup));
+
+        this.notes = this._createDiv(["notes"]);
+        this.table.appendChild(this.notes);
 
         // create elements on the table
         this.table.appendChild(this._createElementOnTable(task.markup));
+
+        this._addMouseEventListeners();
     },
 
-    _createOneElementOnTable(element){
+    _createOneElementOnTable(element, counter){
+        // recursive function
         const fragment = document.createDocumentFragment();
 
-        const classes = [];
-        element.name.includes("plate") && classes.push("plate");
-        element.name.includes("fancy") && classes.push("fancy");
-        JSON.parse(element.animated) && classes.push("plate_dancer");
-
+        const classes = this._createClassArray(element);    
         const result = this._createDiv(classes);
-        result.appendChild(this._createDiv(["hint"], `&lt;${element.name}/&gt;`));
+
+        const hint = this._createDiv(["hint"], `&lt;${element.name}/&gt;`, null, "data-numberElement", counter.index++);
+        result.appendChild(hint);       
+
+        // if we have an inner element do recursive call
+        ('markup' in element) && result.appendChild(this._createOneElementOnTable(element.markup, counter));
+
+        this._addMouseEventListener(result, "hint-display-block");
 
         fragment.appendChild(result);
+
+        // if we have an attribute in code, create the note on the table
+        const regexp = /for='.+'/ig;
+        regexp.test(element.name) && this._createNotesOnTheTable(element, regexp, counter.index);
 
         return fragment;
     },
 
+    _createClassArray(element){
+        const classes = [];
+
+        element.name.includes("plate") && classes.push("plate");
+        element.name.includes("fancy") && classes.push("fancy");
+        JSON.parse(element.animated) && classes.push("element_dancer");
+        element.name.includes("apple") && classes.push("apple");
+        element.name.includes("pickle") && classes.push("pickle");
+        element.name.includes("bento") && classes.push("bento");
+        element.name.includes("orange") && classes.push("orange");
+        element.name.includes("small") && classes.push("small");
+
+        return classes;
+    },
+
     _createElementOnTable(markup){
-        const result = document.createDocumentFragment();
+        const fragment = document.createDocumentFragment();
         this.elementAnimated = new Array();
-        markup.forEach(element => {
-            result.appendChild(this._createOneElementOnTable(element));       
+        const counter = {index: 0};
+        markup.forEach((element) => {
+            fragment.appendChild(this._createOneElementOnTable(element, counter));      
         });
-        return result;
+        return fragment;
+    },
+
+    _createNotesOnTheTable(element, regexp, value){
+        const name = element.name.match(regexp)[0].match(/'.+'/ig)[0].match(/\w+/)[0];
+        const note = this._createDiv(["for"], name, null, 'style', `left:${value*50}px`);
+        this.notes.appendChild(note)
     },
 
     _createCodeArea(markup){
@@ -239,11 +279,10 @@ const game = {
 
         fragment.appendChild(this._createDiv([], '&lt;div class="table"&gt;'));
 
-        markup.forEach((item, index) => {
-            const temp = this._createDiv(["highlight"], `&lt;${item.name}/&gt;`, 3);
-            temp.addEventListener("mouseenter", () => this.table.getElementsByClassName("hint")[index].classList.toggle("show"));
-            temp.addEventListener("mouseleave", () => this.table.getElementsByClassName("hint")[index].classList.toggle("show"));
-            fragment.appendChild(temp);
+        const counter = {index: 0};
+        markup.forEach((element) => {
+            fragment.appendChild(this._createOneElementOnCodeArea(element, counter));
+            counter.index++;
         });
 
         fragment.appendChild(this._createDiv([], '&lt;/div&gt;'));
@@ -251,10 +290,69 @@ const game = {
         return fragment;
     },
 
-    _createDiv(classesName, content, whitespace = 0){
+    _createOneElementOnCodeArea(element, counter, spaceBeforeTag = 2){
+        // recursive function
+        const fragment = document.createDocumentFragment();
+
+        const openTag = this._createDiv(["highlight"], `&lt;${element.name}&gt;`, spaceBeforeTag, "data-highlight", counter.index);
+        
+        fragment.appendChild(openTag);
+
+        // if we have an inner element do recursive call
+        const storageCurrentIndex = counter.index;
+        ('markup' in element) && ++counter.index && openTag.appendChild(this._createOneElementOnCodeArea(element.markup, counter, spaceBeforeTag + 2)) 
+
+        const closeTag = this._createDiv(["highlight"], `&lt;/${element.name.match(/([a-z-]*)/)[0]}&gt;`, spaceBeforeTag, "data-highlight", storageCurrentIndex);
+ 
+        fragment.appendChild(closeTag);
+
+        return fragment;
+    },
+
+    _addMouseEventListeners(){
+        const tags = document.querySelectorAll(`[data-highlight]`);
+
+        for (let tag of tags){
+            tag.addEventListener("mouseover", (event) => {
+                event.target.classList.add("html-view-highlight");
+                const hint = document.querySelector(`[data-numberElement="${tag.dataset.highlight}"]`);
+                hint.classList.add("hint-display-block");
+                event.stopPropagation();
+            });
+
+
+            tag.addEventListener("mouseout", (event) => {
+                event.target.classList.remove("html-view-highlight");
+                const hint = document.querySelector(`[data-numberElement="${tag.dataset.highlight}"]`);
+                hint.classList.remove("hint-display-block");
+                event.stopPropagation();
+            });
+        }
+    },
+
+    _addMouseEventListener(tag, className){
+        tag.addEventListener("mouseover", (event) => {
+            event.target.firstChild.classList.add(className);
+            const tags = document.querySelectorAll(`[data-highlight="${event.target.firstChild.dataset.numberelement}"]`);
+            for(let tag of tags) {
+                tag.classList.add("html-view-highlight");
+            }            
+        });
+        tag.addEventListener("mouseout", (event) => {
+            event.target.firstChild.classList.remove(className);
+            const tags = document.querySelectorAll(`[data-highlight="${event.target.firstChild.dataset.numberelement}"]`);
+            for(let tag of tags) {
+                tag.classList.remove("html-view-highlight");
+            }   
+        });
+    },
+
+    _createDiv(classesName, content, whitespace = 0, attribute, attrValue){
         const result = document.createElement("div");
         Array.isArray(classesName) && classesName.length && result.classList.add(...classesName);
         content && (result.innerHTML = `${'&nbsp;'.repeat(whitespace)}${content}`);
+        console.log(attribute);
+        attribute && typeof(attrValue) !== "undefined" && attrValue !== null && result.setAttribute(attribute, attrValue);
         return result;
     },
 
