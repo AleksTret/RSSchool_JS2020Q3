@@ -287,7 +287,7 @@
   "9": {
     "level": "9",
     "title": "Select everything on the plates",
-    "name": "Combine the Universal Selector",
+    "name": "Combine the Universal",
     "description": "Select everything inside of another element",
     "syntax": "A&nbsp;&nbsp;*",
     "hint": "This selects all elements inside of <strong>A</strong>.",
@@ -313,7 +313,7 @@
         }
       },
       {
-        "name": "bento",
+        "name": "apple",
         "animated": "false"
       },
       {
@@ -407,10 +407,6 @@
           "name": "apple",
           "animated": "false"
         }
-      },
-      {
-        "name": "orange",
-        "animated": "false"
       }
     ],
     "answer": [
@@ -636,10 +632,6 @@
       {
         "name": "plate class='fancy'",
         "animated": "true"
-      },
-      {
-        "name": "plate",
-        "animated": "false"
       }
     ],
     "answer": [
@@ -732,10 +724,6 @@
           "name": "orange class='small'",
           "animated": "false"
           }
-      },
-      {
-        "name": "pickle",
-        "animated": "false"
       }
     ],
     "answer": [
@@ -770,10 +758,6 @@
           "name": "pickle for='Aleks'",
           "animated": "true"
         }
-      },
-      {
-        "name": "plate",
-        "animated": "false"
       },
       {
         "name": "plate",
