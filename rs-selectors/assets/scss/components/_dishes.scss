@@ -1,0 +1,163 @@
+.plate{
+    position: relative;
+    background: $color-background-plate;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    border-radius: 100px;
+    border-bottom: solid 5px $color-border-plate;
+    box-shadow: 0px 8px 0px rgba(0,0,0,.1);
+    transition: transform ease-out 0.5s;
+    
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: calc(50% - 32px);
+        top: calc(50% - 32px);
+        height: 65px;
+        width: 65px;
+        border-radius: 60px;
+        border-top: solid 6px $color-border-before;
+        opacity: 0.4;
+        background: $color-background-plate;
+    }
+
+    & .plate{
+        top: -20px;
+    }
+}
+
+.bento{
+    position: relative;
+    display: inline-block;
+
+    background: $color-background-bento;
+    border: solid 3px $color-border-bento;
+    border-width: 2px 2px;
+    box-shadow: 0px 8px 0px rgba(0,0,0,0.1);
+
+    height: 100px;
+    width: 100px;
+    margin: 0 10px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: calc(100%);
+        top: 0;
+        left: 0;
+        border: solid 10px $color-border-bento-before;
+        border-width: 10px 0 0 0px;
+    }
+
+    & .plate{
+        margin: 0;
+    }
+}
+
+.pickle{
+    position: relative;
+    z-index: 9;
+    display: inline-block;
+    width: 25px;
+    height: 60px;
+
+    border-radius: 30px;
+    border: solid 2px $color-border-pickle;
+    border-width: 2px 2px 9px 2px;
+    box-shadow: 0px 5px 0px rgba(0,0,0,0.2);
+    background: $color-background-pickle;
+    margin: 20px 10px;
+}
+
+.apple{
+    position: relative;
+    z-index: 9;
+    display: inline-block;
+
+    border-radius: 100px;
+    border-style: solid;
+    border-width: 2px 4px 15px 4px;
+    background: $color-background-apple;
+    border-color: $color-border-apple;
+    height: 60px;
+    width: 60px;
+    margin: 20px 10px;
+    box-shadow: 0px 5px 0px rgba(0,0,0,0.2);
+
+    &::before{
+        content: "";
+        display: block;
+        position: absolute;
+        background: $color-background-before;
+        height: 30%;
+        width: 30%;
+        top: 0px;
+        left: calc(50% - 15%);
+        border-radius: 100px;
+    }
+}
+
+.orange{
+    position: relative;
+    z-index: 9;
+    display: inline-block;
+
+    border-radius: 100px;
+    border-style: solid;
+    border-width: 2px 4px 15px 4px;
+    background: $color-background-orange;
+    border-color: $color-border-orange;
+    height: 60px;
+    width: 60px;
+    margin: 20px 10px;
+    box-shadow: 0px 5px 0px rgba(0,0,0,0.2);
+
+    &::before{
+        content: "";
+        display: block;
+        position: absolute;
+        background: $color-background-before;
+        height: 30%;
+        width: 30%;
+        top: 0px;
+        left: calc(50% - 15%);
+        border-radius: 100px;
+    }
+}
+
+.small{
+    border-width: 2px 4px 8px 4px;
+    height: 30px;
+    width: 30px;
+    margin: 35px 10px;
+}
+
+.fancy:after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: calc(50% - 47px);
+    top: calc(50% - 44px);
+    height: 90px;
+    width: 95px;
+    border-radius: 60px;
+    border: solid 10px $color-border-fancy;
+    opacity: 0.4;
+}
+
+.for{
+    font-family: "Satisfy", sans-serif;
+    position: absolute;
+    bottom: -14px;
+    width: 80px;
+    color: $color-text-main;
+    font-size: 22px;
+    box-shadow: -3px 6px 0 rgba(0,0,0,0.2);
+    z-index: 0;
+    padding: 30px 0 2px 0;
+    background-color: $color-background-for;
+    transform: rotate(-8deg);
+}

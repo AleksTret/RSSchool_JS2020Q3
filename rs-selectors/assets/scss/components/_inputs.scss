@@ -1,0 +1,22 @@
+.input-css{
+    background: $color-background-view;
+    border: none;
+    padding: 0;
+
+    background-color: $color-background-blink;
+    animation: blink 1s infinite;
+        
+    @keyframes blink {
+        50% { 
+            background:none ; 
+        }
+    }
+            
+    &:focus{
+        outline: none;
+    }
+
+    @media (max-width: 607px){
+        margin-bottom: 9px;
+    }
+}

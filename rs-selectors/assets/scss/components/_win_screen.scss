@@ -1,0 +1,23 @@
+.win-screen{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 250px;
+    background-color: $color-background-menu;
+    position: absolute;
+    color: $color-text-main;
+    top: -75px;
+    left: -70px;
+    box-shadow: 8px 8px 0px $color-border-task;
+    border: solid 2px $color-border-menu;
+    
+    h3{
+        font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
+        font-size: 20px;
+    }
+}
+
+.win-screen_display-block{
+    display: flex;
+}

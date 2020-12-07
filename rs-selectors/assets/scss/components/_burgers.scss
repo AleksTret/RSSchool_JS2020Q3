@@ -1,0 +1,101 @@
+.burger-checkbox-hidden{
+    display: none;
+
+    &:checked ~ .levels-wrapper {
+        right: 0;
+    }
+   
+    &:checked ~ .burger-menu span.first {
+        transform: rotate(-45deg);
+        top: 10px;
+    }
+    
+    &:checked ~ .burger-menu span.second {
+        opacity: 0;
+    }
+    
+    &:checked ~ .burger-menu span.third {
+        transform: rotate(45deg);
+        top: -10px;
+    }
+}
+
+.burger-menu {
+    background-color: $color-background-menu;
+    padding: 5px;
+    position: fixed;
+    right: 30px;
+    top: 15px;
+    cursor: pointer;
+    transition: left .23s;
+    z-index: 3;
+    width: 35px;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    span {
+        display: block;
+        height: 5px;
+        background-color: $color-background-burger;
+        margin: 5px 0 0;
+        transition: all .1s linear .23s;
+        position: relative;
+
+        .first {
+            margin-top: 0;
+        }
+    }
+}
+
+.burger-menu-media{
+    background-color: $color-background-main;
+    padding: 5px;
+    position: fixed;
+    right: 70px;
+    top: 15px;
+    cursor: pointer;
+    transition: left .23s;
+    z-index: 3;
+    width: 35px;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    span {
+        display: block;
+        height: 5px;
+        background-color: $color-background-burger;
+        margin: 5px 0 0;
+        transition: all .1s linear .23s;
+        position: relative;
+
+        .first {
+            margin-top: 0;
+        }
+    }      
+
+    @media (min-width: 1000px){
+        display: none;
+    }
+}
+
+.burger-menu-media-hidden{
+    display: none;
+
+    &:checked ~ .menu .task-wrapper{
+        right: 0;
+    }
+   
+    &:checked ~ .burger-menu-media span.first {
+        transform: rotate(-45deg);
+        top: 10px;
+    }
+    
+    &:checked ~ .burger-menu-media span.second {
+        opacity: 0;
+    }
+    
+    &:checked ~ .burger-menu-media span.third {
+        transform: rotate(45deg);
+        top: -10px;
+    }
+}

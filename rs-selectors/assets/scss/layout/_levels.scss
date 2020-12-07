@@ -1,0 +1,50 @@
+.levels{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    a{
+        text-decoration: none;
+        color: $color-text-main;
+        display: block;
+        cursor: pointer;
+        padding: 1.5% 0 2% 3%;
+        opacity: 0.6;
+
+        .check-mark{
+            display: inline-block;
+            margin-right: 15px;
+            width: 8px;
+            height: 13px;
+            border: solid 3px $color-border-mark;
+            border-width: 0 3px 3px 0;
+            opacity: 0.2;
+            top: -1px;
+            transform: rotate(40deg);
+        }
+
+        .level-number{
+            display: inline-block;
+            min-width: 25px;                
+        }
+
+        .mark-green{
+            opacity: 0.55;
+            border: solid 3px $color-border-check-done;
+            border-width: 0 3px 3px 0;
+        }
+
+        .mark-red{
+            opacity: 1;
+            border: solid 3px $color-border-check-fail;
+            border-width: 0 3px 3px 0;
+        }
+    }
+
+    .current{
+        font-weight: bold;
+        background: $color-background-highlight;
+
+        opacity: 1;
+    }
+}

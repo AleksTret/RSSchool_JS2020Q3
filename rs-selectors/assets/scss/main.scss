@@ -7,6 +7,20 @@
 @import 'vendors/normalize';
 
 // Base stuff
+@import 'base/base';
+@import 'base/helpers';
 @import 'base/fonts';
 
 // Components
+@import 'components/buttons';
+@import 'components/dishes';
+@import 'components/hints';
+@import 'components/inputs';
+@import 'components/burgers';
+@import 'components/table';
+@import 'components/win_screen';
+@import 'components/editor';
+
+// Layout
+@import 'layout/task';
+@import 'layout/levels';

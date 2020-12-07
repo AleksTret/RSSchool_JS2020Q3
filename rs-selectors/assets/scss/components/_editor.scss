@@ -1,0 +1,69 @@
+.editor{
+    display: flex;
+    text-align: left;
+    width: 90%;
+    margin: 30px auto;
+    border: solid 10px $color-border-editor;
+    border-radius: 4px;
+    font-family: menlo, monospace;
+    font-size: 14px;
+    line-height: 150%;
+
+    .editor-pane{
+        width: 50%;
+        
+        .editor-pane__input-header{
+            padding: 10px 15px;
+            border: solid 1px $color-border-editor-input;
+
+            .editor-pane__file-name{
+                float: right;
+            }
+        }
+
+        .file-window{
+            display: flex;
+
+            .line-numbers{
+                padding: 10px 10px;
+                height: 100%;
+                line-height: 150%;
+                text-align: right;
+            }
+
+            .code-area{
+                padding: 10px 10px;
+                width: 100%;
+
+
+            }
+
+            .input{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            
+        }
+
+        .css-view{
+            background: $color-background-view;
+            color: $color-text-css;
+
+            .line-numbers{
+                color: $color-text-line;
+                background: $color-background-lineNumber;
+            }
+        }
+
+        .html-view{
+            color: $color-text-html;
+            border-right: solid 1px $color-border-editor-input;
+            cursor: default;
+
+            .line-numbers{
+                border-right: solid 1px $color-border-editor-input;
+            }
+        }
+    }
+}
