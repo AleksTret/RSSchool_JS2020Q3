@@ -435,13 +435,13 @@ body {
   margin: 0 auto;
   transform: rotateX(-40deg);
   transform-origin: top;
-  background-color: #af7222;
+  background-color: #e2a24c;
   transform-origin: top;
 }
 .game .table-wrapper .table__edge .table__leg {
   height: 20px;
   width: 25px;
-  background-color: #af7222;
+  background-color: #e2a24c;
   position: absolute;
   top: 15px;
 }
@@ -708,7 +708,7 @@ body {
   border: none;
 }
 .menu .task-wrapper .task strong, .menu .task-wrapper .task tag {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   padding: 3px 6px 3px 6px;
   margin: 0px 2px;
   font-size: 13px;
@@ -784,7 +784,7 @@ body {
 .bento {
   position: relative;
   display: inline-block;
-  background: brown;
+  background: #A52A2A;
   border: solid 3px #711c12;
   border-width: 2px 2px;
   box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.1);
@@ -896,7 +896,7 @@ body {
   border-radius: 100px;
   border-style: solid;
   border-width: 2px 4px 15px 4px;
-  background: orange;
+  background: #fc9303;
   border-color: #bd6e07;
   height: 60px;
   width: 60px;
@@ -969,7 +969,7 @@ body {
 .burger-menu span {
   display: block;
   height: 5px;
-  background-color: #ce743a;
+  background-color: #e2a24c;
   margin: 5px 0 0;
   transition: all 0.1s linear 0.23s;
   position: relative;
@@ -994,7 +994,7 @@ body {
 .burger-menu-media span {
   display: block;
   height: 5px;
-  background-color: #ce743a;
+  background-color: #e2a24c;
   margin: 5px 0 0;
   transition: all 0.1s linear 0.23s;
   position: relative;
@@ -1058,7 +1058,7 @@ body {
   }
 }
 .button-enter {
-  background: #ddd;
+  background: #DDD;
   display: block;
   border-radius: 4px;
   padding: 0 7px;

@@ -1,7 +1,7 @@
 @import 'assets/scss/main.scss';
 
 body{
-    background-color: #1e1e1e;
+    background-color: $color-background-main;
 }
 
 .main-wrapper{
@@ -49,7 +49,7 @@ body{
             margin: 0 auto;
             transform: rotateX(20deg);
             transform-origin: bottom;
-            background-color: #e2a24c;
+            background-color: $color-background-table;
             padding: 15px;
 
             @media (max-width: 550px){
@@ -65,13 +65,13 @@ body{
             margin: 0 auto;
             transform: rotateX(-40deg);
             transform-origin: top;
-            background-color: #af7222;
+            background-color: $color-background-table;
             transform-origin: top;
 
             .table__leg{
                 height: 20px;
                 width: 25px;
-                background-color: #af7222;
+                background-color: $color-background-table;
                 position: absolute;
                 top: 15px;
 
@@ -91,7 +91,7 @@ body{
             align-items: center;
             width: 600px;
             height: 250px;
-            background-color: #252525;
+            background-color: $color-background-menu;
             position: absolute;
             color: #ce743a;
             top: -75px;
@@ -159,12 +159,12 @@ body{
             }
 
             .css-view{
-                background: #efefef;
+                background: $color-background-view;
                 color: #AAA;
 
                 .line-numbers{
                     color: #999;
-                    background: #DDD;
+                    background: $color-background-lineNumber;
                 }
             }
 
@@ -217,21 +217,17 @@ body{
 .menu{
     //width: 35%;
     //height: 100vh;
-    background-color: #252525;
-
-
+    background-color: $color-background-menu;
 
     @media (max-width: 1000px){
         position: fixed;
         right: -4000px;
     }
 
-
-
     .levels-wrapper{
         position: fixed;
         width: 35%;
-        background-color: #252525;
+        background-color: $color-background-menu;
         height: 100vh;
         right: -4000px;
         transition: right 0.5s;
@@ -256,15 +252,14 @@ body{
         .levels{
             display: flex;
             flex-direction: column;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
 
             a{
                 text-decoration: none;
                 color: #ce743a;
                 display: block;
                 cursor: pointer;
-                //padding: 10px 0 10px 20px;
-                padding: 2% 0 2% 4%;
+                padding: 1.5% 0 2% 3%;
                 opacity: 0.6;
     
                 .check-mark{
@@ -299,7 +294,8 @@ body{
 
             .current{
                 font-weight: bold;
-                background: rgba(255,255,255,.07);
+                background: $color-background-highlight;
+
                 opacity: 1;
             }
         }
@@ -309,7 +305,7 @@ body{
         position: fixed;
         padding: 10px;
         width: 35%;
-        background-color: #252525;
+        background-color: $color-background-menu;
         height: 100vh;
         z-index: 1;
 
@@ -353,7 +349,7 @@ body{
                 margin: 0 0 20px 0;
                 font-weight: 200;
                 opacity: 0.8;
-                background: rgba(255,255,255,.05);
+                background: $color-background-task;
                 display: inline-block;
                 padding: 5px 8px;
                 border-bottom: solid 2px rgba(255,255,255,.1);
@@ -376,7 +372,7 @@ body{
             }
             
             strong, tag{
-                background: rgba(255,255,255,.1);
+                background: $color-background-task;
                 padding: 3px 6px 3px 6px;
                 margin: 0px 2px;
                 font-size: 13px;
@@ -427,7 +423,7 @@ body{
 
 .plate{
     position: relative;
-    background: white;
+    background: $color-background-plate;
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -448,7 +444,7 @@ body{
         border-radius: 60px;
         border-top: solid 6px #CCC;
         opacity: 0.4;
-        background: rgba(255,255,255,1);
+        background: $color-background-plate;
     }
 
     & .plate{
@@ -460,7 +456,7 @@ body{
     position: relative;
     display: inline-block;
 
-    background: brown;
+    background: $color-background-bento;
     border: solid 3px #711c12;
     border-width: 2px 2px;
     box-shadow: 0px 8px 0px rgba(0,0,0,0.1);
@@ -495,7 +491,7 @@ body{
     border: solid 2px #025a18;
     border-width: 2px 2px 9px 2px;
     box-shadow: 0px 5px 0px rgba(0,0,0,0.2);
-    background: #179837;
+    background: $color-background-pickle;
     margin: 20px 10px;
 }
 
@@ -509,7 +505,7 @@ body{
     box-shadow: -3px 6px 0 rgba(0,0,0,0.2);
     z-index: 0;
     padding: 30px 0 2px 0;
-    background-color: #c5d6dd;
+    background-color: $color-background-for;
     transform: rotate(-8deg);
 }
 
@@ -553,7 +549,7 @@ body{
     border-radius: 100px;
     border-style: solid;
     border-width: 2px 4px 15px 4px;
-    background: #e41919;
+    background: $color-background-apple;
     border-color: #ab1212;
     height: 60px;
     width: 60px;
@@ -564,7 +560,7 @@ body{
         content: "";
         display: block;
         position: absolute;
-        background: rgba(255,255,255,.3);
+        background: $color-background-before;
         height: 30%;
         width: 30%;
         top: 0px;
@@ -581,7 +577,7 @@ body{
     border-radius: 100px;
     border-style: solid;
     border-width: 2px 4px 15px 4px;
-    background: orange;
+    background: $color-background-orange;
     border-color: #bd6e07;
     height: 60px;
     width: 60px;
@@ -592,7 +588,7 @@ body{
         content: "";
         display: block;
         position: absolute;
-        background: rgba(255,255,255,.3);
+        background: $color-background-before;
         height: 30%;
         width: 30%;
         top: 0px;
@@ -644,7 +640,7 @@ body{
 }
 
 .burger-menu {
-    background-color: #252525;
+    background-color: $color-background-menu;
     padding: 5px;
     position: fixed;
     right: 30px;
@@ -659,7 +655,7 @@ body{
     span {
         display: block;
         height: 5px;
-        background-color: #ce743a;
+        background-color: $color-background-table;
         margin: 5px 0 0;
         transition: all .1s linear .23s;
         position: relative;
@@ -671,7 +667,7 @@ body{
 }
 
 .burger-menu-media{
-    background-color: #1e1e1e;
+    background-color: $color-background-main;
     padding: 5px;
     position: fixed;
     right: 70px;
@@ -686,7 +682,7 @@ body{
     span {
         display: block;
         height: 5px;
-        background-color: #ce743a;
+        background-color: $color-background-table;
         margin: 5px 0 0;
         transition: all .1s linear .23s;
         position: relative;
@@ -745,7 +741,7 @@ body{
 }
 
 .button-enter{
-    background: #ddd;
+    background: $color-background-lineNumber;
     display: block;
     border-radius: 4px;
     padding: 0 7px;
@@ -758,11 +754,11 @@ body{
 }
     
 .input-css{
-    background: #efefef;
+    background: $color-background-view;
     border: none;
     padding: 0;
 
-    background-color: rgb(226, 162, 76, 0.7);;
+    background-color: $color-background-blink;
     animation: blink 1s infinite;
         
     @keyframes blink {
