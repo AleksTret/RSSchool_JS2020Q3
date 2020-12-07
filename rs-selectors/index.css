@@ -398,6 +398,7 @@ template {
 }
 .game .game__task {
   font-size: 35px;
+  font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
 }
 .game .table-wrapper {
   perspective: 400px;
@@ -436,6 +437,27 @@ template {
 }
 .game .table-wrapper .table__edge .table__leg:last-child {
   right: 15px;
+}
+.game .table-wrapper .win-screen {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 250px;
+  background-color: #252525;
+  position: absolute;
+  color: #ce743a;
+  top: -75px;
+  left: -170px;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+  border: solid 2px #ce743a;
+}
+.game .table-wrapper .win-screen h3 {
+  font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+}
+.game .table-wrapper .win-screen_display-block {
+  display: flex;
 }
 .game .editor {
   display: flex;
@@ -690,6 +712,23 @@ template {
   color: #ce743a;
   padding: 10px 0;
   cursor: pointer;
+}
+
+.button-small {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  text-decoration: none;
+  border: solid 2px #ce743a;
+  opacity: 0.7;
+  width: 10%;
+  color: #ce743a;
+  padding: 10px 0;
+  cursor: pointer;
+  position: absolute;
+  top: 79%;
+  left: 88%;
+  font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
 }
 
 .plate {

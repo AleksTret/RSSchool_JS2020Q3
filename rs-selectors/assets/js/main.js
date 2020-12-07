@@ -55,6 +55,8 @@ const game = {
 
     _getTableElements(){
         this.table = document.getElementById("table");
+        this.winScreen = document.getElementById("winScreen");
+        this.buttonClose = document.getElementById("buttonClose");
     },
 
     _getCodeAreaElements(){
@@ -72,11 +74,11 @@ const game = {
 
     _setListeners(){
         this.inputCss.addEventListener("keydown", (event) => {
-            event.key == "Enter" && this._checkWin(event.target.value);
+            event.key == "Enter" && this._checkLevel(event.target.value);
         });
 
         this.buttonEnter.addEventListener("click", () => {
-            this._checkWin(this.inputCss.value);
+            this._checkLevel(this.inputCss.value);
         });
 
         this.buttonReset.addEventListener("click", () => {
@@ -85,6 +87,10 @@ const game = {
 
         this.buttonHelp.addEventListener("click", () => {
             this._showAnswer();
+        })
+
+        this.buttonClose.addEventListener("click", () => {
+            this.winScreen.classList.remove("win-screen_display-block");
         })
     },
 
@@ -118,6 +124,7 @@ const game = {
             const nextLevel = (+currentLevel + 1).toString();
     
             this._saveGame(currentLevel, true);
+            this._checkWin();
             
             setTimeout(() => this._setLevel(nextLevel), 500); 
         }, timeout * (this.answer[0].length + 4));
@@ -139,18 +146,33 @@ const game = {
         localStorage.removeItem("completedLevels");
     },
 
-    _checkWin(solution){
+    _checkLevel(solution){
         if (~this.answer.indexOf(solution)) {         
             const currentLevel = this._animateChangeLevel(true);
             const nextLevel = (+currentLevel + 1).toString();
 
             this._saveGame(currentLevel, false);
+            this._checkWin();
 
             setTimeout(() => this._setLevel(nextLevel), 500); 
         }
         else{
             this.editor.classList.toggle("tremble");
             setTimeout(()=> this.editor.classList.toggle("tremble"), 500);
+        }
+    },
+
+    _checkWin(){
+        if (this.levels.size == this._game.completedLevels.size){
+            const tempArray = [...this._game.completedLevels.values()];
+            const every = tempArray.every(item => item.withHelp == false);
+            const levelsCompleted = tempArray.reduce((summa, item) => summa += item.withHelp == false ? 1 : 0, 0);
+
+            const message = every ? "congratulations, well done! you completed the all levels." : 
+                                  `you completed ${levelsCompleted} levels of ${this._game.completedLevels.size}` ;
+            
+            this.winScreen.firstElementChild.innerHTML = message;
+            this.winScreen.classList.add("win-screen_display-block");
         }
     },
 
@@ -268,7 +290,7 @@ const game = {
         // if we have an inner element do recursive call
         ('markup' in element) && result.appendChild(this._createOneElementOnTable(element.markup, counter));
 
-        this._addMouseEventListener(result, "hint-display-block");
+        this._addMouseEventListener(result);
 
         fragment.appendChild(result);
 
@@ -368,16 +390,18 @@ const game = {
         }
     },
 
-    _addMouseEventListener(tag, className){
+    _addMouseEventListener(tag){
         tag.addEventListener("mouseover", (event) => {
-            event.target.firstChild.classList.add(className);
+            event.target.classList.add("element_shadow");
+            event.target.firstChild.classList.add("hint-display-block");
             const tags = document.querySelectorAll(`[data-highlight="${event.target.firstChild.dataset.numberelement}"]`);
             for(let tag of tags) {
                 tag.classList.add("html-view-highlight");
             }            
         });
         tag.addEventListener("mouseout", (event) => {
-            event.target.firstChild.classList.remove(className);
+            event.target.classList.remove("element_shadow");
+            event.target.firstChild.classList.remove("hint-display-block");
             const tags = document.querySelectorAll(`[data-highlight="${event.target.firstChild.dataset.numberelement}"]`);
             for(let tag of tags) {
                 tag.classList.remove("html-view-highlight");
@@ -416,8 +440,6 @@ const game = {
     },
 
     _loadGame(){
-        console.log(this._game.completedLevels);
-
         this._game.completedLevels = this._initCompletedLevel(localStorage.getItem("completedLevels"));
 
         const result = localStorage.getItem("currentLevel");
