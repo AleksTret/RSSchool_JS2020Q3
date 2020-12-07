@@ -1,0 +1,39 @@
+.element_dancer {
+    transform-origin: bottom;
+    animation: dancer 1.5s infinite;
+}
+
+@keyframes dancer {
+    0%      { transform:    skew(4deg,0deg) scaleX(1);}
+    10%     { transform:    skew(1deg,0deg) scaleY(0.9);}
+    50%     { transform:    skew(-4deg,0deg) scaleX(1);}
+    60%     { transform:    skew(-1deg,0deg) scaleY(0.9);}
+    100%    { transform:    skew(4deg,0deg) scaleX(1);}
+}
+
+.element_takeoff{
+    animation: takeoff 1s;
+}
+
+@keyframes takeoff{
+    100% {transform: translateY(-100vh);}
+}
+
+.element_shadow{
+    box-shadow: 0 0 0 6px rgba(175, 114, 34, 0.5) !important;
+}
+
+.html-view-highlight{
+    color: $color-text-main;
+}
+
+.tremble {
+    animation: tremble 0.1s 5;
+}
+  
+@keyframes tremble {
+    0%   { transform: translateX(0); }
+    25% {  transform: translateX(-5px); }
+    50% {  transform: translateX(0); }
+    75% {  transform: translateX(5px); }
+}
