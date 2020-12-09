@@ -435,10 +435,6 @@ const game = {
     },
 
     _saveGame(level, withHelp){
-        //localStorage.setItem("currentLevel", level);
-        //console.log(level);
-        //this._saveCurrentLevel(level);
-
         this._game.completedLevels.set(level, {done : true, withHelp : withHelp});
 
         localStorage.setItem("completedLevels", JSON.stringify([...this._game.completedLevels]));        
