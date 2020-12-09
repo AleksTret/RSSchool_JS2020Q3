@@ -120,10 +120,11 @@ const game = {
         const timeout = 200;
         this._printText(this.answer[0], 0, "", timeout);
         setTimeout(() => {
-            const currentLevel = this._animateChangeLevel(false);
-            const nextLevel = (+currentLevel + 1).toString();
+            const level = this._animateChangeLevel(false);
+            const nextLevel = (+level + 1).toString();
     
-            this._saveGame(currentLevel, true);
+            this._saveGame(level, true);
+            this._saveCurrentLevel(nextLevel);
             this._checkWin();
             
             setTimeout(() => this._setLevel(nextLevel), 500); 
@@ -148,10 +149,11 @@ const game = {
 
     _checkLevel(solution){
         if (~this.answer.indexOf(solution)) {         
-            const currentLevel = this._animateChangeLevel(true);
-            const nextLevel = (+currentLevel + 1).toString();
+            const level = this._animateChangeLevel(true);
+            const nextLevel = (+level + 1).toString();
 
-            this._saveGame(currentLevel, false);
+            this._saveGame(level, false);
+            this._saveCurrentLevel(nextLevel);
             this._checkWin();
 
             setTimeout(() => this._setLevel(nextLevel), 500); 
@@ -225,6 +227,7 @@ const game = {
             a.classList.add("current");
             this.burgerCheckbox.checked = false;
 
+            this._saveCurrentLevel(level);
             this._setLevel(level);
         });
         
@@ -432,11 +435,13 @@ const game = {
     },
 
     _saveGame(level, withHelp){
-        localStorage.setItem("currentLevel", level);
-
         this._game.completedLevels.set(level, {done : true, withHelp : withHelp});
 
         localStorage.setItem("completedLevels", JSON.stringify([...this._game.completedLevels]));        
+    },
+
+    _saveCurrentLevel(level){
+        localStorage.setItem("currentLevel", level);
     },
 
     _loadGame(){
@@ -444,7 +449,7 @@ const game = {
 
         const result = localStorage.getItem("currentLevel");
         
-        return (result && (+result < this.levels.size) ? +result + 1 : this._game.startLevel);
+        return (result && (+result < this.levels.size) ? +result : this._game.startLevel);
     },
 
     _initCompletedLevel(jsonString){
