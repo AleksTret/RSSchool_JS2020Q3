@@ -1,0 +1,116 @@
+.toggles {
+  max-width: 500px;
+  width: 100%;
+  background-color: $table-background;
+}
+
+.toggles-active {
+  max-width: 80vw;
+  visibility: visible;
+  position: fixed;
+  bottom: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+
+  .toggle-container {
+    width: 50%;
+  }
+}
+
+.toggle-container {
+  margin: 0 auto;
+  padding: 4px;
+  border: $table-border;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+
+  div {
+    width: 33.33%;
+    text-align: center;
+    word-wrap: break-word;
+    padding: 5px;
+  }
+}
+
+.toggle {
+  width: 100%;
+  max-width: 55px;
+  height: 3vh;
+
+  position: relative;
+  display: inline-block;
+}
+
+/* Hide default HTML checkbox */
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 75%;
+  width: 40%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+@media (max-width: $tablet) {
+  .toggle {
+    height: 2vh;
+  }
+  .slider:before  {
+    height: 60%;
+  }
+}
+
+@media (max-width: $task-width) {
+  .toggle {
+    height: 2.5vh;
+  }
+  .slider:before  {
+    height: 65%;
+  }
+}
+
+input:checked+.slider {
+  background-color: $color-selected;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px $color-selected;
+}
+
+input:checked+.slider:before {
+  transform: translateX(100%);
+}
+
+@media screen and (max-width: $mobile) {
+  .toggle-container {
+    flex-direction: column;
+  }
+}

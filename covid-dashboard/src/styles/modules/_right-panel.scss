@@ -1,0 +1,170 @@
+.dasboard-right_panel {
+  height: 100%;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 1vh;
+}
+
+.right_panel-tables {
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $table-background;
+  border: $table-border;
+}
+
+.right_panel-tables.full-active {
+  max-height: 92% !important;
+}
+
+#table-title__text {
+  padding: 20px;
+  font-size: 2rem;
+}
+
+#info_with_numbers {
+  p {
+    padding: 15px;
+    border: $table-border;
+  }
+}
+
+.dasboard-deaths__recovered {
+  width: 100%;
+  background-color: $table-background;
+  border: $table-border;
+}
+
+.global-state__table {
+  padding-top: 5px;
+}
+
+.table-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  max-height: 6vh;
+}
+
+.table-title__text {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.table-title__count {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.global-state__table .table-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-bottom: $table-border;
+  padding: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.table-type {
+  margin-left: 5px;
+  color: $color-grey;
+}
+
+.recovered {
+  color: $color-green;
+}
+
+.right_panel-grafic {
+  position: relative;
+  background-color: $table-background;
+  border: $table-border;
+}
+
+.container-canvas {
+  margin: 0 auto;
+  padding: 20px 10px;
+  width: 100%;
+  height: 23vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;	
+}
+
+.graph-canvas-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;	
+  align-items: center;
+}
+
+.graph-canvas-container span{
+  padding: 0px 10px;
+}
+
+.canvas.chartjs-render-monitor {
+  height: 100% !important;
+}
+
+.state .table-type {
+  color: white;
+}
+
+.death-count, .cases-row__numbers, .table-title__count, .cases-total__count {
+  font-weight: bold;
+}
+
+#cases-countries__rows,
+#table-global {
+  img {
+    margin-right: 10px;
+  }
+
+  .table-item {
+    padding: 14px 10px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+
+    @media (max-width: 845px) and (min-width: 679px){
+      flex-direction: column;
+    }
+  }
+}
+
+.canvas-big {
+  width: 100%;
+  height: 71vh;
+}
+
+@media screen and (max-width: $mobile) {
+  .dasboard-right_panel {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .right_panel-tables {
+    margin-bottom: 15px;
+  }
+
+  .graph-canvas-container {
+    justify-content: space-evenly;	
+  }
+}
+
+@media screen and (max-height: 610px) {
+  .container-canvas {
+    height: 18vh;
+  }
+
+  .right_panel-grafic.full-active .container-canvas {
+    height: 100%;
+  }
+}

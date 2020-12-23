@@ -1,0 +1,143 @@
+.dashboard-map {
+  position: relative;
+  min-width: 55vw;
+  background-color:$table-background;
+  border: $table-border;
+  min-height: 30vh;
+}
+
+.dashboard-map-big {
+  width: 100%;
+  height: 92%;
+}
+
+.dashboard-map.full-active {
+  position: relative;
+}
+
+.button {
+  width: 100px;
+  height: 50px;
+  background-color: $color-green;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $table-background;
+  border: $table-border;
+}
+
+.marker {
+  border-radius: 50%;
+  opacity: .6;
+  background-color: $color-red;
+  pointer-events: none;
+}
+
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+
+.mapboxgl-ctrl-top-left,
+.container-resize {
+
+  cursor: pointer;
+  opacity: .7;
+  transition: .3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.container-resize {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px;
+  display: flex;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.mapboxgl-canvas-container {
+  height: 100vh;
+}
+
+.mapboxgl-canvas.active {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.popup {
+  p {
+    color: #222;
+    font-size: 16px;
+  }
+}
+
+.legend {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 2px 4px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  cursor: default;
+  border-radius: 4px;
+  background-color: #fff;
+  opacity: .7;
+  transition: .3s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  span {
+    margin-right: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: $table-background;
+  }
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+}
+
+.legend-marker {
+  border-radius: 50%;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
+}
+
+@media screen and (max-width: $mobile) {
+  .map-small {
+    height: 50%;
+  }
+
+  .mapboxgl-canvas-container {
+    height: 50vh;
+  }
+
+  .container-resize {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $tab) {
+  .dashboard-map {
+    min-width: 58vw;
+  }
+}
+
