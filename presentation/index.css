@@ -1,0 +1,66 @@
+#vue-title {
+  color: #41b883;
+}
+
+#vue-plaint-text{
+  color: #34495e;
+}
+
+.vue-logo {
+  margin: 0 auto;
+  background: url('./assets/image/Vue_logo.svg') no-repeat center;
+  width: 500px;
+  height: 500px;
+}
+
+.vue_components {
+  margin: 0 auto;
+  background: url('./assets/image/vue_components.png') no-repeat center;
+  width: 600px;
+  height: 500px;
+}
+
+.virtual-dom{
+  margin: 0 auto;
+  background: url('./assets/image/virtual_dom.png') no-repeat center;
+  background-size: 450px 300px;
+  width: 500px;
+  height: 400px;
+}
+
+.vue-ecosystem{
+  margin: 0 auto;
+  background: url('./assets/image/vue_ecosystem2.jpg') no-repeat center;
+  background-size: 520px 500px;
+  width: 500px;
+  height: 500px;
+}
+
+.result-page{
+  margin: 0 auto;
+  background: url('./assets/image/helloVue.gif') no-repeat center;
+  width: 600px;
+  height: 400px;;
+}
+
+#vue-list {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+#vue-list__item {
+  padding: 0;
+}
+
+#vue-title_small {
+  font-size: 1.5em;
+  color: #41b883;
+}
+
+#html-code{
+  line-height: 1em;
+  font-size: 20px;
+  max-height: 500px !important;
+  background-color: #34495e !important;
+}
