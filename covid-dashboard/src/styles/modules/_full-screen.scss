@@ -1,0 +1,77 @@
+.full-block {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 4px;
+  display: flex;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.589);
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+}
+
+.full-block.active {
+  display: flex;
+}
+
+.full-block:hover {
+  background-color: #fff;
+  transition: 1s;
+}
+
+.full-block:active {
+  background-color: rgb(77, 72, 72);
+  transition: 0.5s;
+}
+
+.full-block img{
+  width: 20px;
+  height: 20px;
+}
+
+.dashboard-map .full-block {
+  display: flex;
+}
+
+.global_cases__total, .cases-countries__table, .total-countries, .right_panel-tables, .right_panel-grafic, .dashboard-map {
+  &:hover {
+    .full-block {
+      display: flex;
+    }
+  }
+}
+
+.full-notActive {
+  display: none;
+}
+
+.full-active {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.right_panel-grafic.full-active {
+  height: 92%;
+}
+
+@media screen and (max-width: $mobile) {
+  .full-block {
+    display: none;
+  }
+
+  .global_cases__total, .cases-countries__table, .last-update-date, .total-countries, .right_panel-tables, .right_panel-grafic, .dashboard-map {
+    &:hover {
+      .full-block {
+        display: none;
+      }
+    }
+  }
+}

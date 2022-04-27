@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  font-weight: bold;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  background-color: #000000;
+  max-width: 100%;
+  padding: 0 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px; 
+  background-color: #404040;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #5c5c5c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9c989863;
+}
+
+
+@media screen and (min-width: $tab) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: $tab) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 6px;
+  }
+}

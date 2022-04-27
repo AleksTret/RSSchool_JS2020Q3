@@ -1,0 +1,94 @@
+.last-update-date, .total-countries {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+  box-sizing: border-box;
+  min-width: 12vw;
+  color: $color-grey;
+  background-color:$table-background;
+  border: $table-border;
+}
+
+.last-update-date__title {
+  color: $color-grey;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.last-update-date__date, .total-countries__count {
+  font-weight: bold;
+  color: $color-grey;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.total-countries__name {
+  color: $color-grey;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.country-active {
+  background-color: $color-selected;
+}
+
+.cases-countries__rows {
+  margin: 10px 0;
+}
+
+.country-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+  background-color: $table-background;
+  border: $table-border;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.search-button, .keyboard-button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: #6363636e;
+  }
+}
+
+.search-button img, .keyboard-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.search-field {
+  max-width: 20vw;
+  outline: none;
+  text-align: center;
+}
+
+input[type=text] {
+  width: 80%;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+}
+
+
+@media screen and (max-width: $mobile) {
+  .last-update-date, .total-countries, .country-search {
+    margin-top: 15px;
+  }
+}

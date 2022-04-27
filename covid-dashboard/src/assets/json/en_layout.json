@@ -1,0 +1,282 @@
+{
+  "1": {
+    "normal": "1",
+    "caps": "1",
+    "shift": "!"
+  },
+  "2": {
+    "normal": "2",
+    "caps": "2",
+    "shift": "@"
+  },
+  "3": {
+    "normal": "3",
+    "caps": "3",
+    "shift": "#"
+  },
+  "4": {
+    "normal": "4",
+    "caps": "4",
+    "shift": "$"
+  },
+  "5": {
+    "normal": "5",
+    "caps": "5",
+    "shift": "%"
+  },
+  "6": {
+    "normal": "6",
+    "caps": "6",
+    "shift": "^"
+  },
+  "7": {
+    "normal": "7",
+    "caps": "7",
+    "shift": "&"
+  },
+  "8": {
+    "normal": "8",
+    "caps": "8",
+    "shift": "*"
+  },
+  "9": {
+    "normal": "9",
+    "caps": "9",
+    "shift": "("
+  },
+  "10": {
+    "normal": "0",
+    "caps": "0",
+    "shift": ")"
+  },
+  "11": {
+    "normal": "-",
+    "caps": "-",
+    "shift": "_"
+  },
+  "12": {
+    "normal": "=",
+    "caps": "=",
+    "shift": "+"
+  },
+  "13": {
+    "normal": "backspace",
+    "caps": "backspace",
+    "shift": "backspace"
+  },
+  "14": {
+    "normal": "q",
+    "caps": "Q",
+    "shift": "Q"
+  },
+  "15": {
+    "normal": "w",
+    "caps": "W",
+    "shift": "W"
+  },
+  "16": {
+    "normal": "e",
+    "caps": "E",
+    "shift": "E"
+  },
+  "17": {
+    "normal": "r",
+    "caps": "R",
+    "shift": "R"
+  },
+  "18": {
+    "normal": "t",
+    "caps": "T",
+    "shift": "T"
+  },
+  "19": {
+    "normal": "y",
+    "caps": "Y",
+    "shift": "Y"
+  },
+  "20": {
+    "normal": "u",
+    "caps": "U",
+    "shift": "U"
+  },
+  "21": {
+    "normal": "i",
+    "caps": "I",
+    "shift": "I"
+  },
+  "22": {
+    "normal": "o",
+    "caps": "O",
+    "shift": "O"
+  },
+  "23": {
+    "normal": "p",
+    "caps": "P",
+    "shift": "P"
+  },
+  "24": {
+    "normal": "[",
+    "caps": "[",
+    "shift": "{"
+  },
+  "25": {
+    "normal": "]",
+    "caps": "]",
+    "shift": "}"
+  },
+  "26": {
+    "normal": "capslock",
+    "caps": "capslock",
+    "shift": "casplock"
+  },
+  "27": {
+    "normal": "a",
+    "caps": "A",
+    "shift": "A"
+  },
+  "28": {
+    "normal": "s",
+    "caps": "S",
+    "shift": "S"
+  },
+  "29": {
+    "normal": "d",
+    "caps": "D",
+    "shift": "D"
+  },
+  "30": {
+    "normal": "f",
+    "caps": "F",
+    "shift": "F"
+  },
+  "31": {
+    "normal": "g",
+    "caps": "G",
+    "shift": "G"
+  },
+  "32": {
+    "normal": "h",
+    "caps": "H",
+    "shift": "H"
+  },
+  "33": {
+    "normal": "j",
+    "caps": "J",
+    "shift": "J"
+  },
+  "34": {
+    "normal": "k",
+    "caps": "K",
+    "shift": "K"
+  },
+  "35": {
+    "normal": "l",
+    "caps": "L",
+    "shift": "L"
+  },
+  "36": {
+    "normal": ";",
+    "caps": ";",
+    "shift": ":"
+  },
+  "37": {
+    "normal": "'",
+    "caps": "'",
+    "shift": "\""
+  },
+  "38": {
+    "normal": "enter",
+    "caps": "enter",
+    "shift": "enter"
+  },
+  "39": {
+    "normal": "language",
+    "caps": "language",
+    "shift": "language"
+  },
+  "40": {
+    "normal": "shift",
+    "caps": "shift",
+    "shift": "shift"
+  },
+  "41": {
+    "normal": "z",
+    "caps": "Z",
+    "shift": "Z"
+  },
+  "42": {
+    "normal": "x",
+    "caps": "X",
+    "shift": "X"
+  },
+  "43": {
+    "normal": "c",
+    "caps": "C",
+    "shift": "C"
+  },
+  "44": {
+    "normal": "v",
+    "caps": "V",
+    "shift": "V"
+  },
+  "45": {
+    "normal": "b",
+    "caps": "B",
+    "shift": "B"
+  },
+  "46": {
+    "normal": "n",
+    "caps": "N",
+    "shift": "N"
+  },
+  "47": {
+    "normal": "m",
+    "caps": "M",
+    "shift": "M"
+  },
+  "48": {
+    "normal": ",",
+    "caps": ",",
+    "shift": "<"
+  },
+  "49": {
+    "normal": ".",
+    "caps": ".",
+    "shift": ">"
+  },
+  "50": {
+    "normal": "/",
+    "caps": "/",
+    "shift": "?"
+  },
+  "51": {
+    "normal": "done",
+    "caps": "done",
+    "shift": "done"
+  },
+  "52": {
+    "normal": "space",
+    "caps": "space",
+    "shift": "space"
+  },
+  "53": {
+    "normal": "left_arrow",
+    "caps": "left_arrow",
+    "shift": "left_arrow"
+  },
+  "54": {
+    "normal": "right_arrow",
+    "caps": "right_arrow",
+    "shift": "right_arrow"
+  },
+  "55": {
+    "normal": "sound",
+    "caps": "sound",
+    "shift": "sound"
+  },
+  "56": {
+    "normal": "microphone",
+    "caps": "microphone",
+    "shift": "microphone"
+  }
+}
