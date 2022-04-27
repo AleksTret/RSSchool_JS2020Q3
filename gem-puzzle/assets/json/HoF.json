@@ -1,0 +1,314 @@
+{
+    "9": {
+            "1": {
+            "name": "some name",
+            "counter": "100",
+            "stopwatch": "00:10:00:00"
+            },
+            "2": {
+                "name": "some name",
+                "counter": "101",
+                "stopwatch": "00:10:10:00"
+            },
+            "3": {
+                "name": "some name",
+                "counter": "102",
+                "stopwatch": "00:10:20:00"
+            },
+            "4": {
+                "name": "some name",
+                "counter": "103",
+                "stopwatch": "00:10:30:00"
+            },
+            "5": {
+                "name": "some name",
+                "counter": "104",
+                "stopwatch": "00:10:40:00"
+            },
+            "6": {
+                "name": "some name",
+                "counter": "105",
+                "stopwatch": "00:10:50:00"
+            },
+            "7": {
+                "name": "some name",
+                "counter": "106",
+                "stopwatch": "00:11:00:00"
+            },
+            "8": {
+                "name": "some name",
+                "counter": "107",
+                "stopwatch": "00:11:10:00"
+            },
+            "9": {
+                "name": "some name",
+                "counter": "108",
+                "stopwatch": "00:11:20:00"
+            },
+            "10": {
+                "name": "some name",
+                "counter": "109",
+                "stopwatch": "00:11:30:00"
+            }
+    },
+    "16": {
+        "1": {
+            "name": "some name",
+            "counter": "300",
+            "stopwatch": "00:10:00:00"
+        },
+        "2": {
+            "name": "some name",
+            "counter": "301",
+            "stopwatch": "00:10:10:00"
+        },
+        "3": {
+            "name": "some name",
+            "counter": "302",
+            "stopwatch": "00:10:20:00"
+        },
+        "4": {
+            "name": "some name",
+            "counter": "303",
+            "stopwatch": "00:10:30:00"
+        },
+        "5": {
+            "name": "some name",
+            "counter": "304",
+            "stopwatch": "00:10:40:00"
+        },
+        "6": {
+            "name": "some name",
+            "counter": "305",
+            "stopwatch": "00:10:50:00"
+        },
+        "7": {
+            "name": "some name",
+            "counter": "306",
+            "stopwatch": "00:11:00:00"
+        },
+        "8": {
+            "name": "some name",
+            "counter": "307",
+            "stopwatch": "00:11:10:00"
+        },
+        "9": {
+            "name": "some name",
+            "counter": "308",
+            "stopwatch": "00:11:20:00"
+        },
+        "10": {
+            "name": "some name",
+            "counter": "309",
+            "stopwatch": "00:11:30:00"
+        }
+    },
+    "25": {
+        "1": {
+            "name": "some name",
+            "counter": "600",
+            "stopwatch": "00:10:00:00"
+        },
+        "2": {
+            "name": "some name",
+            "counter": "601",
+            "stopwatch": "00:10:10:00"
+        },
+        "3": {
+            "name": "some name",
+            "counter": "602",
+            "stopwatch": "00:10:20:00"
+        },
+        "4": {
+            "name": "some name",
+            "counter": "603",
+            "stopwatch": "00:10:30:00"
+        },
+        "5": {
+            "name": "some name",
+            "counter": "604",
+            "stopwatch": "00:10:40:00"
+        },
+        "6": {
+            "name": "some name",
+            "counter": "605",
+            "stopwatch": "00:10:50:00"
+        },
+        "7": {
+            "name": "some name",
+            "counter": "606",
+            "stopwatch": "00:11:00:00"
+        },
+        "8": {
+            "name": "some name",
+            "counter": "607",
+            "stopwatch": "00:11:10:00"
+        },
+        "9": {
+            "name": "some name",
+            "counter": "608",
+            "stopwatch": "00:11:20:00"
+        },
+        "10": {
+            "name": "some name",
+            "counter": "609",
+            "stopwatch": "00:11:30:00"
+        }
+    },
+    "36": {
+        "1": {
+            "name": "some name",
+            "counter": "1200",
+            "stopwatch": "00:10:00:00"
+        },
+        "2": {
+            "name": "some name",
+            "counter": "1201",
+            "stopwatch": "00:10:10:00"
+        },
+        "3": {
+            "name": "some name",
+            "counter": "1202",
+            "stopwatch": "00:10:20:00"
+        },
+        "4": {
+            "name": "some name",
+            "counter": "1203",
+            "stopwatch": "00:10:30:00"
+        },
+        "5": {
+            "name": "some name",
+            "counter": "1204",
+            "stopwatch": "00:10:40:00"
+        },
+        "6": {
+            "name": "some name",
+            "counter": "1205",
+            "stopwatch": "00:10:50:00"
+        },
+        "7": {
+            "name": "some name",
+            "counter": "1206",
+            "stopwatch": "00:11:00:00"
+        },
+        "8": {
+            "name": "some name",
+            "counter": "1207",
+            "stopwatch": "00:11:10:00"
+        },
+        "9": {
+            "name": "some name",
+            "counter": "1208",
+            "stopwatch": "00:11:20:00"
+        },
+        "10": {
+            "name": "some name",
+            "counter": "1209",
+            "stopwatch": "00:11:30:00"
+        }
+    },
+    "49": {
+        "1": {
+            "name": "some name",
+            "counter": "2400",
+            "stopwatch": "00:10:00:00"
+        },
+        "2": {
+            "name": "some name",
+            "counter": "2401",
+            "stopwatch": "00:10:10:00"
+        },
+        "3": {
+            "name": "some name",
+            "counter": "2402",
+            "stopwatch": "00:10:20:00"
+        },
+        "4": {
+            "name": "some name",
+            "counter": "2403",
+            "stopwatch": "00:10:30:00"
+        },
+        "5": {
+            "name": "some name",
+            "counter": "2404",
+            "stopwatch": "00:10:40:00"
+        },
+        "6": {
+            "name": "some name",
+            "counter": "2405",
+            "stopwatch": "00:10:50:00"
+        },
+        "7": {
+            "name": "some name",
+            "counter": "2406",
+            "stopwatch": "00:11:00:00"
+        },
+        "8": {
+            "name": "some name",
+            "counter": "2407",
+            "stopwatch": "00:11:10:00"
+        },
+        "9": {
+            "name": "some name",
+            "counter": "2408",
+            "stopwatch": "00:11:20:00"
+        },
+        "10": {
+            "name": "some name",
+            "counter": "2409",
+            "stopwatch": "00:11:30:00"
+        }
+    },
+    "64": {
+        "1": {
+            "name": "some name",
+            "counter": "4800",
+            "stopwatch": "00:10:00:00"
+        },
+        "2": {
+            "name": "some name",
+            "counter": "4801",
+            "stopwatch": "00:10:10:00"
+        },
+        "3": {
+            "name": "some name",
+            "counter": "4802",
+            "stopwatch": "00:10:20:00"
+        },
+        "4": {
+            "name": "some name",
+            "counter": "4803",
+            "stopwatch": "00:10:30:00"
+        },
+        "5": {
+            "name": "some name",
+            "counter": "4804",
+            "stopwatch": "00:10:40:00"
+        },
+        "6": {
+            "name": "some name",
+            "counter": "4805",
+            "stopwatch": "00:10:50:00"
+        },
+        "7": {
+            "name": "some name",
+            "counter": "4806",
+            "stopwatch": "00:11:00:00"
+        },
+        "8": {
+            "name": "some name",
+            "counter": "4807",
+            "stopwatch": "00:11:10:00"
+        },
+        "9": {
+            "name": "some name",
+            "counter": "4808",
+            "stopwatch": "00:11:20:00"
+        },
+        "10": {
+            "name": "some name",
+            "counter": "4809",
+            "stopwatch": "00:11:30:00"
+        }
+    }
+}
