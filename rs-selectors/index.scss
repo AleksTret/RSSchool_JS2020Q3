@@ -1,0 +1,122 @@
+@import './assets/scss/main.scss';
+
+.main-wrapper{
+    display:flex;
+    flex-direction: row;
+    color: $color-text-main;
+}
+
+.game{
+    width: 65%;
+    height: 100%;
+    text-align: center;
+
+    @media (max-width: 1000px){
+        width: 100%;
+    }
+
+    .header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 0 0;
+
+        .header__logo{
+            width: 64px;
+            height: 64px;
+            background: url("./assets/svg/file_type_css_icon_130661.svg");
+            margin: 0 40px 0 20px;
+        }
+    }
+
+    .game__task{
+        font-size: 35px;
+        font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
+    }
+
+    .table-wrapper{
+        perspective: 400px;
+        display: inline-block;
+    }
+
+    .footer{
+        width: 100%;
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+
+        .logo-rsSchool{
+            width: 100px;
+            height: 50px;
+            background: url('./assets/svg/rs_school_js.svg') no-repeat;
+        }
+
+        .logo-github{
+            width: 100px;
+            height: 50px;
+            background: url('./assets/svg/Octocat.svg') no-repeat;
+            background-size: contain;
+
+        }
+    }
+}
+
+.menu{
+    background-color: $color-background-menu;
+
+    @media (max-width: 1000px){
+        position: fixed;
+        right: -4000px;
+    }
+
+    .levels-wrapper{
+        position: fixed;
+        width: 35%;
+        background-color: $color-background-menu;
+        height: 100vh;
+        right: -4000px;
+        transition: right 0.5s;
+        z-index: 2;
+
+        @media (max-width: 900px){
+            width: 40%;
+        }
+    
+        @media (max-width: 800px){
+            width: 45%;
+        }
+    
+        @media (max-width: 800px){
+            width: 50%;
+        }
+
+        .levels__title{
+            margin: 65px 0 20px 10px;
+        }
+    }
+
+    .task-wrapper {
+        position: fixed;
+        padding: 10px;
+        width: 35%;
+        background-color: $color-background-menu;
+        height: 100vh;
+        z-index: 1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @media (max-width: 900px){
+            width: 40%;
+        }
+    
+        @media (max-width: 800px){
+            width: 45%;
+        }
+    
+        @media (max-width: 800px){
+            width: 50%;
+        }
+    }
+}

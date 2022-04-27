@@ -1,0 +1,42 @@
+.button-enter{
+    background: $color-background-lineNumber;
+    display: block;
+    border-radius: 4px;
+    padding: 0 7px;
+    color: $color-text-html;
+    border: solid 3px $color-border-button;
+    border-width: 1px 1px 6px 1px;
+    margin: -6px 0 0;
+    font-size: 9px;
+    cursor: pointer;
+}
+
+.button-small{
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+    border: solid 2px $color-border-menu;
+    opacity: 0.7;
+    width: 10%;
+    color: $color-text-main;
+    padding: 10px 0;
+    cursor: pointer;
+    position: absolute;
+    top: 79%;
+    left: 88%;
+    font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
+}
+
+.button-main{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+    border: solid 2px $color-border-menu;
+    opacity: 0.7;
+    width: 90%;
+    color: $color-text-main;
+    padding: 10px 0;
+    cursor: pointer;
+}
