@@ -1,0 +1,94 @@
+/* Footer styles begin */
+footer{
+    @include footer__gradient__background();
+    padding: 40px 40px 0;
+
+    @media (max-width: 768px){
+        padding: 15px 30px 0;
+    }
+
+    @media (max-width: 320px){
+        padding: 15px 10px 38px;
+    }
+    
+    .footer__content__wrapper{
+        display: flex;
+        justify-content: space-between;
+        
+
+        @media (max-width: 1279px){
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        @media (max-width: 320px){
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .footer__contact{
+            margin-top: 17px;
+            max-width: 280px;
+
+            @media (max-width: 768px){
+                margin-top: 20px;
+            }
+
+            @media (max-width: 320px){
+                margin: 15px 25px;
+            }
+
+            .footer__title{
+                margin-bottom: 42px;
+            }
+            div{
+                &:nth-child(2){
+                    margin-bottom: 39px;  
+                }
+            }
+        }
+
+        .footer__location{
+            margin: 20px 0 0 0;
+            width: 302px;
+
+            @media (max-width: 320px){
+                margin: 22px 0 0 0;
+            }
+
+            .footer__title{
+                margin-bottom: 33px;
+
+                @media (max-width: 320px){
+                    margin: 0 20px 42px;
+                }
+            }
+            div{
+                &:nth-child(2){
+                    margin-bottom: 30px;
+
+                    @media (max-width: 320px){
+                        margin-bottom: 37px;
+                    }
+                }
+            }
+        }
+
+        .footer__image{
+            @media (max-width: 768px){
+                padding-top: 60px;
+            }
+
+            @media (max-width: 320px){
+                width: 260px;
+                height: 269px;
+                padding-top: 38px;
+            }
+
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+/* Footer styles end */

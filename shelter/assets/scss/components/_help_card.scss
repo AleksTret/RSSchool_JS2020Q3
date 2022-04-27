@@ -1,0 +1,44 @@
+.help__card{
+    width: 170px;
+    height: 113px;
+    margin-bottom: 58px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-right: 60px;
+
+    @media (max-width: 768px){
+        margin-right: 0;
+    }
+
+    @media (max-width: 320px){
+        width: 130px;
+        height: 87px; 
+        margin-bottom: 30px;
+    }
+
+    .help__card__image{
+        margin-bottom: 30px;
+        width: 60px;
+        height: 60px;
+
+        @media (max-width: 320px){
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    p{
+        @include font__h4($color-dark-l);
+
+        @media (max-width: 320px){
+            @include font__h5($color-dark-l);
+        }
+    }
+
+    // &:last-child{
+    //     margin-right: 0;
+    // }
+}

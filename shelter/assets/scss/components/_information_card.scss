@@ -1,0 +1,31 @@
+.information__card{
+    display: flex;
+    flex-direction: column;
+
+    h3{
+        @include font__h3($color-light-xl);
+        display: inline-flex;
+
+        @media (max-width: 1000px){
+            @include font__h3_mobile($color-light-xl);
+        }
+    }
+
+    div{
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        p{
+            @include font__h4($color-primary);
+        } 
+
+        .footer__icon{
+            margin-right: 20px;
+        }
+
+        a:hover{
+            @include cursor__hover();
+        }
+    }
+}
