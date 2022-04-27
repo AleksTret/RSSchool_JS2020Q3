@@ -1,0 +1,1150 @@
+@charset "UTF-8";
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+/*!
+ *  owfont-regular 1.0.0 by Deniz Fuchidzhiev - http://websygen.com
+ *  License - font: SIL OFL 1.1, css: MIT License
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: "owfont";
+  src: url("assets/fonts/owfont-regular.eot?v=1.0.0");
+  src: url("assets/fonts/owfont-regular.eot?#iefix&v=1.0.0") format("embedded-opentype"), url("assets/fonts/owfont-regular.woff") format("woff"), url("assets/fonts/owfont-regular.ttf") format("truetype"), url("assets/fonts/owfont-regular.svg#owf-regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.owf {
+  display: inline-block;
+  font: normal normal normal 14px/1 owfont;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+/* makes the font 33% larger relative to the icon container */
+.owf-lg {
+  font-size: 1.33333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+
+.owf-2x {
+  font-size: 2em;
+}
+
+.owf-3x {
+  font-size: 3em;
+}
+
+.owf-4x {
+  font-size: 4em;
+}
+
+.owf-5x {
+  font-size: 5em;
+}
+
+.owf-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+
+.owf-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+}
+
+.owf-ul > li {
+  position: relative;
+}
+
+.owf-li {
+  position: absolute;
+  left: -2.14285714em;
+  width: 2.14285714em;
+  top: 0.14285714em;
+  text-align: center;
+}
+
+.owf-li.owf-lg {
+  left: -1.85714286em;
+}
+
+.owf-border {
+  padding: 0.2em 0.25em 0.15em;
+  border: solid 0.08em #eeeeee;
+  border-radius: 0.1em;
+}
+
+.owf-pull-right {
+  float: right;
+}
+
+.owf-pull-left {
+  float: left;
+}
+
+.owf.owf-pull-left {
+  margin-right: 0.3em;
+}
+
+.owf.owf-pull-right {
+  margin-left: 0.3em;
+}
+
+/* owfont uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+/*   Weather Condition Codes    */
+/*   Thunderstorm - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+/* thunderstorm with light rain */
+.owf-200:before,
+.owf-200-d:before,
+.owf-200-n:before {
+  content: "";
+}
+
+/* thunderstorm with rain */
+.owf-201:before,
+.owf-201-d:before,
+.owf-201-n:before {
+  content: "";
+}
+
+/* thunderstorm with heavy rain */
+.owf-202:before,
+.owf-202-d:before,
+.owf-202-n:before {
+  content: "";
+}
+
+/*  light thunderstorm  */
+.owf-210:before,
+.owf-210-d:before,
+.owf-210-n:before {
+  content: "";
+}
+
+/*  thunderstorm  */
+.owf-211:before,
+.owf-211-d:before,
+.owf-211-n:before {
+  content: "";
+}
+
+/*   heavy thunderstorm   */
+.owf-212:before,
+.owf-212-d:before,
+.owf-212-n:before {
+  content: "";
+}
+
+/*   ragged thunderstorm   */
+.owf-221:before,
+.owf-221-d:before,
+.owf-221-n:before {
+  content: "";
+}
+
+/*  thunderstorm with light drizzle    */
+.owf-230:before,
+.owf-230-d:before,
+.owf-230-n:before {
+  content: "";
+}
+
+/*  thunderstorm with drizzle     */
+.owf-231:before,
+.owf-231-d:before,
+.owf-231-n:before {
+  content: "";
+}
+
+/* thunderstorm with heavy drizzle     */
+.owf-232:before,
+.owf-232-d:before,
+.owf-232-n:before {
+  content: "";
+}
+
+/*   Drizzle - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+/*  light intensity drizzle */
+.owf-300:before,
+.owf-300-d:before,
+.owf-300-n:before {
+  content: "";
+}
+
+/*  drizzle */
+.owf-301:before,
+.owf-301-d:before,
+.owf-301-n:before {
+  content: "";
+}
+
+/*  heavy intensity drizzle  */
+.owf-302:before,
+.owf-302-d:before,
+.owf-302-n:before {
+  content: "";
+}
+
+/*   light intensity drizzle rain  */
+.owf-310:before,
+.owf-310-d:before,
+.owf-310-n:before {
+  content: "";
+}
+
+/*  drizzle rain  */
+.owf-311:before,
+.owf-311-d:before,
+.owf-311-n:before {
+  content: "";
+}
+
+/* heavy intensity drizzle rain */
+.owf-312:before,
+.owf-312-d:before,
+.owf-312-n:before {
+  content: "";
+}
+
+/* shower rain and drizzle  */
+.owf-313:before,
+.owf-313-d:before,
+.owf-313-n:before {
+  content: "";
+}
+
+/* heavy shower rain and drizzle*/
+.owf-314:before,
+.owf-314-d:before,
+.owf-314-n:before {
+  content: "";
+}
+
+/* shower drizzle */
+.owf-321:before,
+.owf-321-d:before,
+.owf-321-n:before {
+  content: "";
+}
+
+/*   Rain - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+/* light rain  */
+.owf-500:before,
+.owf-500-d:before,
+.owf-500-n:before {
+  content: "";
+}
+
+/* moderate rain  */
+.owf-501:before,
+.owf-501-d:before,
+.owf-501-n:before {
+  content: "";
+}
+
+/* heavy intensity rain  */
+.owf-502:before,
+.owf-502-d:before,
+.owf-502-n:before {
+  content: "";
+}
+
+/* very heavy rain   */
+.owf-503:before,
+.owf-503-d:before,
+.owf-503-n:before {
+  content: "";
+}
+
+/* extreme rain    */
+.owf-504:before,
+.owf-504-d:before,
+.owf-504-n:before {
+  content: "";
+}
+
+/* freezing rain    */
+.owf-511:before,
+.owf-511-d:before,
+.owf-511-n:before {
+  content: "";
+}
+
+/*  light intensity shower rain    */
+.owf-520:before,
+.owf-520-d:before,
+.owf-520-n:before {
+  content: "";
+}
+
+/* shower rain  */
+.owf-521:before,
+.owf-521-d:before,
+.owf-521-n:before {
+  content: "";
+}
+
+/*  heavy intensity shower rain  */
+.owf-522:before,
+.owf-522-d:before,
+.owf-522-n:before {
+  content: "";
+}
+
+/* ragged shower rain  */
+.owf-531:before,
+.owf-531-d:before,
+.owf-531-n:before {
+  content: "";
+}
+
+/*   Snow - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+/* light snow  */
+.owf-600:before,
+.owf-600-d:before,
+.owf-600-n:before {
+  content: "";
+}
+
+/*  snow  */
+.owf-601:before,
+.owf-601-d:before,
+.owf-601-n:before {
+  content: "";
+}
+
+/*   heavy snow   */
+.owf-602:before,
+.owf-602-d:before,
+.owf-602-n:before {
+  content: "";
+}
+
+/*  sleet  */
+.owf-611:before,
+.owf-611-d:before,
+.owf-611-n:before {
+  content: "";
+}
+
+/*   shower sleet */
+.owf-612:before,
+.owf-612-d:before,
+.owf-612-n:before {
+  content: "";
+}
+
+/* light rain and snow */
+.owf-615:before,
+.owf-615-d:before,
+.owf-615-n:before {
+  content: "";
+}
+
+/* rain and snow  */
+.owf-616:before,
+.owf-616-d:before,
+.owf-616-n:before {
+  content: "";
+}
+
+/* light shower snow  */
+.owf-620:before,
+.owf-620-d:before,
+.owf-620-n:before {
+  content: "";
+}
+
+/* shower snow  */
+.owf-621:before,
+.owf-621-d:before,
+.owf-621-n:before {
+  content: "";
+}
+
+/* heavy shower snow  */
+.owf-622:before,
+.owf-622-d:before,
+.owf-622-n:before {
+  content: "";
+}
+
+/*   Atmosphere - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+/* mist */
+.owf-701:before,
+.owf-701-d:before,
+.owf-701-n:before {
+  content: "";
+}
+
+/* smoke */
+.owf-711:before,
+.owf-711-d:before,
+.owf-711-n:before {
+  content: "";
+}
+
+/* haze */
+.owf-721:before,
+.owf-721-d:before,
+.owf-721-n:before {
+  content: "";
+}
+
+/* Sand/Dust Whirls */
+.owf-731:before,
+.owf-731-d:before,
+.owf-731-n:before {
+  content: "";
+}
+
+/* Fog */
+.owf-741:before,
+.owf-741-d:before,
+.owf-741-n:before {
+  content: "";
+}
+
+/* sand */
+.owf-751:before,
+.owf-751-d:before,
+.owf-751-n:before {
+  content: "";
+}
+
+/* dust */
+.owf-761:before,
+.owf-761-d:before,
+.owf-761-n:before {
+  content: "";
+}
+
+/*  VOLCANIC ASH  */
+.owf-762:before,
+.owf-762-d:before,
+.owf-762-n:before {
+  content: "";
+}
+
+/* SQUALLS */
+.owf-771:before,
+.owf-771-d:before,
+.owf-771-n:before {
+  content: "";
+}
+
+/* TORNADO */
+.owf-781:before,
+.owf-781-d:before,
+.owf-781-n:before {
+  content: "";
+}
+
+/*   Clouds - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+/*  sky is clear  */
+/*  Calm  */
+.owf-800:before,
+.owf-800-d:before,
+.owf-951:before,
+.owf-951-d:before {
+  content: "";
+}
+
+.owf-800-n:before,
+.owf-951-n:before {
+  content: "";
+}
+
+/*  few clouds   */
+.owf-801:before,
+.owf-801-d:before {
+  content: "";
+}
+
+.owf-801-n:before {
+  content: "";
+}
+
+/* scattered clouds */
+.owf-802:before,
+.owf-802-d:before {
+  content: "";
+}
+
+.owf-802-n:before {
+  content: "";
+}
+
+/* broken clouds  */
+.owf-803:before,
+.owf-803-d:before,
+.owf-803-n:before {
+  content: "";
+}
+
+/* overcast clouds  */
+.owf-804:before,
+.owf-804-d:before,
+.owf-804-n:before {
+  content: "";
+}
+
+/*   Extreme - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+/* tornado  */
+.owf-900:before,
+.owf-900-d:before,
+.owf-900-n:before {
+  content: "";
+}
+
+/*  tropical storm  */
+.owf-901:before,
+.owf-901-d:before,
+.owf-901-n:before {
+  content: "";
+}
+
+/* hurricane */
+.owf-902:before,
+.owf-902-d:before,
+.owf-902-n:before {
+  content: "";
+}
+
+/* cold */
+.owf-903:before,
+.owf-903-d:before,
+.owf-903-n:before {
+  content: "";
+}
+
+/* hot */
+.owf-904:before,
+.owf-904-d:before,
+.owf-904-n:before {
+  content: "";
+}
+
+/* windy */
+.owf-905:before,
+.owf-905-d:before,
+.owf-905-n:before {
+  content: "";
+}
+
+/* hail */
+.owf-906:before,
+.owf-906-d:before,
+.owf-906-n:before {
+  content: "";
+}
+
+/*   Additional - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+/* Setting */
+.owf-950:before,
+.owf-950-d:before,
+.owf-950-n:before {
+  content: "";
+}
+
+/*  Light breeze  */
+.owf-952:before,
+.owf-952-d:before,
+.owf-952-n:before {
+  content: "";
+}
+
+/*  Gentle Breeze  */
+.owf-953:before,
+.owf-953-d:before,
+.owf-953-n:before {
+  content: "";
+}
+
+/*  Moderate breeze  */
+.owf-954:before,
+.owf-954-d:before,
+.owf-954-n:before {
+  content: "";
+}
+
+/* Fresh Breeze  */
+.owf-955:before,
+.owf-955-d:before,
+.owf-955-n:before {
+  content: "";
+}
+
+/* Strong  Breeze  */
+.owf-956:before,
+.owf-956-d:before,
+.owf-956-n:before {
+  content: "";
+}
+
+/* High wind, near gale  */
+.owf-957:before,
+.owf-957-d:before,
+.owf-957-n:before {
+  content: "";
+}
+
+/* Gale */
+.owf-958:before,
+.owf-958-d:before,
+.owf-958-n:before {
+  content: "";
+}
+
+/*  Severe Gale  */
+.owf-959:before,
+.owf-959-d:before,
+.owf-959-n:before {
+  content: "";
+}
+
+/* Storm */
+.owf-960:before,
+.owf-960-d:before,
+.owf-960-n:before {
+  content: "";
+}
+
+/*  Violent Storm  */
+.owf-961:before,
+.owf-961-d:before,
+.owf-961-n:before {
+  content: "";
+}
+
+/* Hurricane */
+.owf-962:before,
+.owf-962-d:before,
+.owf-962-n:before {
+  content: "";
+}
+
+/* vietnamese */
+@font-face {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v21/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkCEv58m-wi40.woff2) format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v21/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkCEv58i-wi40.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v21/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkCEv58a-wg.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+body {
+  font-family: "Quicksand", sans-serif;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-shadow: 10px 10px 10px #000000;
+}
+
+.fixed-size {
+  min-width: 10vw;
+  max-width: 70vw;
+}
+
+h1, h2 {
+  margin-block-start: 0;
+}
+
+figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+.refreshButton {
+  min-width: calc(30px + 30 * ((100vw - 320px) / 1480));
+  min-height: calc(30px + 30 * ((100vw - 320px) / 1480));
+  border: 0;
+  background: url("assets/icons/vcsupdaterequired_93493.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: grayscale(1);
+  margin: 10px;
+  opacity: 0.5;
+  transition: transform 0.5s linear;
+}
+
+.refreshButton:hover {
+  filter: grayscale(0.8);
+  cursor: pointer;
+  transition: transform 0.5s linear;
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.refreshButton:active {
+  opacity: 1;
+  outline: 0;
+}
+
+.refreshButton:focus {
+  outline: 0;
+}
+
+.weather {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 10%;
+  padding: 3% 0 0 3%;
+}
+.weather .weather__wrapper {
+  margin-right: 30px;
+  text-align: left;
+}
+.weather .weather__wrapper div {
+  font-size: calc(10px + 10 * ((100vw - 320px) / 1480));
+}
+.weather .weather__wrapper .icon-temp__wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+.weather .weather__wrapper .icon-temp__wrapper .weather-icon {
+  font-size: calc(30px + 20 * ((100vw - 320px) / 1480));
+  margin-right: 10px;
+}
+.weather .weather__wrapper .icon-temp__wrapper .weather-temperature {
+  font-size: calc(20px + 20 * ((100vw - 320px) / 1480));
+}
+.weather .city {
+  min-width: 100px;
+  font-size: calc(20px + 20 * ((100vw - 320px) / 1480));
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 70%;
+}
+.timer .time {
+  font-size: calc(80px + 70 * ((100vw - 320px) / 1480));
+  display: flex;
+  width: 40rem;
+  padding-left: 5.5rem;
+}
+@media screen and (max-width: 800px) {
+  .timer .time {
+    width: 25rem;
+    padding-left: 2rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .timer .time {
+    width: 20rem;
+    padding-left: 1rem;
+  }
+}
+.timer .date {
+  font-size: calc(16px + 16 * ((100vw - 320px) / 1480));
+  margin-bottom: 16px;
+}
+.timer .greeting, .timer .name {
+  font-size: calc(30px + 30 * ((100vw - 320px) / 1480));
+  display: inline-block;
+}
+.timer h2 {
+  font-size: calc(20px + 10 * ((100vw - 320px) / 1480));
+}
+
+.quote {
+  height: 20%;
+  padding: 0 3% 3% 0;
+}
+.quote .quote__wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.quote .quote__wrapper .quote-text {
+  max-width: 80%;
+  font-size: calc(11px + 7 * ((100vw - 320px) / 1480));
+}
+.quote .quote__wrapper .quote-text blockquote {
+  margin: 16px;
+}
+.quote .quote__wrapper .quote-text figcaption {
+  margin: 16px;
+  text-align: right;
+}
+.quote .quote__wrapper .quote-text .refreshQuote {
+  width: 20%;
+}
+
+/*# sourceMappingURL=index.css.map */
