@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/white.css">
+  <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+  <link rel="stylesheet" href="index.css">
+  <title>Vue.js</title>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1 id="vue-title">Vue.js</h1>
+        <div class="vue-logo"></div>
+      </section>
+
+      <section>
+        <h1 id="vue-title">Why is Vue?</h1>
+        <div class="vue_components"></div>
+      </section>
+
+      <section>
+        <h1 id="vue-title">Vue Ecosystem</h1>
+        <div class="vue-ecosystem"></div>
+      </section>
+
+      <section>
+        <h1 id="vue-title">Virtual Dom</h1>
+        <div class="virtual-dom"></div>
+      </section>
+
+      <section>
+        <h1 id="vue-title">Installation</h1>
+          <ul id="vue-list">
+            <ol id="vue-list__item">
+              <pre><code id="html-code">
+    <script src="https://unpkg.com/vue"></script>
+              </code></pre>
+            </ol>
+            <ol id="vue-list__item">                
+              <pre><code id="html-code">
+                npm install vue@next
+              </code></pre>
+            </ol>
+            <ol id="vue-list__item">
+              <pre><code id="html-code">
+                npm install -g @vue/cli
+              </code></pre>
+            </ol>
+          </ul>
+      </section>
+
+      <section>
+        <section>
+          <h2 id="vue-title_small">Simple example</h2>
+          <p id="vue-plaint-text">Import Vue as a CDN package</p>
+          <pre><code id="html-code" data-line-numbers>&lt;head&gt;
+  &lt;script src="https://unpkg.com/vue"&gt;&lt;/script&gt;
+&lt;/head&gt;
+          </code></pre>
+        </section>
+
+        <section>
+          <h5 id="vue-title_small">index.html</h5>
+          <pre><code id="html-code" data-line-numbers>&lt;body&gt;
+  &lt;div id="app"&gt;
+    &lt;h1&gt;
+      {{ message }}
+    &lt;/h1&gt;
+    &lt;p&gt;
+      {{ now }}
+    &lt;/p&gt;
+    &lt;input type="text" v-model="message"&gt;
+  &lt;/div&gt;
+  &lt;script src="main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </section>
+
+        <section>
+          <h5 id="vue-title_small">main.js</h5>
+          <pre><code id="html-code" data-line-numbers>const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello, Vue!',
+    now: new Date(),
+  },
+  methods: {
+    updateDate() {
+      this.now = new Date();
+    }
+  },
+  mounted(){
+    setInterval(() => this.updateDate(), 1000);
+  }
+})            
+          </code></pre>
+        </section>
+
+        <section>
+          <h1 id="vue-title">browser</h1>
+          <div class="result-page"></div>
+        </section>
+      </section>
+
+      <section>
+        <h1 id="vue-title">more about Vue</h1>
+          <ul id="vue-list">
+            <ol id="vue-list__item">
+              <pre><code id="html-code">
+                https://v3.vuejs.org/
+              </code></pre>
+            </ol>
+            <ol id="vue-list__item">                
+              <pre><code id="html-code">
+                https://github.com/vuejs/vue
+              </code></pre>
+            </ol>
+            <ol id="vue-list__item">
+              <pre><code id="html-code">
+                https://codesandbox.io/s/vue?file=/src/main.js
+              </code></pre>
+            </ol>
+          </ul>
+      </section>
+    </div>
+  </div>
+  <script src="reveal.js/js/reveal.js"></script>
+  <script src="reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="reveal.js/plugin/markdown/marked.js"></script>
+  <script src="reveal.js/plugin/markdown/markdown.js"></script>
+  <script src="reveal.js/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      plugins: [ RevealHighlight, RevealMarkdown, RevealNotes  ],
+    });
+  </script>
+</body>
+</html>
